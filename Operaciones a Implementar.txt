@@ -1,0 +1,73 @@
+Empleados
+	Nuevo Empleado
+	Actualizar Informacion de Empleado
+	Buscar Empleado/Empleados por algún atributo
+	Dar de Baja un Empleado
+	Nuevo Accidente
+	Nueva Sancion
+	Nuevo Premio
+	
+	
+Usuarios del Sistema
+	Nuevo Usuario del Sistema
+	Actualizar Información de Usuario del Sistema
+	Dar de Baja Usuario del Sistema
+	
+	
+Insumos
+	Nuevo Insumo
+	Actualizar Informacion Insumo
+	Buscar Insumo/Insumos por algun atributo
+	Dar de Baja Insumo
+	
+
+Producto Terminados
+	Nuevo Producto Terminado
+	Actualizar Información de Producto Terminado
+	Buscar Producto Terminado o Productos Termiando por algún atributo
+	Dar de Baja Producto Terminado
+	
+
+Proveedores
+	Nuevo Proveedor
+	Actualizar Información de Proveedor
+	Buscar Proveedor/Proveedores por algún atributo
+	Dar de Baja Proveedor
+	
+	
+Etapas
+	Nueva Etapa
+	Dar de Baja Etapa
+	
+
+Lotes
+	Nuevo Lote
+	Actualizar Información de Lote
+	Buscar Lote/Lotes por algún atributo
+	Dar de Baja Lote
+	Mostrar los lotes activos
+
+	
+Analisis
+	Nuevo Analisis
+	Buscar Analisis por algún atributo
+	
+
+Stocks Mensuales Insumos
+		Nuevo Stock Mensual Insumos
+		Actualizar Información de Stock Mensual de Insumo
+		Buscar Stock Mensual de Insumo por algun atributo
+		
+		
+Stocks Mensuales Productos Terminados
+		Nuevo Stock Mensual Productos Terminados
+		Actualizar Información de Stock Mensual de Productos Terminados
+		Buscar Stock Mensual de Productos Terminados por algun atributo
+		
+		
+Stocks Mensuales Descarte
+		Nuevo Stock Mensual Descarte
+		Actualizar Información de Stock Mensual de Descarte
+		Buscar Stock Mensual de Descarte por algun atributo
+		
+		
