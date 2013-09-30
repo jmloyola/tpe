@@ -1,0 +1,14 @@
+**************************************************************************
+**************************************************************************
+								29/09/2013
+**************************************************************************
+**************************************************************************
+
+Recordar que los atributos cuyo dominio son un conjunto finito de los cuales no existe tabla se manejaran como enteros. Se codificaran del 1 .. limSup-1. Por ejemplo, estado civil sera un entero del 1 al 4. Tener en cuenta a la hora de implementar esto en el sistema
+Mirar si la FechaAlta de un accidente es opcional o no.
+Cambie el modelo logico.
+Recordar definir que acciones se puede realizar en cada nivel de usuario del sistema.
+Mirar atributos que necesiten DEFAULT
+Notar que CUIL y CUIT no son enteros sino que son tres enteros separados por menos  X - Y - Z
+¿En el modelo conceptual, UtilizadoEn es inyectiva?
+Mostrar mensajes (tooltips) indicando la forma de los datos a ingresar
