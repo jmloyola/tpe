@@ -12,3 +12,11 @@ Mirar atributos que necesiten DEFAULT
 Notar que CUIL y CUIT no son enteros sino que son tres enteros separados por menos  X - Y - Z
 ¿En el modelo conceptual, UtilizadoEn es inyectiva?
 Mostrar mensajes (tooltips) indicando la forma de los datos a ingresar
+
+**************************************************************************
+**************************************************************************
+								02/10/2013
+**************************************************************************
+**************************************************************************
+
+Recordar que ahora se utiliza el tipo basico de SQL DATE para las fechas, INCLUSO AQUELLAS QUE SOLO UTILIZAN AÑO Y MES.
