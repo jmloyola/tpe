@@ -55,6 +55,7 @@ CREATE TABLE UsuariosDelSistema(
 	US_Password	VARCHAR (15)	NOT NULL,
 	US_Nivel	INT	NOT NULL,
 	E_NumeroLegajo_TieneAsignado	INT	NOT NULL,
+	US_Activo	BOOLEAN	NOT NULL	DEFAULT 'true',
 	FOREIGN KEY (E_NumeroLegajo_TieneAsignado) REFERENCES Empleados(E_NumeroLegajo)
 );
 
@@ -62,7 +63,8 @@ CREATE TABLE Insumos(
 	I_Descripcion	VARCHAR (20)	NOT NULL	PRIMARY KEY,
 	I_Unidad	INT	NOT NULL,
 	I_LimitePedido	REAL	NOT NULL,
-	I_Tipo	INT	NOT NULL
+	I_Tipo	INT	NOT NULL,
+	I_Activo	BOOLEAN	NOT NULL	DEFAULT 'true'
 );
 
 CREATE TABLE ProductosTerminados(
@@ -70,7 +72,8 @@ CREATE TABLE ProductosTerminados(
 	PT_Tipo	VARCHAR (15)	NOT NULL,
 	PT_Descripcion	VARCHAR (30)	NOT NULL,
 	PT_Destino	VARCHAR (20)	NOT NULL,
-	PT_KilosPorEnvase	REAL	NOT NULL
+	PT_KilosPorEnvase	REAL	NOT NULL,
+	PT_Activo	BOOLEAN	NOT NULL	DEFAULT 'true'
 );
 
 CREATE TABLE StocksMensualesDescarte(
@@ -107,7 +110,8 @@ CREATE TABLE Analisis(
 );
 
 CREATE TABLE Etapas(
-	Etapa_Descripcion	VARCHAR (20)	NOT NULL	PRIMARY KEY
+	Etapa_Descripcion	VARCHAR (20)	NOT NULL	PRIMARY KEY,
+	Etapa_Activo	BOOLEAN	NOT NULL	DEFAULT 'true'
 );
 
 CREATE TABLE StocksMensualesInsumos(
