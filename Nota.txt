@@ -20,3 +20,4 @@ Mostrar mensajes (tooltips) indicando la forma de los datos a ingresar
 **************************************************************************
 
 Recordar que ahora se utiliza el tipo basico de SQL DATE para las fechas, INCLUSO AQUELLAS QUE SOLO UTILIZAN AÑO Y MES.
+Recordar que algunos esquemas ahora tienen un flag indicando si se encuentran activos o no.
