@@ -5,6 +5,7 @@
 package pruebainterfaz;
 
 import InterfazGrafica.PantallaPrincipal;
+import javax.swing.UIManager;
 
 /**
  *
@@ -17,6 +18,13 @@ public class PruebaInterfaz {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        try{
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
         
         PantallaPrincipal pantalla = new PantallaPrincipal();
         pantalla.setVisible(true);
