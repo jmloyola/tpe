@@ -2,12 +2,12 @@
 CREATE TABLE Empleados(
 	E_Nombre	VARCHAR (50)	NOT NULL,
 	E_DNI	INT	NOT NULL	UNIQUE,
-	E_Telefono	INT NOT NULL,
+	E_Telefono	BIGINT NOT NULL,
 	E_FechaIngreso	DATE	NOT NULL,
 	E_NumeroLegajo	INT NOT NULL	PRIMARY KEY,
 	E_Sueldo	REAL NOT NULL,
 	E_CUIL	VARCHAR (20)	NOT NULL UNIQUE,
-	E_Estado Civil	INT	NOT NULL,
+	E_Estado_Civil	INT	NOT NULL,
 	E_CantidadHijos	INT	NOT NULL,
 	E_Domicilio	VARCHAR (60) NOT NULL,
 	E_CodigoPostal	INT NOT NULL,
@@ -25,7 +25,7 @@ CREATE TABLE HistorialAccidentes(
 	HA_NumeroSiniestro	INT	NOT NULL,
 	HA_Causa	VARCHAR (75)	NOT NULL,
 	HA_FechaAlta	DATE	NOT NULL,
-	UNIQUE (E_NumeroLegajo_HA, HA_FechaBaja, HA_NumeroSiniestro, HA_Causa, HA_FechaAlta);
+	UNIQUE (E_NumeroLegajo_HA, HA_FechaBaja, HA_NumeroSiniestro, HA_Causa, HA_FechaAlta),
 	FOREIGN KEY (E_NumeroLegajo_HA) REFERENCES Empleados(E_NumeroLegajo)
 );
 
@@ -58,6 +58,30 @@ CREATE TABLE UsuariosDelSistema(
 	FOREIGN KEY (E_NumeroLegajo_TieneAsignado) REFERENCES Empleados(E_NumeroLegajo)
 );
 
+CREATE TABLE Insumos(
+	I_Descripcion	VARCHAR (20)	NOT NULL	PRIMARY KEY,
+	I_Unidad	INT	NOT NULL,
+	I_LimitePedido	REAL	NOT NULL,
+	I_Tipo	INT	NOT NULL
+);
+
+CREATE TABLE ProductosTerminados(
+	PT_Codificacion	VARCHAR (10)	NOT NULL	PRIMARY KEY,
+	PT_Tipo	VARCHAR (15)	NOT NULL,
+	PT_Descripcion	VARCHAR (30)	NOT NULL,
+	PT_Destino	VARCHAR (20)	NOT NULL,
+	PT_KilosPorEnvase	REAL	NOT NULL
+);
+
+CREATE TABLE StocksMensualesDescarte(
+	SM_D_Codigo	SERIAL	NOT NULL	PRIMARY KEY, /* Este atributo es SERIAL lo que indica que su valor se ira autoincrementando para cada nueva instancia del esquema */
+	SM_D_Cantidad	REAL	NOT NULL,
+	SM_D_Fecha	DATE	NOT NULL UNIQUE,
+	SM_D_Inicio	REAL	NOT NULL,
+	SM_D_Ingreso	REAL	NOT NULL,
+	SM_D_Egreso	REAL	NOT NULL
+);
+
 CREATE TABLE Lotes(
 	L_Codigo	SERIAL	NOT NULL	PRIMARY KEY, /* Este atributo es SERIAL lo que indica que su valor se ira autoincrementando para cada nueva instancia del esquema */
 	L_Identificador	VARCHAR (20)	NOT NULL,
@@ -84,15 +108,6 @@ CREATE TABLE Analisis(
 
 CREATE TABLE Etapas(
 	Etapa_Descripcion	VARCHAR (20)	NOT NULL	PRIMARY KEY
-);
-
-CREATE TABLE StocksMensualesDescarte(
-	SM_D_Codigo	SERIAL	NOT NULL	PRIMARY KEY, /* Este atributo es SERIAL lo que indica que su valor se ira autoincrementando para cada nueva instancia del esquema */
-	SM_D_Cantidad	REAL	NOT NULL,
-	SM_D_Fecha	DATE	NOT NULL UNIQUE,
-	SM_D_Inicio	REAL	NOT NULL,
-	SM_D_Ingreso	REAL	NOT NULL,
-	SM_D_Egreso	REAL	NOT NULL
 );
 
 CREATE TABLE StocksMensualesInsumos(
@@ -133,7 +148,7 @@ CREATE TABLE Proveedores(
 
 CREATE TABLE TelefonosProveedor(
 	P_RazonSocial_TP	VARCHAR (25) NOT NULL,
-	TP_Telefono	INT NOT NULL,
+	TP_Telefono	BIGINT NOT NULL,
 	PRIMARY KEY (P_RazonSocial_TP, TP_Telefono),
 	FOREIGN KEY (P_RazonSocial_TP) REFERENCES Proveedores(P_RazonSocial)
 );
@@ -142,24 +157,9 @@ CREATE TABLE ContactosProveedor(
 	P_RazonSocial_CP	VARCHAR (25)	NOT NULL,
 	CP_Nombre	VARCHAR (50)	NOT NULL,
 	CP_Cargo	VARCHAR (30)	NOT NULL,
-	CP_Telefono	INT	NOT NULL,
+	CP_Telefono	BIGINT	NOT NULL,
 	PRIMARY KEY (P_RazonSocial_CP, CP_Nombre, CP_Cargo, CP_Telefono),
 	FOREIGN KEY (P_RazonSocial_CP) REFERENCES Proveedores(P_RazonSocial)
-);
-
-CREATE TABLE Insumos(
-	I_Descripcion	VARCHAR (20)	NOT NULL	PRIMARY KEY,
-	I_Unidad	INT	NOT NULL,
-	I_LimitePedido	REAL	NOT NULL,
-	I_Tipo	INT	NOT NULL
-);
-
-CREATE TABLE ProductosTerminados(
-	PT_Codificacion	VARCHAR (10)	NOT NULL	PRIMARY KEY,
-	PT_Tipo	VARCHAR (15)	NOT NULL,
-	PT_Descripcion	VARCHAR (30)	NOT NULL,
-	PT_Destino	VARCHAR (20)	NOT NULL,
-	PT_KilosPorEnvase	REAL	NOT NULL
 );
 
 CREATE TABLE SeEncuentra(

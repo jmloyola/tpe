@@ -20,11 +20,11 @@ INSERT INTO Lotes (L_Identificador, L_FechaCreacion, L_Estado) VALUES ('ID201309
 INSERT INTO Lotes (L_Identificador, L_FechaCreacion, L_FechaIngresoDeposito, L_Estado, L_FechaVencimiento) VALUES ('ID20130810', '2013-08-10', '2013-08-15', 2, '2014-08-15');
 
 /*  Ingreso los lotes defectuosos */
-INSERT INTO Lotes (L_Identificador, L_FechaCreacion, L_FechaIngresoDeposito, L_Estado, L_MotivoDeficiencia, L_FechaVencimiento) VALUES ('ID20130810', '2013-08-10', '2013-08-15', 3, 'Materia prima en mal estado', '2014-08-15');
+INSERT INTO Lotes (L_Identificador, L_FechaCreacion, L_FechaIngresoDeposito, L_Estado, L_MotivoDeficiencia, L_FechaVencimiento) VALUES ('ID20130811', '2013-08-10', '2013-08-15', 3, 'Materia prima en mal estado', '2014-08-15');
 
 
 /*  Ingreso los analisis */
-INSERT INTO Analisis VALUES ('CODANALISIS1', '2013-08-12', 0.33, 10, 3);
+INSERT INTO Analisis VALUES ('CODANALISIS1', '2013-08-12', 0.33, 10, 13);
 
 
 /*  Ingreso las etapas */
