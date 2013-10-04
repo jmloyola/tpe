@@ -46,10 +46,10 @@ public class LoginScreen extends javax.swing.JFrame {
 
         usuarioTextField.setText("Nombre de Usuario");
         usuarioTextField.setToolTipText("Ingrese su identificador de usuario aqui:");
+        usuarioTextField.setPreferredSize(new java.awt.Dimension(100, 20));
 
         passwordLabel.setText("Password:");
 
-        passwordField.setText("jPasswordField1");
         passwordField.setToolTipText("Ingrese su password aqui:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -68,11 +68,14 @@ public class LoginScreen extends javax.swing.JFrame {
                             .addComponent(usuarioLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(usuarioTextField)
+                            .addComponent(usuarioTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 110, Short.MAX_VALUE)))
                 .addContainerGap())
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {passwordField, usuarioTextField});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()

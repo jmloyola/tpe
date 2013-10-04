@@ -26,18 +26,233 @@ public class NuevoEmpleadoScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        cancelarNuevoEmpleadoButton = new javax.swing.JButton();
+        aceptarNuevoEmpleadoButton = new javax.swing.JButton();
+        valoresAIngresarEmpleadoPanel = new javax.swing.JPanel();
+        nombreEmpleadoLabel = new javax.swing.JLabel();
+        dniEmpleadoLabel = new javax.swing.JLabel();
+        telefonoEmpleadoLabel = new javax.swing.JLabel();
+        fechaIngresoEmpleadoLabel = new javax.swing.JLabel();
+        numeroLegajoEmpleadoLabel = new javax.swing.JLabel();
+        sueldoLabel = new javax.swing.JLabel();
+        cuilLabel = new javax.swing.JLabel();
+        estadoCivilLabel = new javax.swing.JLabel();
+        cantidadHijosLabel = new javax.swing.JLabel();
+        domicilioLabel = new javax.swing.JLabel();
+        codigoPostalLabel = new javax.swing.JLabel();
+        paisResidenciaLabel = new javax.swing.JLabel();
+        provinciaResidenciaLabel = new javax.swing.JLabel();
+        ciudadResidenciaLabel = new javax.swing.JLabel();
+        categoriaLabel = new javax.swing.JLabel();
+        nombreTextField = new javax.swing.JTextField();
+        dniTextField = new javax.swing.JTextField();
+        telefonoTextField = new javax.swing.JTextField();
+        fechaIngresoTextField = new javax.swing.JFormattedTextField();
+        numeroLegajoTextField = new javax.swing.JTextField();
+        sueldoTextField = new javax.swing.JTextField();
+        cuilTextField = new javax.swing.JTextField();
+        estadoCivilComboBox = new javax.swing.JComboBox();
+        cantidadHijosTextField = new javax.swing.JTextField();
+        domicilioTextField = new javax.swing.JTextField();
+        codigoPostalTextField = new javax.swing.JTextField();
+        paisResidenciaTextField = new javax.swing.JTextField();
+        provinciaResidenciaTextField = new javax.swing.JTextField();
+        ciudadResidenciaTextField = new javax.swing.JTextField();
+        categoriaComboBox = new javax.swing.JComboBox();
+        cargaFechaActualButton = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Nuevo Empleado");
+        setMinimumSize(new java.awt.Dimension(500, 700));
+        setPreferredSize(new java.awt.Dimension(500, 700));
+
+        cancelarNuevoEmpleadoButton.setText("Cancelar");
+
+        aceptarNuevoEmpleadoButton.setText("Aceptar");
+
+        valoresAIngresarEmpleadoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ingrese la informacion del nuevo empleado a continuacion:", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+
+        nombreEmpleadoLabel.setText("Nombre y Apellido: ");
+
+        dniEmpleadoLabel.setText("DNI:");
+
+        telefonoEmpleadoLabel.setText("Telefono:");
+
+        fechaIngresoEmpleadoLabel.setText("Fecha Ingreso:");
+
+        numeroLegajoEmpleadoLabel.setText("Numero de Legajo:");
+
+        sueldoLabel.setText("Sueldo:");
+
+        cuilLabel.setText("CUIL: ");
+
+        estadoCivilLabel.setText("Estado Civil:");
+
+        cantidadHijosLabel.setText("Cantidad de Hijos:");
+
+        domicilioLabel.setText("Domicilio:");
+
+        codigoPostalLabel.setText("Codigo Postal:");
+
+        paisResidenciaLabel.setText("Pais de Residencia:");
+
+        provinciaResidenciaLabel.setText("Provincia de Residencia:");
+
+        ciudadResidenciaLabel.setText("Ciudad de Residencia:");
+
+        categoriaLabel.setText("Categoria:");
+
+        nombreTextField.setToolTipText("");
+        nombreTextField.setPreferredSize(new java.awt.Dimension(200, 20));
+
+        fechaIngresoTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
+
+        estadoCivilComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Soltero/a", "Casado/a", "Divorciado/a", "Viudo/a" }));
+        estadoCivilComboBox.setSelectedIndex(-1);
+
+        categoriaComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Categoria A", "Categoria B", "Categoria A1", "Categoria A2", "Operario Laboratorio Categoria A", "Operario Laboratorio Categoria A1", "Encargado" }));
+        categoriaComboBox.setSelectedIndex(-1);
+
+        cargaFechaActualButton.setText("Hoy");
+
+        javax.swing.GroupLayout valoresAIngresarEmpleadoPanelLayout = new javax.swing.GroupLayout(valoresAIngresarEmpleadoPanel);
+        valoresAIngresarEmpleadoPanel.setLayout(valoresAIngresarEmpleadoPanelLayout);
+        valoresAIngresarEmpleadoPanelLayout.setHorizontalGroup(
+            valoresAIngresarEmpleadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(valoresAIngresarEmpleadoPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(valoresAIngresarEmpleadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nombreEmpleadoLabel)
+                    .addComponent(dniEmpleadoLabel)
+                    .addComponent(telefonoEmpleadoLabel)
+                    .addComponent(numeroLegajoEmpleadoLabel)
+                    .addComponent(sueldoLabel)
+                    .addComponent(cuilLabel)
+                    .addComponent(estadoCivilLabel)
+                    .addComponent(cantidadHijosLabel)
+                    .addComponent(domicilioLabel)
+                    .addComponent(codigoPostalLabel)
+                    .addComponent(paisResidenciaLabel)
+                    .addComponent(provinciaResidenciaLabel)
+                    .addComponent(ciudadResidenciaLabel)
+                    .addComponent(categoriaLabel)
+                    .addComponent(fechaIngresoEmpleadoLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(valoresAIngresarEmpleadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nombreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dniTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(telefonoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(valoresAIngresarEmpleadoPanelLayout.createSequentialGroup()
+                        .addComponent(fechaIngresoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cargaFechaActualButton))
+                    .addComponent(numeroLegajoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sueldoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cuilTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(estadoCivilComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cantidadHijosTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(domicilioTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(codigoPostalTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(paisResidenciaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(provinciaResidenciaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ciudadResidenciaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(categoriaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(96, Short.MAX_VALUE))
+        );
+
+        valoresAIngresarEmpleadoPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cantidadHijosTextField, categoriaComboBox, ciudadResidenciaTextField, codigoPostalTextField, cuilTextField, dniTextField, domicilioTextField, estadoCivilComboBox, fechaIngresoTextField, nombreTextField, numeroLegajoTextField, paisResidenciaTextField, provinciaResidenciaTextField, sueldoTextField, telefonoTextField});
+
+        valoresAIngresarEmpleadoPanelLayout.setVerticalGroup(
+            valoresAIngresarEmpleadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(valoresAIngresarEmpleadoPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(valoresAIngresarEmpleadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nombreEmpleadoLabel)
+                    .addComponent(nombreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(valoresAIngresarEmpleadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dniEmpleadoLabel)
+                    .addComponent(dniTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(valoresAIngresarEmpleadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(telefonoEmpleadoLabel)
+                    .addComponent(telefonoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(valoresAIngresarEmpleadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fechaIngresoEmpleadoLabel)
+                    .addComponent(fechaIngresoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cargaFechaActualButton))
+                .addGap(18, 18, 18)
+                .addGroup(valoresAIngresarEmpleadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(numeroLegajoEmpleadoLabel)
+                    .addComponent(numeroLegajoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(valoresAIngresarEmpleadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(sueldoLabel)
+                    .addComponent(sueldoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(valoresAIngresarEmpleadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cuilLabel)
+                    .addComponent(cuilTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(valoresAIngresarEmpleadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(estadoCivilLabel)
+                    .addComponent(estadoCivilComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(valoresAIngresarEmpleadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cantidadHijosLabel)
+                    .addComponent(cantidadHijosTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(valoresAIngresarEmpleadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(domicilioLabel)
+                    .addComponent(domicilioTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(valoresAIngresarEmpleadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(codigoPostalLabel)
+                    .addComponent(codigoPostalTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(valoresAIngresarEmpleadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(paisResidenciaLabel)
+                    .addComponent(paisResidenciaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(valoresAIngresarEmpleadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(provinciaResidenciaLabel)
+                    .addComponent(provinciaResidenciaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(valoresAIngresarEmpleadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ciudadResidenciaLabel)
+                    .addComponent(ciudadResidenciaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(valoresAIngresarEmpleadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(categoriaLabel)
+                    .addComponent(categoriaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(21, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(valoresAIngresarEmpleadoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(345, Short.MAX_VALUE)
+                .addComponent(aceptarNuevoEmpleadoButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cancelarNuevoEmpleadoButton)
+                .addGap(12, 12, 12))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(valoresAIngresarEmpleadoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(aceptarNuevoEmpleadoButton)
+                    .addComponent(cancelarNuevoEmpleadoButton))
+                .addContainerGap())
         );
 
         pack();
@@ -78,5 +293,39 @@ public class NuevoEmpleadoScreen extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton aceptarNuevoEmpleadoButton;
+    private javax.swing.JButton cancelarNuevoEmpleadoButton;
+    private javax.swing.JLabel cantidadHijosLabel;
+    private javax.swing.JTextField cantidadHijosTextField;
+    private javax.swing.JButton cargaFechaActualButton;
+    private javax.swing.JComboBox categoriaComboBox;
+    private javax.swing.JLabel categoriaLabel;
+    private javax.swing.JLabel ciudadResidenciaLabel;
+    private javax.swing.JTextField ciudadResidenciaTextField;
+    private javax.swing.JLabel codigoPostalLabel;
+    private javax.swing.JTextField codigoPostalTextField;
+    private javax.swing.JLabel cuilLabel;
+    private javax.swing.JTextField cuilTextField;
+    private javax.swing.JLabel dniEmpleadoLabel;
+    private javax.swing.JTextField dniTextField;
+    private javax.swing.JLabel domicilioLabel;
+    private javax.swing.JTextField domicilioTextField;
+    private javax.swing.JComboBox estadoCivilComboBox;
+    private javax.swing.JLabel estadoCivilLabel;
+    private javax.swing.JLabel fechaIngresoEmpleadoLabel;
+    private javax.swing.JFormattedTextField fechaIngresoTextField;
+    private javax.swing.JLabel nombreEmpleadoLabel;
+    private javax.swing.JTextField nombreTextField;
+    private javax.swing.JLabel numeroLegajoEmpleadoLabel;
+    private javax.swing.JTextField numeroLegajoTextField;
+    private javax.swing.JLabel paisResidenciaLabel;
+    private javax.swing.JTextField paisResidenciaTextField;
+    private javax.swing.JLabel provinciaResidenciaLabel;
+    private javax.swing.JTextField provinciaResidenciaTextField;
+    private javax.swing.JLabel sueldoLabel;
+    private javax.swing.JTextField sueldoTextField;
+    private javax.swing.JLabel telefonoEmpleadoLabel;
+    private javax.swing.JTextField telefonoTextField;
+    private javax.swing.JPanel valoresAIngresarEmpleadoPanel;
     // End of variables declaration//GEN-END:variables
 }

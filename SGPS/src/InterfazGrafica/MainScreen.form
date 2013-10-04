@@ -12,6 +12,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="exportarMenuItem">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Exportar"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JPopupMenu$Separator" name="separadoreEntreExportarYEsquemas">
@@ -44,16 +45,19 @@
                 <MenuItem class="javax.swing.JMenuItem" name="nuevoAccidenteMenuItem">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Nuevo Accidente"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="nuevaSancionMenuItem">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Nueva Sancion"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="nuevoPremioMenuItem">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Nuevo Premio"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                 </MenuItem>
               </SubComponents>
@@ -231,6 +235,24 @@
                 </MenuItem>
               </SubComponents>
             </Menu>
+            <Menu class="javax.swing.JMenu" name="analisisMenu">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Analisis"/>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="nuevoAnalisisMenuItem">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Nuevo Analisis"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="buscarAnalisisMenuItem">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Buscar Analisis"/>
+                  </Properties>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
             <MenuItem class="javax.swing.JPopupMenu$Separator" name="separadorEntreEsquemasYSalir">
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="salirMenuItem">
@@ -248,6 +270,38 @@
             <MenuItem class="javax.swing.JMenuItem" name="preferenciasMenuItem">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Preferencias"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="procesosMenu">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Procesos"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="seEncuentraMenuItem">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Asignar Lotes-Etapas-Empleados"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="proveeInsumosMenuItem">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ingresar Cantidad de Insumo Provisto por Proveedor"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="esUtilizadaMenuItem">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ingresar Cantidad de Insumo Utilizada para un Lote"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="produceMenuItem">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ingresar Cantidad Producto Terminado Producida por un Lote"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="utilizadoEnMenuItem">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ingresar Cantidad de Descarte Utilizada para un Lote"/>
               </Properties>
             </MenuItem>
           </SubComponents>
@@ -311,7 +365,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="solapasTabbedPane" pref="532" max="32767" attributes="0"/>
+              <Component id="solapasTabbedPane" max="32767" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="usuarioActualLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -343,9 +397,13 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="actualizarTablaSolapaLotesButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="tablaSolapaLotesScrollPane" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="actualizarTablaSolapaLotesButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="generarPdfLotesButton" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="tablaSolapaLotesScrollPane" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="313" max="32767" attributes="0"/>
                   </Group>
@@ -357,7 +415,10 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="tablaSolapaLotesScrollPane" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="32" max="32767" attributes="0"/>
-                      <Component id="actualizarTablaSolapaLotesButton" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="actualizarTablaSolapaLotesButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="generarPdfLotesButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -390,6 +451,11 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JButton" name="generarPdfLotesButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Generar Pdf"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="solapaInsumosPane">
@@ -406,9 +472,13 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="actualizarTablaSolapaInsumosButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="tablaSolapaInsumosScrollPane" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="actualizarTablaSolapaInsumosButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="generarPdfInsumosButton" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="tablaSolapaInsumosScrollPane" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="313" max="32767" attributes="0"/>
                   </Group>
@@ -420,7 +490,10 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="tablaSolapaInsumosScrollPane" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="32" max="32767" attributes="0"/>
-                      <Component id="actualizarTablaSolapaInsumosButton" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="actualizarTablaSolapaInsumosButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="generarPdfInsumosButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -453,6 +526,11 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JButton" name="generarPdfInsumosButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Generar Pdf"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="solapaProductosTerminadosPane">
@@ -469,9 +547,13 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="actualizarTablaSolapaProductosTerminadosButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="tablaSolapaProductosTerminadosScrollPane" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="actualizarTablaSolapaProductosTerminadosButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="generarPdfProductosTerminadosButton" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="tablaSolapaProductosTerminadosScrollPane" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="313" max="32767" attributes="0"/>
                   </Group>
@@ -483,7 +565,10 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="tablaSolapaProductosTerminadosScrollPane" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="32" max="32767" attributes="0"/>
-                      <Component id="actualizarTablaSolapaProductosTerminadosButton" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="actualizarTablaSolapaProductosTerminadosButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="generarPdfProductosTerminadosButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -516,6 +601,11 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JButton" name="generarPdfProductosTerminadosButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Generar Pdf"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="solapaEmpleadosPane">
@@ -532,9 +622,13 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="actualizarTablaSolapaEmpleadosButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="tablaSolapaEmpleadosScrollPane" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="actualizarTablaSolapaEmpleadosButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="generarPdfEmpleadosButton" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="tablaSolapaEmpleadosScrollPane" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="313" max="32767" attributes="0"/>
                   </Group>
@@ -546,7 +640,10 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="tablaSolapaEmpleadosScrollPane" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="32" max="32767" attributes="0"/>
-                      <Component id="actualizarTablaSolapaEmpleadosButton" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="actualizarTablaSolapaEmpleadosButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="generarPdfEmpleadosButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -579,6 +676,11 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JButton" name="generarPdfEmpleadosButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Generar Pdf"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
       </SubComponents>
