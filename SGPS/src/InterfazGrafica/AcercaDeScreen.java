@@ -31,6 +31,10 @@ public class AcercaDeScreen extends javax.swing.JFrame {
         desarrolladorLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Acerca De...");
+        setMaximumSize(new java.awt.Dimension(278, 175));
+        setMinimumSize(new java.awt.Dimension(278, 175));
+        setResizable(false);
 
         cerrarButton.setText("Cerrar");
 

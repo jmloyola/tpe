@@ -49,15 +49,15 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="telefonoTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jComboBox1" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="sueldoTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jComboBox2" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="cantidadHijosTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="domicilioTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="paisResidenciaTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="provinciaResidenciaTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="ciudadResidenciaTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="telefonoFormattedTextField" linkSize="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="sueldoFormattedTextField" linkSize="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="cantidadHijosFormattedTextField" linkSize="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="53" max="32767" attributes="0"/>
                   </Group>
@@ -74,7 +74,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="telefonoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="telefonoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="telefonoFormattedTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -84,7 +84,7 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="sueldoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="sueldoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="sueldoFormattedTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -94,7 +94,7 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="cantidadHijosLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="cantidadHijosTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cantidadHijosFormattedTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -153,7 +153,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="numeroLegajoLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="numeroLegajoTextField" min="-2" max="-2" attributes="0"/>
+                  <Component id="numeroLegajoFormattedTextField" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="buscarEmpleadoButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -166,8 +166,8 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="numeroLegajoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="numeroLegajoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="buscarEmpleadoButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="numeroLegajoFormattedTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -180,16 +180,19 @@
             <Property name="text" type="java.lang.String" value="Numero de Legajo:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="numeroLegajoTextField">
-          <Properties>
-            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[80, 20]"/>
-            </Property>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JButton" name="buscarEmpleadoButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Buscar"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JFormattedTextField" name="numeroLegajoFormattedTextField">
+          <Properties>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+              <Format format="#0" subtype="-1" type="0"/>
+            </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[100, 20]"/>
+            </Property>
           </Properties>
         </Component>
       </SubComponents>
@@ -239,8 +242,6 @@
         <Property name="text" type="java.lang.String" value="Ciudad de Residencia:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="telefonoTextField">
-    </Component>
     <Component class="javax.swing.JComboBox" name="jComboBox1">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -257,8 +258,6 @@
         <Property name="selectedIndex" type="int" value="-1"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="sueldoTextField">
-    </Component>
     <Component class="javax.swing.JComboBox" name="jComboBox2">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -272,8 +271,6 @@
         <Property name="selectedIndex" type="int" value="-1"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="cantidadHijosTextField">
-    </Component>
     <Component class="javax.swing.JTextField" name="domicilioTextField">
       <Properties>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -286,6 +283,27 @@
     <Component class="javax.swing.JTextField" name="provinciaResidenciaTextField">
     </Component>
     <Component class="javax.swing.JTextField" name="ciudadResidenciaTextField">
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="telefonoFormattedTextField">
+      <Properties>
+        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+          <Format format="#0" subtype="-1" type="0"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="sueldoFormattedTextField">
+      <Properties>
+        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+          <Format format="#0.00" subtype="-1" type="0"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="cantidadHijosFormattedTextField">
+      <Properties>
+        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+          <Format format="#0" subtype="-1" type="0"/>
+        </Property>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

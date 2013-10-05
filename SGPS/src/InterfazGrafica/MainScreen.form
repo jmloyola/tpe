@@ -395,17 +395,17 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="tablaSolapaLotesScrollPane" pref="755" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <Component id="actualizarTablaSolapaLotesButton" min="-2" max="-2" attributes="0"/>
+                              <Component id="imprimirLotesButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="generarPdfLotesButton" min="-2" max="-2" attributes="0"/>
+                              <Component id="actualizarTablaSolapaLotesButton" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="tablaSolapaLotesScrollPane" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="313" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -413,11 +413,11 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="tablaSolapaLotesScrollPane" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="32" max="32767" attributes="0"/>
+                      <Component id="tablaSolapaLotesScrollPane" pref="428" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="actualizarTablaSolapaLotesButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="generarPdfLotesButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="imprimirLotesButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -451,9 +451,9 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="generarPdfLotesButton">
+            <Component class="javax.swing.JButton" name="imprimirLotesButton">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Generar Pdf"/>
+                <Property name="text" type="java.lang.String" value="Imprimir"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -470,17 +470,17 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="actualizarTablaSolapaInsumosButton" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="tablaSolapaInsumosScrollPane" pref="755" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="imprimirInsumosButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="generarPdfInsumosButton" min="-2" max="-2" attributes="0"/>
+                              <Component id="actualizarTablaSolapaInsumosButton" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="tablaSolapaInsumosScrollPane" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="313" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -488,11 +488,11 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="tablaSolapaInsumosScrollPane" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="32" max="32767" attributes="0"/>
+                      <Component id="tablaSolapaInsumosScrollPane" pref="428" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="actualizarTablaSolapaInsumosButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="generarPdfInsumosButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="imprimirInsumosButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -515,20 +515,23 @@
                 <Component class="javax.swing.JTable" name="insumosTable">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="4" rowCount="4">
-                        <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                        <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                        <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                        <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                      <Table columnCount="7" rowCount="4">
+                        <Column editable="false" title="Descripcion" type="java.lang.String"/>
+                        <Column editable="false" title="Inicio" type="java.lang.Float"/>
+                        <Column editable="false" title="Ingreso" type="java.lang.Float"/>
+                        <Column editable="false" title="Egreso" type="java.lang.Float"/>
+                        <Column editable="false" title="Cantidad Calculada" type="java.lang.Float"/>
+                        <Column editable="false" title="Cantidad Real" type="java.lang.Float"/>
+                        <Column editable="false" title="Diferencia" type="java.lang.Float"/>
                       </Table>
                     </Property>
                   </Properties>
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="generarPdfInsumosButton">
+            <Component class="javax.swing.JButton" name="imprimirInsumosButton">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Generar Pdf"/>
+                <Property name="text" type="java.lang.String" value="Imprimir"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -545,17 +548,17 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="actualizarTablaSolapaProductosTerminadosButton" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="tablaSolapaProductosTerminadosScrollPane" pref="755" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="imprimirProductosTerminadosButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="generarPdfProductosTerminadosButton" min="-2" max="-2" attributes="0"/>
+                              <Component id="actualizarTablaSolapaProductosTerminadosButton" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="tablaSolapaProductosTerminadosScrollPane" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="313" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -563,11 +566,11 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="tablaSolapaProductosTerminadosScrollPane" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="32" max="32767" attributes="0"/>
+                      <Component id="tablaSolapaProductosTerminadosScrollPane" pref="428" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="actualizarTablaSolapaProductosTerminadosButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="generarPdfProductosTerminadosButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="imprimirProductosTerminadosButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -590,20 +593,23 @@
                 <Component class="javax.swing.JTable" name="productosTerminadosTable">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="4" rowCount="4">
-                        <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                        <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                        <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                        <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                      <Table columnCount="7" rowCount="4">
+                        <Column editable="false" title="Codigo Producto Terminado" type="java.lang.String"/>
+                        <Column editable="false" title="Inicio" type="java.lang.Float"/>
+                        <Column editable="false" title="Ingreso" type="java.lang.Float"/>
+                        <Column editable="false" title="Egreso" type="java.lang.Float"/>
+                        <Column editable="false" title="Cantidad Calculada" type="java.lang.Float"/>
+                        <Column editable="false" title="Cantidad Real" type="java.lang.Float"/>
+                        <Column editable="false" title="Diferencia" type="java.lang.Float"/>
                       </Table>
                     </Property>
                   </Properties>
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="generarPdfProductosTerminadosButton">
+            <Component class="javax.swing.JButton" name="imprimirProductosTerminadosButton">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Generar Pdf"/>
+                <Property name="text" type="java.lang.String" value="Imprimir"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -620,17 +626,17 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="actualizarTablaSolapaEmpleadosButton" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="tablaSolapaEmpleadosScrollPane" alignment="0" pref="755" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="imprimirEmpleadosButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="generarPdfEmpleadosButton" min="-2" max="-2" attributes="0"/>
+                              <Component id="actualizarTablaSolapaEmpleadosButton" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="tablaSolapaEmpleadosScrollPane" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="313" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -638,11 +644,11 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="tablaSolapaEmpleadosScrollPane" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="32" max="32767" attributes="0"/>
+                      <Component id="tablaSolapaEmpleadosScrollPane" pref="428" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="actualizarTablaSolapaEmpleadosButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="generarPdfEmpleadosButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="imprimirEmpleadosButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -665,20 +671,32 @@
                 <Component class="javax.swing.JTable" name="empleadosTable">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="4" rowCount="4">
-                        <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                        <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                        <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                        <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                      <Table columnCount="16" rowCount="4">
+                        <Column editable="false" title="Nombre" type="java.lang.String"/>
+                        <Column editable="false" title="DNI" type="java.lang.Integer"/>
+                        <Column editable="false" title="Telefono" type="java.lang.Integer"/>
+                        <Column editable="false" title="Fecha de Ingreso" type="java.lang.Object"/>
+                        <Column editable="false" title="Numero de Legajo" type="java.lang.Integer"/>
+                        <Column editable="false" title="Sueldo" type="java.lang.Float"/>
+                        <Column editable="false" title="CUIL" type="java.lang.String"/>
+                        <Column editable="false" title="Estado Civil" type="java.lang.String"/>
+                        <Column editable="false" title="Cantidad de Hijos" type="java.lang.Integer"/>
+                        <Column editable="false" title="Domicilio" type="java.lang.String"/>
+                        <Column editable="false" title="Codigo Postal" type="java.lang.Integer"/>
+                        <Column editable="false" title="Pais de Residencia" type="java.lang.String"/>
+                        <Column editable="false" title="Provincia de Residencia" type="java.lang.String"/>
+                        <Column editable="false" title="Ciudad de Residencia" type="java.lang.String"/>
+                        <Column editable="false" title="Categoria" type="java.lang.String"/>
+                        <Column editable="false" title="Estado" type="java.lang.String"/>
                       </Table>
                     </Property>
                   </Properties>
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="generarPdfEmpleadosButton">
+            <Component class="javax.swing.JButton" name="imprimirEmpleadosButton">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Generar Pdf"/>
+                <Property name="text" type="java.lang.String" value="Imprimir"/>
               </Properties>
             </Component>
           </SubComponents>

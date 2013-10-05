@@ -45,21 +45,21 @@ public class NuevoEmpleadoScreen extends javax.swing.JFrame {
         ciudadResidenciaLabel = new javax.swing.JLabel();
         categoriaLabel = new javax.swing.JLabel();
         nombreTextField = new javax.swing.JTextField();
-        dniTextField = new javax.swing.JTextField();
-        telefonoTextField = new javax.swing.JTextField();
-        fechaIngresoTextField = new javax.swing.JFormattedTextField();
-        numeroLegajoTextField = new javax.swing.JTextField();
-        sueldoTextField = new javax.swing.JTextField();
+        fechaIngresoFormattedTextField = new javax.swing.JFormattedTextField();
         cuilTextField = new javax.swing.JTextField();
         estadoCivilComboBox = new javax.swing.JComboBox();
-        cantidadHijosTextField = new javax.swing.JTextField();
         domicilioTextField = new javax.swing.JTextField();
-        codigoPostalTextField = new javax.swing.JTextField();
         paisResidenciaTextField = new javax.swing.JTextField();
         provinciaResidenciaTextField = new javax.swing.JTextField();
         ciudadResidenciaTextField = new javax.swing.JTextField();
         categoriaComboBox = new javax.swing.JComboBox();
         cargaFechaActualButton = new javax.swing.JButton();
+        dniFormattedTextField = new javax.swing.JFormattedTextField();
+        telefonoFormattedTextField = new javax.swing.JFormattedTextField();
+        numeroLegajoFormattedTextField = new javax.swing.JFormattedTextField();
+        sueldoFormattedTextField = new javax.swing.JFormattedTextField();
+        cantidadHijosFormattedTextField = new javax.swing.JFormattedTextField();
+        codigoPostalFormattedTextField = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Nuevo Empleado");
@@ -105,7 +105,7 @@ public class NuevoEmpleadoScreen extends javax.swing.JFrame {
         nombreTextField.setToolTipText("");
         nombreTextField.setPreferredSize(new java.awt.Dimension(200, 20));
 
-        fechaIngresoTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
+        fechaIngresoFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
 
         estadoCivilComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Soltero/a", "Casado/a", "Divorciado/a", "Viudo/a" }));
         estadoCivilComboBox.setSelectedIndex(-1);
@@ -114,6 +114,18 @@ public class NuevoEmpleadoScreen extends javax.swing.JFrame {
         categoriaComboBox.setSelectedIndex(-1);
 
         cargaFechaActualButton.setText("Hoy");
+
+        dniFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+
+        telefonoFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+
+        numeroLegajoFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+
+        sueldoFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
+
+        cantidadHijosFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+
+        codigoPostalFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
 
         javax.swing.GroupLayout valoresAIngresarEmpleadoPanelLayout = new javax.swing.GroupLayout(valoresAIngresarEmpleadoPanel);
         valoresAIngresarEmpleadoPanel.setLayout(valoresAIngresarEmpleadoPanelLayout);
@@ -140,27 +152,27 @@ public class NuevoEmpleadoScreen extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(valoresAIngresarEmpleadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(nombreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dniTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(telefonoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(valoresAIngresarEmpleadoPanelLayout.createSequentialGroup()
-                        .addComponent(fechaIngresoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(fechaIngresoFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cargaFechaActualButton))
-                    .addComponent(numeroLegajoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sueldoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cuilTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(estadoCivilComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cantidadHijosTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(domicilioTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(codigoPostalTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(paisResidenciaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(provinciaResidenciaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ciudadResidenciaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(categoriaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(96, Short.MAX_VALUE))
+                    .addComponent(categoriaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dniFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(telefonoFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(numeroLegajoFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sueldoFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cantidadHijosFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(codigoPostalFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        valoresAIngresarEmpleadoPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cantidadHijosTextField, categoriaComboBox, ciudadResidenciaTextField, codigoPostalTextField, cuilTextField, dniTextField, domicilioTextField, estadoCivilComboBox, fechaIngresoTextField, nombreTextField, numeroLegajoTextField, paisResidenciaTextField, provinciaResidenciaTextField, sueldoTextField, telefonoTextField});
+        valoresAIngresarEmpleadoPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cantidadHijosFormattedTextField, categoriaComboBox, ciudadResidenciaTextField, codigoPostalFormattedTextField, cuilTextField, dniFormattedTextField, domicilioTextField, estadoCivilComboBox, fechaIngresoFormattedTextField, nombreTextField, numeroLegajoFormattedTextField, paisResidenciaTextField, provinciaResidenciaTextField, sueldoFormattedTextField, telefonoFormattedTextField});
 
         valoresAIngresarEmpleadoPanelLayout.setVerticalGroup(
             valoresAIngresarEmpleadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,24 +184,24 @@ public class NuevoEmpleadoScreen extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(valoresAIngresarEmpleadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dniEmpleadoLabel)
-                    .addComponent(dniTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dniFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(valoresAIngresarEmpleadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(telefonoEmpleadoLabel)
-                    .addComponent(telefonoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(telefonoFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(valoresAIngresarEmpleadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fechaIngresoEmpleadoLabel)
-                    .addComponent(fechaIngresoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fechaIngresoFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cargaFechaActualButton))
                 .addGap(18, 18, 18)
                 .addGroup(valoresAIngresarEmpleadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(numeroLegajoEmpleadoLabel)
-                    .addComponent(numeroLegajoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(numeroLegajoFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(valoresAIngresarEmpleadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sueldoLabel)
-                    .addComponent(sueldoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(sueldoFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(valoresAIngresarEmpleadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cuilLabel)
@@ -201,7 +213,7 @@ public class NuevoEmpleadoScreen extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(valoresAIngresarEmpleadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cantidadHijosLabel)
-                    .addComponent(cantidadHijosTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cantidadHijosFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(valoresAIngresarEmpleadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(domicilioLabel)
@@ -209,7 +221,7 @@ public class NuevoEmpleadoScreen extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(valoresAIngresarEmpleadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(codigoPostalLabel)
-                    .addComponent(codigoPostalTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(codigoPostalFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(valoresAIngresarEmpleadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(paisResidenciaLabel)
@@ -295,37 +307,37 @@ public class NuevoEmpleadoScreen extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aceptarNuevoEmpleadoButton;
     private javax.swing.JButton cancelarNuevoEmpleadoButton;
+    private javax.swing.JFormattedTextField cantidadHijosFormattedTextField;
     private javax.swing.JLabel cantidadHijosLabel;
-    private javax.swing.JTextField cantidadHijosTextField;
     private javax.swing.JButton cargaFechaActualButton;
     private javax.swing.JComboBox categoriaComboBox;
     private javax.swing.JLabel categoriaLabel;
     private javax.swing.JLabel ciudadResidenciaLabel;
     private javax.swing.JTextField ciudadResidenciaTextField;
+    private javax.swing.JFormattedTextField codigoPostalFormattedTextField;
     private javax.swing.JLabel codigoPostalLabel;
-    private javax.swing.JTextField codigoPostalTextField;
     private javax.swing.JLabel cuilLabel;
     private javax.swing.JTextField cuilTextField;
     private javax.swing.JLabel dniEmpleadoLabel;
-    private javax.swing.JTextField dniTextField;
+    private javax.swing.JFormattedTextField dniFormattedTextField;
     private javax.swing.JLabel domicilioLabel;
     private javax.swing.JTextField domicilioTextField;
     private javax.swing.JComboBox estadoCivilComboBox;
     private javax.swing.JLabel estadoCivilLabel;
     private javax.swing.JLabel fechaIngresoEmpleadoLabel;
-    private javax.swing.JFormattedTextField fechaIngresoTextField;
+    private javax.swing.JFormattedTextField fechaIngresoFormattedTextField;
     private javax.swing.JLabel nombreEmpleadoLabel;
     private javax.swing.JTextField nombreTextField;
     private javax.swing.JLabel numeroLegajoEmpleadoLabel;
-    private javax.swing.JTextField numeroLegajoTextField;
+    private javax.swing.JFormattedTextField numeroLegajoFormattedTextField;
     private javax.swing.JLabel paisResidenciaLabel;
     private javax.swing.JTextField paisResidenciaTextField;
     private javax.swing.JLabel provinciaResidenciaLabel;
     private javax.swing.JTextField provinciaResidenciaTextField;
+    private javax.swing.JFormattedTextField sueldoFormattedTextField;
     private javax.swing.JLabel sueldoLabel;
-    private javax.swing.JTextField sueldoTextField;
     private javax.swing.JLabel telefonoEmpleadoLabel;
-    private javax.swing.JTextField telefonoTextField;
+    private javax.swing.JFormattedTextField telefonoFormattedTextField;
     private javax.swing.JPanel valoresAIngresarEmpleadoPanel;
     // End of variables declaration//GEN-END:variables
 }

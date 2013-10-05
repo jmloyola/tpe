@@ -103,26 +103,26 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="nombreTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="dniTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="telefonoTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="fechaIngresoTextField" linkSize="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="fechaIngresoFormattedTextField" linkSize="1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="cargaFechaActualButton" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="numeroLegajoTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="sueldoTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="cuilTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="estadoCivilComboBox" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="cantidadHijosTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="domicilioTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="codigoPostalTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="paisResidenciaTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="provinciaResidenciaTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="ciudadResidenciaTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="categoriaComboBox" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="dniFormattedTextField" linkSize="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="telefonoFormattedTextField" linkSize="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="numeroLegajoFormattedTextField" linkSize="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="sueldoFormattedTextField" linkSize="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="cantidadHijosFormattedTextField" linkSize="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="codigoPostalFormattedTextField" linkSize="1" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="96" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -137,28 +137,28 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="dniEmpleadoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="dniTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="dniFormattedTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="telefonoEmpleadoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="telefonoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="telefonoFormattedTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="fechaIngresoEmpleadoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="fechaIngresoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="fechaIngresoFormattedTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cargaFechaActualButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="numeroLegajoEmpleadoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="numeroLegajoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="numeroLegajoFormattedTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="sueldoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="sueldoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="sueldoFormattedTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -173,7 +173,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="cantidadHijosLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cantidadHijosTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cantidadHijosFormattedTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -183,7 +183,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="codigoPostalLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="codigoPostalTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="codigoPostalFormattedTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -294,20 +294,12 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="dniTextField">
-        </Component>
-        <Component class="javax.swing.JTextField" name="telefonoTextField">
-        </Component>
-        <Component class="javax.swing.JFormattedTextField" name="fechaIngresoTextField">
+        <Component class="javax.swing.JFormattedTextField" name="fechaIngresoFormattedTextField">
           <Properties>
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
               <Format format="dd/MM/yyyy" subtype="-1" type="1"/>
             </Property>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="numeroLegajoTextField">
-        </Component>
-        <Component class="javax.swing.JTextField" name="sueldoTextField">
         </Component>
         <Component class="javax.swing.JTextField" name="cuilTextField">
         </Component>
@@ -324,11 +316,7 @@
             <Property name="selectedIndex" type="int" value="-1"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="cantidadHijosTextField">
-        </Component>
         <Component class="javax.swing.JTextField" name="domicilioTextField">
-        </Component>
-        <Component class="javax.swing.JTextField" name="codigoPostalTextField">
         </Component>
         <Component class="javax.swing.JTextField" name="paisResidenciaTextField">
         </Component>
@@ -355,6 +343,48 @@
         <Component class="javax.swing.JButton" name="cargaFechaActualButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Hoy"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JFormattedTextField" name="dniFormattedTextField">
+          <Properties>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+              <Format format="#0" subtype="-1" type="0"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JFormattedTextField" name="telefonoFormattedTextField">
+          <Properties>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+              <Format format="#0" subtype="-1" type="0"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JFormattedTextField" name="numeroLegajoFormattedTextField">
+          <Properties>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+              <Format format="#0" subtype="-1" type="0"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JFormattedTextField" name="sueldoFormattedTextField">
+          <Properties>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+              <Format format="#0.00" subtype="-1" type="0"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JFormattedTextField" name="cantidadHijosFormattedTextField">
+          <Properties>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+              <Format format="#0" subtype="-1" type="0"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JFormattedTextField" name="codigoPostalFormattedTextField">
+          <Properties>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+              <Format format="#0" subtype="-1" type="0"/>
+            </Property>
           </Properties>
         </Component>
       </SubComponents>

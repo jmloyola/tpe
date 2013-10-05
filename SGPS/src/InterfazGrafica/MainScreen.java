@@ -32,22 +32,22 @@ public class MainScreen extends javax.swing.JFrame {
         actualizarTablaSolapaLotesButton = new javax.swing.JButton();
         tablaSolapaLotesScrollPane = new javax.swing.JScrollPane();
         lotesTable = new javax.swing.JTable();
-        generarPdfLotesButton = new javax.swing.JButton();
+        imprimirLotesButton = new javax.swing.JButton();
         solapaInsumosPane = new javax.swing.JPanel();
         actualizarTablaSolapaInsumosButton = new javax.swing.JButton();
         tablaSolapaInsumosScrollPane = new javax.swing.JScrollPane();
         insumosTable = new javax.swing.JTable();
-        generarPdfInsumosButton = new javax.swing.JButton();
+        imprimirInsumosButton = new javax.swing.JButton();
         solapaProductosTerminadosPane = new javax.swing.JPanel();
         actualizarTablaSolapaProductosTerminadosButton = new javax.swing.JButton();
         tablaSolapaProductosTerminadosScrollPane = new javax.swing.JScrollPane();
         productosTerminadosTable = new javax.swing.JTable();
-        generarPdfProductosTerminadosButton = new javax.swing.JButton();
+        imprimirProductosTerminadosButton = new javax.swing.JButton();
         solapaEmpleadosPane = new javax.swing.JPanel();
         actualizarTablaSolapaEmpleadosButton = new javax.swing.JButton();
         tablaSolapaEmpleadosScrollPane = new javax.swing.JScrollPane();
         empleadosTable = new javax.swing.JTable();
-        generarPdfEmpleadosButton = new javax.swing.JButton();
+        imprimirEmpleadosButton = new javax.swing.JButton();
         mainScreenMenuBar = new javax.swing.JMenuBar();
         archivoMenu = new javax.swing.JMenu();
         exportarMenuItem = new javax.swing.JMenuItem();
@@ -128,7 +128,7 @@ public class MainScreen extends javax.swing.JFrame {
         ));
         tablaSolapaLotesScrollPane.setViewportView(lotesTable);
 
-        generarPdfLotesButton.setText("Generar Pdf");
+        imprimirLotesButton.setText("Imprimir");
 
         javax.swing.GroupLayout solapaLotesPaneLayout = new javax.swing.GroupLayout(solapaLotesPane);
         solapaLotesPane.setLayout(solapaLotesPaneLayout);
@@ -136,23 +136,23 @@ public class MainScreen extends javax.swing.JFrame {
             solapaLotesPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(solapaLotesPaneLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(solapaLotesPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(solapaLotesPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tablaSolapaLotesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 755, Short.MAX_VALUE)
                     .addGroup(solapaLotesPaneLayout.createSequentialGroup()
-                        .addComponent(actualizarTablaSolapaLotesButton)
+                        .addComponent(imprimirLotesButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(generarPdfLotesButton))
-                    .addComponent(tablaSolapaLotesScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(313, Short.MAX_VALUE))
+                        .addComponent(actualizarTablaSolapaLotesButton)))
+                .addContainerGap())
         );
         solapaLotesPaneLayout.setVerticalGroup(
             solapaLotesPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, solapaLotesPaneLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tablaSolapaLotesScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(tablaSolapaLotesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(solapaLotesPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(actualizarTablaSolapaLotesButton)
-                    .addComponent(generarPdfLotesButton))
+                    .addComponent(imprimirLotesButton))
                 .addContainerGap())
         );
 
@@ -162,18 +162,33 @@ public class MainScreen extends javax.swing.JFrame {
 
         insumosTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Descripcion", "Inicio", "Ingreso", "Egreso", "Cantidad Calculada", "Cantidad Real", "Diferencia"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Float.class, java.lang.Float.class, java.lang.Float.class, java.lang.Float.class, java.lang.Float.class, java.lang.Float.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tablaSolapaInsumosScrollPane.setViewportView(insumosTable);
 
-        generarPdfInsumosButton.setText("Generar Pdf");
+        imprimirInsumosButton.setText("Imprimir");
 
         javax.swing.GroupLayout solapaInsumosPaneLayout = new javax.swing.GroupLayout(solapaInsumosPane);
         solapaInsumosPane.setLayout(solapaInsumosPaneLayout);
@@ -181,23 +196,23 @@ public class MainScreen extends javax.swing.JFrame {
             solapaInsumosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(solapaInsumosPaneLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(solapaInsumosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(solapaInsumosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tablaSolapaInsumosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 755, Short.MAX_VALUE)
                     .addGroup(solapaInsumosPaneLayout.createSequentialGroup()
-                        .addComponent(actualizarTablaSolapaInsumosButton)
+                        .addComponent(imprimirInsumosButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(generarPdfInsumosButton))
-                    .addComponent(tablaSolapaInsumosScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(313, Short.MAX_VALUE))
+                        .addComponent(actualizarTablaSolapaInsumosButton)))
+                .addContainerGap())
         );
         solapaInsumosPaneLayout.setVerticalGroup(
             solapaInsumosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, solapaInsumosPaneLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tablaSolapaInsumosScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(tablaSolapaInsumosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(solapaInsumosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(actualizarTablaSolapaInsumosButton)
-                    .addComponent(generarPdfInsumosButton))
+                    .addComponent(imprimirInsumosButton))
                 .addContainerGap())
         );
 
@@ -207,18 +222,33 @@ public class MainScreen extends javax.swing.JFrame {
 
         productosTerminadosTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Codigo Producto Terminado", "Inicio", "Ingreso", "Egreso", "Cantidad Calculada", "Cantidad Real", "Diferencia"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Float.class, java.lang.Float.class, java.lang.Float.class, java.lang.Float.class, java.lang.Float.class, java.lang.Float.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tablaSolapaProductosTerminadosScrollPane.setViewportView(productosTerminadosTable);
 
-        generarPdfProductosTerminadosButton.setText("Generar Pdf");
+        imprimirProductosTerminadosButton.setText("Imprimir");
 
         javax.swing.GroupLayout solapaProductosTerminadosPaneLayout = new javax.swing.GroupLayout(solapaProductosTerminadosPane);
         solapaProductosTerminadosPane.setLayout(solapaProductosTerminadosPaneLayout);
@@ -226,23 +256,23 @@ public class MainScreen extends javax.swing.JFrame {
             solapaProductosTerminadosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(solapaProductosTerminadosPaneLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(solapaProductosTerminadosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(solapaProductosTerminadosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tablaSolapaProductosTerminadosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 755, Short.MAX_VALUE)
                     .addGroup(solapaProductosTerminadosPaneLayout.createSequentialGroup()
-                        .addComponent(actualizarTablaSolapaProductosTerminadosButton)
+                        .addComponent(imprimirProductosTerminadosButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(generarPdfProductosTerminadosButton))
-                    .addComponent(tablaSolapaProductosTerminadosScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(313, Short.MAX_VALUE))
+                        .addComponent(actualizarTablaSolapaProductosTerminadosButton)))
+                .addContainerGap())
         );
         solapaProductosTerminadosPaneLayout.setVerticalGroup(
             solapaProductosTerminadosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, solapaProductosTerminadosPaneLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tablaSolapaProductosTerminadosScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(tablaSolapaProductosTerminadosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(solapaProductosTerminadosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(actualizarTablaSolapaProductosTerminadosButton)
-                    .addComponent(generarPdfProductosTerminadosButton))
+                    .addComponent(imprimirProductosTerminadosButton))
                 .addContainerGap())
         );
 
@@ -252,18 +282,33 @@ public class MainScreen extends javax.swing.JFrame {
 
         empleadosTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Nombre", "DNI", "Telefono", "Fecha de Ingreso", "Numero de Legajo", "Sueldo", "CUIL", "Estado Civil", "Cantidad de Hijos", "Domicilio", "Codigo Postal", "Pais de Residencia", "Provincia de Residencia", "Ciudad de Residencia", "Categoria", "Estado"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Float.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tablaSolapaEmpleadosScrollPane.setViewportView(empleadosTable);
 
-        generarPdfEmpleadosButton.setText("Generar Pdf");
+        imprimirEmpleadosButton.setText("Imprimir");
 
         javax.swing.GroupLayout solapaEmpleadosPaneLayout = new javax.swing.GroupLayout(solapaEmpleadosPane);
         solapaEmpleadosPane.setLayout(solapaEmpleadosPaneLayout);
@@ -271,23 +316,23 @@ public class MainScreen extends javax.swing.JFrame {
             solapaEmpleadosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(solapaEmpleadosPaneLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(solapaEmpleadosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(solapaEmpleadosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tablaSolapaEmpleadosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 755, Short.MAX_VALUE)
                     .addGroup(solapaEmpleadosPaneLayout.createSequentialGroup()
-                        .addComponent(actualizarTablaSolapaEmpleadosButton)
+                        .addComponent(imprimirEmpleadosButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(generarPdfEmpleadosButton))
-                    .addComponent(tablaSolapaEmpleadosScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(313, Short.MAX_VALUE))
+                        .addComponent(actualizarTablaSolapaEmpleadosButton)))
+                .addContainerGap())
         );
         solapaEmpleadosPaneLayout.setVerticalGroup(
             solapaEmpleadosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, solapaEmpleadosPaneLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tablaSolapaEmpleadosScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(tablaSolapaEmpleadosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(solapaEmpleadosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(actualizarTablaSolapaEmpleadosButton)
-                    .addComponent(generarPdfEmpleadosButton))
+                    .addComponent(imprimirEmpleadosButton))
                 .addContainerGap())
         );
 
@@ -577,10 +622,10 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JMenuItem esUtilizadaMenuItem;
     private javax.swing.JMenu etapasMenu;
     private javax.swing.JMenuItem exportarMenuItem;
-    private javax.swing.JButton generarPdfEmpleadosButton;
-    private javax.swing.JButton generarPdfInsumosButton;
-    private javax.swing.JButton generarPdfLotesButton;
-    private javax.swing.JButton generarPdfProductosTerminadosButton;
+    private javax.swing.JButton imprimirEmpleadosButton;
+    private javax.swing.JButton imprimirInsumosButton;
+    private javax.swing.JButton imprimirLotesButton;
+    private javax.swing.JButton imprimirProductosTerminadosButton;
     private javax.swing.JMenu insumosMenu;
     private javax.swing.JTable insumosTable;
     private javax.swing.JMenuItem jMenuItem1;
