@@ -10,6 +10,7 @@
     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[500, 700]"/>
     </Property>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -48,7 +49,7 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="valoresAIngresarEmpleadoPanel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="45" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="aceptarNuevoEmpleadoButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cancelarNuevoEmpleadoButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -73,7 +74,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder justification="1" title="Ingrese la informacion del nuevo empleado a continuacion:"/>
+            <TitledBorder justification="1" title="Ingrese la informacion del nuevo empleado:"/>
           </Border>
         </Property>
       </Properties>
@@ -84,43 +85,109 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="nombreEmpleadoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="dniEmpleadoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="telefonoEmpleadoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="numeroLegajoEmpleadoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="sueldoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="cuilLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="estadoCivilLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="cantidadHijosLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="domicilioLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="codigoPostalLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="paisResidenciaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="provinciaResidenciaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="ciudadResidenciaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="categoriaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="fechaIngresoEmpleadoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="nombreTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="fechaIngresoFormattedTextField" linkSize="1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="cargaFechaActualButton" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="nombreEmpleadoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="dniEmpleadoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="telefonoEmpleadoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="numeroLegajoEmpleadoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="sueldoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cuilLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="estadoCivilLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cantidadHijosLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="domicilioLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="codigoPostalLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="paisResidenciaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="provinciaResidenciaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="ciudadResidenciaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="categoriaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="fechaIngresoEmpleadoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="nombreTextField" linkSize="1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="nombreCampoObligatorioLabel" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="cuilTextField" linkSize="1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="cuilCampoObligatorioLabel" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="estadoCivilComboBox" linkSize="1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="estadoCivilCampoObligatorioLabel" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="domicilioTextField" linkSize="1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="domicilioCampoObligatorioLabel" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="paisResidenciaTextField" linkSize="1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="paisResidenciaCampoObligatorioLabel" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="provinciaResidenciaTextField" linkSize="1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="provinciaResidenciaCampoObligatorioLabel" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="ciudadResidenciaTextField" linkSize="1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="ciudadResidenciaCampoObligatorioLabel" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="categoriaComboBox" linkSize="1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="categoriaCampoObligatorioLabel" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="dniFormattedTextField" linkSize="1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="dniCampoObligatorioLabel" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="telefonoFormattedTextField" linkSize="1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="telefonoCampoObligatorioLabel" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="sueldoFormattedTextField" linkSize="1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="sueldoCampoObligatorioLabel" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="cantidadHijosFormattedTextField" linkSize="1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="cantidadHijosCampoObligatorioLabel" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="codigoPostalFormattedTextField" linkSize="1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="codigoPostalCampoObligatorioLabel" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="numeroLegajoFormattedTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="fechaIngresoFormattedTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="fechaIngresoCampoObligatorioLabel" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="cargaFechaActualButton" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="numeroLegajoCampoObligatorioLabel" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
                       </Group>
-                      <Component id="cuilTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="estadoCivilComboBox" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="domicilioTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="paisResidenciaTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="provinciaResidenciaTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="ciudadResidenciaTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="categoriaComboBox" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="dniFormattedTextField" linkSize="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="telefonoFormattedTextField" linkSize="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="numeroLegajoFormattedTextField" linkSize="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="sueldoFormattedTextField" linkSize="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="cantidadHijosFormattedTextField" linkSize="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="codigoPostalFormattedTextField" linkSize="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="referenciaCamposObligatoriosLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -133,79 +200,95 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="nombreEmpleadoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="nombreTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="nombreCampoObligatorioLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="dniEmpleadoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="dniFormattedTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="dniCampoObligatorioLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="telefonoEmpleadoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="telefonoFormattedTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="telefonoCampoObligatorioLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="fechaIngresoEmpleadoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="fechaIngresoFormattedTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cargaFechaActualButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="fechaIngresoCampoObligatorioLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="numeroLegajoEmpleadoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="numeroLegajoFormattedTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="numeroLegajoCampoObligatorioLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="sueldoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="sueldoFormattedTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="sueldoCampoObligatorioLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="cuilLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cuilTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cuilCampoObligatorioLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="estadoCivilLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="estadoCivilComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="estadoCivilCampoObligatorioLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="cantidadHijosLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cantidadHijosFormattedTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cantidadHijosCampoObligatorioLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="domicilioLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="domicilioTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="domicilioCampoObligatorioLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="codigoPostalLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="codigoPostalFormattedTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="codigoPostalCampoObligatorioLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="paisResidenciaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="paisResidenciaTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="paisResidenciaCampoObligatorioLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="provinciaResidenciaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="provinciaResidenciaTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="provinciaResidenciaCampoObligatorioLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="ciudadResidenciaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="ciudadResidenciaTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="ciudadResidenciaCampoObligatorioLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="categoriaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="categoriaComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="categoriaCampoObligatorioLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="21" max="32767" attributes="0"/>
+                  <EmptySpace pref="34" max="32767" attributes="0"/>
+                  <Component id="referenciaCamposObligatoriosLabel" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -385,6 +468,134 @@
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
               <Format format="#0" subtype="-1" type="0"/>
             </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="referenciaCamposObligatoriosLabel">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="* Campos Obligatorios"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="nombreCampoObligatorioLabel">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="*"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="dniCampoObligatorioLabel">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="*"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="telefonoCampoObligatorioLabel">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="*"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="fechaIngresoCampoObligatorioLabel">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="*"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="numeroLegajoCampoObligatorioLabel">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="*"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="sueldoCampoObligatorioLabel">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="*"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="cuilCampoObligatorioLabel">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="*"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="estadoCivilCampoObligatorioLabel">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="*"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="cantidadHijosCampoObligatorioLabel">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="*"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="domicilioCampoObligatorioLabel">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="*"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="codigoPostalCampoObligatorioLabel">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="*"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="paisResidenciaCampoObligatorioLabel">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="*"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="provinciaResidenciaCampoObligatorioLabel">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="*"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="ciudadResidenciaCampoObligatorioLabel">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="*"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="categoriaCampoObligatorioLabel">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="*"/>
           </Properties>
         </Component>
       </SubComponents>

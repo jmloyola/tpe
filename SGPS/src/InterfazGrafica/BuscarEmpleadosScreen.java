@@ -40,7 +40,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Buscar Empleados");
 
-        parametroABucarPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese el Parametro y Valor por el que Buscar:"));
+        parametroABucarPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese el parametro y valor por el que buscar:"));
 
         parametroABuscarToolBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nombre", "DNI", "Telefono", "Fecha Ingreso", "Numero de Legajo", "Sueldo", "CUIL", "Estado Civil", "Cantidad de Hijos", "Domicilio", "Codigo Postal", "Pais de Residencia", "Provincia de Residencia", "Ciudad de Residencia", "Categoria", "Estado" }));
         parametroABuscarToolBox.setSelectedIndex(-1);

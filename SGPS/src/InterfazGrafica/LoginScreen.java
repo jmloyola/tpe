@@ -45,13 +45,13 @@ public class LoginScreen extends javax.swing.JFrame {
 
         usuarioLabel.setText("Usuario:");
 
-        usuarioTextField.setText("Nombre de Usuario");
         usuarioTextField.setToolTipText("Ingrese su identificador de usuario aqui:");
         usuarioTextField.setPreferredSize(new java.awt.Dimension(100, 20));
 
         passwordLabel.setText("Password:");
 
         passwordField.setToolTipText("Ingrese su password aqui:");
+        passwordField.setPreferredSize(new java.awt.Dimension(60, 20));
 
         salirButton.setText("Salir");
 

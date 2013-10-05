@@ -8,12 +8,12 @@ package InterfazGrafica;
  *
  * @author Juan
  */
-public class BajaEmpleadoScreen extends javax.swing.JFrame {
+public class BajaUsuarioSistemaScreen extends javax.swing.JFrame {
 
     /**
-     * Creates new form BajaEmpleadoScreen
+     * Creates new form BajaUsuarioSistemaScreen
      */
-    public BajaEmpleadoScreen() {
+    public BajaUsuarioSistemaScreen() {
         initComponents();
     }
 
@@ -26,43 +26,41 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        numeroLegajoPanel = new javax.swing.JPanel();
-        numeroLegajoLabel = new javax.swing.JLabel();
-        numeroLegajoFormattedTextField = new javax.swing.JFormattedTextField();
+        identificadorUsuarioSistemaPanel = new javax.swing.JPanel();
+        identificadorLabel = new javax.swing.JLabel();
+        identificadorTextField = new javax.swing.JTextField();
         cancelarButton = new javax.swing.JButton();
         aceptarButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Baja de Empleado");
+        setTitle("Baja Usuario del Sistema");
         setResizable(false);
 
-        numeroLegajoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese el numero de legajo del empleado a dar de baja:"));
+        identificadorUsuarioSistemaPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese informacion del usuario del sistema a dar de baja:"));
 
-        numeroLegajoLabel.setText("Numero de Legajo:");
+        identificadorLabel.setText("Identificador:");
 
-        numeroLegajoFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
-        numeroLegajoFormattedTextField.setToolTipText("");
-        numeroLegajoFormattedTextField.setPreferredSize(new java.awt.Dimension(100, 20));
+        identificadorTextField.setPreferredSize(new java.awt.Dimension(150, 20));
 
-        javax.swing.GroupLayout numeroLegajoPanelLayout = new javax.swing.GroupLayout(numeroLegajoPanel);
-        numeroLegajoPanel.setLayout(numeroLegajoPanelLayout);
-        numeroLegajoPanelLayout.setHorizontalGroup(
-            numeroLegajoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(numeroLegajoPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout identificadorUsuarioSistemaPanelLayout = new javax.swing.GroupLayout(identificadorUsuarioSistemaPanel);
+        identificadorUsuarioSistemaPanel.setLayout(identificadorUsuarioSistemaPanelLayout);
+        identificadorUsuarioSistemaPanelLayout.setHorizontalGroup(
+            identificadorUsuarioSistemaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(identificadorUsuarioSistemaPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(numeroLegajoLabel)
+                .addComponent(identificadorLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(numeroLegajoFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(163, Short.MAX_VALUE))
+                .addComponent(identificadorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(73, Short.MAX_VALUE))
         );
-        numeroLegajoPanelLayout.setVerticalGroup(
-            numeroLegajoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(numeroLegajoPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(numeroLegajoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(numeroLegajoLabel)
-                    .addComponent(numeroLegajoFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+        identificadorUsuarioSistemaPanelLayout.setVerticalGroup(
+            identificadorUsuarioSistemaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(identificadorUsuarioSistemaPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(identificadorUsuarioSistemaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(identificadorLabel)
+                    .addComponent(identificadorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         cancelarButton.setText("Cancelar");
@@ -76,7 +74,7 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(numeroLegajoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(identificadorUsuarioSistemaPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(aceptarButton)
@@ -88,7 +86,7 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(numeroLegajoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(identificadorUsuarioSistemaPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelarButton)
@@ -116,28 +114,28 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(BajaEmpleadoScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BajaUsuarioSistemaScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(BajaEmpleadoScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BajaUsuarioSistemaScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(BajaEmpleadoScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BajaUsuarioSistemaScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(BajaEmpleadoScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BajaUsuarioSistemaScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BajaEmpleadoScreen().setVisible(true);
+                new BajaUsuarioSistemaScreen().setVisible(true);
             }
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aceptarButton;
     private javax.swing.JButton cancelarButton;
-    private javax.swing.JFormattedTextField numeroLegajoFormattedTextField;
-    private javax.swing.JLabel numeroLegajoLabel;
-    private javax.swing.JPanel numeroLegajoPanel;
+    private javax.swing.JLabel identificadorLabel;
+    private javax.swing.JTextField identificadorTextField;
+    private javax.swing.JPanel identificadorUsuarioSistemaPanel;
     // End of variables declaration//GEN-END:variables
 }

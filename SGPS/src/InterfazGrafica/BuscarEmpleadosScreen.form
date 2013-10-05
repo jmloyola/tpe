@@ -61,7 +61,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Ingrese el Parametro y Valor por el que Buscar:"/>
+            <TitledBorder title="Ingrese el parametro y valor por el que buscar:"/>
           </Border>
         </Property>
       </Properties>

@@ -53,12 +53,13 @@ public class ActualizarInformacionEmpleadoScreen extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Actualizar Informacion Empleado");
+        setResizable(false);
 
         cancelarButton.setText("Cancelar");
 
         aceptarButton.setText("Aceptar");
 
-        numeroLegajoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese Numero de Legajo del Empleado:"));
+        numeroLegajoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese numero de legajo del empleado:"));
 
         numeroLegajoLabel.setText("Numero de Legajo:");
 
