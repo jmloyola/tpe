@@ -69,7 +69,7 @@ CREATE TABLE Insumos(
 
 CREATE TABLE ProductosTerminados(
 	PT_Codificacion	VARCHAR (10)	NOT NULL	PRIMARY KEY,
-	PT_Tipo	VARCHAR (15)	NOT NULL,
+	PT_Tipo	INT	NOT NULL,
 	PT_Descripcion	VARCHAR (30)	NOT NULL,
 	PT_Destino	VARCHAR (20)	NOT NULL,
 	PT_KilosPorEnvase	REAL	NOT NULL,
