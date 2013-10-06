@@ -172,11 +172,6 @@
                     <Property name="text" type="java.lang.String" value="Nueva Etapa"/>
                   </Properties>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="buscarEtapasMenuItem">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Buscar Etapas"/>
-                  </Properties>
-                </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="darBajaEtapaMenuItem">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Dar de Baja Etapa"/>
@@ -248,11 +243,11 @@
                 </MenuItem>
               </SubComponents>
             </Menu>
-            <MenuItem class="javax.swing.JPopupMenu$Separator" name="separadorEntreEsquemasYSalir">
+            <MenuItem class="javax.swing.JPopupMenu$Separator" name="separadorEntreEsquemasYCerrarSesion">
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="salirMenuItem">
+            <MenuItem class="javax.swing.JMenuItem" name="cerrarSesionMenuItem">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Salir"/>
+                <Property name="text" type="java.lang.String" value="Cerrar Sesion"/>
               </Properties>
             </MenuItem>
           </SubComponents>
@@ -408,7 +403,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="tablaSolapaLotesScrollPane" pref="428" max="32767" attributes="0"/>
+                      <Component id="tablaSolapaLotesScrollPane" pref="454" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="actualizarTablaSolapaLotesButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -483,7 +478,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="tablaSolapaInsumosScrollPane" pref="428" max="32767" attributes="0"/>
+                      <Component id="tablaSolapaInsumosScrollPane" pref="454" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="actualizarTablaSolapaInsumosButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -561,7 +556,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="tablaSolapaProductosTerminadosScrollPane" pref="428" max="32767" attributes="0"/>
+                      <Component id="tablaSolapaProductosTerminadosScrollPane" pref="454" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="actualizarTablaSolapaProductosTerminadosButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -639,7 +634,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="tablaSolapaEmpleadosScrollPane" pref="428" max="32767" attributes="0"/>
+                      <Component id="tablaSolapaEmpleadosScrollPane" pref="454" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="actualizarTablaSolapaEmpleadosButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -690,6 +685,78 @@
               </SubComponents>
             </Container>
             <Component class="javax.swing.JButton" name="imprimirEmpleadosButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Imprimir"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="solapaEtapasPanel">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Etapas">
+                <Property name="tabTitle" type="java.lang.String" value="Etapas"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jScrollPane1" pref="755" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="imprimirEtapasButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="actualizarEtapasButton" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="38" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="actualizarEtapasButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="imprimirEtapasButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="etapasTable">
+                  <Properties>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                      <Table columnCount="1" rowCount="4">
+                        <Column editable="false" title="Descripcion" type="java.lang.String"/>
+                      </Table>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JButton" name="actualizarEtapasButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Actualizar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="imprimirEtapasButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Imprimir"/>
               </Properties>

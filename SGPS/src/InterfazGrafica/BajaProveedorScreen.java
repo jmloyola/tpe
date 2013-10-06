@@ -36,7 +36,7 @@ public class BajaProveedorScreen extends javax.swing.JFrame {
         setTitle("Baja de Proveedor");
         setResizable(false);
 
-        razonSocialPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese razon social del proveedor:"));
+        razonSocialPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese razon social del proveedor a dar de baja:"));
 
         razonSocialLabel.setText("Razon Social:");
 
@@ -51,7 +51,7 @@ public class BajaProveedorScreen extends javax.swing.JFrame {
                 .addComponent(razonSocialLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(razonSocialTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
         razonSocialPanelLayout.setVerticalGroup(
             razonSocialPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -76,7 +76,7 @@ public class BajaProveedorScreen extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(razonSocialPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 68, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(aceptarButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cancelarButton)))

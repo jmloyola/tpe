@@ -51,7 +51,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="fechaDescartePanel" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="269" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="248" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="salirButton" alignment="3" min="-2" max="-2" attributes="0"/>

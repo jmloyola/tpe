@@ -36,7 +36,7 @@ public class BajaProductoTerminadoScreen extends javax.swing.JFrame {
         setTitle("Baja de Producto Terminado");
         setResizable(false);
 
-        codificacionPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese la codificacion del producto terminado:"));
+        codificacionPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese la codificacion del producto terminado a dar de baja:"));
 
         codificacionLabel.setText("Codificacion:");
 

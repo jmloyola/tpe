@@ -48,6 +48,11 @@ public class MainScreen extends javax.swing.JFrame {
         tablaSolapaEmpleadosScrollPane = new javax.swing.JScrollPane();
         empleadosTable = new javax.swing.JTable();
         imprimirEmpleadosButton = new javax.swing.JButton();
+        solapaEtapasPanel = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        etapasTable = new javax.swing.JTable();
+        actualizarEtapasButton = new javax.swing.JButton();
+        imprimirEtapasButton = new javax.swing.JButton();
         mainScreenMenuBar = new javax.swing.JMenuBar();
         archivoMenu = new javax.swing.JMenu();
         exportarMenuItem = new javax.swing.JMenuItem();
@@ -80,7 +85,6 @@ public class MainScreen extends javax.swing.JFrame {
         buscarDescartesMensualesMenuItem = new javax.swing.JMenuItem();
         etapasMenu = new javax.swing.JMenu();
         nuevaEtapaMenuItem = new javax.swing.JMenuItem();
-        buscarEtapasMenuItem = new javax.swing.JMenuItem();
         darBajaEtapaMenuItem = new javax.swing.JMenuItem();
         lotesMenu = new javax.swing.JMenu();
         nuevoLoteMenuItem = new javax.swing.JMenuItem();
@@ -93,8 +97,8 @@ public class MainScreen extends javax.swing.JFrame {
         analisisMenu = new javax.swing.JMenu();
         nuevoAnalisisMenuItem = new javax.swing.JMenuItem();
         buscarAnalisisMenuItem = new javax.swing.JMenuItem();
-        separadorEntreEsquemasYSalir = new javax.swing.JPopupMenu.Separator();
-        salirMenuItem = new javax.swing.JMenuItem();
+        separadorEntreEsquemasYCerrarSesion = new javax.swing.JPopupMenu.Separator();
+        cerrarSesionMenuItem = new javax.swing.JMenuItem();
         editarMenu = new javax.swing.JMenu();
         preferenciasMenuItem = new javax.swing.JMenuItem();
         procesosMenu = new javax.swing.JMenu();
@@ -147,7 +151,7 @@ public class MainScreen extends javax.swing.JFrame {
             solapaLotesPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, solapaLotesPaneLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tablaSolapaLotesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
+                .addComponent(tablaSolapaLotesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(solapaLotesPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(actualizarTablaSolapaLotesButton)
@@ -207,7 +211,7 @@ public class MainScreen extends javax.swing.JFrame {
             solapaInsumosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, solapaInsumosPaneLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tablaSolapaInsumosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
+                .addComponent(tablaSolapaInsumosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(solapaInsumosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(actualizarTablaSolapaInsumosButton)
@@ -267,7 +271,7 @@ public class MainScreen extends javax.swing.JFrame {
             solapaProductosTerminadosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, solapaProductosTerminadosPaneLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tablaSolapaProductosTerminadosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
+                .addComponent(tablaSolapaProductosTerminadosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(solapaProductosTerminadosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(actualizarTablaSolapaProductosTerminadosButton)
@@ -327,7 +331,7 @@ public class MainScreen extends javax.swing.JFrame {
             solapaEmpleadosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, solapaEmpleadosPaneLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tablaSolapaEmpleadosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
+                .addComponent(tablaSolapaEmpleadosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(solapaEmpleadosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(actualizarTablaSolapaEmpleadosButton)
@@ -336,6 +340,66 @@ public class MainScreen extends javax.swing.JFrame {
         );
 
         solapasTabbedPane.addTab("Empleados", solapaEmpleadosPane);
+
+        etapasTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Descripcion"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(etapasTable);
+
+        actualizarEtapasButton.setText("Actualizar");
+
+        imprimirEtapasButton.setText("Imprimir");
+
+        javax.swing.GroupLayout solapaEtapasPanelLayout = new javax.swing.GroupLayout(solapaEtapasPanel);
+        solapaEtapasPanel.setLayout(solapaEtapasPanelLayout);
+        solapaEtapasPanelLayout.setHorizontalGroup(
+            solapaEtapasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(solapaEtapasPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(solapaEtapasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 755, Short.MAX_VALUE)
+                    .addGroup(solapaEtapasPanelLayout.createSequentialGroup()
+                        .addComponent(imprimirEtapasButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(actualizarEtapasButton)))
+                .addContainerGap())
+        );
+        solapaEtapasPanelLayout.setVerticalGroup(
+            solapaEtapasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(solapaEtapasPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addGroup(solapaEtapasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(actualizarEtapasButton)
+                    .addComponent(imprimirEtapasButton))
+                .addContainerGap())
+        );
+
+        solapasTabbedPane.addTab("Etapas", solapaEtapasPanel);
 
         archivoMenu.setText("Archivo");
 
@@ -436,9 +500,6 @@ public class MainScreen extends javax.swing.JFrame {
         nuevaEtapaMenuItem.setText("Nueva Etapa");
         etapasMenu.add(nuevaEtapaMenuItem);
 
-        buscarEtapasMenuItem.setText("Buscar Etapas");
-        etapasMenu.add(buscarEtapasMenuItem);
-
         darBajaEtapaMenuItem.setText("Dar de Baja Etapa");
         etapasMenu.add(darBajaEtapaMenuItem);
 
@@ -481,10 +542,10 @@ public class MainScreen extends javax.swing.JFrame {
         analisisMenu.add(buscarAnalisisMenuItem);
 
         archivoMenu.add(analisisMenu);
-        archivoMenu.add(separadorEntreEsquemasYSalir);
+        archivoMenu.add(separadorEntreEsquemasYCerrarSesion);
 
-        salirMenuItem.setText("Salir");
-        archivoMenu.add(salirMenuItem);
+        cerrarSesionMenuItem.setText("Cerrar Sesion");
+        archivoMenu.add(cerrarSesionMenuItem);
 
         mainScreenMenuBar.add(archivoMenu);
 
@@ -585,6 +646,7 @@ public class MainScreen extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem acercaDeMenuItem;
+    private javax.swing.JButton actualizarEtapasButton;
     private javax.swing.JMenuItem actualizarInformacionEmpleadoMenuItem;
     private javax.swing.JMenuItem actualizarInformacionInsumoMenuItem;
     private javax.swing.JMenuItem actualizarInformacionLoteMenuItem;
@@ -599,12 +661,12 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JMenuItem buscarAnalisisMenuItem;
     private javax.swing.JMenuItem buscarDescartesMensualesMenuItem;
     private javax.swing.JMenuItem buscarEmpleadosMenuItem;
-    private javax.swing.JMenuItem buscarEtapasMenuItem;
     private javax.swing.JMenuItem buscarInsumosMenuItem;
     private javax.swing.JMenuItem buscarLotesMenuItem;
     private javax.swing.JMenuItem buscarProductosTerminadosMenuItem;
     private javax.swing.JMenuItem buscarStocksMensualesInsumosMenuItem;
     private javax.swing.JMenuItem buscarStocksMensualesProductosTerminadosMenuItem;
+    private javax.swing.JMenuItem cerrarSesionMenuItem;
     private javax.swing.JMenuItem darBajaEmpleadoMenuItem;
     private javax.swing.JMenuItem darBajaEtapaMenuItem;
     private javax.swing.JMenuItem darBajaInsumoMenuItem;
@@ -617,13 +679,16 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JTable empleadosTable;
     private javax.swing.JMenuItem esUtilizadaMenuItem;
     private javax.swing.JMenu etapasMenu;
+    private javax.swing.JTable etapasTable;
     private javax.swing.JMenuItem exportarMenuItem;
     private javax.swing.JButton imprimirEmpleadosButton;
+    private javax.swing.JButton imprimirEtapasButton;
     private javax.swing.JButton imprimirInsumosButton;
     private javax.swing.JButton imprimirLotesButton;
     private javax.swing.JButton imprimirProductosTerminadosButton;
     private javax.swing.JMenu insumosMenu;
     private javax.swing.JTable insumosTable;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenu lotesMenu;
     private javax.swing.JTable lotesTable;
     private javax.swing.JMenuBar mainScreenMenuBar;
@@ -645,11 +710,11 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JTable productosTerminadosTable;
     private javax.swing.JMenuItem proveeInsumosMenuItem;
     private javax.swing.JMenu proveedoresMenu;
-    private javax.swing.JMenuItem salirMenuItem;
     private javax.swing.JMenuItem seEncuentraMenuItem;
-    private javax.swing.JPopupMenu.Separator separadorEntreEsquemasYSalir;
+    private javax.swing.JPopupMenu.Separator separadorEntreEsquemasYCerrarSesion;
     private javax.swing.JPopupMenu.Separator separadoreEntreExportarYEsquemas;
     private javax.swing.JPanel solapaEmpleadosPane;
+    private javax.swing.JPanel solapaEtapasPanel;
     private javax.swing.JPanel solapaInsumosPane;
     private javax.swing.JPanel solapaLotesPane;
     private javax.swing.JPanel solapaProductosTerminadosPane;
