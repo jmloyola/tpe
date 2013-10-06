@@ -71,6 +71,7 @@ CREATE TABLE ProductosTerminados(
 	PT_Codificacion	VARCHAR (10)	NOT NULL	PRIMARY KEY,
 	PT_Tipo	INT	NOT NULL,
 	PT_Descripcion	VARCHAR (30)	NOT NULL,
+	PT_Presentacion	VARCHAR (30)	NOT NULL,
 	PT_Destino	VARCHAR (20)	NOT NULL,
 	PT_KilosPorEnvase	REAL	NOT NULL,
 	PT_Activo	BOOLEAN	NOT NULL	DEFAULT 'true'
@@ -78,11 +79,11 @@ CREATE TABLE ProductosTerminados(
 
 CREATE TABLE StocksMensualesDescarte(
 	SM_D_Codigo	SERIAL	NOT NULL	PRIMARY KEY, /* Este atributo es SERIAL lo que indica que su valor se ira autoincrementando para cada nueva instancia del esquema */
-	SM_D_Cantidad	REAL	NOT NULL,
 	SM_D_Fecha	DATE	NOT NULL UNIQUE,
 	SM_D_Inicio	REAL	NOT NULL,
 	SM_D_Ingreso	REAL	NOT NULL,
-	SM_D_Egreso	REAL	NOT NULL
+	SM_D_Egreso	REAL	NOT NULL,
+	SM_D_Cantidad	REAL	NOT NULL
 );
 
 CREATE TABLE Lotes(
