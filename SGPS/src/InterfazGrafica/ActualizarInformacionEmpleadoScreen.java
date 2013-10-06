@@ -41,8 +41,8 @@ public class ActualizarInformacionEmpleadoScreen extends javax.swing.JFrame {
         paisResidenciaLabel = new javax.swing.JLabel();
         provinciaResidenciaLabel = new javax.swing.JLabel();
         ciudadResidenciaLabel = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
-        jComboBox2 = new javax.swing.JComboBox();
+        categoriaComboBox = new javax.swing.JComboBox();
+        estadoCivilComboBox = new javax.swing.JComboBox();
         domicilioTextField = new javax.swing.JTextField();
         paisResidenciaTextField = new javax.swing.JTextField();
         provinciaResidenciaTextField = new javax.swing.JTextField();
@@ -110,11 +110,11 @@ public class ActualizarInformacionEmpleadoScreen extends javax.swing.JFrame {
 
         ciudadResidenciaLabel.setText("Ciudad de Residencia:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Categoria A", "Categoria B", "Categoria A1", "Categoria A2", "Operario Laboratorio Categoria A", "Operario Laboratorio Categoria A1", "Encargado" }));
-        jComboBox1.setSelectedIndex(-1);
+        categoriaComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Categoria A", "Categoria B", "Categoria A1", "Categoria A2", "Operario Laboratorio Categoria A", "Operario Laboratorio Categoria A1", "Encargado" }));
+        categoriaComboBox.setSelectedIndex(-1);
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Soltero/a", "Casado/a", "Divorciado/a", "Viudo/a" }));
-        jComboBox2.setSelectedIndex(-1);
+        estadoCivilComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Soltero/a", "Casado/a", "Divorciado/a", "Viudo/a" }));
+        estadoCivilComboBox.setSelectedIndex(-1);
 
         domicilioTextField.setPreferredSize(new java.awt.Dimension(175, 20));
 
@@ -151,8 +151,8 @@ public class ActualizarInformacionEmpleadoScreen extends javax.swing.JFrame {
                             .addComponent(provinciaResidenciaLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(categoriaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(estadoCivilComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(domicilioTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(paisResidenciaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(provinciaResidenciaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -160,11 +160,11 @@ public class ActualizarInformacionEmpleadoScreen extends javax.swing.JFrame {
                             .addComponent(telefonoFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(sueldoFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cantidadHijosFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 53, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cantidadHijosFormattedTextField, ciudadResidenciaTextField, domicilioTextField, jComboBox1, jComboBox2, paisResidenciaTextField, provinciaResidenciaTextField, sueldoFormattedTextField, telefonoFormattedTextField});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cantidadHijosFormattedTextField, categoriaComboBox, ciudadResidenciaTextField, domicilioTextField, estadoCivilComboBox, paisResidenciaTextField, provinciaResidenciaTextField, sueldoFormattedTextField, telefonoFormattedTextField});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,7 +178,7 @@ public class ActualizarInformacionEmpleadoScreen extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(categoriaLabel)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(categoriaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sueldoLabel)
@@ -186,7 +186,7 @@ public class ActualizarInformacionEmpleadoScreen extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(estadoCivilLabel)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(estadoCivilComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cantidadHijosLabel)
@@ -257,14 +257,14 @@ public class ActualizarInformacionEmpleadoScreen extends javax.swing.JFrame {
     private javax.swing.JButton cancelarButton;
     private javax.swing.JFormattedTextField cantidadHijosFormattedTextField;
     private javax.swing.JLabel cantidadHijosLabel;
+    private javax.swing.JComboBox categoriaComboBox;
     private javax.swing.JLabel categoriaLabel;
     private javax.swing.JLabel ciudadResidenciaLabel;
     private javax.swing.JTextField ciudadResidenciaTextField;
     private javax.swing.JLabel domicilioLabel;
     private javax.swing.JTextField domicilioTextField;
+    private javax.swing.JComboBox estadoCivilComboBox;
     private javax.swing.JLabel estadoCivilLabel;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JFormattedTextField numeroLegajoFormattedTextField;
     private javax.swing.JLabel numeroLegajoLabel;
     private javax.swing.JPanel numeroLegajoPanel;

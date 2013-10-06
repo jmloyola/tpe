@@ -104,8 +104,8 @@ public class MainScreen extends javax.swing.JFrame {
         esUtilizadaMenuItem = new javax.swing.JMenuItem();
         produceMenuItem = new javax.swing.JMenuItem();
         utilizadoEnMenuItem = new javax.swing.JMenuItem();
-        acercaDeMenuItem = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        ayudaMenu = new javax.swing.JMenu();
+        acercaDeMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Gestion de Produccion y Stock");
@@ -518,12 +518,12 @@ public class MainScreen extends javax.swing.JFrame {
 
         mainScreenMenuBar.add(procesosMenu);
 
-        acercaDeMenuItem.setText("Ayuda");
+        ayudaMenu.setText("Ayuda");
 
-        jMenuItem1.setText("Acerca De...");
-        acercaDeMenuItem.add(jMenuItem1);
+        acercaDeMenuItem.setText("Acerca De");
+        ayudaMenu.add(acercaDeMenuItem);
 
-        mainScreenMenuBar.add(acercaDeMenuItem);
+        mainScreenMenuBar.add(ayudaMenu);
 
         setJMenuBar(mainScreenMenuBar);
 
@@ -588,7 +588,7 @@ public class MainScreen extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu acercaDeMenuItem;
+    private javax.swing.JMenuItem acercaDeMenuItem;
     private javax.swing.JMenuItem actualizarInformacionEmpleadoMenuItem;
     private javax.swing.JMenuItem actualizarInformacionInsumoMenuItem;
     private javax.swing.JMenuItem actualizarInformacionLoteMenuItem;
@@ -600,6 +600,7 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JButton actualizarTablaSolapaProductosTerminadosButton;
     private javax.swing.JMenu analisisMenu;
     private javax.swing.JMenu archivoMenu;
+    private javax.swing.JMenu ayudaMenu;
     private javax.swing.JMenuItem buscarAnalisisMenuItem;
     private javax.swing.JMenuItem buscarDescartesMensualesMenuItem;
     private javax.swing.JMenuItem buscarEmpleadosMenuItem;
@@ -628,7 +629,6 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JButton imprimirProductosTerminadosButton;
     private javax.swing.JMenu insumosMenu;
     private javax.swing.JTable insumosTable;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenu lotesMenu;
     private javax.swing.JTable lotesTable;
     private javax.swing.JMenuBar mainScreenMenuBar;

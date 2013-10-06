@@ -8,12 +8,12 @@ package InterfazGrafica;
  *
  * @author Juan
  */
-public class BajaEmpleadoScreen extends javax.swing.JFrame {
+public class BajaInsumoScreen extends javax.swing.JFrame {
 
     /**
-     * Creates new form BajaEmpleadoScreen
+     * Creates new form BajaInsumoScreen
      */
-    public BajaEmpleadoScreen() {
+    public BajaInsumoScreen() {
         initComponents();
     }
 
@@ -26,43 +26,41 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        numeroLegajoPanel = new javax.swing.JPanel();
-        numeroLegajoLabel = new javax.swing.JLabel();
-        numeroLegajoFormattedTextField = new javax.swing.JFormattedTextField();
+        descripcionPanel = new javax.swing.JPanel();
+        descripcionLabel = new javax.swing.JLabel();
+        descripcionTextField = new javax.swing.JTextField();
         cancelarButton = new javax.swing.JButton();
         aceptarButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Baja de Empleado");
+        setTitle("Baja de Insumo");
         setResizable(false);
 
-        numeroLegajoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese el numero de legajo del empleado a dar de baja:"));
+        descripcionPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese la descripcion del insumo:"));
 
-        numeroLegajoLabel.setText("Numero de Legajo:");
+        descripcionLabel.setText("Descripcion:");
 
-        numeroLegajoFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
-        numeroLegajoFormattedTextField.setToolTipText("");
-        numeroLegajoFormattedTextField.setPreferredSize(new java.awt.Dimension(100, 20));
+        descripcionTextField.setPreferredSize(new java.awt.Dimension(175, 20));
 
-        javax.swing.GroupLayout numeroLegajoPanelLayout = new javax.swing.GroupLayout(numeroLegajoPanel);
-        numeroLegajoPanel.setLayout(numeroLegajoPanelLayout);
-        numeroLegajoPanelLayout.setHorizontalGroup(
-            numeroLegajoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(numeroLegajoPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout descripcionPanelLayout = new javax.swing.GroupLayout(descripcionPanel);
+        descripcionPanel.setLayout(descripcionPanelLayout);
+        descripcionPanelLayout.setHorizontalGroup(
+            descripcionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(descripcionPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(numeroLegajoLabel)
+                .addComponent(descripcionLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(numeroLegajoFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addComponent(descripcionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        numeroLegajoPanelLayout.setVerticalGroup(
-            numeroLegajoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(numeroLegajoPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(numeroLegajoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(numeroLegajoLabel)
-                    .addComponent(numeroLegajoFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+        descripcionPanelLayout.setVerticalGroup(
+            descripcionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(descripcionPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(descripcionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(descripcionLabel)
+                    .addComponent(descripcionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         cancelarButton.setText("Cancelar");
@@ -76,9 +74,9 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(numeroLegajoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(descripcionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 117, Short.MAX_VALUE)
                         .addComponent(aceptarButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cancelarButton)))
@@ -88,8 +86,8 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(numeroLegajoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(descripcionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelarButton)
                     .addComponent(aceptarButton))
@@ -116,28 +114,28 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(BajaEmpleadoScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BajaInsumoScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(BajaEmpleadoScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BajaInsumoScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(BajaEmpleadoScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BajaInsumoScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(BajaEmpleadoScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BajaInsumoScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BajaEmpleadoScreen().setVisible(true);
+                new BajaInsumoScreen().setVisible(true);
             }
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aceptarButton;
     private javax.swing.JButton cancelarButton;
-    private javax.swing.JFormattedTextField numeroLegajoFormattedTextField;
-    private javax.swing.JLabel numeroLegajoLabel;
-    private javax.swing.JPanel numeroLegajoPanel;
+    private javax.swing.JLabel descripcionLabel;
+    private javax.swing.JPanel descripcionPanel;
+    private javax.swing.JTextField descripcionTextField;
     // End of variables declaration//GEN-END:variables
 }

@@ -306,14 +306,14 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="acercaDeMenuItem">
+        <Menu class="javax.swing.JMenu" name="ayudaMenu">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ayuda"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+            <MenuItem class="javax.swing.JMenuItem" name="acercaDeMenuItem">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Acerca De..."/>
+                <Property name="text" type="java.lang.String" value="Acerca De"/>
               </Properties>
             </MenuItem>
           </SubComponents>

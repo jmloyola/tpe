@@ -46,7 +46,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
         parametroABuscarToolBox.setSelectedIndex(-1);
         parametroABuscarToolBox.setPreferredSize(new java.awt.Dimension(300, 20));
 
-        parametroBusquedaLabel.setText("Parametro de Busqueda");
+        parametroBusquedaLabel.setText("Parametro de Busqueda:");
 
         valorBusquedaLabel.setText("Valor:");
 
@@ -58,20 +58,19 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
         parametroABucarPanelLayout.setHorizontalGroup(
             parametroABucarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(parametroABucarPanelLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(parametroABucarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(parametroABucarPanelLayout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(parametroBusquedaLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(parametroABuscarToolBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(parametroABucarPanelLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, parametroABucarPanelLayout.createSequentialGroup()
                         .addComponent(valorBusquedaLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(valorParametroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buscarEmpleadosButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(405, Short.MAX_VALUE))
+                .addContainerGap(401, Short.MAX_VALUE))
         );
 
         parametroABucarPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {parametroABuscarToolBox, valorParametroTextField});
