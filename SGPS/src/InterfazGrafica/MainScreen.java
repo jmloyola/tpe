@@ -74,7 +74,6 @@ public class MainScreen extends javax.swing.JFrame {
         darBajaInsumoMenuItem = new javax.swing.JMenuItem();
         productosTerminadosMenu = new javax.swing.JMenu();
         nuevoProductoTerminadoMenuItem = new javax.swing.JMenuItem();
-        actualizarInformacionProductoTerminadoMenuItem = new javax.swing.JMenuItem();
         buscarProductosTerminadosMenuItem = new javax.swing.JMenuItem();
         darBajaProductoTerminadoMenuItem = new javax.swing.JMenuItem();
         descartesMenu = new javax.swing.JMenu();
@@ -417,9 +416,6 @@ public class MainScreen extends javax.swing.JFrame {
         nuevoProductoTerminadoMenuItem.setText("Nuevo Producto Terminado");
         productosTerminadosMenu.add(nuevoProductoTerminadoMenuItem);
 
-        actualizarInformacionProductoTerminadoMenuItem.setText("Actualizar Informacion Producto Terminado");
-        productosTerminadosMenu.add(actualizarInformacionProductoTerminadoMenuItem);
-
         buscarProductosTerminadosMenuItem.setText("Buscar Productos Terminados");
         productosTerminadosMenu.add(buscarProductosTerminadosMenuItem);
 
@@ -592,7 +588,6 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JMenuItem actualizarInformacionEmpleadoMenuItem;
     private javax.swing.JMenuItem actualizarInformacionInsumoMenuItem;
     private javax.swing.JMenuItem actualizarInformacionLoteMenuItem;
-    private javax.swing.JMenuItem actualizarInformacionProductoTerminadoMenuItem;
     private javax.swing.JMenuItem actualizarInformacionProveedorMenuItem;
     private javax.swing.JButton actualizarTablaSolapaEmpleadosButton;
     private javax.swing.JButton actualizarTablaSolapaInsumosButton;

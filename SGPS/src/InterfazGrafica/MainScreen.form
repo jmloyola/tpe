@@ -138,11 +138,6 @@
                     <Property name="text" type="java.lang.String" value="Nuevo Producto Terminado"/>
                   </Properties>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="actualizarInformacionProductoTerminadoMenuItem">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Actualizar Informacion Producto Terminado"/>
-                  </Properties>
-                </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="buscarProductosTerminadosMenuItem">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Buscar Productos Terminados"/>
