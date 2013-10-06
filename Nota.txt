@@ -29,3 +29,11 @@ Recordar que algunos esquemas ahora tienen un flag indicando si se encuentran ac
 **************************************************************************
 
 Recordar que al crear el FormattedTextField en la ventana de Busqueda de Empleados, se modifico el codigo que inicializa el objeto para que este no se muestre al crear.
+
+**************************************************************************
+**************************************************************************
+								06/10/2013
+**************************************************************************
+**************************************************************************
+
+Recordar que las actualizaciones de informacion de los lotes solo se puede realizar sobre lotes en estado 'Procesando'. Ademas que si se coloca una cantidad de descarte utilizada, esta hace referencia al stock de descarte del mes actual. Ademas se debe controlar que si cambia el estado del lote a defectuoso debe ingresar el motivo y si cambia el estado del lote a terminado debe ingresar la fecha de ingreso a deposito, la fecha de vencimiento y opcionalmente (si ocurre) el monto de descarte utilizado.
