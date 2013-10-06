@@ -12,27 +12,27 @@ Codigos Interno que se utiliza para representar en el sistema y en la base de da
 Empleados
 *************************************************************************************************
 Estado Civil
-	Soltero         1
-	Casado          2
-	Divorciado      3
-	Viudo           4
+	Soltero         0
+	Casado          1
+	Divorciado      2
+	Viudo           3
 	
 *************************************************************************************************
 Categoria
-	Categoria A                               1
-	Categoria B                               2
-	Categoria A1                              3
-	Categoria A2                              4
-	Operario Laboratorio Categoria A          5
-	Operario Laboratorio Categoria A1         6
-	Encargado                                 7
+	Categoria A                               0
+	Categoria B                               1
+	Categoria A1                              2
+	Categoria A2                              3
+	Operario Laboratorio Categoria A          4
+	Operario Laboratorio Categoria A1         5
+	Encargado                                 6
 	
 *************************************************************************************************
 Estado
-	Activos           1
-	Sancionado        2
-	Despedido         3
-	De Licencia       4
+	Activos           0
+	Sancionado        1
+	Despedido         2
+	De Licencia       3
 	
 *************************************************************************************************	
 	
@@ -44,9 +44,9 @@ Estado
 Lotes
 *************************************************************************************************
 Estado
-	Procesando       1
-	Terminado        2
-	Defectuoso       3
+	Procesando       0
+	Terminado        1
+	Defectuoso       2
 	
 *************************************************************************************************
 
@@ -58,15 +58,15 @@ Estado
 Insumos
 *************************************************************************************************
 Unidad
-	Kilogramo            1
-	Cada Uno             2
-	Metros Cubicos       3
-	Litros               4
+	Kilogramo            0
+	Cada Uno             1
+	Metros Cubicos       2
+	Litros               3
 
 *************************************************************************************************
 Tipo
-	Materia Prima           1
-	Insumo Embalaje         2
-	Insumo Produccion       3
+	Materia Prima           0
+	Insumo Embalaje         1
+	Insumo Produccion       2
 	
 *************************************************************************************************
