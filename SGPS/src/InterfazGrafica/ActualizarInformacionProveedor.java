@@ -28,8 +28,8 @@ public class ActualizarInformacionProveedor extends javax.swing.JFrame {
 
         razonSocialPanel = new javax.swing.JPanel();
         razonSocialLabel = new javax.swing.JLabel();
-        razonSocialTextField = new javax.swing.JTextField();
         buscarProveedorButton = new javax.swing.JButton();
+        razonSocialComboBox = new javax.swing.JComboBox();
         domicilioLabel = new javax.swing.JLabel();
         sitioWebLabel = new javax.swing.JLabel();
         direccionEmailLabel = new javax.swing.JLabel();
@@ -47,9 +47,9 @@ public class ActualizarInformacionProveedor extends javax.swing.JFrame {
 
         razonSocialLabel.setText("Razon Social:");
 
-        razonSocialTextField.setPreferredSize(new java.awt.Dimension(150, 20));
-
         buscarProveedorButton.setText("Buscar");
+
+        razonSocialComboBox.setPreferredSize(new java.awt.Dimension(175, 20));
 
         javax.swing.GroupLayout razonSocialPanelLayout = new javax.swing.GroupLayout(razonSocialPanel);
         razonSocialPanel.setLayout(razonSocialPanelLayout);
@@ -59,7 +59,7 @@ public class ActualizarInformacionProveedor extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(razonSocialLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(razonSocialTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(razonSocialComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(buscarProveedorButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -70,8 +70,8 @@ public class ActualizarInformacionProveedor extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(razonSocialPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(razonSocialLabel)
-                    .addComponent(razonSocialTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buscarProveedorButton))
+                    .addComponent(buscarProveedorButton)
+                    .addComponent(razonSocialComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -105,13 +105,12 @@ public class ActualizarInformacionProveedor extends javax.swing.JFrame {
                             .addComponent(sitioWebTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(direccionEmailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(domicilioTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 43, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(aceptarButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cancelarButton)))
-                .addContainerGap())
+                        .addComponent(cancelarButton))))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {direccionEmailTextField, domicilioTextField, sitioWebTextField});
@@ -185,9 +184,9 @@ public class ActualizarInformacionProveedor extends javax.swing.JFrame {
     private javax.swing.JTextField direccionEmailTextField;
     private javax.swing.JLabel domicilioLabel;
     private javax.swing.JTextField domicilioTextField;
+    private javax.swing.JComboBox razonSocialComboBox;
     private javax.swing.JLabel razonSocialLabel;
     private javax.swing.JPanel razonSocialPanel;
-    private javax.swing.JTextField razonSocialTextField;
     private javax.swing.JLabel sitioWebLabel;
     private javax.swing.JTextField sitioWebTextField;
     // End of variables declaration//GEN-END:variables

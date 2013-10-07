@@ -28,7 +28,7 @@ public class BajaProveedorScreen extends javax.swing.JFrame {
 
         razonSocialPanel = new javax.swing.JPanel();
         razonSocialLabel = new javax.swing.JLabel();
-        razonSocialTextField = new javax.swing.JTextField();
+        razonSocialProveedorComboBox = new javax.swing.JComboBox();
         cancelarButton = new javax.swing.JButton();
         aceptarButton = new javax.swing.JButton();
 
@@ -40,7 +40,7 @@ public class BajaProveedorScreen extends javax.swing.JFrame {
 
         razonSocialLabel.setText("Razon Social:");
 
-        razonSocialTextField.setPreferredSize(new java.awt.Dimension(120, 20));
+        razonSocialProveedorComboBox.setPreferredSize(new java.awt.Dimension(150, 20));
 
         javax.swing.GroupLayout razonSocialPanelLayout = new javax.swing.GroupLayout(razonSocialPanel);
         razonSocialPanel.setLayout(razonSocialPanelLayout);
@@ -50,8 +50,8 @@ public class BajaProveedorScreen extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(razonSocialLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(razonSocialTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addComponent(razonSocialProveedorComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         razonSocialPanelLayout.setVerticalGroup(
             razonSocialPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -59,8 +59,8 @@ public class BajaProveedorScreen extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(razonSocialPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(razonSocialLabel)
-                    .addComponent(razonSocialTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(13, Short.MAX_VALUE))
+                    .addComponent(razonSocialProveedorComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         cancelarButton.setText("Cancelar");
@@ -76,7 +76,7 @@ public class BajaProveedorScreen extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(razonSocialPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 116, Short.MAX_VALUE)
                         .addComponent(aceptarButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cancelarButton)))
@@ -87,7 +87,7 @@ public class BajaProveedorScreen extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(razonSocialPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelarButton)
                     .addComponent(aceptarButton))
@@ -136,6 +136,6 @@ public class BajaProveedorScreen extends javax.swing.JFrame {
     private javax.swing.JButton cancelarButton;
     private javax.swing.JLabel razonSocialLabel;
     private javax.swing.JPanel razonSocialPanel;
-    private javax.swing.JTextField razonSocialTextField;
+    private javax.swing.JComboBox razonSocialProveedorComboBox;
     // End of variables declaration//GEN-END:variables
 }

@@ -28,8 +28,8 @@ public class ActualizarInformacionInsumoScreen extends javax.swing.JFrame {
 
         descripcionPanel = new javax.swing.JPanel();
         descripcionLabel = new javax.swing.JLabel();
-        descripcionTextField = new javax.swing.JTextField();
         buscarInsumoButton = new javax.swing.JButton();
+        descripcionComboBox = new javax.swing.JComboBox();
         limitePedidoLabel = new javax.swing.JLabel();
         limitePedidoFormattedTextField = new javax.swing.JFormattedTextField();
         cancelarButton = new javax.swing.JButton();
@@ -43,9 +43,9 @@ public class ActualizarInformacionInsumoScreen extends javax.swing.JFrame {
 
         descripcionLabel.setText("Descripcion:");
 
-        descripcionTextField.setPreferredSize(new java.awt.Dimension(120, 20));
-
         buscarInsumoButton.setText("Buscar");
+
+        descripcionComboBox.setPreferredSize(new java.awt.Dimension(150, 20));
 
         javax.swing.GroupLayout descripcionPanelLayout = new javax.swing.GroupLayout(descripcionPanel);
         descripcionPanel.setLayout(descripcionPanelLayout);
@@ -55,10 +55,10 @@ public class ActualizarInformacionInsumoScreen extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(descripcionLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(descripcionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(descripcionComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(buscarInsumoButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         descripcionPanelLayout.setVerticalGroup(
             descripcionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -66,8 +66,8 @@ public class ActualizarInformacionInsumoScreen extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(descripcionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(descripcionLabel)
-                    .addComponent(descripcionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buscarInsumoButton))
+                    .addComponent(buscarInsumoButton)
+                    .addComponent(descripcionComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -89,8 +89,9 @@ public class ActualizarInformacionInsumoScreen extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(descripcionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
                         .addComponent(limitePedidoLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(limitePedidoFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -157,9 +158,9 @@ public class ActualizarInformacionInsumoScreen extends javax.swing.JFrame {
     private javax.swing.JButton aceptarButton;
     private javax.swing.JButton buscarInsumoButton;
     private javax.swing.JButton cancelarButton;
+    private javax.swing.JComboBox descripcionComboBox;
     private javax.swing.JLabel descripcionLabel;
     private javax.swing.JPanel descripcionPanel;
-    private javax.swing.JTextField descripcionTextField;
     private javax.swing.JFormattedTextField limitePedidoFormattedTextField;
     private javax.swing.JLabel limitePedidoLabel;
     // End of variables declaration//GEN-END:variables

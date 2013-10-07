@@ -28,7 +28,7 @@ public class BajaInsumoScreen extends javax.swing.JFrame {
 
         descripcionPanel = new javax.swing.JPanel();
         descripcionLabel = new javax.swing.JLabel();
-        descripcionTextField = new javax.swing.JTextField();
+        descripcionInsumoComboBox = new javax.swing.JComboBox();
         cancelarButton = new javax.swing.JButton();
         aceptarButton = new javax.swing.JButton();
 
@@ -40,7 +40,7 @@ public class BajaInsumoScreen extends javax.swing.JFrame {
 
         descripcionLabel.setText("Descripcion:");
 
-        descripcionTextField.setPreferredSize(new java.awt.Dimension(175, 20));
+        descripcionInsumoComboBox.setPreferredSize(new java.awt.Dimension(175, 20));
 
         javax.swing.GroupLayout descripcionPanelLayout = new javax.swing.GroupLayout(descripcionPanel);
         descripcionPanel.setLayout(descripcionPanelLayout);
@@ -50,7 +50,7 @@ public class BajaInsumoScreen extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(descripcionLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(descripcionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(descripcionInsumoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         descripcionPanelLayout.setVerticalGroup(
@@ -59,8 +59,8 @@ public class BajaInsumoScreen extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(descripcionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(descripcionLabel)
-                    .addComponent(descripcionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(13, Short.MAX_VALUE))
+                    .addComponent(descripcionInsumoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         cancelarButton.setText("Cancelar");
@@ -76,7 +76,7 @@ public class BajaInsumoScreen extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(descripcionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 117, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(aceptarButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cancelarButton)))
@@ -87,7 +87,7 @@ public class BajaInsumoScreen extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(descripcionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelarButton)
                     .addComponent(aceptarButton))
@@ -134,8 +134,8 @@ public class BajaInsumoScreen extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aceptarButton;
     private javax.swing.JButton cancelarButton;
+    private javax.swing.JComboBox descripcionInsumoComboBox;
     private javax.swing.JLabel descripcionLabel;
     private javax.swing.JPanel descripcionPanel;
-    private javax.swing.JTextField descripcionTextField;
     // End of variables declaration//GEN-END:variables
 }

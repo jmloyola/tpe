@@ -28,7 +28,7 @@ public class BajaProductoTerminadoScreen extends javax.swing.JFrame {
 
         codificacionPanel = new javax.swing.JPanel();
         codificacionLabel = new javax.swing.JLabel();
-        codificacionTextField = new javax.swing.JTextField();
+        codificacionProductoTerminadoComboBox = new javax.swing.JComboBox();
         cancelarButton = new javax.swing.JButton();
         aceptarButton = new javax.swing.JButton();
 
@@ -40,7 +40,7 @@ public class BajaProductoTerminadoScreen extends javax.swing.JFrame {
 
         codificacionLabel.setText("Codificacion:");
 
-        codificacionTextField.setPreferredSize(new java.awt.Dimension(150, 20));
+        codificacionProductoTerminadoComboBox.setPreferredSize(new java.awt.Dimension(200, 20));
 
         javax.swing.GroupLayout codificacionPanelLayout = new javax.swing.GroupLayout(codificacionPanel);
         codificacionPanel.setLayout(codificacionPanelLayout);
@@ -50,7 +50,7 @@ public class BajaProductoTerminadoScreen extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(codificacionLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(codificacionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(codificacionProductoTerminadoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         codificacionPanelLayout.setVerticalGroup(
@@ -59,8 +59,8 @@ public class BajaProductoTerminadoScreen extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(codificacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(codificacionLabel)
-                    .addComponent(codificacionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(codificacionProductoTerminadoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         cancelarButton.setText("Cancelar");
@@ -76,7 +76,7 @@ public class BajaProductoTerminadoScreen extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(codificacionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 165, Short.MAX_VALUE)
                         .addComponent(aceptarButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cancelarButton)))
@@ -136,6 +136,6 @@ public class BajaProductoTerminadoScreen extends javax.swing.JFrame {
     private javax.swing.JButton cancelarButton;
     private javax.swing.JLabel codificacionLabel;
     private javax.swing.JPanel codificacionPanel;
-    private javax.swing.JTextField codificacionTextField;
+    private javax.swing.JComboBox codificacionProductoTerminadoComboBox;
     // End of variables declaration//GEN-END:variables
 }

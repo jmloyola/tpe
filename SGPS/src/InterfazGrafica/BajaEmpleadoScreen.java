@@ -28,7 +28,7 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
 
         numeroLegajoPanel = new javax.swing.JPanel();
         numeroLegajoLabel = new javax.swing.JLabel();
-        numeroLegajoFormattedTextField = new javax.swing.JFormattedTextField();
+        numerosLegajoComboBox = new javax.swing.JComboBox();
         cancelarButton = new javax.swing.JButton();
         aceptarButton = new javax.swing.JButton();
 
@@ -40,9 +40,7 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
 
         numeroLegajoLabel.setText("Numero de Legajo:");
 
-        numeroLegajoFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
-        numeroLegajoFormattedTextField.setToolTipText("");
-        numeroLegajoFormattedTextField.setPreferredSize(new java.awt.Dimension(100, 20));
+        numerosLegajoComboBox.setPreferredSize(new java.awt.Dimension(75, 20));
 
         javax.swing.GroupLayout numeroLegajoPanelLayout = new javax.swing.GroupLayout(numeroLegajoPanel);
         numeroLegajoPanel.setLayout(numeroLegajoPanelLayout);
@@ -52,16 +50,16 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(numeroLegajoLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(numeroLegajoFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addComponent(numerosLegajoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         numeroLegajoPanelLayout.setVerticalGroup(
             numeroLegajoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(numeroLegajoPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(14, Short.MAX_VALUE)
                 .addGroup(numeroLegajoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(numeroLegajoLabel)
-                    .addComponent(numeroLegajoFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(numerosLegajoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -78,7 +76,7 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(numeroLegajoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 148, Short.MAX_VALUE)
                         .addComponent(aceptarButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cancelarButton)))
@@ -136,8 +134,8 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aceptarButton;
     private javax.swing.JButton cancelarButton;
-    private javax.swing.JFormattedTextField numeroLegajoFormattedTextField;
     private javax.swing.JLabel numeroLegajoLabel;
     private javax.swing.JPanel numeroLegajoPanel;
+    private javax.swing.JComboBox numerosLegajoComboBox;
     // End of variables declaration//GEN-END:variables
 }

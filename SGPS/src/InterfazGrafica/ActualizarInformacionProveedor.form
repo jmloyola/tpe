@@ -41,7 +41,7 @@
                           <Component id="direccionEmailTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="domicilioTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="43" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -50,7 +50,6 @@
                       <Component id="cancelarButton" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -101,7 +100,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="razonSocialLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="razonSocialTextField" min="-2" max="-2" attributes="0"/>
+                  <Component id="razonSocialComboBox" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="buscarProveedorButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
@@ -114,8 +113,8 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="razonSocialLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="razonSocialTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="buscarProveedorButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="razonSocialComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -128,16 +127,19 @@
             <Property name="text" type="java.lang.String" value="Razon Social:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="razonSocialTextField">
-          <Properties>
-            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[150, 20]"/>
-            </Property>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JButton" name="buscarProveedorButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Buscar"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="razonSocialComboBox">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[175, 20]"/>
+            </Property>
           </Properties>
         </Component>
       </SubComponents>

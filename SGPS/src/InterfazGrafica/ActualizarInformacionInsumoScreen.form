@@ -30,8 +30,9 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="descripcionPanel" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                       <Component id="limitePedidoLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="limitePedidoFormattedTextField" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
@@ -83,10 +84,10 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="descripcionLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="descripcionTextField" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="buscarInsumoButton" min="-2" max="-2" attributes="0"/>
+                  <Component id="descripcionComboBox" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
+                  <Component id="buscarInsumoButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -96,8 +97,8 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="descripcionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="descripcionTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="buscarInsumoButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="descripcionComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -110,16 +111,19 @@
             <Property name="text" type="java.lang.String" value="Descripcion:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="descripcionTextField">
-          <Properties>
-            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[120, 20]"/>
-            </Property>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JButton" name="buscarInsumoButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Buscar"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="descripcionComboBox">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[150, 20]"/>
+            </Property>
           </Properties>
         </Component>
       </SubComponents>

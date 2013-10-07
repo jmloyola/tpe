@@ -28,7 +28,7 @@ public class BajaEtapaScreen extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         descripcionLabel = new javax.swing.JLabel();
-        descripcionTextField = new javax.swing.JTextField();
+        descripcionEtapaComboBox = new javax.swing.JComboBox();
         cancelarButton = new javax.swing.JButton();
         aceptarButton = new javax.swing.JButton();
 
@@ -40,7 +40,7 @@ public class BajaEtapaScreen extends javax.swing.JFrame {
 
         descripcionLabel.setText("Descripcion:");
 
-        descripcionTextField.setPreferredSize(new java.awt.Dimension(175, 20));
+        descripcionEtapaComboBox.setPreferredSize(new java.awt.Dimension(175, 20));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -50,7 +50,7 @@ public class BajaEtapaScreen extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(descripcionLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(descripcionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(descripcionEtapaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -59,8 +59,8 @@ public class BajaEtapaScreen extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(descripcionLabel)
-                    .addComponent(descripcionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(descripcionEtapaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         cancelarButton.setText("Cancelar");
@@ -134,8 +134,8 @@ public class BajaEtapaScreen extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aceptarButton;
     private javax.swing.JButton cancelarButton;
+    private javax.swing.JComboBox descripcionEtapaComboBox;
     private javax.swing.JLabel descripcionLabel;
-    private javax.swing.JTextField descripcionTextField;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

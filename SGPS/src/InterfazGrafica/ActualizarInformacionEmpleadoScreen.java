@@ -31,7 +31,7 @@ public class ActualizarInformacionEmpleadoScreen extends javax.swing.JFrame {
         numeroLegajoPanel = new javax.swing.JPanel();
         numeroLegajoLabel = new javax.swing.JLabel();
         buscarEmpleadoButton = new javax.swing.JButton();
-        numeroLegajoFormattedTextField = new javax.swing.JFormattedTextField();
+        numerosLegajoComboBox = new javax.swing.JComboBox();
         telefonoLabel = new javax.swing.JLabel();
         categoriaLabel = new javax.swing.JLabel();
         sueldoLabel = new javax.swing.JLabel();
@@ -59,14 +59,13 @@ public class ActualizarInformacionEmpleadoScreen extends javax.swing.JFrame {
 
         aceptarButton.setText("Aceptar");
 
-        numeroLegajoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese numero de legajo del empleado:"));
+        numeroLegajoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Seleccione numero de legajo del empleado:"));
 
         numeroLegajoLabel.setText("Numero de Legajo:");
 
         buscarEmpleadoButton.setText("Buscar");
 
-        numeroLegajoFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
-        numeroLegajoFormattedTextField.setPreferredSize(new java.awt.Dimension(100, 20));
+        numerosLegajoComboBox.setPreferredSize(new java.awt.Dimension(125, 20));
 
         javax.swing.GroupLayout numeroLegajoPanelLayout = new javax.swing.GroupLayout(numeroLegajoPanel);
         numeroLegajoPanel.setLayout(numeroLegajoPanelLayout);
@@ -76,10 +75,10 @@ public class ActualizarInformacionEmpleadoScreen extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(numeroLegajoLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(numeroLegajoFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(numerosLegajoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(buscarEmpleadoButton)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         numeroLegajoPanelLayout.setVerticalGroup(
             numeroLegajoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -88,7 +87,7 @@ public class ActualizarInformacionEmpleadoScreen extends javax.swing.JFrame {
                 .addGroup(numeroLegajoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(numeroLegajoLabel)
                     .addComponent(buscarEmpleadoButton)
-                    .addComponent(numeroLegajoFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(numerosLegajoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -265,9 +264,9 @@ public class ActualizarInformacionEmpleadoScreen extends javax.swing.JFrame {
     private javax.swing.JTextField domicilioTextField;
     private javax.swing.JComboBox estadoCivilComboBox;
     private javax.swing.JLabel estadoCivilLabel;
-    private javax.swing.JFormattedTextField numeroLegajoFormattedTextField;
     private javax.swing.JLabel numeroLegajoLabel;
     private javax.swing.JPanel numeroLegajoPanel;
+    private javax.swing.JComboBox numerosLegajoComboBox;
     private javax.swing.JLabel paisResidenciaLabel;
     private javax.swing.JTextField paisResidenciaTextField;
     private javax.swing.JLabel provinciaResidenciaLabel;

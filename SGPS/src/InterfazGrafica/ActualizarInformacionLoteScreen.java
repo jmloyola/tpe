@@ -28,9 +28,7 @@ public class ActualizarInformacionLoteScreen extends javax.swing.JFrame {
 
         identificadorYFechaCreacionPanel = new javax.swing.JPanel();
         identificadorLabel = new javax.swing.JLabel();
-        fechaCreacionLabel = new javax.swing.JLabel();
-        identificadorTextField = new javax.swing.JTextField();
-        fechaCreacionFormattedTextField = new javax.swing.JFormattedTextField();
+        identificadoresLotesComboBox = new javax.swing.JComboBox();
         buscarLoteButton = new javax.swing.JButton();
         estadoLabel = new javax.swing.JLabel();
         estadoComboBox = new javax.swing.JComboBox();
@@ -53,18 +51,13 @@ public class ActualizarInformacionLoteScreen extends javax.swing.JFrame {
         setTitle("Actualizar Informacion Lote");
         setResizable(false);
 
-        identificadorYFechaCreacionPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese identificador y fecha de creacion del lote:"));
+        identificadorYFechaCreacionPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese identificador del lote:"));
 
         identificadorLabel.setText("Identificador:");
 
-        fechaCreacionLabel.setText("Fecha de Creacion:");
-
-        identificadorTextField.setPreferredSize(new java.awt.Dimension(170, 20));
-
-        fechaCreacionFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
+        identificadoresLotesComboBox.setPreferredSize(new java.awt.Dimension(175, 20));
 
         buscarLoteButton.setText("Buscar");
-        buscarLoteButton.setPreferredSize(new java.awt.Dimension(65, 45));
 
         javax.swing.GroupLayout identificadorYFechaCreacionPanelLayout = new javax.swing.GroupLayout(identificadorYFechaCreacionPanel);
         identificadorYFechaCreacionPanel.setLayout(identificadorYFechaCreacionPanelLayout);
@@ -72,35 +65,22 @@ public class ActualizarInformacionLoteScreen extends javax.swing.JFrame {
             identificadorYFechaCreacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(identificadorYFechaCreacionPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(identificadorYFechaCreacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(identificadorLabel)
-                    .addComponent(fechaCreacionLabel))
+                .addComponent(identificadorLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(identificadorYFechaCreacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(identificadorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fechaCreacionFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buscarLoteButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(identificadoresLotesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(buscarLoteButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        identificadorYFechaCreacionPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {fechaCreacionFormattedTextField, identificadorTextField});
-
         identificadorYFechaCreacionPanelLayout.setVerticalGroup(
             identificadorYFechaCreacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(identificadorYFechaCreacionPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(identificadorYFechaCreacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(identificadorYFechaCreacionPanelLayout.createSequentialGroup()
-                        .addGroup(identificadorYFechaCreacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(identificadorLabel)
-                            .addComponent(identificadorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(identificadorYFechaCreacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(fechaCreacionLabel)
-                            .addComponent(fechaCreacionFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(buscarLoteButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE)
+                .addGroup(identificadorYFechaCreacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(identificadorLabel)
+                    .addComponent(identificadoresLotesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscarLoteButton))
+                .addGap(1, 1, 1))
         );
 
         estadoLabel.setText("Estado:");
@@ -246,7 +226,7 @@ public class ActualizarInformacionLoteScreen extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(identificadorYFechaCreacionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(estadoLabel)
                     .addComponent(estadoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -312,15 +292,13 @@ public class ActualizarInformacionLoteScreen extends javax.swing.JFrame {
     private javax.swing.JPanel estadoProcesandoPanel;
     private javax.swing.JPanel estadoTerminadoPanel;
     private javax.swing.JButton fechaActualButton;
-    private javax.swing.JFormattedTextField fechaCreacionFormattedTextField;
-    private javax.swing.JLabel fechaCreacionLabel;
     private javax.swing.JFormattedTextField fechaIngresoDepositoFormattedTextField;
     private javax.swing.JLabel fechaIngresoDepositoLabel;
     private javax.swing.JFormattedTextField fechaVencimientoFormattedTextField;
     private javax.swing.JLabel fechaVencimientoLabel;
     private javax.swing.JLabel identificadorLabel;
-    private javax.swing.JTextField identificadorTextField;
     private javax.swing.JPanel identificadorYFechaCreacionPanel;
+    private javax.swing.JComboBox identificadoresLotesComboBox;
     private javax.swing.JLabel motivoDeficienciaLabel;
     private javax.swing.JTextField motivoDeficienciaTextField;
     // End of variables declaration//GEN-END:variables
