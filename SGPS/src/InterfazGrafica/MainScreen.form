@@ -148,6 +148,11 @@
                     <Property name="text" type="java.lang.String" value="Dar de Baja Producto Terminado"/>
                   </Properties>
                 </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="despacharProductoTerminadoMenuItem">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Despachar Producto Terminado"/>
+                  </Properties>
+                </MenuItem>
               </SubComponents>
             </Menu>
             <Menu class="javax.swing.JMenu" name="descartesMenu">

@@ -81,6 +81,7 @@ public class MainScreen extends javax.swing.JFrame {
         nuevoProductoTerminadoMenuItem = new javax.swing.JMenuItem();
         buscarProductosTerminadosMenuItem = new javax.swing.JMenuItem();
         darBajaProductoTerminadoMenuItem = new javax.swing.JMenuItem();
+        despacharProductoTerminadoMenuItem = new javax.swing.JMenuItem();
         descartesMenu = new javax.swing.JMenu();
         buscarDescartesMensualesMenuItem = new javax.swing.JMenuItem();
         etapasMenu = new javax.swing.JMenu();
@@ -485,6 +486,9 @@ public class MainScreen extends javax.swing.JFrame {
         darBajaProductoTerminadoMenuItem.setText("Dar de Baja Producto Terminado");
         productosTerminadosMenu.add(darBajaProductoTerminadoMenuItem);
 
+        despacharProductoTerminadoMenuItem.setText("Despachar Producto Terminado");
+        productosTerminadosMenu.add(despacharProductoTerminadoMenuItem);
+
         archivoMenu.add(productosTerminadosMenu);
 
         descartesMenu.setText("Descartes");
@@ -670,6 +674,7 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JMenuItem darBajaProveedorMenuItem;
     private javax.swing.JMenuItem darBajaUsuarioSistemaMenuItem;
     private javax.swing.JMenu descartesMenu;
+    private javax.swing.JMenuItem despacharProductoTerminadoMenuItem;
     private javax.swing.JMenu editarMenu;
     private javax.swing.JMenu empleadosMenu;
     private javax.swing.JTable empleadosTable;

@@ -8,13 +8,27 @@ package InterfazGrafica;
  *
  * @author Juan
  */
+
+import java.sql.*;
+import javax.swing.JOptionPane;
+
 public class LoginScreen extends javax.swing.JFrame {
+    
+    Connection conn = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;
 
     /**
      * Creates new form LoginScreen
      */
     public LoginScreen() {
         initComponents();
+        try{
+            Class.forName("org.postgresql.Driver");
+            conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "15613427");
+        } catch(ClassNotFoundException | SQLException e){
+            JOptionPane.showMessageDialog(this, e, "Error en conexion", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     /**
@@ -42,6 +56,11 @@ public class LoginScreen extends javax.swing.JFrame {
         ingresarButton.setText("Ingresar");
         ingresarButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ingresarButton.setName(""); // NOI18N
+        ingresarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ingresarButtonActionPerformed(evt);
+            }
+        });
 
         usuarioLabel.setText("Usuario:");
 
@@ -54,6 +73,11 @@ public class LoginScreen extends javax.swing.JFrame {
         passwordField.setPreferredSize(new java.awt.Dimension(60, 20));
 
         salirButton.setText("Salir");
+        salirButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -100,6 +124,27 @@ public class LoginScreen extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void salirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirButtonActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_salirButtonActionPerformed
+
+    private void ingresarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarButtonActionPerformed
+        //String sql = "SELECT * FROM usuariosdelsistema WHERE us_identificador = " + usuarioTextField.getText() + " us_password = " + passwordField.getPassword();
+        String sql = "SELECT * FROM usuariosdelsistema";
+        
+        try{
+            pst = conn.prepareStatement(sql);
+            
+            rs = pst.executeQuery();
+            
+            while(rs.next()){
+                JOptionPane.showMessageDialog(this, rs.getString("us_identificador"), "Resultado Consulta", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }catch(Exception e){
+            
+        }
+    }//GEN-LAST:event_ingresarButtonActionPerformed
 
     /**
      * @param args the command line arguments
