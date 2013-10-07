@@ -106,7 +106,6 @@ public class MainScreen extends javax.swing.JFrame {
         proveeInsumosMenuItem = new javax.swing.JMenuItem();
         esUtilizadaMenuItem = new javax.swing.JMenuItem();
         produceMenuItem = new javax.swing.JMenuItem();
-        utilizadoEnMenuItem = new javax.swing.JMenuItem();
         ayudaMenu = new javax.swing.JMenu();
         acercaDeMenuItem = new javax.swing.JMenuItem();
 
@@ -570,9 +569,6 @@ public class MainScreen extends javax.swing.JFrame {
         produceMenuItem.setText("Ingresar Cantidad Producto Terminado Producida por un Lote");
         procesosMenu.add(produceMenuItem);
 
-        utilizadoEnMenuItem.setText("Ingresar Cantidad de Descarte Utilizada para un Lote");
-        procesosMenu.add(utilizadoEnMenuItem);
-
         mainScreenMenuBar.add(procesosMenu);
 
         ayudaMenu.setText("Ayuda");
@@ -727,6 +723,5 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JScrollPane tablaSolapaProductosTerminadosScrollPane;
     private javax.swing.JLabel usuarioActualLabel;
     private javax.swing.JMenu usuariosSistemaMenu;
-    private javax.swing.JMenuItem utilizadoEnMenuItem;
     // End of variables declaration//GEN-END:variables
 }

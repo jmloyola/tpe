@@ -289,11 +289,6 @@
                 <Property name="text" type="java.lang.String" value="Ingresar Cantidad Producto Terminado Producida por un Lote"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="utilizadoEnMenuItem">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Ingresar Cantidad de Descarte Utilizada para un Lote"/>
-              </Properties>
-            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="ayudaMenu">
