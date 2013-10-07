@@ -105,91 +105,44 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="nombreTextField" linkSize="1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="nombreCampoObligatorioLabel" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="cuilTextField" linkSize="1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="cuilCampoObligatorioLabel" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="estadoCivilComboBox" linkSize="1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="estadoCivilCampoObligatorioLabel" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="domicilioTextField" linkSize="1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="domicilioCampoObligatorioLabel" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="paisResidenciaTextField" linkSize="1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="paisResidenciaCampoObligatorioLabel" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="provinciaResidenciaTextField" linkSize="1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="provinciaResidenciaCampoObligatorioLabel" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="ciudadResidenciaTextField" linkSize="1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="ciudadResidenciaCampoObligatorioLabel" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="categoriaComboBox" linkSize="1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="categoriaCampoObligatorioLabel" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="dniFormattedTextField" linkSize="1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="dniCampoObligatorioLabel" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="telefonoFormattedTextField" linkSize="1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="telefonoCampoObligatorioLabel" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="sueldoFormattedTextField" linkSize="1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="sueldoCampoObligatorioLabel" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="cantidadHijosFormattedTextField" linkSize="1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="cantidadHijosCampoObligatorioLabel" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="codigoPostalFormattedTextField" linkSize="1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="codigoPostalCampoObligatorioLabel" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="numeroLegajoFormattedTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="fechaIngresoFormattedTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="fechaIngresoCampoObligatorioLabel" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="cargaFechaActualButton" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="numeroLegajoCampoObligatorioLabel" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <Component id="nombreTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="dniFormattedTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="telefonoFormattedTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="fechaIngresoDateChooser" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="numeroLegajoFormattedTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="sueldoFormattedTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cuilTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="estadoCivilComboBox" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cantidadHijosFormattedTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="domicilioTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="codigoPostalFormattedTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="paisResidenciaTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="provinciaResidenciaTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="ciudadResidenciaTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="categoriaComboBox" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="nombreCampoObligatorioLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cuilCampoObligatorioLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="estadoCivilCampoObligatorioLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="domicilioCampoObligatorioLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="paisResidenciaCampoObligatorioLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="provinciaResidenciaCampoObligatorioLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="ciudadResidenciaCampoObligatorioLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="categoriaCampoObligatorioLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="dniCampoObligatorioLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="telefonoCampoObligatorioLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="sueldoCampoObligatorioLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="cantidadHijosCampoObligatorioLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="codigoPostalCampoObligatorioLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="fechaIngresoCampoObligatorioLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="numeroLegajoCampoObligatorioLabel" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="referenciaCamposObligatoriosLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="147" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -215,11 +168,12 @@
                       <Component id="telefonoCampoObligatorioLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="fechaIngresoEmpleadoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="fechaIngresoFormattedTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cargaFechaActualButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="fechaIngresoCampoObligatorioLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="fechaIngresoEmpleadoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="fechaIngresoCampoObligatorioLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="fechaIngresoDateChooser" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -377,13 +331,6 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="fechaIngresoFormattedTextField">
-          <Properties>
-            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-              <Format format="dd/MM/yyyy" subtype="-1" type="1"/>
-            </Property>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JTextField" name="cuilTextField">
         </Component>
         <Component class="javax.swing.JComboBox" name="estadoCivilComboBox">
@@ -421,11 +368,6 @@
               </StringArray>
             </Property>
             <Property name="selectedIndex" type="int" value="-1"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="cargaFechaActualButton">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Hoy"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="dniFormattedTextField">
@@ -596,6 +538,11 @@
               <Color blue="0" green="0" red="ff" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="*"/>
+          </Properties>
+        </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="fechaIngresoDateChooser">
+          <Properties>
+            <Property name="dateFormatString" type="java.lang.String" value="dd/MM/yyyy"/>
           </Properties>
         </Component>
       </SubComponents>

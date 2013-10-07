@@ -34,7 +34,7 @@ public class AsignarLotesEtapasEmpleadosScreen extends javax.swing.JFrame {
         identificadorLoteComboBox = new javax.swing.JComboBox();
         descripcionEtapaComboBox = new javax.swing.JComboBox();
         numeroLegajoEmpleadoComboBox = new javax.swing.JComboBox();
-        fechaFormattedTextField = new javax.swing.JFormattedTextField();
+        fechaDateChooser = new com.toedter.calendar.JDateChooser();
         cancelarButton = new javax.swing.JButton();
         aceptarButton = new javax.swing.JButton();
 
@@ -50,8 +50,8 @@ public class AsignarLotesEtapasEmpleadosScreen extends javax.swing.JFrame {
 
         fechaLabel.setText("Fecha:");
 
-        fechaFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
-        fechaFormattedTextField.setPreferredSize(new java.awt.Dimension(150, 20));
+        fechaDateChooser.setDateFormatString("dd/MM/yyyy");
+        fechaDateChooser.setPreferredSize(new java.awt.Dimension(150, 20));
 
         javax.swing.GroupLayout valoresPanelLayout = new javax.swing.GroupLayout(valoresPanel);
         valoresPanel.setLayout(valoresPanelLayout);
@@ -64,16 +64,20 @@ public class AsignarLotesEtapasEmpleadosScreen extends javax.swing.JFrame {
                     .addComponent(descripcionEtapaLabel)
                     .addComponent(numeroLegajoEmpleadoLabel)
                     .addComponent(fechaLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(valoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(identificadorLoteComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(descripcionEtapaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(numeroLegajoEmpleadoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fechaFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(valoresPanelLayout.createSequentialGroup()
+                        .addGroup(valoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(numeroLegajoEmpleadoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(descripcionEtapaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(identificadorLoteComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, valoresPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(fechaDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
 
-        valoresPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {descripcionEtapaComboBox, fechaFormattedTextField, identificadorLoteComboBox, numeroLegajoEmpleadoComboBox});
+        valoresPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {descripcionEtapaComboBox, fechaDateChooser, identificadorLoteComboBox, numeroLegajoEmpleadoComboBox});
 
         valoresPanelLayout.setVerticalGroup(
             valoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -90,11 +94,11 @@ public class AsignarLotesEtapasEmpleadosScreen extends javax.swing.JFrame {
                 .addGroup(valoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(numeroLegajoEmpleadoLabel)
                     .addComponent(numeroLegajoEmpleadoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(valoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(valoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(fechaLabel)
-                    .addComponent(fechaFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(26, Short.MAX_VALUE))
+                    .addComponent(fechaDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         cancelarButton.setText("Cancelar");
@@ -170,7 +174,7 @@ public class AsignarLotesEtapasEmpleadosScreen extends javax.swing.JFrame {
     private javax.swing.JButton cancelarButton;
     private javax.swing.JComboBox descripcionEtapaComboBox;
     private javax.swing.JLabel descripcionEtapaLabel;
-    private javax.swing.JFormattedTextField fechaFormattedTextField;
+    private com.toedter.calendar.JDateChooser fechaDateChooser;
     private javax.swing.JLabel fechaLabel;
     private javax.swing.JComboBox identificadorLoteComboBox;
     private javax.swing.JLabel identificadorLoteLabel;

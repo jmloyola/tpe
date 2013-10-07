@@ -39,10 +39,9 @@ public class ActualizarInformacionLoteScreen extends javax.swing.JFrame {
         motivoDeficienciaLabel = new javax.swing.JLabel();
         estadoTerminadoPanel = new javax.swing.JPanel();
         fechaIngresoDepositoLabel = new javax.swing.JLabel();
-        fechaVencimientoFormattedTextField = new javax.swing.JFormattedTextField();
-        fechaActualButton = new javax.swing.JButton();
         fechaVencimientoLabel = new javax.swing.JLabel();
-        fechaIngresoDepositoFormattedTextField = new javax.swing.JFormattedTextField();
+        fechaVencimientoDateChooser = new com.toedter.calendar.JDateChooser();
+        fechaIngresoDepositoDateChooser = new com.toedter.calendar.JDateChooser();
         estadoProcesandoPanel = new javax.swing.JPanel();
         cantidadDescarteUtilizadoFormattedTextField = new javax.swing.JFormattedTextField();
         cantidadDescarteUtilizadoLabel = new javax.swing.JLabel();
@@ -120,15 +119,12 @@ public class ActualizarInformacionLoteScreen extends javax.swing.JFrame {
 
         fechaIngresoDepositoLabel.setText("Fecha de Ingreso Deposito:");
 
-        fechaVencimientoFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
-        fechaVencimientoFormattedTextField.setPreferredSize(new java.awt.Dimension(150, 20));
-
-        fechaActualButton.setText("Hoy");
-
         fechaVencimientoLabel.setText("Fecha de Vencimiento:");
 
-        fechaIngresoDepositoFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
-        fechaIngresoDepositoFormattedTextField.setPreferredSize(new java.awt.Dimension(150, 20));
+        fechaVencimientoDateChooser.setDateFormatString("dd/MM/yyyy");
+
+        fechaIngresoDepositoDateChooser.setDateFormatString("dd/MM/yyyy");
+        fechaIngresoDepositoDateChooser.setPreferredSize(new java.awt.Dimension(175, 20));
 
         javax.swing.GroupLayout estadoTerminadoPanelLayout = new javax.swing.GroupLayout(estadoTerminadoPanel);
         estadoTerminadoPanel.setLayout(estadoTerminadoPanelLayout);
@@ -141,28 +137,24 @@ public class ActualizarInformacionLoteScreen extends javax.swing.JFrame {
                     .addComponent(fechaVencimientoLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(estadoTerminadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fechaVencimientoFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(estadoTerminadoPanelLayout.createSequentialGroup()
-                        .addComponent(fechaIngresoDepositoFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(fechaActualButton)))
-                .addContainerGap())
+                    .addComponent(fechaIngresoDepositoDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fechaVencimientoDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        estadoTerminadoPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {fechaIngresoDepositoFormattedTextField, fechaVencimientoFormattedTextField});
+        estadoTerminadoPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {fechaIngresoDepositoDateChooser, fechaVencimientoDateChooser});
 
         estadoTerminadoPanelLayout.setVerticalGroup(
             estadoTerminadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(estadoTerminadoPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(estadoTerminadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(estadoTerminadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(fechaIngresoDepositoLabel)
-                    .addComponent(fechaIngresoDepositoFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fechaActualButton))
+                    .addComponent(fechaIngresoDepositoDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(estadoTerminadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(estadoTerminadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(fechaVencimientoLabel)
-                    .addComponent(fechaVencimientoFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fechaVencimientoDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -199,27 +191,26 @@ public class ActualizarInformacionLoteScreen extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(identificadorYFechaCreacionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(aceptarButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cancelarButton))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(identificadorYFechaCreacionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(aceptarButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cancelarButton))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(estadoLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(estadoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(estadoTerminadoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(estadoDefectuosoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(estadoProcesandoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(estadoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(estadoDefectuosoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(estadoProcesandoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(estadoTerminadoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,7 +227,7 @@ public class ActualizarInformacionLoteScreen extends javax.swing.JFrame {
                 .addComponent(estadoTerminadoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(estadoProcesandoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelarButton)
                     .addComponent(aceptarButton))
@@ -291,10 +282,9 @@ public class ActualizarInformacionLoteScreen extends javax.swing.JFrame {
     private javax.swing.JLabel estadoLabel;
     private javax.swing.JPanel estadoProcesandoPanel;
     private javax.swing.JPanel estadoTerminadoPanel;
-    private javax.swing.JButton fechaActualButton;
-    private javax.swing.JFormattedTextField fechaIngresoDepositoFormattedTextField;
+    private com.toedter.calendar.JDateChooser fechaIngresoDepositoDateChooser;
     private javax.swing.JLabel fechaIngresoDepositoLabel;
-    private javax.swing.JFormattedTextField fechaVencimientoFormattedTextField;
+    private com.toedter.calendar.JDateChooser fechaVencimientoDateChooser;
     private javax.swing.JLabel fechaVencimientoLabel;
     private javax.swing.JLabel identificadorLabel;
     private javax.swing.JPanel identificadorYFechaCreacionPanel;

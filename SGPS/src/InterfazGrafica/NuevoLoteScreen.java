@@ -30,11 +30,10 @@ public class NuevoLoteScreen extends javax.swing.JFrame {
         identificadorLabel = new javax.swing.JLabel();
         fechaCreacionLabel = new javax.swing.JLabel();
         identificadorTextField = new javax.swing.JTextField();
-        fechaCreacionFormattedTextField = new javax.swing.JFormattedTextField();
         identificadorCampoObligatorio = new javax.swing.JLabel();
         fechaCreacionCampoObligatorio = new javax.swing.JLabel();
         referenciaCampoObligatorio = new javax.swing.JLabel();
-        fechaActualButton = new javax.swing.JButton();
+        fechaCreacionDateChooser = new com.toedter.calendar.JDateChooser();
         cancelarButton = new javax.swing.JButton();
         aceptarButton = new javax.swing.JButton();
 
@@ -50,8 +49,6 @@ public class NuevoLoteScreen extends javax.swing.JFrame {
 
         identificadorTextField.setPreferredSize(new java.awt.Dimension(100, 20));
 
-        fechaCreacionFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
-
         identificadorCampoObligatorio.setForeground(new java.awt.Color(255, 0, 0));
         identificadorCampoObligatorio.setText("*");
 
@@ -61,7 +58,7 @@ public class NuevoLoteScreen extends javax.swing.JFrame {
         referenciaCampoObligatorio.setForeground(new java.awt.Color(255, 0, 0));
         referenciaCampoObligatorio.setText("* Campo Obligatorio");
 
-        fechaActualButton.setText("Hoy");
+        fechaCreacionDateChooser.setDateFormatString("dd/MM/yyyy");
 
         javax.swing.GroupLayout informacionLotePanelLayout = new javax.swing.GroupLayout(informacionLotePanel);
         informacionLotePanel.setLayout(informacionLotePanelLayout);
@@ -76,21 +73,20 @@ public class NuevoLoteScreen extends javax.swing.JFrame {
                             .addComponent(fechaCreacionLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(informacionLotePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(fechaCreacionDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(identificadorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(informacionLotePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(informacionLotePanelLayout.createSequentialGroup()
-                                .addComponent(fechaCreacionFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(fechaCreacionCampoObligatorio)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(fechaActualButton))
+                                .addGap(4, 4, 4)
+                                .addComponent(fechaCreacionCampoObligatorio))
                             .addGroup(informacionLotePanelLayout.createSequentialGroup()
-                                .addComponent(identificadorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(identificadorCampoObligatorio))))
                     .addComponent(referenciaCampoObligatorio))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        informacionLotePanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {fechaCreacionFormattedTextField, identificadorTextField});
+        informacionLotePanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {fechaCreacionDateChooser, identificadorTextField});
 
         informacionLotePanelLayout.setVerticalGroup(
             informacionLotePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,11 +97,11 @@ public class NuevoLoteScreen extends javax.swing.JFrame {
                     .addComponent(identificadorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(identificadorCampoObligatorio))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(informacionLotePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fechaCreacionLabel)
-                    .addComponent(fechaCreacionFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fechaCreacionCampoObligatorio)
-                    .addComponent(fechaActualButton))
+                .addGroup(informacionLotePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(informacionLotePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(fechaCreacionLabel)
+                        .addComponent(fechaCreacionCampoObligatorio))
+                    .addComponent(fechaCreacionDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(referenciaCampoObligatorio)
                 .addContainerGap())
@@ -124,7 +120,7 @@ public class NuevoLoteScreen extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(informacionLotePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 87, Short.MAX_VALUE)
                         .addComponent(aceptarButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cancelarButton)))
@@ -135,7 +131,7 @@ public class NuevoLoteScreen extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(informacionLotePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelarButton)
                     .addComponent(aceptarButton))
@@ -182,9 +178,8 @@ public class NuevoLoteScreen extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aceptarButton;
     private javax.swing.JButton cancelarButton;
-    private javax.swing.JButton fechaActualButton;
     private javax.swing.JLabel fechaCreacionCampoObligatorio;
-    private javax.swing.JFormattedTextField fechaCreacionFormattedTextField;
+    private com.toedter.calendar.JDateChooser fechaCreacionDateChooser;
     private javax.swing.JLabel fechaCreacionLabel;
     private javax.swing.JLabel identificadorCampoObligatorio;
     private javax.swing.JLabel identificadorLabel;

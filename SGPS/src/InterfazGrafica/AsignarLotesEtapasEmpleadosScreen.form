@@ -69,14 +69,21 @@
                       <Component id="numeroLegajoEmpleadoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="fechaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="identificadorLoteComboBox" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="descripcionEtapaComboBox" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="numeroLegajoEmpleadoComboBox" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="fechaFormattedTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="numeroLegajoEmpleadoComboBox" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="descripcionEtapaComboBox" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="identificadorLoteComboBox" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="fechaDateChooser" linkSize="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -98,12 +105,12 @@
                       <Component id="numeroLegajoEmpleadoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="numeroLegajoEmpleadoComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="fechaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="fechaFormattedTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="fechaLabel" min="-2" max="-2" attributes="0"/>
+                      <Component id="fechaDateChooser" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="26" max="32767" attributes="0"/>
+                  <EmptySpace pref="29" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -150,11 +157,9 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="fechaFormattedTextField">
+        <Component class="com.toedter.calendar.JDateChooser" name="fechaDateChooser">
           <Properties>
-            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-              <Format format="dd/MM/yyyy" subtype="-1" type="1"/>
-            </Property>
+            <Property name="dateFormatString" type="java.lang.String" value="dd/MM/yyyy"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[150, 20]"/>
             </Property>
