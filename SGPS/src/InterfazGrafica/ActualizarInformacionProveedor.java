@@ -39,8 +39,9 @@ public class ActualizarInformacionProveedor extends javax.swing.JFrame {
         cancelarButton = new javax.swing.JButton();
         aceptarButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Actualizar Informacion Proveedor");
+        setAlwaysOnTop(true);
         setResizable(false);
 
         razonSocialPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese razon social del proveedor:"));

@@ -35,8 +35,9 @@ public class ActualizarInformacionInsumoScreen extends javax.swing.JFrame {
         cancelarButton = new javax.swing.JButton();
         aceptarButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Actualizar Informacion Insumo");
+        setAlwaysOnTop(true);
         setResizable(false);
 
         descripcionPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese la descripcion del insumo:"));

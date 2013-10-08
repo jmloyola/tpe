@@ -76,8 +76,9 @@ public class NuevoEmpleadoScreen extends javax.swing.JFrame {
         categoriaCampoObligatorioLabel = new javax.swing.JLabel();
         fechaIngresoDateChooser = new com.toedter.calendar.JDateChooser();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Nuevo Empleado");
+        setAlwaysOnTop(true);
         setMinimumSize(new java.awt.Dimension(500, 700));
         setPreferredSize(new java.awt.Dimension(500, 700));
         setResizable(false);

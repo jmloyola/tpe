@@ -32,8 +32,9 @@ public class BajaUsuarioSistemaScreen extends javax.swing.JFrame {
         cancelarButton = new javax.swing.JButton();
         aceptarButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Baja de Usuario del Sistema");
+        setAlwaysOnTop(true);
         setResizable(false);
 
         identificadorUsuarioSistemaPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese informacion del usuario del sistema a dar de baja:"));

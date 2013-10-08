@@ -37,8 +37,9 @@ public class BuscarStocksMensualesProductosTerminadosScreen extends javax.swing.
         salirButton = new javax.swing.JButton();
         aceptarButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Buscar Stocks Mensuales Productos Terminados");
+        setAlwaysOnTop(true);
         setResizable(false);
 
         parametroABuscarPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese el parametro y el valor por el que buscar:"));

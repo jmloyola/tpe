@@ -37,8 +37,9 @@ public class NuevoUsuarioSistemaScreen extends javax.swing.JFrame {
         AceptarButton = new javax.swing.JButton();
         cancelarButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Nuevo Usuario del Sistema");
+        setAlwaysOnTop(true);
         setResizable(false);
 
         informacionNuevoUsuarioSistemaPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese la informacion del nuevo usuario del sistema:"));

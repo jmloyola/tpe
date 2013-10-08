@@ -37,8 +37,9 @@ public class BuscarLotesScreen extends javax.swing.JFrame {
         salirButton = new javax.swing.JButton();
         imprimirButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Buscar Lotes");
+        setAlwaysOnTop(true);
         setResizable(false);
 
         parametroABuscarPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese el parametro y el valor por el que buscar:"));

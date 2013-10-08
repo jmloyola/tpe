@@ -46,8 +46,9 @@ public class ActualizarInformacionLoteScreen extends javax.swing.JFrame {
         cantidadDescarteUtilizadoFormattedTextField = new javax.swing.JFormattedTextField();
         cantidadDescarteUtilizadoLabel = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Actualizar Informacion Lote");
+        setAlwaysOnTop(true);
         setResizable(false);
 
         identificadorYFechaCreacionPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese identificador del lote:"));

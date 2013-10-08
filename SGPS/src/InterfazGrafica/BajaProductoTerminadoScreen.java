@@ -32,8 +32,9 @@ public class BajaProductoTerminadoScreen extends javax.swing.JFrame {
         cancelarButton = new javax.swing.JButton();
         aceptarButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Baja de Producto Terminado");
+        setAlwaysOnTop(true);
         setResizable(false);
 
         codificacionPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese la codificacion del producto terminado a dar de baja:"));

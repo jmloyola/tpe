@@ -32,8 +32,9 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
         cancelarButton = new javax.swing.JButton();
         aceptarButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Baja de Empleado");
+        setAlwaysOnTop(true);
         setResizable(false);
 
         numeroLegajoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese el numero de legajo del empleado a dar de baja:"));

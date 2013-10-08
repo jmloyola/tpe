@@ -36,8 +36,9 @@ public class ProduceScreen extends javax.swing.JFrame {
         cancelarButton = new javax.swing.JButton();
         aceptarButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Nueva Cantidad de Producto Terminado Producida por Lote");
+        setAlwaysOnTop(true);
         setResizable(false);
 
         informacionProducePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese la informacion del lote, producto terminado y cantidad producida correspondiente:"));

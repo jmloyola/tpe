@@ -36,8 +36,9 @@ public class EsUtilizadaScreen extends javax.swing.JFrame {
         cancelarButton = new javax.swing.JButton();
         aceptarButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Nueva Cantidad de Insumo Utilizada por Lote");
+        setAlwaysOnTop(true);
         setResizable(false);
 
         informacionEsUtilizadaPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese la informacion del lote, insumo y cantidad utilizada correspondiente:"));

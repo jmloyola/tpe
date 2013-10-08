@@ -38,8 +38,9 @@ public class AsignarLotesEtapasEmpleadosScreen extends javax.swing.JFrame {
         cancelarButton = new javax.swing.JButton();
         aceptarButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Asignar Lotes-Etapas-Empleados");
+        setAlwaysOnTop(true);
         setResizable(false);
 
         identificadorLoteLabel.setText("Identificador de Lote:");

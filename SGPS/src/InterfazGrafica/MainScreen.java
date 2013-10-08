@@ -8,13 +8,30 @@ package InterfazGrafica;
  *
  * @author Juan
  */
+
+import java.sql.*;
+import javax.swing.JOptionPane;
+import sgps.SGPS;
+import net.proteanit.sql.DbUtils;
+
 public class MainScreen extends javax.swing.JFrame {
+    
+    Connection conn = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;
 
     /**
      * Creates new form MainScreen
      */
     public MainScreen() {
         initComponents();
+        try {
+            Class.forName("org.postgresql.Driver");
+            conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "15613427");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e, "Error en conexion", JOptionPane.ERROR_MESSAGE);
+        }
+        usuarioActualLabel.setText("Usuario: " + SGPS.identificadorUsuarioActual);
     }
 
     /**
@@ -110,7 +127,7 @@ public class MainScreen extends javax.swing.JFrame {
         ayudaMenu = new javax.swing.JMenu();
         acercaDeMenuItem = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Sistema de Gestion de Produccion y Stock");
         setMinimumSize(new java.awt.Dimension(800, 600));
 
@@ -370,6 +387,11 @@ public class MainScreen extends javax.swing.JFrame {
         jScrollPane1.setViewportView(etapasTable);
 
         actualizarEtapasButton.setText("Actualizar");
+        actualizarEtapasButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarEtapasButtonActionPerformed(evt);
+            }
+        });
 
         imprimirEtapasButton.setText("Imprimir");
 
@@ -548,6 +570,11 @@ public class MainScreen extends javax.swing.JFrame {
         archivoMenu.add(separadorEntreEsquemasYCerrarSesion);
 
         cerrarSesionMenuItem.setText("Cerrar Sesion");
+        cerrarSesionMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cerrarSesionMenuItemActionPerformed(evt);
+            }
+        });
         archivoMenu.add(cerrarSesionMenuItem);
 
         mainScreenMenuBar.add(archivoMenu);
@@ -555,6 +582,7 @@ public class MainScreen extends javax.swing.JFrame {
         editarMenu.setText("Editar");
 
         preferenciasMenuItem.setText("Preferencias");
+        preferenciasMenuItem.setEnabled(false);
         editarMenu.add(preferenciasMenuItem);
 
         mainScreenMenuBar.add(editarMenu);
@@ -578,6 +606,11 @@ public class MainScreen extends javax.swing.JFrame {
         ayudaMenu.setText("Ayuda");
 
         acercaDeMenuItem.setText("Acerca De");
+        acercaDeMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                acercaDeMenuItemActionPerformed(evt);
+            }
+        });
         ayudaMenu.add(acercaDeMenuItem);
 
         mainScreenMenuBar.add(ayudaMenu);
@@ -610,6 +643,30 @@ public class MainScreen extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(816, 644));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cerrarSesionMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarSesionMenuItemActionPerformed
+        SGPS.identificadorUsuarioActual = null;
+        SGPS.nivelUsuarioActual = -1;
+        this.dispose();
+        LoginScreen loginScreen = new LoginScreen();
+        loginScreen.setVisible(true);
+    }//GEN-LAST:event_cerrarSesionMenuItemActionPerformed
+
+    private void acercaDeMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acercaDeMenuItemActionPerformed
+        AcercaDeScreen acercaDeScreen = new AcercaDeScreen();
+        acercaDeScreen.setVisible(true);
+    }//GEN-LAST:event_acercaDeMenuItemActionPerformed
+
+    private void actualizarEtapasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarEtapasButtonActionPerformed
+        try{
+            String sql = "SELECT * FROM Etapas";
+            pst = conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            etapasTable.setModel(DbUtils.resultSetToTableModel(rs));
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e, "Error al Actualizar Tabla de Etapas", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_actualizarEtapasButtonActionPerformed
 
     /**
      * @param args the command line arguments

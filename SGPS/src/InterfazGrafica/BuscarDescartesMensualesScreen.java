@@ -37,8 +37,9 @@ public class BuscarDescartesMensualesScreen extends javax.swing.JFrame {
         salirButton = new javax.swing.JButton();
         imprimirButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Buscar Descartes Mensuales");
+        setAlwaysOnTop(true);
         setResizable(false);
 
         fechaDescartePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese el parametro y valor por el que buscar:"));

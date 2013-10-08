@@ -34,8 +34,9 @@ public class DespacharProductoTerminadoScreen extends javax.swing.JFrame {
         cancelarButton = new javax.swing.JButton();
         aceptarButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Despachar Producto Terminado");
+        setAlwaysOnTop(true);
         setResizable(false);
 
         informacionProductoTerminadoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese la informacion del producto terminado a despachar:"));

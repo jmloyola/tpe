@@ -36,8 +36,9 @@ public class ProveeInsumosScreen extends javax.swing.JFrame {
         cancelarButton = new javax.swing.JButton();
         aceptarButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Nueva Provision de Insumo");
+        setAlwaysOnTop(true);
         setResizable(false);
 
         informacionProvisionPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese la informacion de la nueva provision de insumo:"));

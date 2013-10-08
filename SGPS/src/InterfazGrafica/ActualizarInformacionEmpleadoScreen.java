@@ -51,8 +51,9 @@ public class ActualizarInformacionEmpleadoScreen extends javax.swing.JFrame {
         sueldoFormattedTextField = new javax.swing.JFormattedTextField();
         cantidadHijosFormattedTextField = new javax.swing.JFormattedTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Actualizar Informacion Empleado");
+        setAlwaysOnTop(true);
         setResizable(false);
 
         cancelarButton.setText("Cancelar");
