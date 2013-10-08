@@ -33,6 +33,45 @@ public class MainScreen extends javax.swing.JFrame {
         }
         usuarioActualLabel.setText("Usuario: " + SGPS.identificadorUsuarioActual);
     }
+    
+    public void updateEtapasTable(){
+        try{
+            String sql = "SELECT etapa_descripcion AS \"Descripcion\" FROM Etapas";
+            pst = conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            etapasTable.setModel(DbUtils.resultSetToTableModel(rs));
+            etapasTable.setEnabled(false);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e, "Error al Actualizar Tabla de Etapas", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void updateEmpleadosTable(){
+        try{
+            String sql = "SELECT e_nombre AS \"Nombre\","
+                              + "e_dni AS \"DNI\","
+                              + "e_telefono AS \"Telefono\","
+                              + "e_fechaingreso AS \"Fecha Ingreso\","
+                              + "e_numerolegajo AS \"Numero Legajo\","
+                              + "e_sueldo AS \"Sueldo\","
+                              + "e_cuil AS \"CUIL\","
+                              + "e_estadocivil AS \"Estado Civil\","
+                              + "e_cantidadhijos AS \"Cantidad Hijos\","
+                              + "e_domicilio AS \"Domicilio\","
+                              + "e_codigopostal AS \"Codigo Postal\","
+                              + "e_paisresidencia AS \"Pais Residencia\","
+                              + "e_provinciaresidencia AS \"Provincia Residencia\","
+                              + "e_ciudadresidencia AS \"Ciudad Residencia\","
+                              + "e_categoria AS \"Categoria\","
+                              + "e_estado AS \"Estado\" FROM empleados";
+            pst = conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            etapasTable.setModel(DbUtils.resultSetToTableModel(rs));
+            etapasTable.setEnabled(false);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e, "Error al Actualizar Tabla de Empleados", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -299,6 +338,11 @@ public class MainScreen extends javax.swing.JFrame {
         solapasTabbedPane.addTab("Procutos Terminados", solapaProductosTerminadosPane);
 
         actualizarTablaSolapaEmpleadosButton.setText("Actualizar");
+        actualizarTablaSolapaEmpleadosButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarTablaSolapaEmpleadosButtonActionPerformed(evt);
+            }
+        });
 
         empleadosTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -658,15 +702,12 @@ public class MainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_acercaDeMenuItemActionPerformed
 
     private void actualizarEtapasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarEtapasButtonActionPerformed
-        try{
-            String sql = "SELECT * FROM Etapas";
-            pst = conn.prepareStatement(sql);
-            rs = pst.executeQuery();
-            etapasTable.setModel(DbUtils.resultSetToTableModel(rs));
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(this, e, "Error al Actualizar Tabla de Etapas", JOptionPane.ERROR_MESSAGE);
-        }
+        updateEtapasTable();
     }//GEN-LAST:event_actualizarEtapasButtonActionPerformed
+
+    private void actualizarTablaSolapaEmpleadosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarTablaSolapaEmpleadosButtonActionPerformed
+        updateEmpleadosTable();
+    }//GEN-LAST:event_actualizarTablaSolapaEmpleadosButtonActionPerformed
 
     /**
      * @param args the command line arguments
