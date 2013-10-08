@@ -11,6 +11,7 @@ package InterfazGrafica;
 
 import java.sql.*;
 import javax.swing.JOptionPane;
+import sgps.SGPS;
 
 public class LoginScreen extends javax.swing.JFrame {
     
@@ -26,7 +27,7 @@ public class LoginScreen extends javax.swing.JFrame {
         try{
             Class.forName("org.postgresql.Driver");
             conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "15613427");
-        } catch(ClassNotFoundException | SQLException e){
+        } catch(Exception e){
             JOptionPane.showMessageDialog(this, e, "Error en conexion", JOptionPane.ERROR_MESSAGE);
         }
     }
@@ -122,7 +123,8 @@ public class LoginScreen extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pack();
+        setSize(new java.awt.Dimension(201, 135));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void salirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirButtonActionPerformed
@@ -130,16 +132,28 @@ public class LoginScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_salirButtonActionPerformed
 
     private void ingresarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarButtonActionPerformed
-        //String sql = "SELECT * FROM usuariosdelsistema WHERE us_identificador = " + usuarioTextField.getText() + " us_password = " + passwordField.getPassword();
-        String sql = "SELECT * FROM usuariosdelsistema";
+        
+        String sql = "SELECT * FROM usuariosdelsistema WHERE us_identificador = ? AND us_password = ?";
         
         try{
             pst = conn.prepareStatement(sql);
+            pst.setString(1, usuarioTextField.getText());
+            pst.setString(2, passwordField.getText());
             
             rs = pst.executeQuery();
-            
-            while(rs.next()){
-                JOptionPane.showMessageDialog(this, rs.getString("us_identificador"), "Resultado Consulta", JOptionPane.INFORMATION_MESSAGE);
+    
+            if (rs.next()){
+                JOptionPane.showMessageDialog(this, "Entro exitosamente");
+                SGPS.identificadorUsuarioActual = rs.getString("us_identificador");
+                conn.close();
+                this.dispose();
+                MainScreen mainScreen = new MainScreen();
+                mainScreen.setVisible(true);
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos");
+                usuarioTextField.setText("");
+                passwordField.setText("");
             }
         }catch(Exception e){
             

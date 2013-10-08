@@ -153,7 +153,8 @@ public class BuscarStocksMensualesProductosTerminadosScreen extends javax.swing.
                 .addContainerGap())
         );
 
-        pack();
+        setSize(new java.awt.Dimension(747, 636));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**

@@ -132,7 +132,8 @@ public class NuevoUsuarioSistemaScreen extends javax.swing.JFrame {
                     .addComponent(cancelarButton)))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(285, 195));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**

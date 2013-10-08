@@ -12,6 +12,9 @@ import javax.swing.UIManager;
  * @author Juan
  */
 public class SGPS {
+    
+    public static String identificadorUsuarioActual = null;
+    public static int nivelUsuarioActual = -1;
 
     /**
      * @param args the command line arguments
@@ -23,7 +26,9 @@ public class SGPS {
         catch(Exception e){
             e.printStackTrace();
         }
+
         LoginScreen loginScreen = new LoginScreen();
-        loginScreen.setVisible(true);
+        loginScreen.setVisible(true);                
+        
     }
 }

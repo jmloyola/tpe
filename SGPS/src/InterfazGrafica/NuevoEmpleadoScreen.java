@@ -273,9 +273,9 @@ public class NuevoEmpleadoScreen extends javax.swing.JFrame {
                     .addComponent(telefonoCampoObligatorioLabel))
                 .addGap(18, 18, 18)
                 .addGroup(valoresAIngresarEmpleadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(valoresAIngresarEmpleadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(fechaIngresoEmpleadoLabel)
-                        .addComponent(fechaIngresoCampoObligatorioLabel))
+                    .addGroup(valoresAIngresarEmpleadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(fechaIngresoCampoObligatorioLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(fechaIngresoEmpleadoLabel))
                     .addComponent(fechaIngresoDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(valoresAIngresarEmpleadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -362,7 +362,8 @@ public class NuevoEmpleadoScreen extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pack();
+        setSize(new java.awt.Dimension(525, 735));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
