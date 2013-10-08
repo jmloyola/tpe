@@ -1,4 +1,4 @@
-
+﻿
 CREATE TABLE Empleados(
 	E_Nombre	VARCHAR (50)	NOT NULL,
 	E_DNI	INT	NOT NULL	UNIQUE,
