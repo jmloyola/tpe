@@ -154,6 +154,7 @@ public class LoginScreen extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos");
                 usuarioTextField.setText("");
                 passwordField.setText("");
+                
             }
         }catch(Exception e){
             

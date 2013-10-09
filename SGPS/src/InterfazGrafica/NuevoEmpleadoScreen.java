@@ -362,7 +362,7 @@ public class NuevoEmpleadoScreen extends javax.swing.JFrame {
                     .addComponent(categoriaLabel)
                     .addComponent(categoriaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(categoriaCampoObligatorioLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(referenciaCamposObligatoriosLabel))
         );
 
@@ -370,30 +370,30 @@ public class NuevoEmpleadoScreen extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(valoresAIngresarEmpleadoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(aceptarNuevoEmpleadoButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cancelarNuevoEmpleadoButton)
-                .addGap(12, 12, 12))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(valoresAIngresarEmpleadoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(valoresAIngresarEmpleadoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(aceptarNuevoEmpleadoButton)
-                    .addComponent(cancelarNuevoEmpleadoButton))
+                    .addComponent(cancelarNuevoEmpleadoButton)
+                    .addComponent(aceptarNuevoEmpleadoButton))
                 .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(398, 735));
+        setSize(new java.awt.Dimension(398, 696));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -488,6 +488,7 @@ public class NuevoEmpleadoScreen extends javax.swing.JFrame {
                                                                         this.dispose();
                                                                         
                                                                     }catch(SQLException e){
+                                                                        // TODO
                                                                         // Luego se deberia cambiar y colocar un mensaje personalizado dependiendo del codigo del error.
                                                                         JOptionPane.showMessageDialog(this, e, "Error al dar de alta nuevo empleado", JOptionPane.ERROR_MESSAGE);
                                                                     }
