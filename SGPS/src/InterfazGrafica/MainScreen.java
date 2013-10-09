@@ -10,6 +10,7 @@ package InterfazGrafica;
  */
 
 import java.sql.*;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
 import sgps.SGPS;
 import net.proteanit.sql.DbUtils;
@@ -27,11 +28,16 @@ public class MainScreen extends javax.swing.JFrame {
         initComponents();
         try {
             Class.forName("org.postgresql.Driver");
-            conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "15613427");
+            conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "root");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e, "Error en conexion", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, e, "Error en conexion", JOptionPane.ERROR_MESSAGE);
         }
         usuarioActualLabel.setText("Usuario: " + SGPS.identificadorUsuarioActual);
+        updateEtapasTable();
+        updateEmpleadosTable();
+        updateInsumosTable();
+        updateProductosTerminadosTable();
+        updateLotesTable();
     }
     
     public void updateEtapasTable(){
@@ -66,12 +72,91 @@ public class MainScreen extends javax.swing.JFrame {
                               + "e_estado AS \"Estado\" FROM empleados";
             pst = conn.prepareStatement(sql);
             rs = pst.executeQuery();
-            etapasTable.setModel(DbUtils.resultSetToTableModel(rs));
-            etapasTable.setEnabled(false);
+            empleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
+            empleadosTable.setEnabled(false);
         }catch(Exception e){
             JOptionPane.showMessageDialog(this, e, "Error al Actualizar Tabla de Empleados", JOptionPane.ERROR_MESSAGE);
         }
     }
+    
+    public void updateInsumosTable(){
+        try{
+            String sql = "SELECT I_Descripcion_CaracterizadoEn AS \"Descripcion\","
+                             + " SM_I_Inicio AS \"Inicio\","
+                             + " SM_I_Ingreso AS \"Ingreso\","
+                             + " SM_I_Egreso AS \"Egreso\","
+                             + " SM_I_CantidadCalculada AS \"Cantidad Calculada\","
+                             + " SM_I_CantidadReal AS \"Cantidad Real\","
+                             + " SM_I_Diferencia AS \"Diferencia\" "
+                        + "FROM StocksMensualesInsumos "
+                        + "WHERE SM_I_Fecha = ?";
+            pst = conn.prepareStatement(sql);
+            
+            Calendar calendarioActual = Calendar.getInstance();
+            calendarioActual.set(Calendar.DAY_OF_MONTH, 1);
+                                    
+            java.util.Date today = new java.util.Date(calendarioActual.getTimeInMillis());
+            java.sql.Date fechaActual = new java.sql.Date(today.getTime());
+            
+            pst.setDate(1,fechaActual);
+            
+            rs = pst.executeQuery();
+            insumosTable.setModel(DbUtils.resultSetToTableModel(rs));
+            insumosTable.setEnabled(false);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e, "Error al Actualizar Tabla de Insumos", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+        
+     
+    public void updateProductosTerminadosTable(){
+        try{
+            String sql = "SELECT PT_Codificacion_CaracterizadoEn_PT AS \"Codificacion\","
+                             + " SM_PT_Inicio AS \"Inicio\","
+                             + " SM_PT_Ingreso AS \"Ingreso\","
+                             + " SM_PT_Egreso AS \"Egreso\","
+                             + " SM_PT_CantidadCalculada AS \"Cantidad Calculada\","
+                             + " SM_PT_CantidadReal AS \"Cantidad Real\","
+                             + " SM_PT_Diferencia AS \"Diferencia\" "
+                        + "FROM StocksMensualesProductosTerminados "
+                        + "WHERE SM_PT_Fecha = ?";
+            pst = conn.prepareStatement(sql);
+            
+            Calendar calendarioActual = Calendar.getInstance();
+            calendarioActual.set(Calendar.DAY_OF_MONTH, 1);
+                                    
+            java.util.Date today = new java.util.Date(calendarioActual.getTimeInMillis());
+            java.sql.Date fechaActual = new java.sql.Date(today.getTime());
+            
+            pst.setDate(1,fechaActual);
+            
+            rs = pst.executeQuery();
+            productosTerminadosTable.setModel(DbUtils.resultSetToTableModel(rs));
+            productosTerminadosTable.setEnabled(false);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e, "Error al Actualizar Tabla de Insumos", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+        
+    public void updateLotesTable(){
+        try{
+            String sql = "SELECT L_Identificador AS \"Identificador\","
+                             + " L_FechaCreacion AS \"Fecha Creacion\","
+                             + " L_CantidadDescarteUtilizado AS \"Cantidad Descarte Utilizada\" "
+                        + "FROM Lotes "
+                        + "WHERE L_Estado = ?";
+            pst = conn.prepareStatement(sql);
+            
+            
+            pst.setInt(1, 0); //Lotes en procesamiento
+            
+            rs = pst.executeQuery();
+            lotesTable.setModel(DbUtils.resultSetToTableModel(rs));
+            lotesTable.setEnabled(false);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e, "Error al Actualizar Tabla de Insumos", JOptionPane.ERROR_MESSAGE);
+        }
+    }        
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -173,6 +258,11 @@ public class MainScreen extends javax.swing.JFrame {
         usuarioActualLabel.setText("Usuario: ");
 
         actualizarTablaSolapaLotesButton.setText("Actualizar");
+        actualizarTablaSolapaLotesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarTablaSolapaLotesButtonActionPerformed(evt);
+            }
+        });
 
         lotesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -218,6 +308,11 @@ public class MainScreen extends javax.swing.JFrame {
         solapasTabbedPane.addTab("Lotes", solapaLotesPane);
 
         actualizarTablaSolapaInsumosButton.setText("Actualizar");
+        actualizarTablaSolapaInsumosButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarTablaSolapaInsumosButtonActionPerformed(evt);
+            }
+        });
 
         insumosTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -278,6 +373,11 @@ public class MainScreen extends javax.swing.JFrame {
         solapasTabbedPane.addTab("Insumos", solapaInsumosPane);
 
         actualizarTablaSolapaProductosTerminadosButton.setText("Actualizar");
+        actualizarTablaSolapaProductosTerminadosButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarTablaSolapaProductosTerminadosButtonActionPerformed(evt);
+            }
+        });
 
         productosTerminadosTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -708,6 +808,18 @@ public class MainScreen extends javax.swing.JFrame {
     private void actualizarTablaSolapaEmpleadosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarTablaSolapaEmpleadosButtonActionPerformed
         updateEmpleadosTable();
     }//GEN-LAST:event_actualizarTablaSolapaEmpleadosButtonActionPerformed
+
+    private void actualizarTablaSolapaInsumosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarTablaSolapaInsumosButtonActionPerformed
+        updateInsumosTable();
+    }//GEN-LAST:event_actualizarTablaSolapaInsumosButtonActionPerformed
+
+    private void actualizarTablaSolapaProductosTerminadosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarTablaSolapaProductosTerminadosButtonActionPerformed
+        updateProductosTerminadosTable();
+    }//GEN-LAST:event_actualizarTablaSolapaProductosTerminadosButtonActionPerformed
+
+    private void actualizarTablaSolapaLotesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarTablaSolapaLotesButtonActionPerformed
+        updateLotesTable();
+    }//GEN-LAST:event_actualizarTablaSolapaLotesButtonActionPerformed
 
     /**
      * @param args the command line arguments

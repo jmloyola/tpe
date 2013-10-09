@@ -26,7 +26,7 @@ public class LoginScreen extends javax.swing.JFrame {
         initComponents();
         try{
             Class.forName("org.postgresql.Driver");
-            conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "15613427");
+            conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "root");
         } catch(Exception e){
             JOptionPane.showMessageDialog(this, e, "Error en conexion", JOptionPane.ERROR_MESSAGE);
         }
