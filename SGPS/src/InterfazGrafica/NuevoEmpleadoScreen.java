@@ -4,17 +4,36 @@
  */
 package InterfazGrafica;
 
+import java.math.BigDecimal;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Juan
  */
 public class NuevoEmpleadoScreen extends javax.swing.JFrame {
 
+    Connection conn = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;
+    
+    
     /**
      * Creates new form NuevoEmpleadoScreen
      */
     public NuevoEmpleadoScreen() {
         initComponents();
+        try {
+            Class.forName("org.postgresql.Driver");
+            conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "root");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error en conexion", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     /**
@@ -91,6 +110,11 @@ public class NuevoEmpleadoScreen extends javax.swing.JFrame {
         });
 
         aceptarNuevoEmpleadoButton.setText("Aceptar");
+        aceptarNuevoEmpleadoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aceptarNuevoEmpleadoButtonActionPerformed(evt);
+            }
+        });
 
         valoresAIngresarEmpleadoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ingrese la informacion del nuevo empleado:", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
@@ -254,7 +278,7 @@ public class NuevoEmpleadoScreen extends javax.swing.JFrame {
                             .addComponent(fechaIngresoCampoObligatorioLabel)
                             .addComponent(numeroLegajoCampoObligatorioLabel)))
                     .addComponent(referenciaCamposObligatoriosLabel))
-                .addContainerGap(147, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         valoresAIngresarEmpleadoPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cantidadHijosFormattedTextField, categoriaComboBox, ciudadResidenciaTextField, codigoPostalFormattedTextField, cuilTextField, dniFormattedTextField, domicilioTextField, estadoCivilComboBox, fechaIngresoDateChooser, nombreTextField, numeroLegajoFormattedTextField, paisResidenciaTextField, provinciaResidenciaTextField, sueldoFormattedTextField, telefonoFormattedTextField});
@@ -346,15 +370,16 @@ public class NuevoEmpleadoScreen extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(valoresAIngresarEmpleadoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(345, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(aceptarNuevoEmpleadoButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cancelarNuevoEmpleadoButton)
                 .addGap(12, 12, 12))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(valoresAIngresarEmpleadoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -368,13 +393,165 @@ public class NuevoEmpleadoScreen extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(525, 735));
+        setSize(new java.awt.Dimension(398, 735));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cancelarNuevoEmpleadoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarNuevoEmpleadoButtonActionPerformed
         this.dispose();
     }//GEN-LAST:event_cancelarNuevoEmpleadoButtonActionPerformed
+
+    private void aceptarNuevoEmpleadoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarNuevoEmpleadoButtonActionPerformed
+        if (!nombreTextField.getText().equals("")){
+            if (!dniFormattedTextField.getText().equals("")){
+                if (!telefonoFormattedTextField.getText().equals("")){
+                    if (fechaIngresoDateChooser.getDate() != null){
+                        if (!numeroLegajoFormattedTextField.getText().equals("")){
+                            if (!sueldoFormattedTextField.getText().equals("")){
+                                if (!cuilTextField.getText().equals("")){
+                                    if (estadoCivilComboBox.getSelectedIndex() >= 0){
+                                        if (!cantidadHijosFormattedTextField.getText().equals("")){
+                                            if (!domicilioTextField.getText().equals("")){
+                                                if (!codigoPostalFormattedTextField.getText().equals("")){
+                                                    if (!paisResidenciaTextField.getText().equals("")){
+                                                        if (!provinciaResidenciaTextField.getText().equals("")){
+                                                            if (!ciudadResidenciaTextField.getText().equals("")){
+                                                                if (categoriaComboBox.getSelectedIndex() >= 0){
+                                                                    //codigo para dar el empleado de alta
+                                                                    try{
+                                                                        String sql = "INSERT INTO empleados(" +
+                                                                                    "e_nombre, e_dni, e_telefono, e_fechaingreso, e_numerolegajo, " +
+                                                                                    "e_sueldo, e_cuil, e_estadocivil, e_cantidadhijos, e_domicilio, " +
+                                                                                    "e_codigopostal, e_paisresidencia, e_provinciaresidencia, e_ciudadresidencia, " +
+                                                                                    "e_categoria, e_estado)" +
+                                                                                    "    VALUES (?, ?, ?, ?, ?, " +
+                                                                                    "            ?, ?, ?, ?, ?, " +
+                                                                                    "            ?, ?, ?, ?, " +
+                                                                                    "            ?, ?);";
+                                                                        pst = conn.prepareStatement(sql);
+                                                                        pst.setString(1, nombreTextField.getText());
+                                                                        pst.setInt(2, Integer.parseInt(dniFormattedTextField.getText()));
+                                                                        pst.setInt(3, Integer.parseInt(telefonoFormattedTextField.getText()));
+                                                                        // Preparo fecha
+                                                                        java.sql.Date fechaIngresoSql = new java.sql.Date(fechaIngresoDateChooser.getDate().getTime());
+                                                                        pst.setDate(4, fechaIngresoSql);
+                                                                        pst.setInt(5, Integer.parseInt(numeroLegajoFormattedTextField.getText()));
+                                                                        //pst.setFloat(6, Float.parseFloat(sueldoFormattedTextField.getText()));
+                                                                        pst.setFloat(6, ((Number)sueldoFormattedTextField.getValue()).floatValue());
+                                                                        pst.setString(7, cuilTextField.getText());
+                                                                        switch(estadoCivilComboBox.getSelectedIndex()){
+                                                                            case 0:
+                                                                                pst.setString(8, "Soltero");
+                                                                                break;
+                                                                            case 1:
+                                                                                pst.setString(8, "Casado");
+                                                                                break;
+                                                                            case 2:
+                                                                                pst.setString(8, "Divorciado");
+                                                                                break;
+                                                                            case 3:
+                                                                                pst.setString(8, "Viudo");
+                                                                                break;
+                                                                        }
+                                                                        pst.setInt(9, Integer.parseInt(cantidadHijosFormattedTextField.getText()));
+                                                                        pst.setString(10, domicilioTextField.getText());
+                                                                        pst.setInt(11, Integer.parseInt(codigoPostalFormattedTextField.getText()));
+                                                                        pst.setString(12, paisResidenciaTextField.getText());
+                                                                        pst.setString(13, provinciaResidenciaTextField.getText());
+                                                                        pst.setString(14, ciudadResidenciaTextField.getText());
+                                                                        switch(categoriaComboBox.getSelectedIndex()){
+                                                                            case 0:
+                                                                                pst.setString(15, "Categoria A");
+                                                                                break;
+                                                                            case 1:
+                                                                                pst.setString(15, "Categoria B");
+                                                                                break;
+                                                                            case 2:
+                                                                                pst.setString(15, "Categoria A1");
+                                                                                break;
+                                                                            case 3:
+                                                                                pst.setString(15, "Categoria A2");
+                                                                                break;
+                                                                            case 4:
+                                                                                pst.setString(15, "Operario Laboratorio Categoria A");
+                                                                                break;
+                                                                            case 5:
+                                                                                pst.setString(15, "Operario Laboratorio Categoria A1");
+                                                                                break;
+                                                                            case 6:
+                                                                                pst.setString(15, "Encargado");
+                                                                                break;
+                                                                        }
+                                                                        pst.setString(16, "Activo");
+                                                                        pst.execute();
+                                                                        JOptionPane.showMessageDialog(this, "El nuevo empleado fue ingresado exitosamente", "Alta de empleado exitosa", JOptionPane.INFORMATION_MESSAGE);
+                                                                        this.dispose();
+                                                                        
+                                                                    }catch(SQLException e){
+                                                                        // Luego se deberia cambiar y colocar un mensaje personalizado dependiendo del codigo del error.
+                                                                        JOptionPane.showMessageDialog(this, e, "Error al dar de alta nuevo empleado", JOptionPane.ERROR_MESSAGE);
+                                                                    }
+                                                                }
+                                                                else{
+                                                                    JOptionPane.showMessageDialog(this, "La categoria del empleado no puede ser vacia.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
+                                                                }
+                                                            }
+                                                            else{
+                                                                JOptionPane.showMessageDialog(this, "La ciudad de residencia del empleado no puede ser vacia.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
+                                                            }
+                                                        }
+                                                        else{
+                                                            JOptionPane.showMessageDialog(this, "La provincia de residencia del empleado no puede ser vacia.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
+                                                        }
+                                                    }
+                                                    else{
+                                                        JOptionPane.showMessageDialog(this, "El pais de residencia del empleado no puede ser vacio.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
+                                                    }
+                                                }
+                                                else{
+                                                    JOptionPane.showMessageDialog(this, "El codigo postal del empleado no puede ser vacio.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
+                                                }
+                                            }
+                                            else{
+                                                JOptionPane.showMessageDialog(this, "El domicilio del empleado no puede ser vacio.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
+                                            }
+                                        }
+                                        else{
+                                            JOptionPane.showMessageDialog(this, "La cantidad de hijos del empleado no puede ser vacia.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
+                                        }
+                                    }
+                                    else{
+                                        JOptionPane.showMessageDialog(this, "El estado civil del empleado no puede ser vacio.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
+                                    }
+                                }
+                                else{
+                                    JOptionPane.showMessageDialog(this, "El CUIL del empleado no puede ser vacio.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
+                                }
+                            }
+                            else{
+                                JOptionPane.showMessageDialog(this, "El sueldo del empleado no puede ser vacio.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
+                            }
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(this, "El numero de legajo del empleado no puede ser vacio.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
+                        }
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(this, "La fecha de ingreso del empleado no puede ser vacia.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+                else{
+                    JOptionPane.showMessageDialog(this, "El telefono del empleado no puede ser vacio.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "El DNI del empleado no puede ser vacio.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "El nombre del empleado no puede ser vacio.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_aceptarNuevoEmpleadoButtonActionPerformed
 
     /**
      * @param args the command line arguments

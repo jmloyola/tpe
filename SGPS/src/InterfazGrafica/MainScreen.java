@@ -42,7 +42,7 @@ public class MainScreen extends javax.swing.JFrame {
     
     public void updateEtapasTable(){
         try{
-            String sql = "SELECT etapa_descripcion AS \"Descripcion\" FROM Etapas";
+            String sql = "SELECT etapa_descripcion AS \"Descripcion\" FROM Etapas WHERE Etapa_Activo = 'true'";
             pst = conn.prepareStatement(sql);
             rs = pst.executeQuery();
             etapasTable.setModel(DbUtils.resultSetToTableModel(rs));
@@ -69,7 +69,9 @@ public class MainScreen extends javax.swing.JFrame {
                               + "e_provinciaresidencia AS \"Provincia Residencia\","
                               + "e_ciudadresidencia AS \"Ciudad Residencia\","
                               + "e_categoria AS \"Categoria\","
-                              + "e_estado AS \"Estado\" FROM empleados";
+                              + "e_estado AS \"Estado\" "
+                        + "FROM empleados "
+                        + "WHERE E_Estado <> 'Despedido'";
             pst = conn.prepareStatement(sql);
             rs = pst.executeQuery();
             empleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
