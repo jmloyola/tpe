@@ -122,6 +122,11 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
         jScrollPane1.setViewportView(resultadoBusquedaEmpleadosTable);
 
         salirButton.setText("Salir");
+        salirButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirButtonActionPerformed(evt);
+            }
+        });
 
         imprimirButton.setText("Imprimir");
 
@@ -146,7 +151,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(parametroABucarPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(salirButton)
@@ -157,6 +162,10 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(969, 522));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void salirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirButtonActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_salirButtonActionPerformed
 
     /**
      * @param args the command line arguments

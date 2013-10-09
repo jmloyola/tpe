@@ -78,6 +78,11 @@ public class ActualizarInformacionInsumoScreen extends javax.swing.JFrame {
         limitePedidoFormattedTextField.setPreferredSize(new java.awt.Dimension(100, 20));
 
         cancelarButton.setText("Cancelar");
+        cancelarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarButtonActionPerformed(evt);
+            }
+        });
 
         aceptarButton.setText("Aceptar");
 
@@ -121,6 +126,10 @@ public class ActualizarInformacionInsumoScreen extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(351, 188));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarButtonActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_cancelarButtonActionPerformed
 
     /**
      * @param args the command line arguments

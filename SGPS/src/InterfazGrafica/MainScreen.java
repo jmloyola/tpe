@@ -577,15 +577,35 @@ public class MainScreen extends javax.swing.JFrame {
         empleadosMenu.setText("Empleados");
 
         nuevoEmpleadoMenuItem.setText("Nuevo Empleado");
+        nuevoEmpleadoMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuevoEmpleadoMenuItemActionPerformed(evt);
+            }
+        });
         empleadosMenu.add(nuevoEmpleadoMenuItem);
 
         actualizarInformacionEmpleadoMenuItem.setText("Actualizar Informacion Empleado");
+        actualizarInformacionEmpleadoMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarInformacionEmpleadoMenuItemActionPerformed(evt);
+            }
+        });
         empleadosMenu.add(actualizarInformacionEmpleadoMenuItem);
 
         buscarEmpleadosMenuItem.setText("Buscar Empleados");
+        buscarEmpleadosMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarEmpleadosMenuItemActionPerformed(evt);
+            }
+        });
         empleadosMenu.add(buscarEmpleadosMenuItem);
 
         darBajaEmpleadoMenuItem.setText("Dar de Baja Empleado");
+        darBajaEmpleadoMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                darBajaEmpleadoMenuItemActionPerformed(evt);
+            }
+        });
         empleadosMenu.add(darBajaEmpleadoMenuItem);
 
         nuevoAccidenteMenuItem.setText("Nuevo Accidente");
@@ -605,9 +625,19 @@ public class MainScreen extends javax.swing.JFrame {
         usuariosSistemaMenu.setText("Usuarios del Sistema");
 
         nuevoUsuarioSistemaMenuItem.setText("Nuevo Usuario del Sistema");
+        nuevoUsuarioSistemaMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuevoUsuarioSistemaMenuItemActionPerformed(evt);
+            }
+        });
         usuariosSistemaMenu.add(nuevoUsuarioSistemaMenuItem);
 
         darBajaUsuarioSistemaMenuItem.setText("Dar de Baja Usuario del Sistema");
+        darBajaUsuarioSistemaMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                darBajaUsuarioSistemaMenuItemActionPerformed(evt);
+            }
+        });
         usuariosSistemaMenu.add(darBajaUsuarioSistemaMenuItem);
 
         archivoMenu.add(usuariosSistemaMenu);
@@ -615,12 +645,27 @@ public class MainScreen extends javax.swing.JFrame {
         proveedoresMenu.setText("Proveedores");
 
         nuevoProveedorMenuItem.setText("Nuevo Proveedor");
+        nuevoProveedorMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuevoProveedorMenuItemActionPerformed(evt);
+            }
+        });
         proveedoresMenu.add(nuevoProveedorMenuItem);
 
         actualizarInformacionProveedorMenuItem.setText("Actualizar Informacion Proveedor");
+        actualizarInformacionProveedorMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarInformacionProveedorMenuItemActionPerformed(evt);
+            }
+        });
         proveedoresMenu.add(actualizarInformacionProveedorMenuItem);
 
         darBajaProveedorMenuItem.setText("Dar de Baja Proveedor");
+        darBajaProveedorMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                darBajaProveedorMenuItemActionPerformed(evt);
+            }
+        });
         proveedoresMenu.add(darBajaProveedorMenuItem);
 
         archivoMenu.add(proveedoresMenu);
@@ -628,15 +673,35 @@ public class MainScreen extends javax.swing.JFrame {
         insumosMenu.setText("Insumos");
 
         nuevoInsumoMenuItem.setText("Nuevo Insumo");
+        nuevoInsumoMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuevoInsumoMenuItemActionPerformed(evt);
+            }
+        });
         insumosMenu.add(nuevoInsumoMenuItem);
 
         actualizarInformacionInsumoMenuItem.setText("Actualizar Informacion Insumo");
+        actualizarInformacionInsumoMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarInformacionInsumoMenuItemActionPerformed(evt);
+            }
+        });
         insumosMenu.add(actualizarInformacionInsumoMenuItem);
 
         buscarInsumosMenuItem.setText("Buscar Insumos");
+        buscarInsumosMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarInsumosMenuItemActionPerformed(evt);
+            }
+        });
         insumosMenu.add(buscarInsumosMenuItem);
 
         darBajaInsumoMenuItem.setText("Dar de Baja Insumo");
+        darBajaInsumoMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                darBajaInsumoMenuItemActionPerformed(evt);
+            }
+        });
         insumosMenu.add(darBajaInsumoMenuItem);
 
         archivoMenu.add(insumosMenu);
@@ -644,15 +709,35 @@ public class MainScreen extends javax.swing.JFrame {
         productosTerminadosMenu.setText("Productos Terminados");
 
         nuevoProductoTerminadoMenuItem.setText("Nuevo Producto Terminado");
+        nuevoProductoTerminadoMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuevoProductoTerminadoMenuItemActionPerformed(evt);
+            }
+        });
         productosTerminadosMenu.add(nuevoProductoTerminadoMenuItem);
 
         buscarProductosTerminadosMenuItem.setText("Buscar Productos Terminados");
+        buscarProductosTerminadosMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarProductosTerminadosMenuItemActionPerformed(evt);
+            }
+        });
         productosTerminadosMenu.add(buscarProductosTerminadosMenuItem);
 
         darBajaProductoTerminadoMenuItem.setText("Dar de Baja Producto Terminado");
+        darBajaProductoTerminadoMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                darBajaProductoTerminadoMenuItemActionPerformed(evt);
+            }
+        });
         productosTerminadosMenu.add(darBajaProductoTerminadoMenuItem);
 
         despacharProductoTerminadoMenuItem.setText("Despachar Producto Terminado");
+        despacharProductoTerminadoMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                despacharProductoTerminadoMenuItemActionPerformed(evt);
+            }
+        });
         productosTerminadosMenu.add(despacharProductoTerminadoMenuItem);
 
         archivoMenu.add(productosTerminadosMenu);
@@ -660,6 +745,11 @@ public class MainScreen extends javax.swing.JFrame {
         descartesMenu.setText("Descartes");
 
         buscarDescartesMensualesMenuItem.setText("Buscar Descartes Mensuales");
+        buscarDescartesMensualesMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarDescartesMensualesMenuItemActionPerformed(evt);
+            }
+        });
         descartesMenu.add(buscarDescartesMensualesMenuItem);
 
         archivoMenu.add(descartesMenu);
@@ -667,9 +757,19 @@ public class MainScreen extends javax.swing.JFrame {
         etapasMenu.setText("Etapas");
 
         nuevaEtapaMenuItem.setText("Nueva Etapa");
+        nuevaEtapaMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuevaEtapaMenuItemActionPerformed(evt);
+            }
+        });
         etapasMenu.add(nuevaEtapaMenuItem);
 
         darBajaEtapaMenuItem.setText("Dar de Baja Etapa");
+        darBajaEtapaMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                darBajaEtapaMenuItemActionPerformed(evt);
+            }
+        });
         etapasMenu.add(darBajaEtapaMenuItem);
 
         archivoMenu.add(etapasMenu);
@@ -677,12 +777,27 @@ public class MainScreen extends javax.swing.JFrame {
         lotesMenu.setText("Lotes");
 
         nuevoLoteMenuItem.setText("Nuevo Lote");
+        nuevoLoteMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuevoLoteMenuItemActionPerformed(evt);
+            }
+        });
         lotesMenu.add(nuevoLoteMenuItem);
 
         actualizarInformacionLoteMenuItem.setText("Actualizar Informacion Lote");
+        actualizarInformacionLoteMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarInformacionLoteMenuItemActionPerformed(evt);
+            }
+        });
         lotesMenu.add(actualizarInformacionLoteMenuItem);
 
         buscarLotesMenuItem.setText("Buscar Lotes");
+        buscarLotesMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarLotesMenuItemActionPerformed(evt);
+            }
+        });
         lotesMenu.add(buscarLotesMenuItem);
 
         archivoMenu.add(lotesMenu);
@@ -690,6 +805,11 @@ public class MainScreen extends javax.swing.JFrame {
         stocksMensualesInsumosMenu.setText("Stocks Mensuales Insumos");
 
         buscarStocksMensualesInsumosMenuItem.setText("Buscar Stocks Mensuales Insumos");
+        buscarStocksMensualesInsumosMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarStocksMensualesInsumosMenuItemActionPerformed(evt);
+            }
+        });
         stocksMensualesInsumosMenu.add(buscarStocksMensualesInsumosMenuItem);
 
         archivoMenu.add(stocksMensualesInsumosMenu);
@@ -697,6 +817,11 @@ public class MainScreen extends javax.swing.JFrame {
         stocksMensualesProductosTerminadosMenu.setText("Stocks Mensuales Productos Terminados");
 
         buscarStocksMensualesProductosTerminadosMenuItem.setText("Buscar Stocks Mensuales Productos Terminados");
+        buscarStocksMensualesProductosTerminadosMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarStocksMensualesProductosTerminadosMenuItemActionPerformed(evt);
+            }
+        });
         stocksMensualesProductosTerminadosMenu.add(buscarStocksMensualesProductosTerminadosMenuItem);
 
         archivoMenu.add(stocksMensualesProductosTerminadosMenu);
@@ -734,15 +859,35 @@ public class MainScreen extends javax.swing.JFrame {
         procesosMenu.setText("Procesos");
 
         seEncuentraMenuItem.setText("Asignar Lotes-Etapas-Empleados");
+        seEncuentraMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                seEncuentraMenuItemActionPerformed(evt);
+            }
+        });
         procesosMenu.add(seEncuentraMenuItem);
 
         proveeInsumosMenuItem.setText("Ingresar Cantidad de Insumo Provisto por Proveedor");
+        proveeInsumosMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                proveeInsumosMenuItemActionPerformed(evt);
+            }
+        });
         procesosMenu.add(proveeInsumosMenuItem);
 
         esUtilizadaMenuItem.setText("Ingresar Cantidad de Insumo Utilizada para un Lote");
+        esUtilizadaMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                esUtilizadaMenuItemActionPerformed(evt);
+            }
+        });
         procesosMenu.add(esUtilizadaMenuItem);
 
         produceMenuItem.setText("Ingresar Cantidad Producto Terminado Producida por un Lote");
+        produceMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                produceMenuItemActionPerformed(evt);
+            }
+        });
         procesosMenu.add(produceMenuItem);
 
         mainScreenMenuBar.add(procesosMenu);
@@ -820,6 +965,151 @@ public class MainScreen extends javax.swing.JFrame {
     private void actualizarTablaSolapaLotesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarTablaSolapaLotesButtonActionPerformed
         updateLotesTable();
     }//GEN-LAST:event_actualizarTablaSolapaLotesButtonActionPerformed
+
+    private void nuevoEmpleadoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoEmpleadoMenuItemActionPerformed
+        NuevoEmpleadoScreen nuevoEmpleadoScreen = new NuevoEmpleadoScreen();
+        nuevoEmpleadoScreen.setVisible(true);
+    }//GEN-LAST:event_nuevoEmpleadoMenuItemActionPerformed
+
+    private void actualizarInformacionEmpleadoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarInformacionEmpleadoMenuItemActionPerformed
+        ActualizarInformacionEmpleadoScreen actualizarInformacionEmpleadoScreen = new ActualizarInformacionEmpleadoScreen();
+        actualizarInformacionEmpleadoScreen.setVisible(true);
+    }//GEN-LAST:event_actualizarInformacionEmpleadoMenuItemActionPerformed
+
+    private void buscarEmpleadosMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarEmpleadosMenuItemActionPerformed
+        BuscarEmpleadosScreen buscarEmpleadosScreen = new BuscarEmpleadosScreen();
+        buscarEmpleadosScreen.setVisible(true);
+    }//GEN-LAST:event_buscarEmpleadosMenuItemActionPerformed
+
+    private void darBajaEmpleadoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_darBajaEmpleadoMenuItemActionPerformed
+        BajaEmpleadoScreen bajaEmpleadoScreen = new BajaEmpleadoScreen();
+        bajaEmpleadoScreen.setVisible(true);
+    }//GEN-LAST:event_darBajaEmpleadoMenuItemActionPerformed
+
+    private void nuevoUsuarioSistemaMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoUsuarioSistemaMenuItemActionPerformed
+        NuevoUsuarioSistemaScreen nuevoUsuarioSistemaScreen = new NuevoUsuarioSistemaScreen();
+        nuevoUsuarioSistemaScreen.setVisible(true);
+    }//GEN-LAST:event_nuevoUsuarioSistemaMenuItemActionPerformed
+
+    private void darBajaUsuarioSistemaMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_darBajaUsuarioSistemaMenuItemActionPerformed
+        BajaUsuarioSistemaScreen bajaUsuarioSistemaScreen = new BajaUsuarioSistemaScreen();
+        bajaUsuarioSistemaScreen.setVisible(true);
+    }//GEN-LAST:event_darBajaUsuarioSistemaMenuItemActionPerformed
+
+    private void nuevoProveedorMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoProveedorMenuItemActionPerformed
+        NuevoProveedorScreen nuevoProveedorScreen = new NuevoProveedorScreen();
+        nuevoProveedorScreen.setVisible(true);
+    }//GEN-LAST:event_nuevoProveedorMenuItemActionPerformed
+
+    private void actualizarInformacionProveedorMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarInformacionProveedorMenuItemActionPerformed
+        ActualizarInformacionProveedorScreen actualizarInformacionProveedorScreen = new ActualizarInformacionProveedorScreen();
+        actualizarInformacionProveedorScreen.setVisible(true);
+    }//GEN-LAST:event_actualizarInformacionProveedorMenuItemActionPerformed
+
+    private void darBajaProveedorMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_darBajaProveedorMenuItemActionPerformed
+        BajaProveedorScreen bajaProveedorScreen = new BajaProveedorScreen();
+        bajaProveedorScreen.setVisible(true);
+    }//GEN-LAST:event_darBajaProveedorMenuItemActionPerformed
+
+    private void nuevoInsumoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoInsumoMenuItemActionPerformed
+        NuevoInsumoScreen nuevoInsumoScreen = new NuevoInsumoScreen();
+        nuevoInsumoScreen.setVisible(true);
+    }//GEN-LAST:event_nuevoInsumoMenuItemActionPerformed
+
+    private void actualizarInformacionInsumoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarInformacionInsumoMenuItemActionPerformed
+        ActualizarInformacionInsumoScreen actualizarInformacionInsumoScreen = new ActualizarInformacionInsumoScreen();
+        actualizarInformacionInsumoScreen.setVisible(true);
+    }//GEN-LAST:event_actualizarInformacionInsumoMenuItemActionPerformed
+
+    private void buscarInsumosMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarInsumosMenuItemActionPerformed
+        BuscarInsumosScreen buscarInsumosScreen = new BuscarInsumosScreen();
+        buscarInsumosScreen.setVisible(true);
+    }//GEN-LAST:event_buscarInsumosMenuItemActionPerformed
+
+    private void darBajaInsumoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_darBajaInsumoMenuItemActionPerformed
+        BajaInsumoScreen bajaInsumoScreen = new BajaInsumoScreen();
+        bajaInsumoScreen.setVisible(true);
+    }//GEN-LAST:event_darBajaInsumoMenuItemActionPerformed
+
+    private void nuevoProductoTerminadoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoProductoTerminadoMenuItemActionPerformed
+        NuevoProductoTerminadoScreen nuevoProductoTerminadoScreen = new NuevoProductoTerminadoScreen();
+        nuevoProductoTerminadoScreen.setVisible(true);
+    }//GEN-LAST:event_nuevoProductoTerminadoMenuItemActionPerformed
+
+    private void buscarProductosTerminadosMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarProductosTerminadosMenuItemActionPerformed
+        BuscarProductosTerminadosScreen buscarProductosTerminadosScreen = new BuscarProductosTerminadosScreen();
+        buscarProductosTerminadosScreen.setVisible(true);
+    }//GEN-LAST:event_buscarProductosTerminadosMenuItemActionPerformed
+
+    private void darBajaProductoTerminadoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_darBajaProductoTerminadoMenuItemActionPerformed
+        BajaProductoTerminadoScreen bajaProductoTerminadoScreen = new BajaProductoTerminadoScreen();
+        bajaProductoTerminadoScreen.setVisible(true);
+    }//GEN-LAST:event_darBajaProductoTerminadoMenuItemActionPerformed
+
+    private void despacharProductoTerminadoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_despacharProductoTerminadoMenuItemActionPerformed
+        DespacharProductoTerminadoScreen despacharProductoTerminadoScreen = new DespacharProductoTerminadoScreen();
+        despacharProductoTerminadoScreen.setVisible(true);
+    }//GEN-LAST:event_despacharProductoTerminadoMenuItemActionPerformed
+
+    private void buscarDescartesMensualesMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarDescartesMensualesMenuItemActionPerformed
+        BuscarDescartesMensualesScreen buscarDescartesMensualesScreen = new BuscarDescartesMensualesScreen();
+        buscarDescartesMensualesScreen.setVisible(true);
+    }//GEN-LAST:event_buscarDescartesMensualesMenuItemActionPerformed
+
+    private void nuevaEtapaMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevaEtapaMenuItemActionPerformed
+        NuevaEtapaScreen nuevaEtapaScreen = new NuevaEtapaScreen();
+        nuevaEtapaScreen.setVisible(true);
+    }//GEN-LAST:event_nuevaEtapaMenuItemActionPerformed
+
+    private void darBajaEtapaMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_darBajaEtapaMenuItemActionPerformed
+        BajaEtapaScreen bajaEtapaScreen = new BajaEtapaScreen();
+        bajaEtapaScreen.setVisible(true);
+    }//GEN-LAST:event_darBajaEtapaMenuItemActionPerformed
+
+    private void nuevoLoteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoLoteMenuItemActionPerformed
+        NuevoLoteScreen nuevoLoteScreen = new NuevoLoteScreen();
+        nuevoLoteScreen.setVisible(true);
+    }//GEN-LAST:event_nuevoLoteMenuItemActionPerformed
+
+    private void actualizarInformacionLoteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarInformacionLoteMenuItemActionPerformed
+        ActualizarInformacionLoteScreen actualizarInformacionLoteScreen = new ActualizarInformacionLoteScreen();
+        actualizarInformacionLoteScreen.setVisible(true);
+    }//GEN-LAST:event_actualizarInformacionLoteMenuItemActionPerformed
+
+    private void buscarLotesMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarLotesMenuItemActionPerformed
+        BuscarLotesScreen buscarLotesScreen = new BuscarLotesScreen();
+        buscarLotesScreen.setVisible(true);
+    }//GEN-LAST:event_buscarLotesMenuItemActionPerformed
+
+    private void buscarStocksMensualesInsumosMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarStocksMensualesInsumosMenuItemActionPerformed
+        BuscarStocksMensualesInsumosScreen buscarStocksMensualesInsumosScreen = new BuscarStocksMensualesInsumosScreen();
+        buscarStocksMensualesInsumosScreen.setVisible(true);
+    }//GEN-LAST:event_buscarStocksMensualesInsumosMenuItemActionPerformed
+
+    private void buscarStocksMensualesProductosTerminadosMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarStocksMensualesProductosTerminadosMenuItemActionPerformed
+        BuscarStocksMensualesProductosTerminadosScreen buscarStocksMensualesProductosTerminadosScreen = new BuscarStocksMensualesProductosTerminadosScreen();
+        buscarStocksMensualesProductosTerminadosScreen.setVisible(true);
+    }//GEN-LAST:event_buscarStocksMensualesProductosTerminadosMenuItemActionPerformed
+
+    private void seEncuentraMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seEncuentraMenuItemActionPerformed
+        AsignarLotesEtapasEmpleadosScreen asignarLotesEtapasEmpleadosScreen = new AsignarLotesEtapasEmpleadosScreen();
+        asignarLotesEtapasEmpleadosScreen.setVisible(true);
+    }//GEN-LAST:event_seEncuentraMenuItemActionPerformed
+
+    private void proveeInsumosMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proveeInsumosMenuItemActionPerformed
+        ProveeInsumosScreen proveeInsumosScreen = new ProveeInsumosScreen();
+        proveeInsumosScreen.setVisible(true);
+    }//GEN-LAST:event_proveeInsumosMenuItemActionPerformed
+
+    private void esUtilizadaMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_esUtilizadaMenuItemActionPerformed
+        EsUtilizadaScreen esUtilizadaScreen = new EsUtilizadaScreen();
+        esUtilizadaScreen.setVisible(true);
+    }//GEN-LAST:event_esUtilizadaMenuItemActionPerformed
+
+    private void produceMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_produceMenuItemActionPerformed
+        ProduceScreen produceScreen = new ProduceScreen();
+        produceScreen.setVisible(true);
+    }//GEN-LAST:event_produceMenuItemActionPerformed
 
     /**
      * @param args the command line arguments

@@ -122,6 +122,11 @@ public class BuscarStocksMensualesInsumosScreen extends javax.swing.JFrame {
         jScrollPane1.setViewportView(stocksMensualesInsumosTable);
 
         salirButton.setText("Salir");
+        salirButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirButtonActionPerformed(evt);
+            }
+        });
 
         imprimirButton.setText("Imprimir");
 
@@ -157,6 +162,10 @@ public class BuscarStocksMensualesInsumosScreen extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(748, 607));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void salirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirButtonActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_salirButtonActionPerformed
 
     /**
      * @param args the command line arguments

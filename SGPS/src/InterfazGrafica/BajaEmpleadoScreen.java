@@ -65,6 +65,11 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
         );
 
         cancelarButton.setText("Cancelar");
+        cancelarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarButtonActionPerformed(evt);
+            }
+        });
 
         aceptarButton.setText("Aceptar");
 
@@ -98,6 +103,10 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(336, 157));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarButtonActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_cancelarButtonActionPerformed
 
     /**
      * @param args the command line arguments

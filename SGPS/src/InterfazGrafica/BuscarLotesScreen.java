@@ -122,6 +122,11 @@ public class BuscarLotesScreen extends javax.swing.JFrame {
         jScrollPane1.setViewportView(lotesTable);
 
         salirButton.setText("Salir");
+        salirButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirButtonActionPerformed(evt);
+            }
+        });
 
         imprimirButton.setText("Imprimir");
 
@@ -137,7 +142,7 @@ public class BuscarLotesScreen extends javax.swing.JFrame {
                         .addComponent(imprimirButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(salirButton))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 804, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 827, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -154,9 +159,13 @@ public class BuscarLotesScreen extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(840, 608));
+        setSize(new java.awt.Dimension(863, 634));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void salirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirButtonActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_salirButtonActionPerformed
 
     /**
      * @param args the command line arguments

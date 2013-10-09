@@ -84,6 +84,11 @@ public class NuevoEmpleadoScreen extends javax.swing.JFrame {
         setResizable(false);
 
         cancelarNuevoEmpleadoButton.setText("Cancelar");
+        cancelarNuevoEmpleadoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarNuevoEmpleadoButtonActionPerformed(evt);
+            }
+        });
 
         aceptarNuevoEmpleadoButton.setText("Aceptar");
 
@@ -366,6 +371,10 @@ public class NuevoEmpleadoScreen extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(525, 735));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cancelarNuevoEmpleadoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarNuevoEmpleadoButtonActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_cancelarNuevoEmpleadoButtonActionPerformed
 
     /**
      * @param args the command line arguments

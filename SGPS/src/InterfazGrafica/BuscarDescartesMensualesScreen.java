@@ -123,6 +123,11 @@ public class BuscarDescartesMensualesScreen extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         salirButton.setText("Salir");
+        salirButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirButtonActionPerformed(evt);
+            }
+        });
 
         imprimirButton.setText("Imprimir");
 
@@ -161,6 +166,10 @@ public class BuscarDescartesMensualesScreen extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(416, 469));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void salirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirButtonActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_salirButtonActionPerformed
 
     /**
      * @param args the command line arguments

@@ -48,7 +48,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="parametroABucarPanel" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="317" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" pref="316" max="32767" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="salirButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -203,6 +203,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Salir"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="salirButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="imprimirButton">
       <Properties>
