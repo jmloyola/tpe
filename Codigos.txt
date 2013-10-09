@@ -29,7 +29,7 @@ Categoria
 	
 *************************************************************************************************
 Estado
-	Activos           0
+	Activo           0
 	Sancionado        1
 	Despedido         2
 	De Licencia       3
