@@ -7,15 +7,15 @@ CREATE TABLE Empleados(
 	E_NumeroLegajo	INT NOT NULL	PRIMARY KEY,
 	E_Sueldo	REAL NOT NULL,
 	E_CUIL	VARCHAR (20)	NOT NULL UNIQUE,
-	E_EstadoCivil	INT	NOT NULL,
+	E_EstadoCivil	VARCHAR (15)	NOT NULL,
 	E_CantidadHijos	INT	NOT NULL,
 	E_Domicilio	VARCHAR (60) NOT NULL,
 	E_CodigoPostal	INT NOT NULL,
 	E_PaisResidencia	VARCHAR (15) NOT NULL,
 	E_ProvinciaResidencia	VARCHAR (20) NOT NULL,
 	E_CiudadResidencia	VARCHAR (20) NOT NULL,
-	E_Categoria	INT NOT NULL,
-	E_Estado	INT NOT NULL
+	E_Categoria	VARCHAR (35) NOT NULL,
+	E_Estado	VARCHAR (12) NOT NULL
 );
 
 CREATE TABLE HistorialAccidentes(
@@ -61,15 +61,15 @@ CREATE TABLE UsuariosDelSistema(
 
 CREATE TABLE Insumos(
 	I_Descripcion	VARCHAR (20)	NOT NULL	PRIMARY KEY,
-	I_Unidad	INT	NOT NULL,
+	I_Unidad	VARCHAR (15)	NOT NULL,
 	I_LimitePedido	REAL	NOT NULL,
-	I_Tipo	INT	NOT NULL,
+	I_Tipo	VARCHAR (20)	NOT NULL,
 	I_Activo	BOOLEAN	NOT NULL	DEFAULT 'true'
 );
 
 CREATE TABLE ProductosTerminados(
 	PT_Codificacion	VARCHAR (10)	NOT NULL	PRIMARY KEY,
-	PT_Tipo	INT	NOT NULL,
+	PT_Tipo	VARCHAR (15)	NOT NULL,
 	PT_Descripcion	VARCHAR (30)	NOT NULL,
 	PT_Presentacion	VARCHAR (30)	NOT NULL,
 	PT_Destino	VARCHAR (20)	NOT NULL,
