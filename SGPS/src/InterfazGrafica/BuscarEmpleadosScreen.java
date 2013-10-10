@@ -212,7 +212,23 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                 switch(parametroABuscarToolBox.getSelectedIndex()){
                     case 0:
                         try{
-                            String sql = "SELECT * FROM empleados WHERE E_Nombre LIKE ?";
+                            String sql = "SELECT e_nombre AS \"Nombre\","
+                                                + "e_dni AS \"DNI\","
+                                                + "e_telefono AS \"Telefono\","
+                                                + "e_fechaingreso AS \"Fecha Ingreso\","
+                                                + "e_numerolegajo AS \"Num Legajo\","
+                                                + "e_sueldo AS \"Sueldo\","
+                                                + "e_cuil AS \"CUIL\","
+                                                + "e_estadocivil AS \"Estado Civil\","
+                                                + "e_cantidadhijos AS \"Cant Hijos\","
+                                                + "e_domicilio AS \"Domicilio\","
+                                                + "e_codigopostal AS \"Cod Postal\","
+                                                + "e_paisresidencia AS \"Pais Residencia\","
+                                                + "e_provinciaresidencia AS \"Provincia Residencia\","
+                                                + "e_ciudadresidencia AS \"Ciudad Residencia\","
+                                                + "e_categoria AS \"Categoria\","
+                                                + "e_estado AS \"Estado\" "
+                                    + "FROM empleados WHERE E_Nombre LIKE ?";
                             pst = conn.prepareStatement(sql);
 
                             pst.setString(1,"%"+valorParametroTextField.getText()+"%");
@@ -225,7 +241,23 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                         break;
                     case 1:
                         try{
-                            String sql = "SELECT * FROM empleados WHERE e_dni = ?";
+                            String sql = "SELECT e_nombre AS \"Nombre\","
+                                                + "e_dni AS \"DNI\","
+                                                + "e_telefono AS \"Telefono\","
+                                                + "e_fechaingreso AS \"Fecha Ingreso\","
+                                                + "e_numerolegajo AS \"Num Legajo\","
+                                                + "e_sueldo AS \"Sueldo\","
+                                                + "e_cuil AS \"CUIL\","
+                                                + "e_estadocivil AS \"Estado Civil\","
+                                                + "e_cantidadhijos AS \"Cant Hijos\","
+                                                + "e_domicilio AS \"Domicilio\","
+                                                + "e_codigopostal AS \"Cod Postal\","
+                                                + "e_paisresidencia AS \"Pais Residencia\","
+                                                + "e_provinciaresidencia AS \"Provincia Residencia\","
+                                                + "e_ciudadresidencia AS \"Ciudad Residencia\","
+                                                + "e_categoria AS \"Categoria\","
+                                                + "e_estado AS \"Estado\" "
+                                    + "FROM empleados WHERE e_dni = ?";
                             pst = conn.prepareStatement(sql);
 
                             pst.setInt(1,Integer.parseInt(valorParametroTextField.getText()));
@@ -238,10 +270,25 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                         break;                        
                     case 2:
                         try{
-                            String sql = "SELECT * FROM empleados WHERE e_telefono = ?";
+                            String sql = "SELECT e_nombre AS \"Nombre\","
+                                                + "e_dni AS \"DNI\","
+                                                + "e_telefono AS \"Telefono\","
+                                                + "e_fechaingreso AS \"Fecha Ingreso\","
+                                                + "e_numerolegajo AS \"Num Legajo\","
+                                                + "e_sueldo AS \"Sueldo\","
+                                                + "e_cuil AS \"CUIL\","
+                                                + "e_estadocivil AS \"Estado Civil\","
+                                                + "e_cantidadhijos AS \"Cant Hijos\","
+                                                + "e_domicilio AS \"Domicilio\","
+                                                + "e_codigopostal AS \"Cod Postal\","
+                                                + "e_paisresidencia AS \"Pais Residencia\","
+                                                + "e_provinciaresidencia AS \"Provincia Residencia\","
+                                                + "e_ciudadresidencia AS \"Ciudad Residencia\","
+                                                + "e_categoria AS \"Categoria\","
+                                                + "e_estado AS \"Estado\" "
+                                    + "FROM empleados WHERE e_telefono = ?";
                             pst = conn.prepareStatement(sql);
 
-                            //pst.setInt(1,Integer.parseInt(valorParametroTextField.getText()));
                             pst.setLong(1,Long.parseLong(valorParametroTextField.getText()));
 
                             rs = pst.executeQuery();
@@ -252,17 +299,32 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                         break;                        
                     case 3:
                         try{
-                            String sql = "SELECT * FROM empleados WHERE e_domicilio = ?";
+                            String sql = "SELECT e_nombre AS \"Nombre\","
+                                                + "e_dni AS \"DNI\","
+                                                + "e_telefono AS \"Telefono\","
+                                                + "e_fechaingreso AS \"Fecha Ingreso\","
+                                                + "e_numerolegajo AS \"Num Legajo\","
+                                                + "e_sueldo AS \"Sueldo\","
+                                                + "e_cuil AS \"CUIL\","
+                                                + "e_estadocivil AS \"Estado Civil\","
+                                                + "e_cantidadhijos AS \"Cant Hijos\","
+                                                + "e_domicilio AS \"Domicilio\","
+                                                + "e_codigopostal AS \"Cod Postal\","
+                                                + "e_paisresidencia AS \"Pais Residencia\","
+                                                + "e_provinciaresidencia AS \"Provincia Residencia\","
+                                                + "e_ciudadresidencia AS \"Ciudad Residencia\","
+                                                + "e_categoria AS \"Categoria\","
+                                                + "e_estado AS \"Estado\" "
+                                    + "FROM empleados WHERE e_fechaingreso = ?";
                             pst = conn.prepareStatement(sql);
                             
                             int anio = Integer.parseInt(valorParametroTextField.getText().substring(0, 4));
-                            int mes = Integer.parseInt(valorParametroTextField.getText().substring(5, 7));
+                            int mes = Integer.parseInt(valorParametroTextField.getText().substring(5, 7)) - 1; // DEBO RESTAR UNO PORQUE EN JAVA LOS MESES EMPIEZAN EN 0 !!!!!!! o.0
                             int dia = Integer.parseInt(valorParametroTextField.getText().substring(8, 10));
-                            GregorianCalendar fechaIngresada = new GregorianCalendar(anio, mes, dia);
+                            Calendar fechaIngresada = new GregorianCalendar(anio, mes, dia);
                             
                             java.util.Date fecha = new java.util.Date(fechaIngresada.getTimeInMillis());
-                            java.sql.Date fechaActual = new java.sql.Date(fecha.getTime());
-                            
+                            java.sql.Date fechaActual = new java.sql.Date(fecha.getTime());                            
 
                             pst.setDate(1,fechaActual);                            
 
@@ -274,7 +336,23 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                         break;                        
                     case 4:
                         try{
-                            String sql = "SELECT * FROM empleados WHERE e_numerolegajo = ?";
+                            String sql = "SELECT e_nombre AS \"Nombre\","
+                                                + "e_dni AS \"DNI\","
+                                                + "e_telefono AS \"Telefono\","
+                                                + "e_fechaingreso AS \"Fecha Ingreso\","
+                                                + "e_numerolegajo AS \"Num Legajo\","
+                                                + "e_sueldo AS \"Sueldo\","
+                                                + "e_cuil AS \"CUIL\","
+                                                + "e_estadocivil AS \"Estado Civil\","
+                                                + "e_cantidadhijos AS \"Cant Hijos\","
+                                                + "e_domicilio AS \"Domicilio\","
+                                                + "e_codigopostal AS \"Cod Postal\","
+                                                + "e_paisresidencia AS \"Pais Residencia\","
+                                                + "e_provinciaresidencia AS \"Provincia Residencia\","
+                                                + "e_ciudadresidencia AS \"Ciudad Residencia\","
+                                                + "e_categoria AS \"Categoria\","
+                                                + "e_estado AS \"Estado\" "
+                                    + "FROM empleados WHERE e_numerolegajo = ?";
                             pst = conn.prepareStatement(sql);
 
                             pst.setInt(1,Integer.parseInt(valorParametroTextField.getText()));
@@ -287,7 +365,23 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                         break;                        
                     case 5:
                         try{
-                            String sql = "SELECT * FROM empleados WHERE e_dni = ?";
+                            String sql = "SELECT e_nombre AS \"Nombre\","
+                                                + "e_dni AS \"DNI\","
+                                                + "e_telefono AS \"Telefono\","
+                                                + "e_fechaingreso AS \"Fecha Ingreso\","
+                                                + "e_numerolegajo AS \"Num Legajo\","
+                                                + "e_sueldo AS \"Sueldo\","
+                                                + "e_cuil AS \"CUIL\","
+                                                + "e_estadocivil AS \"Estado Civil\","
+                                                + "e_cantidadhijos AS \"Cant Hijos\","
+                                                + "e_domicilio AS \"Domicilio\","
+                                                + "e_codigopostal AS \"Cod Postal\","
+                                                + "e_paisresidencia AS \"Pais Residencia\","
+                                                + "e_provinciaresidencia AS \"Provincia Residencia\","
+                                                + "e_ciudadresidencia AS \"Ciudad Residencia\","
+                                                + "e_categoria AS \"Categoria\","
+                                                + "e_estado AS \"Estado\" "
+                                    + "FROM empleados WHERE e_dni = ?";
                             pst = conn.prepareStatement(sql);
 
                             pst.setFloat(1,Float.parseFloat(valorParametroTextField.getText()));
@@ -300,7 +394,23 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                         break;                        
                     case 6:
                         try{
-                            String sql = "SELECT * FROM empleados WHERE e_cuil = ?";
+                            String sql = "SELECT e_nombre AS \"Nombre\","
+                                                + "e_dni AS \"DNI\","
+                                                + "e_telefono AS \"Telefono\","
+                                                + "e_fechaingreso AS \"Fecha Ingreso\","
+                                                + "e_numerolegajo AS \"Num Legajo\","
+                                                + "e_sueldo AS \"Sueldo\","
+                                                + "e_cuil AS \"CUIL\","
+                                                + "e_estadocivil AS \"Estado Civil\","
+                                                + "e_cantidadhijos AS \"Cant Hijos\","
+                                                + "e_domicilio AS \"Domicilio\","
+                                                + "e_codigopostal AS \"Cod Postal\","
+                                                + "e_paisresidencia AS \"Pais Residencia\","
+                                                + "e_provinciaresidencia AS \"Provincia Residencia\","
+                                                + "e_ciudadresidencia AS \"Ciudad Residencia\","
+                                                + "e_categoria AS \"Categoria\","
+                                                + "e_estado AS \"Estado\" "
+                                    + "FROM empleados WHERE e_cuil = ?";
                             pst = conn.prepareStatement(sql);
 
                             pst.setString(1,valorParametroTextField.getText());
@@ -313,7 +423,23 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                         break;                        
                     case 7:
                         try{
-                            String sql = "SELECT * FROM empleados WHERE e_estadocivil = ?";
+                            String sql = "SELECT e_nombre AS \"Nombre\","
+                                                + "e_dni AS \"DNI\","
+                                                + "e_telefono AS \"Telefono\","
+                                                + "e_fechaingreso AS \"Fecha Ingreso\","
+                                                + "e_numerolegajo AS \"Num Legajo\","
+                                                + "e_sueldo AS \"Sueldo\","
+                                                + "e_cuil AS \"CUIL\","
+                                                + "e_estadocivil AS \"Estado Civil\","
+                                                + "e_cantidadhijos AS \"Cant Hijos\","
+                                                + "e_domicilio AS \"Domicilio\","
+                                                + "e_codigopostal AS \"Cod Postal\","
+                                                + "e_paisresidencia AS \"Pais Residencia\","
+                                                + "e_provinciaresidencia AS \"Provincia Residencia\","
+                                                + "e_ciudadresidencia AS \"Ciudad Residencia\","
+                                                + "e_categoria AS \"Categoria\","
+                                                + "e_estado AS \"Estado\" "
+                                    + "FROM empleados WHERE e_estadocivil = ?";
                             pst = conn.prepareStatement(sql);
 
                             pst.setString(1,valorParametroTextField.getText());
@@ -326,7 +452,23 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                         break;                        
                     case 8:
                         try{
-                            String sql = "SELECT * FROM empleados WHERE e_cantidadhijos = ?";
+                            String sql = "SELECT e_nombre AS \"Nombre\","
+                                                + "e_dni AS \"DNI\","
+                                                + "e_telefono AS \"Telefono\","
+                                                + "e_fechaingreso AS \"Fecha Ingreso\","
+                                                + "e_numerolegajo AS \"Num Legajo\","
+                                                + "e_sueldo AS \"Sueldo\","
+                                                + "e_cuil AS \"CUIL\","
+                                                + "e_estadocivil AS \"Estado Civil\","
+                                                + "e_cantidadhijos AS \"Cant Hijos\","
+                                                + "e_domicilio AS \"Domicilio\","
+                                                + "e_codigopostal AS \"Cod Postal\","
+                                                + "e_paisresidencia AS \"Pais Residencia\","
+                                                + "e_provinciaresidencia AS \"Provincia Residencia\","
+                                                + "e_ciudadresidencia AS \"Ciudad Residencia\","
+                                                + "e_categoria AS \"Categoria\","
+                                                + "e_estado AS \"Estado\" "
+                                    + "FROM empleados WHERE e_cantidadhijos = ?";
                             pst = conn.prepareStatement(sql);
 
                             pst.setInt(1,Integer.parseInt(valorParametroTextField.getText()));
@@ -339,7 +481,23 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                         break;                          
                     case 9:
                         try{
-                            String sql = "SELECT * FROM empleados WHERE e_domicilio = ?";
+                            String sql = "SELECT e_nombre AS \"Nombre\","
+                                                + "e_dni AS \"DNI\","
+                                                + "e_telefono AS \"Telefono\","
+                                                + "e_fechaingreso AS \"Fecha Ingreso\","
+                                                + "e_numerolegajo AS \"Num Legajo\","
+                                                + "e_sueldo AS \"Sueldo\","
+                                                + "e_cuil AS \"CUIL\","
+                                                + "e_estadocivil AS \"Estado Civil\","
+                                                + "e_cantidadhijos AS \"Cant Hijos\","
+                                                + "e_domicilio AS \"Domicilio\","
+                                                + "e_codigopostal AS \"Cod Postal\","
+                                                + "e_paisresidencia AS \"Pais Residencia\","
+                                                + "e_provinciaresidencia AS \"Provincia Residencia\","
+                                                + "e_ciudadresidencia AS \"Ciudad Residencia\","
+                                                + "e_categoria AS \"Categoria\","
+                                                + "e_estado AS \"Estado\" "
+                                    + "FROM empleados WHERE e_domicilio = ?";
                             pst = conn.prepareStatement(sql);
 
                             pst.setString(1,valorParametroTextField.getText());
@@ -352,7 +510,23 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                         break;                         
                     case 10:
                         try{
-                            String sql = "SELECT * FROM empleados WHERE e_codigopostal = ?";
+                            String sql = "SELECT e_nombre AS \"Nombre\","
+                                                + "e_dni AS \"DNI\","
+                                                + "e_telefono AS \"Telefono\","
+                                                + "e_fechaingreso AS \"Fecha Ingreso\","
+                                                + "e_numerolegajo AS \"Num Legajo\","
+                                                + "e_sueldo AS \"Sueldo\","
+                                                + "e_cuil AS \"CUIL\","
+                                                + "e_estadocivil AS \"Estado Civil\","
+                                                + "e_cantidadhijos AS \"Cant Hijos\","
+                                                + "e_domicilio AS \"Domicilio\","
+                                                + "e_codigopostal AS \"Cod Postal\","
+                                                + "e_paisresidencia AS \"Pais Residencia\","
+                                                + "e_provinciaresidencia AS \"Provincia Residencia\","
+                                                + "e_ciudadresidencia AS \"Ciudad Residencia\","
+                                                + "e_categoria AS \"Categoria\","
+                                                + "e_estado AS \"Estado\" "
+                                    + "FROM empleados WHERE e_codigopostal = ?";
                             pst = conn.prepareStatement(sql);
 
                             pst.setInt(1,Integer.parseInt(valorParametroTextField.getText()));
@@ -365,7 +539,23 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                         break;                        
                     case 11:
                         try{
-                            String sql = "SELECT * FROM empleados WHERE e_paisresidencia = ?";
+                            String sql = "SELECT e_nombre AS \"Nombre\","
+                                                + "e_dni AS \"DNI\","
+                                                + "e_telefono AS \"Telefono\","
+                                                + "e_fechaingreso AS \"Fecha Ingreso\","
+                                                + "e_numerolegajo AS \"Num Legajo\","
+                                                + "e_sueldo AS \"Sueldo\","
+                                                + "e_cuil AS \"CUIL\","
+                                                + "e_estadocivil AS \"Estado Civil\","
+                                                + "e_cantidadhijos AS \"Cant Hijos\","
+                                                + "e_domicilio AS \"Domicilio\","
+                                                + "e_codigopostal AS \"Cod Postal\","
+                                                + "e_paisresidencia AS \"Pais Residencia\","
+                                                + "e_provinciaresidencia AS \"Provincia Residencia\","
+                                                + "e_ciudadresidencia AS \"Ciudad Residencia\","
+                                                + "e_categoria AS \"Categoria\","
+                                                + "e_estado AS \"Estado\" "
+                                    + "FROM empleados WHERE e_paisresidencia = ?";
                             pst = conn.prepareStatement(sql);
 
                             pst.setString(1,valorParametroTextField.getText());
@@ -378,7 +568,23 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                         break;                        
                     case 12:
                         try{
-                            String sql = "SELECT * FROM empleados WHERE e_provinciaresidencia = ?";
+                            String sql = "SELECT e_nombre AS \"Nombre\","
+                                                + "e_dni AS \"DNI\","
+                                                + "e_telefono AS \"Telefono\","
+                                                + "e_fechaingreso AS \"Fecha Ingreso\","
+                                                + "e_numerolegajo AS \"Num Legajo\","
+                                                + "e_sueldo AS \"Sueldo\","
+                                                + "e_cuil AS \"CUIL\","
+                                                + "e_estadocivil AS \"Estado Civil\","
+                                                + "e_cantidadhijos AS \"Cant Hijos\","
+                                                + "e_domicilio AS \"Domicilio\","
+                                                + "e_codigopostal AS \"Cod Postal\","
+                                                + "e_paisresidencia AS \"Pais Residencia\","
+                                                + "e_provinciaresidencia AS \"Provincia Residencia\","
+                                                + "e_ciudadresidencia AS \"Ciudad Residencia\","
+                                                + "e_categoria AS \"Categoria\","
+                                                + "e_estado AS \"Estado\" "
+                                    + "FROM empleados WHERE e_provinciaresidencia = ?";
                             pst = conn.prepareStatement(sql);
 
                             pst.setString(1,valorParametroTextField.getText());
@@ -391,7 +597,23 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                         break;                        
                     case 13:
                         try{
-                            String sql = "SELECT * FROM empleados WHERE e_ciudadresidencia = ?";
+                            String sql = "SELECT e_nombre AS \"Nombre\","
+                                                + "e_dni AS \"DNI\","
+                                                + "e_telefono AS \"Telefono\","
+                                                + "e_fechaingreso AS \"Fecha Ingreso\","
+                                                + "e_numerolegajo AS \"Num Legajo\","
+                                                + "e_sueldo AS \"Sueldo\","
+                                                + "e_cuil AS \"CUIL\","
+                                                + "e_estadocivil AS \"Estado Civil\","
+                                                + "e_cantidadhijos AS \"Cant Hijos\","
+                                                + "e_domicilio AS \"Domicilio\","
+                                                + "e_codigopostal AS \"Cod Postal\","
+                                                + "e_paisresidencia AS \"Pais Residencia\","
+                                                + "e_provinciaresidencia AS \"Provincia Residencia\","
+                                                + "e_ciudadresidencia AS \"Ciudad Residencia\","
+                                                + "e_categoria AS \"Categoria\","
+                                                + "e_estado AS \"Estado\" "
+                                    + "FROM empleados WHERE e_ciudadresidencia = ?";
                             pst = conn.prepareStatement(sql);
 
                             pst.setString(1,valorParametroTextField.getText());
@@ -404,7 +626,23 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                         break;                        
                     case 14:
                         try{
-                            String sql = "SELECT * FROM empleados WHERE e_categoria = ?";
+                            String sql = "SELECT e_nombre AS \"Nombre\","
+                                                + "e_dni AS \"DNI\","
+                                                + "e_telefono AS \"Telefono\","
+                                                + "e_fechaingreso AS \"Fecha Ingreso\","
+                                                + "e_numerolegajo AS \"Num Legajo\","
+                                                + "e_sueldo AS \"Sueldo\","
+                                                + "e_cuil AS \"CUIL\","
+                                                + "e_estadocivil AS \"Estado Civil\","
+                                                + "e_cantidadhijos AS \"Cant Hijos\","
+                                                + "e_domicilio AS \"Domicilio\","
+                                                + "e_codigopostal AS \"Cod Postal\","
+                                                + "e_paisresidencia AS \"Pais Residencia\","
+                                                + "e_provinciaresidencia AS \"Provincia Residencia\","
+                                                + "e_ciudadresidencia AS \"Ciudad Residencia\","
+                                                + "e_categoria AS \"Categoria\","
+                                                + "e_estado AS \"Estado\" "
+                                    + "FROM empleados WHERE e_categoria = ?";
                             pst = conn.prepareStatement(sql);
 
                             pst.setString(1,valorParametroTextField.getText());
@@ -417,7 +655,23 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                         break;                        
                     case 15:
                         try{
-                            String sql = "SELECT * FROM empleados WHERE e_estado = ?";
+                            String sql = "SELECT e_nombre AS \"Nombre\","
+                                                + "e_dni AS \"DNI\","
+                                                + "e_telefono AS \"Telefono\","
+                                                + "e_fechaingreso AS \"Fecha Ingreso\","
+                                                + "e_numerolegajo AS \"Num Legajo\","
+                                                + "e_sueldo AS \"Sueldo\","
+                                                + "e_cuil AS \"CUIL\","
+                                                + "e_estadocivil AS \"Estado Civil\","
+                                                + "e_cantidadhijos AS \"Cant Hijos\","
+                                                + "e_domicilio AS \"Domicilio\","
+                                                + "e_codigopostal AS \"Cod Postal\","
+                                                + "e_paisresidencia AS \"Pais Residencia\","
+                                                + "e_provinciaresidencia AS \"Provincia Residencia\","
+                                                + "e_ciudadresidencia AS \"Ciudad Residencia\","
+                                                + "e_categoria AS \"Categoria\","
+                                                + "e_estado AS \"Estado\" "
+                                    + "FROM empleados WHERE e_estado = ?";
                             pst = conn.prepareStatement(sql);
 
                             pst.setString(1,valorParametroTextField.getText());
