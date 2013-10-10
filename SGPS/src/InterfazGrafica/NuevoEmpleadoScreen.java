@@ -538,7 +538,7 @@ public class NuevoEmpleadoScreen extends javax.swing.JFrame {
                         }
                     }
                     else{
-                        JOptionPane.showMessageDialog(this, "La fecha de ingreso del empleado no puede ser vacia.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(this, "Fecha de ingreso del empleado invalida.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
                     }
                 }
                 else{

@@ -77,12 +77,12 @@ public class AcercaDeScreen extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(cerrarButton))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(nombreSistemaLabel)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(cerrarButton)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -97,7 +97,7 @@ public class AcercaDeScreen extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(294, 183));
+        setSize(new java.awt.Dimension(294, 184));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

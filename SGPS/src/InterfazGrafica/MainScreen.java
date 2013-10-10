@@ -12,6 +12,7 @@ package InterfazGrafica;
 import java.sql.*;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import sgps.SGPS;
 import net.proteanit.sql.DbUtils;
 
@@ -33,12 +34,223 @@ public class MainScreen extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e, "Error en conexion", JOptionPane.ERROR_MESSAGE);
         }
         usuarioActualLabel.setText("Usuario: " + SGPS.identificadorUsuarioActual);
+        
+        inicializacionStocksMensualesProductosTerminados();
+        
         updateEtapasTable();
         updateEmpleadosTable();
         updateInsumosTable();
         updateProductosTerminadosTable();
         updateLotesTable();
     }
+    
+    public void inicializacionStocksMensualesProductosTerminados(){
+        // Para cada insumo y producto terminado activo debo controlar si existe sotck mensual este mes. En caso de que no exista crearlo.
+        // Para los descartes mensuales debo controlar si exite para el mes actual. En caso de que no exista, crearlo
+        ResultSet rs1 = null;
+        PreparedStatement pst1 = null;
+        ResultSet rs2 = null;
+        PreparedStatement pst2 = null;
+        ResultSet rs3 = null;
+        PreparedStatement pst3 = null;
+        ResultSet rs4 = null;
+        PreparedStatement pst4 = null;
+        
+        // Inicializo stocks mensuales de productos terminados
+        try{
+            String sql = "SELECT PT_Codificacion FROM ProductosTerminados WHERE PT_Activo = 'true'";
+            pst1 = conn.prepareStatement(sql);
+            rs1 = pst1.executeQuery();
+            
+            while (rs1.next()){
+                
+                // Tengo un producto terminado, ahora debo consultar si existe stock mensual del mismo.
+                String sql2 = "SELECT PT_Codificacion_CaracterizadoEn_PT FROM StocksMensualesProductosTerminados WHERE PT_Codificacion_CaracterizadoEn_PT = ? AND SM_PT_Fecha = ?";
+                pst2 = conn.prepareStatement(sql2);
+
+                Calendar calendarioActual = Calendar.getInstance();
+                calendarioActual.set(Calendar.DAY_OF_MONTH, 1);
+
+                java.util.Date today = new java.util.Date(calendarioActual.getTimeInMillis());
+                java.sql.Date fechaActual = new java.sql.Date(today.getTime());
+
+                pst2.setString(1, rs1.getString(1));
+                pst2.setDate(2,fechaActual);
+
+                rs2 = pst2.executeQuery();
+                
+                // Vemos si existe stock para este mes
+                if (!rs2.next()){
+                    // Debemos crear el stock mensual, pero antes se debe consultar el stock del mes pasado
+                    String sql3 = "SELECT * FROM StocksMensualesProductosTerminados WHERE PT_Codificacion_CaracterizadoEn_PT = ? AND SM_PT_Fecha = ?";
+                    pst3 = conn.prepareStatement(sql3);
+
+                    Calendar calendarioActual2 = Calendar.getInstance();
+                    calendarioActual2.set(Calendar.DAY_OF_MONTH, 1);
+                    calendarioActual2.add(Calendar.MONTH, -1);
+
+                    java.util.Date today2 = new java.util.Date(calendarioActual2.getTimeInMillis());
+                    java.sql.Date fechaActual2 = new java.sql.Date(today2.getTime());
+
+                    pst3.setString(1, rs1.getString(1));
+                    pst3.setDate(2,fechaActual2);
+
+                    rs3 = pst3.executeQuery();
+                    
+                    if (rs3.next()){
+                        String sql4 = "INSERT INTO stocksmensualesproductosterminados( " +
+                                        "sm_pt_fecha, sm_pt_inicio, sm_pt_ingreso, sm_pt_egreso, " +
+                                        "sm_pt_cantidadcalculada, sm_pt_cantidadreal, sm_pt_diferencia, " +
+                                        "pt_codificacion_caracterizadoen_pt)" +
+                                        "    VALUES (?, ?, ?, ?, " +
+                                        "            ?, ?, ?, ?); ";
+                        
+                        pst4 = conn.prepareStatement(sql4);
+                        
+                        pst4.setDate(1,fechaActual);
+                        pst4.setFloat(2, rs3.getFloat(7));
+                        pst4.setFloat(3,0);
+                        pst4.setFloat(4,0);
+                        pst4.setFloat(5, rs3.getFloat(7));
+                        pst4.setFloat(6, rs3.getFloat(7));
+                        pst4.setFloat(7, 0);
+                        pst4.setString(8, rs1.getString(1));
+                        
+                        pst4.execute();
+                    }
+                    else{
+                        String sql4 = "INSERT INTO stocksmensualesproductosterminados( " +
+                                        "sm_pt_fecha, sm_pt_inicio, sm_pt_ingreso, sm_pt_egreso, " +
+                                        "sm_pt_cantidadcalculada, sm_pt_cantidadreal, sm_pt_diferencia, " +
+                                        "pt_codificacion_caracterizadoen_pt)" +
+                                        "    VALUES (?, ?, ?, ?, " +
+                                        "            ?, ?, ?, ?); ";
+                        
+                        pst4 = conn.prepareStatement(sql4);
+                        
+                        pst4.setDate(1,fechaActual);
+                        pst4.setFloat(2, 0);
+                        pst4.setFloat(3,0);
+                        pst4.setFloat(4,0);
+                        pst4.setFloat(5, 0);
+                        pst4.setFloat(6, 0);
+                        pst4.setFloat(7, 0);
+                        pst4.setString(8, rs1.getString(1));
+                        
+                        pst4.execute();
+                    }
+                }
+                
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e, "Error al Inicializar Stocks Mensuales", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    
+        public void inicializacionStocksMensualesInsumos(){
+        // Para cada insumo y producto terminado activo debo controlar si existe sotck mensual este mes. En caso de que no exista crearlo.
+        // Para los descartes mensuales debo controlar si exite para el mes actual. En caso de que no exista, crearlo
+        ResultSet rs1 = null;
+        PreparedStatement pst1 = null;
+        ResultSet rs2 = null;
+        PreparedStatement pst2 = null;
+        ResultSet rs3 = null;
+        PreparedStatement pst3 = null;
+        ResultSet rs4 = null;
+        PreparedStatement pst4 = null;
+        
+        // Inicializo stocks mensuales de productos terminados
+        try{
+            String sql = "SELECT PT_Codificacion FROM ProductosTerminados WHERE PT_Activo = 'true'";
+            pst1 = conn.prepareStatement(sql);
+            rs1 = pst1.executeQuery();
+            
+            while (rs1.next()){
+                
+                // Tengo un producto terminado, ahora debo consultar si existe stock mensual del mismo.
+                String sql2 = "SELECT PT_Codificacion_CaracterizadoEn_PT FROM StocksMensualesProductosTerminados WHERE PT_Codificacion_CaracterizadoEn_PT = ? AND SM_PT_Fecha = ?";
+                pst2 = conn.prepareStatement(sql2);
+
+                Calendar calendarioActual = Calendar.getInstance();
+                calendarioActual.set(Calendar.DAY_OF_MONTH, 1);
+
+                java.util.Date today = new java.util.Date(calendarioActual.getTimeInMillis());
+                java.sql.Date fechaActual = new java.sql.Date(today.getTime());
+
+                pst2.setString(1, rs1.getString(1));
+                pst2.setDate(2,fechaActual);
+
+                rs2 = pst2.executeQuery();
+                
+                // Vemos si existe stock para este mes
+                if (!rs2.next()){
+                    // Debemos crear el stock mensual, pero antes se debe consultar el stock del mes pasado
+                    String sql3 = "SELECT * FROM StocksMensualesProductosTerminados WHERE PT_Codificacion_CaracterizadoEn_PT = ? AND SM_PT_Fecha = ?";
+                    pst3 = conn.prepareStatement(sql3);
+
+                    Calendar calendarioActual2 = Calendar.getInstance();
+                    calendarioActual2.set(Calendar.DAY_OF_MONTH, 1);
+                    calendarioActual2.add(Calendar.MONTH, -1);
+
+                    java.util.Date today2 = new java.util.Date(calendarioActual2.getTimeInMillis());
+                    java.sql.Date fechaActual2 = new java.sql.Date(today2.getTime());
+
+                    pst3.setString(1, rs1.getString(1));
+                    pst3.setDate(2,fechaActual2);
+
+                    rs3 = pst3.executeQuery();
+                    
+                    if (rs3.next()){
+                        String sql4 = "INSERT INTO stocksmensualesproductosterminados( " +
+                                        "sm_pt_fecha, sm_pt_inicio, sm_pt_ingreso, sm_pt_egreso, " +
+                                        "sm_pt_cantidadcalculada, sm_pt_cantidadreal, sm_pt_diferencia, " +
+                                        "pt_codificacion_caracterizadoen_pt)" +
+                                        "    VALUES (?, ?, ?, ?, " +
+                                        "            ?, ?, ?, ?); ";
+                        
+                        pst4 = conn.prepareStatement(sql4);
+                        
+                        pst4.setDate(1,fechaActual);
+                        pst4.setFloat(2, rs3.getFloat(7));
+                        pst4.setFloat(3,0);
+                        pst4.setFloat(4,0);
+                        pst4.setFloat(5, rs3.getFloat(7));
+                        pst4.setFloat(6, rs3.getFloat(7));
+                        pst4.setFloat(7, 0);
+                        pst4.setString(8, rs1.getString(1));
+                        
+                        pst4.execute();
+                    }
+                    else{
+                        String sql4 = "INSERT INTO stocksmensualesproductosterminados( " +
+                                        "sm_pt_fecha, sm_pt_inicio, sm_pt_ingreso, sm_pt_egreso, " +
+                                        "sm_pt_cantidadcalculada, sm_pt_cantidadreal, sm_pt_diferencia, " +
+                                        "pt_codificacion_caracterizadoen_pt)" +
+                                        "    VALUES (?, ?, ?, ?, " +
+                                        "            ?, ?, ?, ?); ";
+                        
+                        pst4 = conn.prepareStatement(sql4);
+                        
+                        pst4.setDate(1,fechaActual);
+                        pst4.setFloat(2, 0);
+                        pst4.setFloat(3,0);
+                        pst4.setFloat(4,0);
+                        pst4.setFloat(5, 0);
+                        pst4.setFloat(6, 0);
+                        pst4.setFloat(7, 0);
+                        pst4.setString(8, rs1.getString(1));
+                        
+                        pst4.execute();
+                    }
+                }
+                
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e, "Error al Inicializar Stocks Mensuales", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
     
     public void updateEtapasTable(){
         try{
@@ -58,13 +270,13 @@ public class MainScreen extends javax.swing.JFrame {
                               + "e_dni AS \"DNI\","
                               + "e_telefono AS \"Telefono\","
                               + "e_fechaingreso AS \"Fecha Ingreso\","
-                              + "e_numerolegajo AS \"Numero Legajo\","
+                              + "e_numerolegajo AS \"Num Legajo\","
                               + "e_sueldo AS \"Sueldo\","
                               + "e_cuil AS \"CUIL\","
                               + "e_estadocivil AS \"Estado Civil\","
-                              + "e_cantidadhijos AS \"Cantidad Hijos\","
+                              + "e_cantidadhijos AS \"Cant Hijos\","
                               + "e_domicilio AS \"Domicilio\","
-                              + "e_codigopostal AS \"Codigo Postal\","
+                              + "e_codigopostal AS \"Cod Postal\","
                               + "e_paisresidencia AS \"Pais Residencia\","
                               + "e_provinciaresidencia AS \"Provincia Residencia\","
                               + "e_ciudadresidencia AS \"Ciudad Residencia\","
@@ -280,6 +492,11 @@ public class MainScreen extends javax.swing.JFrame {
         tablaSolapaLotesScrollPane.setViewportView(lotesTable);
 
         imprimirLotesButton.setText("Imprimir");
+        imprimirLotesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imprimirLotesButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout solapaLotesPaneLayout = new javax.swing.GroupLayout(solapaLotesPane);
         solapaLotesPane.setLayout(solapaLotesPaneLayout);
@@ -288,7 +505,7 @@ public class MainScreen extends javax.swing.JFrame {
             .addGroup(solapaLotesPaneLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(solapaLotesPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tablaSolapaLotesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 755, Short.MAX_VALUE)
+                    .addComponent(tablaSolapaLotesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1082, Short.MAX_VALUE)
                     .addGroup(solapaLotesPaneLayout.createSequentialGroup()
                         .addComponent(imprimirLotesButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -345,6 +562,11 @@ public class MainScreen extends javax.swing.JFrame {
         tablaSolapaInsumosScrollPane.setViewportView(insumosTable);
 
         imprimirInsumosButton.setText("Imprimir");
+        imprimirInsumosButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imprimirInsumosButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout solapaInsumosPaneLayout = new javax.swing.GroupLayout(solapaInsumosPane);
         solapaInsumosPane.setLayout(solapaInsumosPaneLayout);
@@ -353,7 +575,7 @@ public class MainScreen extends javax.swing.JFrame {
             .addGroup(solapaInsumosPaneLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(solapaInsumosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tablaSolapaInsumosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 755, Short.MAX_VALUE)
+                    .addComponent(tablaSolapaInsumosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1082, Short.MAX_VALUE)
                     .addGroup(solapaInsumosPaneLayout.createSequentialGroup()
                         .addComponent(imprimirInsumosButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -410,6 +632,11 @@ public class MainScreen extends javax.swing.JFrame {
         tablaSolapaProductosTerminadosScrollPane.setViewportView(productosTerminadosTable);
 
         imprimirProductosTerminadosButton.setText("Imprimir");
+        imprimirProductosTerminadosButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imprimirProductosTerminadosButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout solapaProductosTerminadosPaneLayout = new javax.swing.GroupLayout(solapaProductosTerminadosPane);
         solapaProductosTerminadosPane.setLayout(solapaProductosTerminadosPaneLayout);
@@ -418,7 +645,7 @@ public class MainScreen extends javax.swing.JFrame {
             .addGroup(solapaProductosTerminadosPaneLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(solapaProductosTerminadosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tablaSolapaProductosTerminadosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 755, Short.MAX_VALUE)
+                    .addComponent(tablaSolapaProductosTerminadosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1082, Short.MAX_VALUE)
                     .addGroup(solapaProductosTerminadosPaneLayout.createSequentialGroup()
                         .addComponent(imprimirProductosTerminadosButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -475,6 +702,11 @@ public class MainScreen extends javax.swing.JFrame {
         tablaSolapaEmpleadosScrollPane.setViewportView(empleadosTable);
 
         imprimirEmpleadosButton.setText("Imprimir");
+        imprimirEmpleadosButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imprimirEmpleadosButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout solapaEmpleadosPaneLayout = new javax.swing.GroupLayout(solapaEmpleadosPane);
         solapaEmpleadosPane.setLayout(solapaEmpleadosPaneLayout);
@@ -483,7 +715,7 @@ public class MainScreen extends javax.swing.JFrame {
             .addGroup(solapaEmpleadosPaneLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(solapaEmpleadosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tablaSolapaEmpleadosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 755, Short.MAX_VALUE)
+                    .addComponent(tablaSolapaEmpleadosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1082, Short.MAX_VALUE)
                     .addGroup(solapaEmpleadosPaneLayout.createSequentialGroup()
                         .addComponent(imprimirEmpleadosButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -540,6 +772,11 @@ public class MainScreen extends javax.swing.JFrame {
         });
 
         imprimirEtapasButton.setText("Imprimir");
+        imprimirEtapasButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imprimirEtapasButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout solapaEtapasPanelLayout = new javax.swing.GroupLayout(solapaEtapasPanel);
         solapaEtapasPanel.setLayout(solapaEtapasPanelLayout);
@@ -548,7 +785,7 @@ public class MainScreen extends javax.swing.JFrame {
             .addGroup(solapaEtapasPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(solapaEtapasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 755, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1082, Short.MAX_VALUE)
                     .addGroup(solapaEtapasPanelLayout.createSequentialGroup()
                         .addComponent(imprimirEtapasButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -918,7 +1155,7 @@ public class MainScreen extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(usuarioActualLabel)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(solapasTabbedPane))
+                    .addComponent(solapasTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1107, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -927,11 +1164,10 @@ public class MainScreen extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(solapasTabbedPane)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(usuarioActualLabel)
-                .addContainerGap())
+                .addComponent(usuarioActualLabel))
         );
 
-        setSize(new java.awt.Dimension(816, 644));
+        setSize(new java.awt.Dimension(1143, 628));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1112,6 +1348,51 @@ public class MainScreen extends javax.swing.JFrame {
         ProduceScreen produceScreen = new ProduceScreen();
         produceScreen.setVisible(true);
     }//GEN-LAST:event_produceMenuItemActionPerformed
+
+    private void imprimirEmpleadosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirEmpleadosButtonActionPerformed
+        try{
+            //empleadosTable.print(JTable.PrintMode.NORMAL); // No queda muy bien que digamos
+            empleadosTable.print(JTable.PrintMode.FIT_WIDTH);
+        }catch(java.awt.print.PrinterException e){
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al imprimir", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_imprimirEmpleadosButtonActionPerformed
+
+    private void imprimirEtapasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirEtapasButtonActionPerformed
+        try{
+            //empleadosTable.print(JTable.PrintMode.NORMAL); // No queda muy bien que digamos
+            etapasTable.print(JTable.PrintMode.FIT_WIDTH);
+        }catch(java.awt.print.PrinterException e){
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al imprimir", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_imprimirEtapasButtonActionPerformed
+
+    private void imprimirProductosTerminadosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirProductosTerminadosButtonActionPerformed
+        try{
+            //empleadosTable.print(JTable.PrintMode.NORMAL); // No queda muy bien que digamos
+            productosTerminadosTable.print(JTable.PrintMode.FIT_WIDTH);
+        }catch(java.awt.print.PrinterException e){
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al imprimir", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_imprimirProductosTerminadosButtonActionPerformed
+
+    private void imprimirInsumosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirInsumosButtonActionPerformed
+        try{
+            //empleadosTable.print(JTable.PrintMode.NORMAL); // No queda muy bien que digamos
+            insumosTable.print(JTable.PrintMode.FIT_WIDTH);
+        }catch(java.awt.print.PrinterException e){
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al imprimir", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_imprimirInsumosButtonActionPerformed
+
+    private void imprimirLotesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirLotesButtonActionPerformed
+        try{
+            //empleadosTable.print(JTable.PrintMode.NORMAL); // No queda muy bien que digamos
+            lotesTable.print(JTable.PrintMode.FIT_WIDTH);
+        }catch(java.awt.print.PrinterException e){
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al imprimir", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_imprimirLotesButtonActionPerformed
 
     /**
      * @param args the command line arguments
