@@ -36,6 +36,8 @@ public class MainScreen extends javax.swing.JFrame {
         usuarioActualLabel.setText("Usuario: " + SGPS.identificadorUsuarioActual);
         
         inicializacionStocksMensualesProductosTerminados();
+        inicializacionStocksMensualesInsumos();
+        inicializacionStocksMensualesDescarte();
         
         updateEtapasTable();
         updateEmpleadosTable();
@@ -45,8 +47,7 @@ public class MainScreen extends javax.swing.JFrame {
     }
     
     public void inicializacionStocksMensualesProductosTerminados(){
-        // Para cada insumo y producto terminado activo debo controlar si existe sotck mensual este mes. En caso de que no exista crearlo.
-        // Para los descartes mensuales debo controlar si exite para el mes actual. En caso de que no exista, crearlo
+        // Para cada producto terminado activo debo controlar si existe sotck mensual este mes. En caso de que no exista crearlo.
         ResultSet rs1 = null;
         PreparedStatement pst1 = null;
         ResultSet rs2 = null;
@@ -143,14 +144,13 @@ public class MainScreen extends javax.swing.JFrame {
                 
             }
         }catch(Exception e){
-            JOptionPane.showMessageDialog(this, e, "Error al Inicializar Stocks Mensuales", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, e, "Error al inicializar stocks mensuales de productos terminados", JOptionPane.ERROR_MESSAGE);
         }
     }
     
     
         public void inicializacionStocksMensualesInsumos(){
-        // Para cada insumo y producto terminado activo debo controlar si existe sotck mensual este mes. En caso de que no exista crearlo.
-        // Para los descartes mensuales debo controlar si exite para el mes actual. En caso de que no exista, crearlo
+        // Para cada insumo activo debo controlar si existe sotck mensual este mes. En caso de que no exista crearlo.
         ResultSet rs1 = null;
         PreparedStatement pst1 = null;
         ResultSet rs2 = null;
@@ -160,16 +160,16 @@ public class MainScreen extends javax.swing.JFrame {
         ResultSet rs4 = null;
         PreparedStatement pst4 = null;
         
-        // Inicializo stocks mensuales de productos terminados
+        // Inicializo stocks mensuales de insumos
         try{
-            String sql = "SELECT PT_Codificacion FROM ProductosTerminados WHERE PT_Activo = 'true'";
+            String sql = "SELECT I_Descripcion FROM Insumos WHERE I_Activo = 'true'";
             pst1 = conn.prepareStatement(sql);
             rs1 = pst1.executeQuery();
             
             while (rs1.next()){
                 
                 // Tengo un producto terminado, ahora debo consultar si existe stock mensual del mismo.
-                String sql2 = "SELECT PT_Codificacion_CaracterizadoEn_PT FROM StocksMensualesProductosTerminados WHERE PT_Codificacion_CaracterizadoEn_PT = ? AND SM_PT_Fecha = ?";
+                String sql2 = "SELECT I_Descripcion_CaracterizadoEn FROM StocksMensualesInsumos WHERE I_Descripcion_CaracterizadoEn = ? AND SM_I_Fecha = ?";
                 pst2 = conn.prepareStatement(sql2);
 
                 Calendar calendarioActual = Calendar.getInstance();
@@ -186,7 +186,7 @@ public class MainScreen extends javax.swing.JFrame {
                 // Vemos si existe stock para este mes
                 if (!rs2.next()){
                     // Debemos crear el stock mensual, pero antes se debe consultar el stock del mes pasado
-                    String sql3 = "SELECT * FROM StocksMensualesProductosTerminados WHERE PT_Codificacion_CaracterizadoEn_PT = ? AND SM_PT_Fecha = ?";
+                    String sql3 = "SELECT * FROM StocksMensualesInsumos WHERE I_Descripcion_CaracterizadoEn = ? AND SM_I_Fecha = ?";
                     pst3 = conn.prepareStatement(sql3);
 
                     Calendar calendarioActual2 = Calendar.getInstance();
@@ -202,10 +202,10 @@ public class MainScreen extends javax.swing.JFrame {
                     rs3 = pst3.executeQuery();
                     
                     if (rs3.next()){
-                        String sql4 = "INSERT INTO stocksmensualesproductosterminados( " +
-                                        "sm_pt_fecha, sm_pt_inicio, sm_pt_ingreso, sm_pt_egreso, " +
-                                        "sm_pt_cantidadcalculada, sm_pt_cantidadreal, sm_pt_diferencia, " +
-                                        "pt_codificacion_caracterizadoen_pt)" +
+                        String sql4 = "INSERT INTO StocksMensualesInsumos( " +
+                                        "SM_I_Fecha, SM_I_Inicio, SM_I_Ingreso, SM_I_Egreso, " +
+                                        "SM_I_CantidadCalculada, SM_I_CantidadReal, SM_I_Diferencia, " +
+                                        "I_Descripcion_CaracterizadoEn)" +
                                         "    VALUES (?, ?, ?, ?, " +
                                         "            ?, ?, ?, ?); ";
                         
@@ -223,10 +223,10 @@ public class MainScreen extends javax.swing.JFrame {
                         pst4.execute();
                     }
                     else{
-                        String sql4 = "INSERT INTO stocksmensualesproductosterminados( " +
-                                        "sm_pt_fecha, sm_pt_inicio, sm_pt_ingreso, sm_pt_egreso, " +
-                                        "sm_pt_cantidadcalculada, sm_pt_cantidadreal, sm_pt_diferencia, " +
-                                        "pt_codificacion_caracterizadoen_pt)" +
+                        String sql4 = "INSERT INTO StocksMensualesInsumos( " +
+                                        "SM_I_Fecha, SM_I_Inicio, SM_I_Ingreso, SM_I_Egreso, " +
+                                        "SM_I_CantidadCalculada, SM_I_CantidadReal, SM_I_Diferencia, " +
+                                        "I_Descripcion_CaracterizadoEn)" +
                                         "    VALUES (?, ?, ?, ?, " +
                                         "            ?, ?, ?, ?); ";
                         
@@ -247,7 +247,91 @@ public class MainScreen extends javax.swing.JFrame {
                 
             }
         }catch(Exception e){
-            JOptionPane.showMessageDialog(this, e, "Error al Inicializar Stocks Mensuales", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, e, "Error al inicializar stocks mensuales de Insumos", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+        
+        
+public void inicializacionStocksMensualesDescarte(){
+        // Para el stock mensual de descarte debo controlar si existe sotck mensual este mes. En caso de que no exista crearlo.
+        ResultSet rs2 = null;
+        PreparedStatement pst2 = null;
+        ResultSet rs3 = null;
+        PreparedStatement pst3 = null;
+        ResultSet rs4 = null;
+        PreparedStatement pst4 = null;
+        
+        try{
+                            
+            // Tengo un producto terminado, ahora debo consultar si existe stock mensual del mismo.
+            String sql2 = "SELECT SM_D_Codigo FROM StocksMensualesDescarte WHERE SM_D_Fecha = ?";
+            pst2 = conn.prepareStatement(sql2);
+
+            Calendar calendarioActual = Calendar.getInstance();
+            calendarioActual.set(Calendar.DAY_OF_MONTH, 1);
+
+            java.util.Date today = new java.util.Date(calendarioActual.getTimeInMillis());
+            java.sql.Date fechaActual = new java.sql.Date(today.getTime());
+
+            pst2.setDate(1,fechaActual);
+
+            rs2 = pst2.executeQuery();
+
+            // Vemos si existe stock para este mes
+            if (!rs2.next()){
+                // Debemos crear el stock mensual, pero antes se debe consultar el stock del mes pasado
+                String sql3 = "SELECT * FROM StocksMensualesDescarte WHERE SM_D_Fecha = ?";
+                pst3 = conn.prepareStatement(sql3);
+
+                Calendar calendarioActual2 = Calendar.getInstance();
+                calendarioActual2.set(Calendar.DAY_OF_MONTH, 1);
+                calendarioActual2.add(Calendar.MONTH, -1);
+
+                java.util.Date today2 = new java.util.Date(calendarioActual2.getTimeInMillis());
+                java.sql.Date fechaActual2 = new java.sql.Date(today2.getTime());
+
+                pst3.setDate(1,fechaActual2);
+
+                rs3 = pst3.executeQuery();
+
+                if (rs3.next()){
+                    String sql4 = "INSERT INTO stocksmensualesdescarte( " +
+                                    "sm_d_fecha, sm_d_inicio, sm_d_ingreso, sm_d_egreso, " +
+                                    "sm_d_cantidad) " +
+                                    "    VALUES (?, ?, ?, ?, " +
+                                    "            ?); ";
+
+                    pst4 = conn.prepareStatement(sql4);
+
+                    pst4.setDate(1,fechaActual);
+                    pst4.setFloat(2, rs3.getFloat(6));
+                    pst4.setFloat(3,0);
+                    pst4.setFloat(4,0);
+                    pst4.setFloat(5, rs3.getFloat(6));
+
+                    pst4.execute();
+                }
+                else{
+                    String sql4 = "INSERT INTO stocksmensualesdescarte( " +
+                                    "sm_d_fecha, sm_d_inicio, sm_d_ingreso, sm_d_egreso, " +
+                                    "sm_d_cantidad) " +
+                                    "    VALUES (?, ?, ?, ?, " +
+                                    "            ?); ";
+
+                    pst4 = conn.prepareStatement(sql4);
+
+                    pst4.setDate(1,fechaActual);
+                    pst4.setFloat(2, 0);
+                    pst4.setFloat(3,0);
+                    pst4.setFloat(4,0);
+                    pst4.setFloat(5, 0);
+
+                    pst4.execute();
+                }
+            }
+                
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e, "Error al inicializar stocks mensuales de descarte", JOptionPane.ERROR_MESSAGE);
         }
     }
     
@@ -260,7 +344,7 @@ public class MainScreen extends javax.swing.JFrame {
             etapasTable.setModel(DbUtils.resultSetToTableModel(rs));
             etapasTable.setEnabled(false);
         }catch(Exception e){
-            JOptionPane.showMessageDialog(this, e, "Error al Actualizar Tabla de Etapas", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, e, "Error al actualizar tabla de etapas", JOptionPane.ERROR_MESSAGE);
         }
     }
     
@@ -462,6 +546,7 @@ public class MainScreen extends javax.swing.JFrame {
         proveeInsumosMenuItem = new javax.swing.JMenuItem();
         esUtilizadaMenuItem = new javax.swing.JMenuItem();
         produceMenuItem = new javax.swing.JMenuItem();
+        ingresoCantidadDescarteMenuItem = new javax.swing.JMenuItem();
         ayudaMenu = new javax.swing.JMenu();
         acercaDeMenuItem = new javax.swing.JMenuItem();
 
@@ -516,7 +601,7 @@ public class MainScreen extends javax.swing.JFrame {
             solapaLotesPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, solapaLotesPaneLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tablaSolapaLotesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
+                .addComponent(tablaSolapaLotesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(solapaLotesPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(actualizarTablaSolapaLotesButton)
@@ -586,7 +671,7 @@ public class MainScreen extends javax.swing.JFrame {
             solapaInsumosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, solapaInsumosPaneLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tablaSolapaInsumosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
+                .addComponent(tablaSolapaInsumosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(solapaInsumosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(actualizarTablaSolapaInsumosButton)
@@ -656,7 +741,7 @@ public class MainScreen extends javax.swing.JFrame {
             solapaProductosTerminadosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, solapaProductosTerminadosPaneLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tablaSolapaProductosTerminadosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
+                .addComponent(tablaSolapaProductosTerminadosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(solapaProductosTerminadosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(actualizarTablaSolapaProductosTerminadosButton)
@@ -726,7 +811,7 @@ public class MainScreen extends javax.swing.JFrame {
             solapaEmpleadosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, solapaEmpleadosPaneLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tablaSolapaEmpleadosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
+                .addComponent(tablaSolapaEmpleadosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(solapaEmpleadosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(actualizarTablaSolapaEmpleadosButton)
@@ -797,7 +882,7 @@ public class MainScreen extends javax.swing.JFrame {
             .addGroup(solapaEtapasPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(solapaEtapasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(actualizarEtapasButton)
                     .addComponent(imprimirEtapasButton))
@@ -1129,6 +1214,9 @@ public class MainScreen extends javax.swing.JFrame {
         });
         procesosMenu.add(produceMenuItem);
 
+        ingresoCantidadDescarteMenuItem.setText("Ingresar Cantidad Descarte Obtenida");
+        procesosMenu.add(ingresoCantidadDescarteMenuItem);
+
         mainScreenMenuBar.add(procesosMenu);
 
         ayudaMenu.setText("Ayuda");
@@ -1155,7 +1243,7 @@ public class MainScreen extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(usuarioActualLabel)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(solapasTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1107, Short.MAX_VALUE))
+                    .addComponent(solapasTabbedPane))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -1167,7 +1255,7 @@ public class MainScreen extends javax.swing.JFrame {
                 .addComponent(usuarioActualLabel))
         );
 
-        setSize(new java.awt.Dimension(1143, 628));
+        setSize(new java.awt.Dimension(1143, 639));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1471,6 +1559,7 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JButton imprimirInsumosButton;
     private javax.swing.JButton imprimirLotesButton;
     private javax.swing.JButton imprimirProductosTerminadosButton;
+    private javax.swing.JMenuItem ingresoCantidadDescarteMenuItem;
     private javax.swing.JMenu insumosMenu;
     private javax.swing.JTable insumosTable;
     private javax.swing.JScrollPane jScrollPane1;
