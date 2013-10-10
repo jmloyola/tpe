@@ -4,17 +4,32 @@
  */
 package InterfazGrafica;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Juan
  */
 public class BajaEmpleadoScreen extends javax.swing.JFrame {
+    
+    Connection conn = null;
+    PreparedStatement pst = null;
 
     /**
      * Creates new form BajaEmpleadoScreen
      */
     public BajaEmpleadoScreen() {
         initComponents();
+        try {
+            Class.forName("org.postgresql.Driver");
+            conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "root");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error en conexion", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     /**
@@ -80,6 +95,11 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
         });
 
         aceptarButton.setText("Aceptar");
+        aceptarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aceptarButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -115,6 +135,31 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
     private void cancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarButtonActionPerformed
         this.dispose();
     }//GEN-LAST:event_cancelarButtonActionPerformed
+
+    private void aceptarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarButtonActionPerformed
+        if (!numeroLegajoFormattedTextField.getText().equals("")){
+        
+            String sql = "UPDATE empleados SET e_estado = 'Despedido' WHERE E_NumeroLegajo = ?";
+
+            try{
+                pst = conn.prepareStatement(sql);
+
+                pst.setInt(1, Integer.parseInt(numeroLegajoFormattedTextField.getText()));
+
+                pst.execute();
+                
+                JOptionPane.showMessageDialog(this, "Empleado dado de baja con exito", "Baja de empleado exitosa", JOptionPane.INFORMATION_MESSAGE);
+                
+                this.dispose();
+
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(this, e.getMessage(), "Error al dar de baja empleado", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "El numero de legajo no puede ser vacio", "Error al dar de baja empleado", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_aceptarButtonActionPerformed
 
     /**
      * @param args the command line arguments

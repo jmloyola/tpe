@@ -4,17 +4,38 @@
  */
 package InterfazGrafica;
 
+import java.math.BigDecimal;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import net.proteanit.sql.DbUtils;
+
 /**
  *
  * @author Juan
  */
 public class BuscarEmpleadosScreen extends javax.swing.JFrame {
 
+    Connection conn = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;
+    
     /**
      * Creates new form BuscarEmpleadosScreen
      */
     public BuscarEmpleadosScreen() {
         initComponents();
+        try {
+            Class.forName("org.postgresql.Driver");
+            conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "root");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error en conexion", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     /**
@@ -53,6 +74,11 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
 
         buscarEmpleadosButton.setText("Buscar");
         buscarEmpleadosButton.setPreferredSize(new java.awt.Dimension(75, 55));
+        buscarEmpleadosButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarEmpleadosButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout parametroABucarPanelLayout = new javax.swing.GroupLayout(parametroABucarPanel);
         parametroABucarPanel.setLayout(parametroABucarPanelLayout);
@@ -129,6 +155,11 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
         });
 
         imprimirButton.setText("Imprimir");
+        imprimirButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imprimirButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -166,6 +197,247 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
     private void salirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirButtonActionPerformed
         this.dispose();
     }//GEN-LAST:event_salirButtonActionPerformed
+
+    private void imprimirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirButtonActionPerformed
+        try{
+            resultadoBusquedaEmpleadosTable.print(JTable.PrintMode.FIT_WIDTH);
+        }catch(java.awt.print.PrinterException e){
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al imprimir", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_imprimirButtonActionPerformed
+
+    private void buscarEmpleadosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarEmpleadosButtonActionPerformed
+        if (parametroABuscarToolBox.getSelectedIndex() >= 0){
+            if (!valorParametroTextField.getText().equals("")){
+                switch(parametroABuscarToolBox.getSelectedIndex()){
+                    case 0:
+                        try{
+                            String sql = "SELECT * FROM empleados WHERE E_Nombre LIKE ?";
+                            pst = conn.prepareStatement(sql);
+
+                            pst.setString(1,"%"+valorParametroTextField.getText()+"%");
+
+                            rs = pst.executeQuery();
+                            resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
+                        }catch(Exception e){
+                            JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                        }
+                        break;
+                    case 1:
+                        try{
+                            String sql = "SELECT * FROM empleados WHERE e_dni = ?";
+                            pst = conn.prepareStatement(sql);
+
+                            pst.setInt(1,Integer.parseInt(valorParametroTextField.getText()));
+
+                            rs = pst.executeQuery();
+                            resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
+                        }catch(Exception e){
+                            JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                        }
+                        break;                        
+                    case 2:
+                        try{
+                            String sql = "SELECT * FROM empleados WHERE e_telefono = ?";
+                            pst = conn.prepareStatement(sql);
+
+                            //pst.setInt(1,Integer.parseInt(valorParametroTextField.getText()));
+                            pst.setLong(1,Long.parseLong(valorParametroTextField.getText()));
+
+                            rs = pst.executeQuery();
+                            resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
+                        }catch(Exception e){
+                            JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                        }
+                        break;                        
+                    case 3:
+                        try{
+                            String sql = "SELECT * FROM empleados WHERE e_domicilio = ?";
+                            pst = conn.prepareStatement(sql);
+                            
+                            int anio = Integer.parseInt(valorParametroTextField.getText().substring(0, 4));
+                            int mes = Integer.parseInt(valorParametroTextField.getText().substring(5, 7));
+                            int dia = Integer.parseInt(valorParametroTextField.getText().substring(8, 10));
+                            GregorianCalendar fechaIngresada = new GregorianCalendar(anio, mes, dia);
+                            
+                            java.util.Date fecha = new java.util.Date(fechaIngresada.getTimeInMillis());
+                            java.sql.Date fechaActual = new java.sql.Date(fecha.getTime());
+                            
+
+                            pst.setDate(1,fechaActual);                            
+
+                            rs = pst.executeQuery();
+                            resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
+                        }catch(Exception e){
+                            JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                        }
+                        break;                        
+                    case 4:
+                        try{
+                            String sql = "SELECT * FROM empleados WHERE e_numerolegajo = ?";
+                            pst = conn.prepareStatement(sql);
+
+                            pst.setInt(1,Integer.parseInt(valorParametroTextField.getText()));
+
+                            rs = pst.executeQuery();
+                            resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
+                        }catch(Exception e){
+                            JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                        }
+                        break;                        
+                    case 5:
+                        try{
+                            String sql = "SELECT * FROM empleados WHERE e_dni = ?";
+                            pst = conn.prepareStatement(sql);
+
+                            pst.setFloat(1,Float.parseFloat(valorParametroTextField.getText()));
+
+                            rs = pst.executeQuery();
+                            resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
+                        }catch(Exception e){
+                            JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                        }
+                        break;                        
+                    case 6:
+                        try{
+                            String sql = "SELECT * FROM empleados WHERE e_cuil = ?";
+                            pst = conn.prepareStatement(sql);
+
+                            pst.setString(1,valorParametroTextField.getText());
+
+                            rs = pst.executeQuery();
+                            resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
+                        }catch(Exception e){
+                            JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                        }
+                        break;                        
+                    case 7:
+                        try{
+                            String sql = "SELECT * FROM empleados WHERE e_estadocivil = ?";
+                            pst = conn.prepareStatement(sql);
+
+                            pst.setString(1,valorParametroTextField.getText());
+
+                            rs = pst.executeQuery();
+                            resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
+                        }catch(Exception e){
+                            JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                        }
+                        break;                        
+                    case 8:
+                        try{
+                            String sql = "SELECT * FROM empleados WHERE e_cantidadhijos = ?";
+                            pst = conn.prepareStatement(sql);
+
+                            pst.setInt(1,Integer.parseInt(valorParametroTextField.getText()));
+
+                            rs = pst.executeQuery();
+                            resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
+                        }catch(Exception e){
+                            JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                        }
+                        break;                          
+                    case 9:
+                        try{
+                            String sql = "SELECT * FROM empleados WHERE e_domicilio = ?";
+                            pst = conn.prepareStatement(sql);
+
+                            pst.setString(1,valorParametroTextField.getText());
+
+                            rs = pst.executeQuery();
+                            resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
+                        }catch(Exception e){
+                            JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                        }
+                        break;                         
+                    case 10:
+                        try{
+                            String sql = "SELECT * FROM empleados WHERE e_codigopostal = ?";
+                            pst = conn.prepareStatement(sql);
+
+                            pst.setInt(1,Integer.parseInt(valorParametroTextField.getText()));
+
+                            rs = pst.executeQuery();
+                            resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
+                        }catch(Exception e){
+                            JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                        }
+                        break;                        
+                    case 11:
+                        try{
+                            String sql = "SELECT * FROM empleados WHERE e_paisresidencia = ?";
+                            pst = conn.prepareStatement(sql);
+
+                            pst.setString(1,valorParametroTextField.getText());
+
+                            rs = pst.executeQuery();
+                            resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
+                        }catch(Exception e){
+                            JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                        }
+                        break;                        
+                    case 12:
+                        try{
+                            String sql = "SELECT * FROM empleados WHERE e_provinciaresidencia = ?";
+                            pst = conn.prepareStatement(sql);
+
+                            pst.setString(1,valorParametroTextField.getText());
+
+                            rs = pst.executeQuery();
+                            resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
+                        }catch(Exception e){
+                            JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                        }
+                        break;                        
+                    case 13:
+                        try{
+                            String sql = "SELECT * FROM empleados WHERE e_ciudadresidencia = ?";
+                            pst = conn.prepareStatement(sql);
+
+                            pst.setString(1,valorParametroTextField.getText());
+
+                            rs = pst.executeQuery();
+                            resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
+                        }catch(Exception e){
+                            JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                        }
+                        break;                        
+                    case 14:
+                        try{
+                            String sql = "SELECT * FROM empleados WHERE e_categoria = ?";
+                            pst = conn.prepareStatement(sql);
+
+                            pst.setString(1,valorParametroTextField.getText());
+
+                            rs = pst.executeQuery();
+                            resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
+                        }catch(Exception e){
+                            JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                        }
+                        break;                        
+                    case 15:
+                        try{
+                            String sql = "SELECT * FROM empleados WHERE e_estado = ?";
+                            pst = conn.prepareStatement(sql);
+
+                            pst.setString(1,valorParametroTextField.getText());
+
+                            rs = pst.executeQuery();
+                            resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
+                        }catch(Exception e){
+                            JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                        }
+                        break;                        
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "El valor del parametor de busqueda no puede ser vacio.", "Error al buscar empleado", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "El parametro de busqueda no puede ser vacio.", "Error al buscar empleado", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_buscarEmpleadosButtonActionPerformed
 
     /**
      * @param args the command line arguments

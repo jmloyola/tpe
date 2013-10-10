@@ -373,7 +373,7 @@ public void inicializacionStocksMensualesDescarte(){
             empleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
             empleadosTable.setEnabled(false);
         }catch(Exception e){
-            JOptionPane.showMessageDialog(this, e, "Error al Actualizar Tabla de Empleados", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, e, "Error al actualizar tabla de empleados", JOptionPane.ERROR_MESSAGE);
         }
     }
     
@@ -402,7 +402,7 @@ public void inicializacionStocksMensualesDescarte(){
             insumosTable.setModel(DbUtils.resultSetToTableModel(rs));
             insumosTable.setEnabled(false);
         }catch(Exception e){
-            JOptionPane.showMessageDialog(this, e, "Error al Actualizar Tabla de Insumos", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, e, "Error al actualizar tabla de insumos", JOptionPane.ERROR_MESSAGE);
         }
     }
         
@@ -432,7 +432,7 @@ public void inicializacionStocksMensualesDescarte(){
             productosTerminadosTable.setModel(DbUtils.resultSetToTableModel(rs));
             productosTerminadosTable.setEnabled(false);
         }catch(Exception e){
-            JOptionPane.showMessageDialog(this, e, "Error al Actualizar Tabla de Insumos", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, e, "Error al actualizar tabla de insumos", JOptionPane.ERROR_MESSAGE);
         }
     }
         
@@ -452,7 +452,7 @@ public void inicializacionStocksMensualesDescarte(){
             lotesTable.setModel(DbUtils.resultSetToTableModel(rs));
             lotesTable.setEnabled(false);
         }catch(Exception e){
-            JOptionPane.showMessageDialog(this, e, "Error al Actualizar Tabla de Insumos", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, e, "Error al actualizar tabla de insumos", JOptionPane.ERROR_MESSAGE);
         }
     }        
 

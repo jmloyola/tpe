@@ -4,6 +4,9 @@
  */
 package InterfazGrafica;
 
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+
 /**
  *
  * @author Juan
@@ -35,7 +38,7 @@ public class BuscarStocksMensualesProductosTerminadosScreen extends javax.swing.
         jScrollPane1 = new javax.swing.JScrollPane();
         stocksMensualesProductosTerminadosTable = new javax.swing.JTable();
         salirButton = new javax.swing.JButton();
-        aceptarButton = new javax.swing.JButton();
+        imprimirButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Buscar Stocks Mensuales Productos Terminados");
@@ -128,7 +131,12 @@ public class BuscarStocksMensualesProductosTerminadosScreen extends javax.swing.
             }
         });
 
-        aceptarButton.setText("Aceptar");
+        imprimirButton.setText("Imprimir");
+        imprimirButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imprimirButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -139,7 +147,7 @@ public class BuscarStocksMensualesProductosTerminadosScreen extends javax.swing.
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(parametroABuscarPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(aceptarButton)
+                        .addComponent(imprimirButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(salirButton))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 711, Short.MAX_VALUE))
@@ -155,7 +163,7 @@ public class BuscarStocksMensualesProductosTerminadosScreen extends javax.swing.
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(salirButton)
-                    .addComponent(aceptarButton))
+                    .addComponent(imprimirButton))
                 .addContainerGap())
         );
 
@@ -166,6 +174,14 @@ public class BuscarStocksMensualesProductosTerminadosScreen extends javax.swing.
     private void salirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirButtonActionPerformed
         this.dispose();
     }//GEN-LAST:event_salirButtonActionPerformed
+
+    private void imprimirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirButtonActionPerformed
+        try{
+            stocksMensualesProductosTerminadosTable.print(JTable.PrintMode.FIT_WIDTH);
+        }catch(java.awt.print.PrinterException e){
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al imprimir", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_imprimirButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -202,8 +218,8 @@ public class BuscarStocksMensualesProductosTerminadosScreen extends javax.swing.
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton aceptarButton;
     private javax.swing.JButton buscarStocksMensualesProductosTerminadosButton;
+    private javax.swing.JButton imprimirButton;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;

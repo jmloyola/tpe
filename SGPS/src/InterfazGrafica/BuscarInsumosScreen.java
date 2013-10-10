@@ -4,6 +4,9 @@
  */
 package InterfazGrafica;
 
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+
 /**
  *
  * @author Juan
@@ -128,6 +131,11 @@ public class BuscarInsumosScreen extends javax.swing.JFrame {
         });
 
         imprimirButton.setText("Imprimir");
+        imprimirButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imprimirButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -167,6 +175,14 @@ public class BuscarInsumosScreen extends javax.swing.JFrame {
     private void salirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirButtonActionPerformed
         this.dispose();
     }//GEN-LAST:event_salirButtonActionPerformed
+
+    private void imprimirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirButtonActionPerformed
+        try{
+            insumosTable.print(JTable.PrintMode.FIT_WIDTH);
+        }catch(java.awt.print.PrinterException e){
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al imprimir", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_imprimirButtonActionPerformed
 
     /**
      * @param args the command line arguments

@@ -4,12 +4,22 @@
  */
 package InterfazGrafica;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 /**
  *
  * @author Juan
  */
 public class ActualizarInformacionEmpleadoScreen extends javax.swing.JFrame {
-
+    
+    Connection conn = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;
+    
+    public int numeroLegajoEmpleado = -1;
+    
     /**
      * Creates new form ActualizarInformacionEmpleadoScreen
      */

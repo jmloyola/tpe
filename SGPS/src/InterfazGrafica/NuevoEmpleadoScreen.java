@@ -431,7 +431,7 @@ public class NuevoEmpleadoScreen extends javax.swing.JFrame {
                                                                         pst = conn.prepareStatement(sql);
                                                                         pst.setString(1, nombreTextField.getText());
                                                                         pst.setInt(2, Integer.parseInt(dniFormattedTextField.getText()));
-                                                                        pst.setInt(3, Integer.parseInt(telefonoFormattedTextField.getText()));
+                                                                        pst.setLong(3, Long.parseLong(telefonoFormattedTextField.getText()));
                                                                         // Preparo fecha
                                                                         java.sql.Date fechaIngresoSql = new java.sql.Date(fechaIngresoDateChooser.getDate().getTime());
                                                                         pst.setDate(4, fechaIngresoSql);

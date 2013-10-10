@@ -157,7 +157,7 @@ public class LoginScreen extends javax.swing.JFrame {
                 
             }
         }catch(Exception e){
-            
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al chequear usuario y password", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_ingresarButtonActionPerformed
 

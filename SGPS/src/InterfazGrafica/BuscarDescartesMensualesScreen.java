@@ -4,6 +4,9 @@
  */
 package InterfazGrafica;
 
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+
 /**
  *
  * @author Juan
@@ -29,11 +32,11 @@ public class BuscarDescartesMensualesScreen extends javax.swing.JFrame {
         fechaDescartePanel = new javax.swing.JPanel();
         parametroBusquedaLabel = new javax.swing.JLabel();
         valorLabel = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
-        jTextField1 = new javax.swing.JTextField();
+        parametroBusquedaComboBox = new javax.swing.JComboBox();
+        valorBusquedaTextField = new javax.swing.JTextField();
         buscarDescartesMensualesButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        descartesMensualesTable = new javax.swing.JTable();
         salirButton = new javax.swing.JButton();
         imprimirButton = new javax.swing.JButton();
 
@@ -48,10 +51,10 @@ public class BuscarDescartesMensualesScreen extends javax.swing.JFrame {
 
         valorLabel.setText("Valor:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Fecha", "Inicio", "Ingreso", "Egreso", "Cantidad" }));
-        jComboBox1.setSelectedIndex(-1);
+        parametroBusquedaComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Fecha", "Inicio", "Ingreso", "Egreso", "Cantidad" }));
+        parametroBusquedaComboBox.setSelectedIndex(-1);
 
-        jTextField1.setPreferredSize(new java.awt.Dimension(120, 20));
+        valorBusquedaTextField.setPreferredSize(new java.awt.Dimension(120, 20));
 
         buscarDescartesMensualesButton.setText("Buscar");
         buscarDescartesMensualesButton.setPreferredSize(new java.awt.Dimension(65, 60));
@@ -67,14 +70,14 @@ public class BuscarDescartesMensualesScreen extends javax.swing.JFrame {
                     .addComponent(valorLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(fechaDescartePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(parametroBusquedaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(valorBusquedaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buscarDescartesMensualesButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        fechaDescartePanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jComboBox1, jTextField1});
+        fechaDescartePanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {parametroBusquedaComboBox, valorBusquedaTextField});
 
         fechaDescartePanelLayout.setVerticalGroup(
             fechaDescartePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -82,11 +85,11 @@ public class BuscarDescartesMensualesScreen extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(fechaDescartePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(parametroBusquedaLabel)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(parametroBusquedaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(fechaDescartePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(valorLabel)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(valorBusquedaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fechaDescartePanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -94,7 +97,7 @@ public class BuscarDescartesMensualesScreen extends javax.swing.JFrame {
                 .addGap(27, 27, 27))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        descartesMensualesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -120,7 +123,7 @@ public class BuscarDescartesMensualesScreen extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(descartesMensualesTable);
 
         salirButton.setText("Salir");
         salirButton.addActionListener(new java.awt.event.ActionListener() {
@@ -130,6 +133,11 @@ public class BuscarDescartesMensualesScreen extends javax.swing.JFrame {
         });
 
         imprimirButton.setText("Imprimir");
+        imprimirButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imprimirButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -171,6 +179,14 @@ public class BuscarDescartesMensualesScreen extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_salirButtonActionPerformed
 
+    private void imprimirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirButtonActionPerformed
+        try{
+            descartesMensualesTable.print(JTable.PrintMode.FIT_WIDTH);
+        }catch(java.awt.print.PrinterException e){
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al imprimir", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_imprimirButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -207,14 +223,14 @@ public class BuscarDescartesMensualesScreen extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buscarDescartesMensualesButton;
+    private javax.swing.JTable descartesMensualesTable;
     private javax.swing.JPanel fechaDescartePanel;
     private javax.swing.JButton imprimirButton;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JComboBox parametroBusquedaComboBox;
     private javax.swing.JLabel parametroBusquedaLabel;
     private javax.swing.JButton salirButton;
+    private javax.swing.JTextField valorBusquedaTextField;
     private javax.swing.JLabel valorLabel;
     // End of variables declaration//GEN-END:variables
 }
