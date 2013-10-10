@@ -60,7 +60,7 @@ CREATE TABLE UsuariosDelSistema(
 );
 
 CREATE TABLE Insumos(
-	I_Descripcion	VARCHAR (20)	NOT NULL	PRIMARY KEY,
+	I_Descripcion	VARCHAR (50)	NOT NULL	PRIMARY KEY,
 	I_Unidad	VARCHAR (15)	NOT NULL,
 	I_LimitePedido	REAL	NOT NULL,
 	I_Tipo	VARCHAR (20)	NOT NULL,
@@ -70,9 +70,9 @@ CREATE TABLE Insumos(
 CREATE TABLE ProductosTerminados(
 	PT_Codificacion	VARCHAR (10)	NOT NULL	PRIMARY KEY,
 	PT_Tipo	VARCHAR (15)	NOT NULL,
-	PT_Descripcion	VARCHAR (30)	NOT NULL,
-	PT_Presentacion	VARCHAR (30)	NOT NULL,
-	PT_Destino	VARCHAR (20)	NOT NULL,
+	PT_Descripcion	VARCHAR (50)	NOT NULL,
+	PT_Presentacion	VARCHAR (50)	NOT NULL,
+	PT_Destino	VARCHAR (30)	NOT NULL,
 	PT_KilosPorEnvase	REAL	NOT NULL,
 	PT_Activo	BOOLEAN	NOT NULL	DEFAULT 'true'
 );
@@ -124,7 +124,7 @@ CREATE TABLE StocksMensualesInsumos(
 	SM_I_CantidadCalculada	REAL,
 	SM_I_CantidadReal	REAL,
 	SM_I_Diferencia	REAL,
-	I_Descripcion_CaracterizadoEn	VARCHAR (20)	NOT NULL,
+	I_Descripcion_CaracterizadoEn	VARCHAR (50)	NOT NULL,
 	UNIQUE (SM_I_Fecha, I_Descripcion_CaracterizadoEn),
 	FOREIGN KEY (I_Descripcion_CaracterizadoEn) REFERENCES Insumos(I_Descripcion)
 );
@@ -144,7 +144,7 @@ CREATE TABLE StocksMensualesProductosTerminados(
 );
 
 CREATE TABLE Proveedores(
-	P_RazonSocial	VARCHAR (25)	NOT NULL	PRIMARY KEY,
+	P_RazonSocial	VARCHAR (30)	NOT NULL	PRIMARY KEY,
 	P_CUIT	VARCHAR (20)	NOT NULL,
 	P_Domicilio	VARCHAR (60)	NOT NULL,
 	P_SitioWeb	VARCHAR (60),
@@ -152,14 +152,14 @@ CREATE TABLE Proveedores(
 );
 
 CREATE TABLE TelefonosProveedor(
-	P_RazonSocial_TP	VARCHAR (25) NOT NULL,
+	P_RazonSocial_TP	VARCHAR (30) NOT NULL,
 	TP_Telefono	BIGINT NOT NULL,
 	PRIMARY KEY (P_RazonSocial_TP, TP_Telefono),
 	FOREIGN KEY (P_RazonSocial_TP) REFERENCES Proveedores(P_RazonSocial)
 );
 
 CREATE TABLE ContactosProveedor(
-	P_RazonSocial_CP	VARCHAR (25)	NOT NULL,
+	P_RazonSocial_CP	VARCHAR (30)	NOT NULL,
 	CP_Nombre	VARCHAR (50)	NOT NULL,
 	CP_Cargo	VARCHAR (30)	NOT NULL,
 	CP_Telefono	BIGINT	NOT NULL,
@@ -197,7 +197,7 @@ CREATE TABLE EsUtilizada(
 );
 
 CREATE TABLE ProveeInsumos(
-	P_RazonSocial_ProveeInsumos	VARCHAR (25)	NOT NULL,
+	P_RazonSocial_ProveeInsumos	VARCHAR (30)	NOT NULL,
 	SM_I_Codigo_ProveeInsumos	INT	NOT NULL,
 	CantidadProvista	REAL	NOT NULL,
 	PRIMARY KEY (P_RazonSocial_ProveeInsumos, SM_I_Codigo_ProveeInsumos),
