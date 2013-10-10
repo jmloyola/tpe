@@ -1215,6 +1215,11 @@ public void inicializacionStocksMensualesDescarte(){
         procesosMenu.add(produceMenuItem);
 
         ingresoCantidadDescarteMenuItem.setText("Ingresar Cantidad Descarte Obtenida");
+        ingresoCantidadDescarteMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ingresoCantidadDescarteMenuItemActionPerformed(evt);
+            }
+        });
         procesosMenu.add(ingresoCantidadDescarteMenuItem);
 
         mainScreenMenuBar.add(procesosMenu);
@@ -1481,6 +1486,11 @@ public void inicializacionStocksMensualesDescarte(){
             JOptionPane.showMessageDialog(this, e.getMessage(), "Error al imprimir", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_imprimirLotesButtonActionPerformed
+
+    private void ingresoCantidadDescarteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresoCantidadDescarteMenuItemActionPerformed
+        IngresoCantidadDescarteObtenidaScreen ingresoCantidadDescarteObtenidaScreen = new IngresoCantidadDescarteObtenidaScreen();
+        ingresoCantidadDescarteObtenidaScreen.setVisible(true);
+    }//GEN-LAST:event_ingresoCantidadDescarteMenuItemActionPerformed
 
     /**
      * @param args the command line arguments

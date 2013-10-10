@@ -28,7 +28,8 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
 
         numeroLegajoPanel = new javax.swing.JPanel();
         numeroLegajoLabel = new javax.swing.JLabel();
-        numerosLegajoComboBox = new javax.swing.JComboBox();
+        numeroLegajoFormattedTextField = new javax.swing.JFormattedTextField();
+        buscarEmpleadoButton = new javax.swing.JButton();
         cancelarButton = new javax.swing.JButton();
         aceptarButton = new javax.swing.JButton();
 
@@ -41,7 +42,11 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
 
         numeroLegajoLabel.setText("Numero de Legajo:");
 
-        numerosLegajoComboBox.setPreferredSize(new java.awt.Dimension(75, 20));
+        numeroLegajoFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        numeroLegajoFormattedTextField.setPreferredSize(new java.awt.Dimension(150, 20));
+
+        buscarEmpleadoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/InterfazGrafica/Icons/search_plus.png"))); // NOI18N
+        buscarEmpleadoButton.setPreferredSize(new java.awt.Dimension(20, 20));
 
         javax.swing.GroupLayout numeroLegajoPanelLayout = new javax.swing.GroupLayout(numeroLegajoPanel);
         numeroLegajoPanel.setLayout(numeroLegajoPanelLayout);
@@ -51,16 +56,19 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(numeroLegajoLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(numerosLegajoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(numeroLegajoFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buscarEmpleadoButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         numeroLegajoPanelLayout.setVerticalGroup(
             numeroLegajoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(numeroLegajoPanelLayout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(numeroLegajoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(numeroLegajoLabel)
-                    .addComponent(numerosLegajoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(numeroLegajoFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscarEmpleadoButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -82,7 +90,7 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(numeroLegajoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 148, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(aceptarButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cancelarButton)))
@@ -93,7 +101,7 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(numeroLegajoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelarButton)
                     .addComponent(aceptarButton))
@@ -144,9 +152,10 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aceptarButton;
+    private javax.swing.JButton buscarEmpleadoButton;
     private javax.swing.JButton cancelarButton;
+    private javax.swing.JFormattedTextField numeroLegajoFormattedTextField;
     private javax.swing.JLabel numeroLegajoLabel;
     private javax.swing.JPanel numeroLegajoPanel;
-    private javax.swing.JComboBox numerosLegajoComboBox;
     // End of variables declaration//GEN-END:variables
 }

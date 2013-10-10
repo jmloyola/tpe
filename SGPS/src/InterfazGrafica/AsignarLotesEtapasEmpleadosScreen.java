@@ -33,8 +33,9 @@ public class AsignarLotesEtapasEmpleadosScreen extends javax.swing.JFrame {
         fechaLabel = new javax.swing.JLabel();
         identificadorLoteComboBox = new javax.swing.JComboBox();
         descripcionEtapaComboBox = new javax.swing.JComboBox();
-        numeroLegajoEmpleadoComboBox = new javax.swing.JComboBox();
         fechaDateChooser = new com.toedter.calendar.JDateChooser();
+        numeroLegajoFormattedTextField = new javax.swing.JFormattedTextField();
+        buscarEmpleadoButton = new javax.swing.JButton();
         cancelarButton = new javax.swing.JButton();
         aceptarButton = new javax.swing.JButton();
 
@@ -54,6 +55,11 @@ public class AsignarLotesEtapasEmpleadosScreen extends javax.swing.JFrame {
         fechaDateChooser.setDateFormatString("dd/MM/yyyy");
         fechaDateChooser.setPreferredSize(new java.awt.Dimension(150, 20));
 
+        numeroLegajoFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+
+        buscarEmpleadoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/InterfazGrafica/Icons/search_plus.png"))); // NOI18N
+        buscarEmpleadoButton.setPreferredSize(new java.awt.Dimension(20, 20));
+
         javax.swing.GroupLayout valoresPanelLayout = new javax.swing.GroupLayout(valoresPanel);
         valoresPanel.setLayout(valoresPanelLayout);
         valoresPanelLayout.setHorizontalGroup(
@@ -67,14 +73,17 @@ public class AsignarLotesEtapasEmpleadosScreen extends javax.swing.JFrame {
                     .addComponent(fechaLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(valoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(identificadorLoteComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fechaDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(valoresPanelLayout.createSequentialGroup()
+                        .addComponent(numeroLegajoFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buscarEmpleadoButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(descripcionEtapaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(numeroLegajoEmpleadoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fechaDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(identificadorLoteComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        valoresPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {descripcionEtapaComboBox, fechaDateChooser, identificadorLoteComboBox, numeroLegajoEmpleadoComboBox});
+        valoresPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {descripcionEtapaComboBox, fechaDateChooser, identificadorLoteComboBox, numeroLegajoFormattedTextField});
 
         valoresPanelLayout.setVerticalGroup(
             valoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -90,7 +99,8 @@ public class AsignarLotesEtapasEmpleadosScreen extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(valoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(numeroLegajoEmpleadoLabel)
-                    .addComponent(numeroLegajoEmpleadoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(numeroLegajoFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscarEmpleadoButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(valoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(fechaLabel)
@@ -114,7 +124,7 @@ public class AsignarLotesEtapasEmpleadosScreen extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(203, Short.MAX_VALUE)
                         .addComponent(aceptarButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cancelarButton))
@@ -133,7 +143,7 @@ public class AsignarLotesEtapasEmpleadosScreen extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(355, 220));
+        setSize(new java.awt.Dimension(381, 220));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -177,6 +187,7 @@ public class AsignarLotesEtapasEmpleadosScreen extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aceptarButton;
+    private javax.swing.JButton buscarEmpleadoButton;
     private javax.swing.JButton cancelarButton;
     private javax.swing.JComboBox descripcionEtapaComboBox;
     private javax.swing.JLabel descripcionEtapaLabel;
@@ -184,8 +195,8 @@ public class AsignarLotesEtapasEmpleadosScreen extends javax.swing.JFrame {
     private javax.swing.JLabel fechaLabel;
     private javax.swing.JComboBox identificadorLoteComboBox;
     private javax.swing.JLabel identificadorLoteLabel;
-    private javax.swing.JComboBox numeroLegajoEmpleadoComboBox;
     private javax.swing.JLabel numeroLegajoEmpleadoLabel;
+    private javax.swing.JFormattedTextField numeroLegajoFormattedTextField;
     private javax.swing.JPanel valoresPanel;
     // End of variables declaration//GEN-END:variables
 }

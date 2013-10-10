@@ -26,21 +26,88 @@ public class IngresoCantidadDescarteObtenidaScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        cancelarButton = new javax.swing.JButton();
+        aceptarButton = new javax.swing.JButton();
+        cantidadDescartePanel = new javax.swing.JPanel();
+        cantidadDescarteLabel = new javax.swing.JLabel();
+        cantidadDescarteObtenidaFormattedTextField = new javax.swing.JFormattedTextField();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setTitle("Ingreso Cantidad Descarte Obtenida");
+        setAlwaysOnTop(true);
+        setResizable(false);
+
+        cancelarButton.setText("Cancelar");
+        cancelarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarButtonActionPerformed(evt);
+            }
+        });
+
+        aceptarButton.setText("Aceptar");
+
+        cantidadDescartePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese la cantidad de descarte obtenida:"));
+
+        cantidadDescarteLabel.setText("Cantidad Descarte Obtenida:");
+
+        cantidadDescarteObtenidaFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
+        cantidadDescarteObtenidaFormattedTextField.setPreferredSize(new java.awt.Dimension(150, 20));
+
+        javax.swing.GroupLayout cantidadDescartePanelLayout = new javax.swing.GroupLayout(cantidadDescartePanel);
+        cantidadDescartePanel.setLayout(cantidadDescartePanelLayout);
+        cantidadDescartePanelLayout.setHorizontalGroup(
+            cantidadDescartePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cantidadDescartePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(cantidadDescarteLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cantidadDescarteObtenidaFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        cantidadDescartePanelLayout.setVerticalGroup(
+            cantidadDescartePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cantidadDescartePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(cantidadDescartePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cantidadDescarteLabel)
+                    .addComponent(cantidadDescarteObtenidaFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(aceptarButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cancelarButton))
+                    .addComponent(cantidadDescartePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(cantidadDescartePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cancelarButton)
+                    .addComponent(aceptarButton))
+                .addContainerGap())
         );
 
-        pack();
+        setSize(new java.awt.Dimension(362, 155));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarButtonActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_cancelarButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -77,5 +144,10 @@ public class IngresoCantidadDescarteObtenidaScreen extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton aceptarButton;
+    private javax.swing.JButton cancelarButton;
+    private javax.swing.JLabel cantidadDescarteLabel;
+    private javax.swing.JFormattedTextField cantidadDescarteObtenidaFormattedTextField;
+    private javax.swing.JPanel cantidadDescartePanel;
     // End of variables declaration//GEN-END:variables
 }
