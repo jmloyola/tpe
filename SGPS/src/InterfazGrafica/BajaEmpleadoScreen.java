@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import sgps.SGPS;
 
 /**
  *
@@ -45,6 +46,7 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
         numeroLegajoLabel = new javax.swing.JLabel();
         numeroLegajoFormattedTextField = new javax.swing.JFormattedTextField();
         buscarEmpleadoButton = new javax.swing.JButton();
+        cargarNumeroLegajoButton = new javax.swing.JButton();
         cancelarButton = new javax.swing.JButton();
         aceptarButton = new javax.swing.JButton();
 
@@ -62,6 +64,19 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
 
         buscarEmpleadoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/InterfazGrafica/Icons/search_plus.png"))); // NOI18N
         buscarEmpleadoButton.setPreferredSize(new java.awt.Dimension(20, 20));
+        buscarEmpleadoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarEmpleadoButtonActionPerformed(evt);
+            }
+        });
+
+        cargarNumeroLegajoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/InterfazGrafica/Icons/group_add.png"))); // NOI18N
+        cargarNumeroLegajoButton.setPreferredSize(new java.awt.Dimension(20, 20));
+        cargarNumeroLegajoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cargarNumeroLegajoButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout numeroLegajoPanelLayout = new javax.swing.GroupLayout(numeroLegajoPanel);
         numeroLegajoPanel.setLayout(numeroLegajoPanelLayout);
@@ -74,16 +89,21 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
                 .addComponent(numeroLegajoFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buscarEmpleadoButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cargarNumeroLegajoButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         numeroLegajoPanelLayout.setVerticalGroup(
             numeroLegajoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(numeroLegajoPanelLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, numeroLegajoPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(numeroLegajoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(numeroLegajoLabel)
-                    .addComponent(numeroLegajoFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buscarEmpleadoButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(numeroLegajoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cargarNumeroLegajoButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(numeroLegajoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(buscarEmpleadoButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(numeroLegajoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(numeroLegajoLabel)
+                            .addComponent(numeroLegajoFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
 
@@ -110,7 +130,7 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(numeroLegajoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 177, Short.MAX_VALUE)
                         .addComponent(aceptarButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cancelarButton)))
@@ -128,7 +148,7 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(336, 157));
+        setSize(new java.awt.Dimension(365, 157));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -160,6 +180,24 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "El numero de legajo no puede ser vacio", "Error al dar de baja empleado", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_aceptarButtonActionPerformed
+
+    private void buscarEmpleadoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarEmpleadoButtonActionPerformed
+        JOptionPane.showMessageDialog(this, "Realice la busqueda de empleado, seleccione en la tabla el empleado que desea haciendo click en la fila y presiones el boton salir.", "Recuerde", JOptionPane.INFORMATION_MESSAGE);
+        BuscarEmpleadosScreen buscarEmpleadosScreen = new BuscarEmpleadosScreen();
+        buscarEmpleadosScreen.setVisible(true);
+        
+        /*if (SGPS.numeroLegajoEmpleado != -1){
+            numeroLegajoFormattedTextField.setValue(SGPS.numeroLegajoEmpleado);
+            SGPS.numeroLegajoEmpleado = -1;
+        }*/
+    }//GEN-LAST:event_buscarEmpleadoButtonActionPerformed
+
+    private void cargarNumeroLegajoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarNumeroLegajoButtonActionPerformed
+        if (SGPS.numeroLegajoEmpleado != -1){
+            numeroLegajoFormattedTextField.setValue(SGPS.numeroLegajoEmpleado);
+            SGPS.numeroLegajoEmpleado = -1;
+        }        
+    }//GEN-LAST:event_cargarNumeroLegajoButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,6 +237,7 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
     private javax.swing.JButton aceptarButton;
     private javax.swing.JButton buscarEmpleadoButton;
     private javax.swing.JButton cancelarButton;
+    private javax.swing.JButton cargarNumeroLegajoButton;
     private javax.swing.JFormattedTextField numeroLegajoFormattedTextField;
     private javax.swing.JLabel numeroLegajoLabel;
     private javax.swing.JPanel numeroLegajoPanel;

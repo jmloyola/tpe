@@ -4,11 +4,15 @@
  */
 package InterfazGrafica;
 
+import javax.swing.JOptionPane;
+import sgps.SGPS;
+
 /**
  *
  * @author Juan
  */
 public class AsignarLotesEtapasEmpleadosScreen extends javax.swing.JFrame {
+
 
     /**
      * Creates new form AsignarLotesEtapasEmpleadosScreen
@@ -36,6 +40,7 @@ public class AsignarLotesEtapasEmpleadosScreen extends javax.swing.JFrame {
         fechaDateChooser = new com.toedter.calendar.JDateChooser();
         numeroLegajoFormattedTextField = new javax.swing.JFormattedTextField();
         buscarEmpleadoButton = new javax.swing.JButton();
+        cargarNumeroLegajoButton = new javax.swing.JButton();
         cancelarButton = new javax.swing.JButton();
         aceptarButton = new javax.swing.JButton();
 
@@ -59,6 +64,19 @@ public class AsignarLotesEtapasEmpleadosScreen extends javax.swing.JFrame {
 
         buscarEmpleadoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/InterfazGrafica/Icons/search_plus.png"))); // NOI18N
         buscarEmpleadoButton.setPreferredSize(new java.awt.Dimension(20, 20));
+        buscarEmpleadoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarEmpleadoButtonActionPerformed(evt);
+            }
+        });
+
+        cargarNumeroLegajoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/InterfazGrafica/Icons/group_add.png"))); // NOI18N
+        cargarNumeroLegajoButton.setPreferredSize(new java.awt.Dimension(20, 20));
+        cargarNumeroLegajoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cargarNumeroLegajoButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout valoresPanelLayout = new javax.swing.GroupLayout(valoresPanel);
         valoresPanel.setLayout(valoresPanelLayout);
@@ -77,7 +95,9 @@ public class AsignarLotesEtapasEmpleadosScreen extends javax.swing.JFrame {
                     .addGroup(valoresPanelLayout.createSequentialGroup()
                         .addComponent(numeroLegajoFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buscarEmpleadoButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(buscarEmpleadoButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cargarNumeroLegajoButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(descripcionEtapaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(identificadorLoteComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -97,11 +117,16 @@ public class AsignarLotesEtapasEmpleadosScreen extends javax.swing.JFrame {
                     .addComponent(descripcionEtapaLabel)
                     .addComponent(descripcionEtapaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(valoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(numeroLegajoEmpleadoLabel)
-                    .addComponent(numeroLegajoFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buscarEmpleadoButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(valoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(valoresPanelLayout.createSequentialGroup()
+                        .addGroup(valoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(numeroLegajoEmpleadoLabel)
+                            .addComponent(numeroLegajoFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buscarEmpleadoButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, valoresPanelLayout.createSequentialGroup()
+                        .addComponent(cargarNumeroLegajoButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)))
                 .addGroup(valoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(fechaLabel)
                     .addComponent(fechaDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -124,7 +149,7 @@ public class AsignarLotesEtapasEmpleadosScreen extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(203, Short.MAX_VALUE)
+                        .addContainerGap(229, Short.MAX_VALUE)
                         .addComponent(aceptarButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cancelarButton))
@@ -136,20 +161,38 @@ public class AsignarLotesEtapasEmpleadosScreen extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(valoresPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelarButton)
                     .addComponent(aceptarButton))
                 .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(381, 220));
+        setSize(new java.awt.Dimension(407, 220));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarButtonActionPerformed
         this.dispose();
     }//GEN-LAST:event_cancelarButtonActionPerformed
+
+    private void buscarEmpleadoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarEmpleadoButtonActionPerformed
+        JOptionPane.showMessageDialog(this, "Realice la busqueda de empleado, seleccione en la tabla el empleado que desea haciendo click en la fila y presiones el boton salir.", "Recuerde", JOptionPane.INFORMATION_MESSAGE);
+        BuscarEmpleadosScreen buscarEmpleadosScreen = new BuscarEmpleadosScreen();
+        buscarEmpleadosScreen.setVisible(true);
+        
+        /*if (SGPS.numeroLegajoEmpleado != -1){
+            numeroLegajoFormattedTextField.setValue(SGPS.numeroLegajoEmpleado);
+            SGPS.numeroLegajoEmpleado = -1;
+        } */       
+    }//GEN-LAST:event_buscarEmpleadoButtonActionPerformed
+
+    private void cargarNumeroLegajoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarNumeroLegajoButtonActionPerformed
+        if (SGPS.numeroLegajoEmpleado != -1){
+            numeroLegajoFormattedTextField.setValue(SGPS.numeroLegajoEmpleado);
+            SGPS.numeroLegajoEmpleado = -1;
+        }         
+    }//GEN-LAST:event_cargarNumeroLegajoButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -189,6 +232,7 @@ public class AsignarLotesEtapasEmpleadosScreen extends javax.swing.JFrame {
     private javax.swing.JButton aceptarButton;
     private javax.swing.JButton buscarEmpleadoButton;
     private javax.swing.JButton cancelarButton;
+    private javax.swing.JButton cargarNumeroLegajoButton;
     private javax.swing.JComboBox descripcionEtapaComboBox;
     private javax.swing.JLabel descripcionEtapaLabel;
     private com.toedter.calendar.JDateChooser fechaDateChooser;

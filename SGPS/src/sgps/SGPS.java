@@ -15,6 +15,7 @@ public class SGPS {
     
     public static String identificadorUsuarioActual = null;
     public static int nivelUsuarioActual = -1;
+    public static int numeroLegajoEmpleado = -1;
 
     /**
      * @param args the command line arguments

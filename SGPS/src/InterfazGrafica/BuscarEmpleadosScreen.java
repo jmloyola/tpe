@@ -14,6 +14,7 @@ import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import net.proteanit.sql.DbUtils;
+import sgps.SGPS;
 
 /**
  *
@@ -143,6 +144,11 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        resultadoBusquedaEmpleadosTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                resultadoBusquedaEmpleadosTableMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(resultadoBusquedaEmpleadosTable);
@@ -692,6 +698,19 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "El parametro de busqueda no puede ser vacio.", "Error al buscar empleado", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_buscarEmpleadosButtonActionPerformed
+
+    private void resultadoBusquedaEmpleadosTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resultadoBusquedaEmpleadosTableMouseClicked
+        if (!(resultadoBusquedaEmpleadosTable.getModel().getValueAt(1, 1) == null)){
+            try{
+                int row = resultadoBusquedaEmpleadosTable.getSelectedRow();
+                int numeroLegajo = Integer.parseInt(resultadoBusquedaEmpleadosTable.getModel().getValueAt(row, 4).toString());
+
+                SGPS.numeroLegajoEmpleado = numeroLegajo;
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(this, e.getMessage(), "Error al cargar numero de legajo.", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_resultadoBusquedaEmpleadosTableMouseClicked
 
     /**
      * @param args the command line arguments

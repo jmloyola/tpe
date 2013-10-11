@@ -4,9 +4,14 @@
  */
 package InterfazGrafica;
 
+import java.awt.Dialog;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import sgps.SGPS;
 
 /**
  *
@@ -17,8 +22,6 @@ public class ActualizarInformacionEmpleadoScreen extends javax.swing.JFrame {
     Connection conn = null;
     ResultSet rs = null;
     PreparedStatement pst = null;
-    
-    public int numeroLegajoEmpleado = -1;
     
     /**
      * Creates new form ActualizarInformacionEmpleadoScreen
@@ -43,6 +46,7 @@ public class ActualizarInformacionEmpleadoScreen extends javax.swing.JFrame {
         buscarEmpleadoButton = new javax.swing.JButton();
         numeroLegajoFormattedTextField = new javax.swing.JFormattedTextField();
         cargarButton = new javax.swing.JButton();
+        cargarNumeroLegajoButton = new javax.swing.JButton();
         telefonoLabel = new javax.swing.JLabel();
         categoriaLabel = new javax.swing.JLabel();
         sueldoLabel = new javax.swing.JLabel();
@@ -82,12 +86,30 @@ public class ActualizarInformacionEmpleadoScreen extends javax.swing.JFrame {
 
         buscarEmpleadoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/InterfazGrafica/Icons/search_plus.png"))); // NOI18N
         buscarEmpleadoButton.setToolTipText("En caso que no recuerde el numero de legajo del empleado haga click aqui para buscar el empleado que le interesa");
-        buscarEmpleadoButton.setPreferredSize(new java.awt.Dimension(23, 23));
+        buscarEmpleadoButton.setPreferredSize(new java.awt.Dimension(20, 20));
+        buscarEmpleadoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarEmpleadoButtonActionPerformed(evt);
+            }
+        });
 
         numeroLegajoFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         numeroLegajoFormattedTextField.setPreferredSize(new java.awt.Dimension(120, 20));
 
         cargarButton.setText("Cargar");
+        cargarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cargarButtonActionPerformed(evt);
+            }
+        });
+
+        cargarNumeroLegajoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/InterfazGrafica/Icons/group_add.png"))); // NOI18N
+        cargarNumeroLegajoButton.setPreferredSize(new java.awt.Dimension(20, 20));
+        cargarNumeroLegajoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cargarNumeroLegajoButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout numeroLegajoPanelLayout = new javax.swing.GroupLayout(numeroLegajoPanel);
         numeroLegajoPanel.setLayout(numeroLegajoPanelLayout);
@@ -100,23 +122,27 @@ public class ActualizarInformacionEmpleadoScreen extends javax.swing.JFrame {
                 .addComponent(numeroLegajoFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buscarEmpleadoButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cargarNumeroLegajoButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(cargarButton)
                 .addContainerGap())
         );
         numeroLegajoPanelLayout.setVerticalGroup(
             numeroLegajoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(numeroLegajoPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(numeroLegajoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(numeroLegajoLabel)
-                    .addComponent(buscarEmpleadoButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(numeroLegajoFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, numeroLegajoPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(cargarButton)
                 .addContainerGap())
+            .addGroup(numeroLegajoPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(numeroLegajoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cargarNumeroLegajoButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(numeroLegajoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(numeroLegajoLabel)
+                        .addComponent(buscarEmpleadoButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(numeroLegajoFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         telefonoLabel.setText("Telefono:");
@@ -187,7 +213,7 @@ public class ActualizarInformacionEmpleadoScreen extends javax.swing.JFrame {
                             .addComponent(telefonoFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(sueldoFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cantidadHijosFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 43, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -241,13 +267,38 @@ public class ActualizarInformacionEmpleadoScreen extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(383, 458));
+        setSize(new java.awt.Dimension(406, 458));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarButtonActionPerformed
         this.dispose();
     }//GEN-LAST:event_cancelarButtonActionPerformed
+
+    private void buscarEmpleadoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarEmpleadoButtonActionPerformed
+        JOptionPane.showMessageDialog(this, "Realice la busqueda de empleado, seleccione en la tabla el empleado que desea haciendo click en la fila y presiones el boton salir.", "Recuerde", JOptionPane.INFORMATION_MESSAGE);
+        BuscarEmpleadosScreen buscarEmpleadosScreen = new BuscarEmpleadosScreen();
+        buscarEmpleadosScreen.setVisible(true);
+        
+        // TODO PENSAR EN METODO PARA QUE SE ESPERE A QUE CIERRE VENTANA
+        /*
+        if (SGPS.numeroLegajoEmpleado != -1){
+            JOptionPane.showMessageDialog(this, SGPS.numeroLegajoEmpleado);
+            numeroLegajoFormattedTextField.setValue(SGPS.numeroLegajoEmpleado);
+            SGPS.numeroLegajoEmpleado = -1;
+        }*/
+    }//GEN-LAST:event_buscarEmpleadoButtonActionPerformed
+
+    private void cargarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarButtonActionPerformed
+        // TODO Agregar Codigo 
+    }//GEN-LAST:event_cargarButtonActionPerformed
+
+    private void cargarNumeroLegajoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarNumeroLegajoButtonActionPerformed
+        if (SGPS.numeroLegajoEmpleado != -1){
+            numeroLegajoFormattedTextField.setValue(SGPS.numeroLegajoEmpleado);
+            SGPS.numeroLegajoEmpleado = -1;
+        } 
+    }//GEN-LAST:event_cargarNumeroLegajoButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -290,6 +341,7 @@ public class ActualizarInformacionEmpleadoScreen extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField cantidadHijosFormattedTextField;
     private javax.swing.JLabel cantidadHijosLabel;
     private javax.swing.JButton cargarButton;
+    private javax.swing.JButton cargarNumeroLegajoButton;
     private javax.swing.JComboBox categoriaComboBox;
     private javax.swing.JLabel categoriaLabel;
     private javax.swing.JLabel ciudadResidenciaLabel;
