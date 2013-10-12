@@ -26,6 +26,8 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
     ResultSet rs = null;
     PreparedStatement pst = null;
     
+    boolean busquedaExitosa = false;
+    
     /**
      * Creates new form BuscarEmpleadosScreen
      */
@@ -241,8 +243,10 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
 
                             rs = pst.executeQuery();
                             resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
+                            busquedaExitosa = true;
                         }catch(Exception e){
                             JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                            busquedaExitosa = false;
                         }
                         break;
                     case 1:
@@ -270,8 +274,10 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
 
                             rs = pst.executeQuery();
                             resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
+                            busquedaExitosa = true;
                         }catch(Exception e){
                             JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                            busquedaExitosa = false;
                         }
                         break;                        
                     case 2:
@@ -299,8 +305,10 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
 
                             rs = pst.executeQuery();
                             resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
+                            busquedaExitosa = true;
                         }catch(Exception e){
                             JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                            busquedaExitosa = false;
                         }
                         break;                        
                     case 3:
@@ -336,8 +344,10 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
 
                             rs = pst.executeQuery();
                             resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
+                            busquedaExitosa = true;
                         }catch(Exception e){
                             JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                            busquedaExitosa = false;
                         }
                         break;                        
                     case 4:
@@ -365,8 +375,10 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
 
                             rs = pst.executeQuery();
                             resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
+                            busquedaExitosa = true;
                         }catch(Exception e){
                             JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                            busquedaExitosa = false;
                         }
                         break;                        
                     case 5:
@@ -394,8 +406,10 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
 
                             rs = pst.executeQuery();
                             resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
+                            busquedaExitosa = true;
                         }catch(Exception e){
                             JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                            busquedaExitosa = false;
                         }
                         break;                        
                     case 6:
@@ -423,8 +437,10 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
 
                             rs = pst.executeQuery();
                             resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
+                            busquedaExitosa = true;
                         }catch(Exception e){
                             JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                            busquedaExitosa = false;
                         }
                         break;                        
                     case 7:
@@ -452,8 +468,10 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
 
                             rs = pst.executeQuery();
                             resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
+                            busquedaExitosa = true;
                         }catch(Exception e){
                             JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                            busquedaExitosa = false;
                         }
                         break;                        
                     case 8:
@@ -481,8 +499,10 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
 
                             rs = pst.executeQuery();
                             resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
+                            busquedaExitosa = true;
                         }catch(Exception e){
                             JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                            busquedaExitosa = false;
                         }
                         break;                          
                     case 9:
@@ -510,8 +530,10 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
 
                             rs = pst.executeQuery();
                             resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
+                            busquedaExitosa = true;
                         }catch(Exception e){
                             JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                            busquedaExitosa = false;
                         }
                         break;                         
                     case 10:
@@ -539,8 +561,10 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
 
                             rs = pst.executeQuery();
                             resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
+                            busquedaExitosa = true;
                         }catch(Exception e){
                             JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                            busquedaExitosa = false;
                         }
                         break;                        
                     case 11:
@@ -568,8 +592,10 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
 
                             rs = pst.executeQuery();
                             resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
+                            busquedaExitosa = true;
                         }catch(Exception e){
                             JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                            busquedaExitosa = false;
                         }
                         break;                        
                     case 12:
@@ -597,8 +623,10 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
 
                             rs = pst.executeQuery();
                             resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
+                            busquedaExitosa = true;
                         }catch(Exception e){
                             JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                            busquedaExitosa = false;
                         }
                         break;                        
                     case 13:
@@ -626,8 +654,10 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
 
                             rs = pst.executeQuery();
                             resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
+                            busquedaExitosa = true;
                         }catch(Exception e){
                             JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                            busquedaExitosa = false;
                         }
                         break;                        
                     case 14:
@@ -655,8 +685,10 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
 
                             rs = pst.executeQuery();
                             resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
+                            busquedaExitosa = true;
                         }catch(Exception e){
                             JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                            busquedaExitosa = false;
                         }
                         break;                        
                     case 15:
@@ -684,14 +716,17 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
 
                             rs = pst.executeQuery();
                             resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
+                            busquedaExitosa = true;
                         }catch(Exception e){
                             JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                            busquedaExitosa = false;
                         }
                         break;                        
                 }
             }
             else{
                 JOptionPane.showMessageDialog(this, "El valor del parametor de busqueda no puede ser vacio.", "Error al buscar empleado", JOptionPane.ERROR_MESSAGE);
+                busquedaExitosa = false;
             }
         }
         else{
@@ -700,7 +735,8 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_buscarEmpleadosButtonActionPerformed
 
     private void resultadoBusquedaEmpleadosTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resultadoBusquedaEmpleadosTableMouseClicked
-        if (!(resultadoBusquedaEmpleadosTable.getModel().getValueAt(1, 1) == null)){
+        /*if (!(resultadoBusquedaEmpleadosTable.getModel().getValueAt(1, 1) == null)){*/ ///
+        if (busquedaExitosa){
             try{
                 int row = resultadoBusquedaEmpleadosTable.getSelectedRow();
                 int numeroLegajo = Integer.parseInt(resultadoBusquedaEmpleadosTable.getModel().getValueAt(row, 4).toString());
