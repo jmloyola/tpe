@@ -421,11 +421,12 @@ INSERT INTO insumos(
 
 
 /* Stock Mensual Insumo */
+/*
 INSERT INTO stocksmensualesinsumos(
             sm_i_fecha, sm_i_inicio, sm_i_ingreso, sm_i_egreso, 
             sm_i_cantidadcalculada, sm_i_cantidadreal, sm_i_diferencia, i_descripcion_caracterizadoen)
     VALUES ('2013-10-01', 0, 10, 0, 
-            10, 10, 0, 'Aluminio');
+            10, 10, 0, 'Aluminio');*/
 			
 /* Productos Terminados */
 INSERT INTO productosterminados(
@@ -521,6 +522,13 @@ INSERT INTO stocksmensualesproductosterminados(
     VALUES ('2013-10-01', 0, 0, 0, 
             0, 0, 0, 
             'G10');
-
-			
 			*/
+			
+/* Proveedores */
+INSERT INTO proveedores(
+            p_razonsocial, p_cuit, p_domicilio, p_sitioweb, p_direccionemail)
+    VALUES ('NEOTOXIN', '10-10111213', 'AVENIDA GENERAL ALVEAR 300, GODOY CRUZ, MENDOZA, ARGENTINA', 'WWW.NEOTOXIN.COM.AR', 'CONSULTAS@NEOTOXIN.COM.AR');
+	
+INSERT INTO proveedores(
+            p_razonsocial, p_cuit, p_domicilio, p_sitioweb, p_direccionemail)
+    VALUES ('GORPHOS', '20-20212223', 'LA PAZ 220, MERLO,SAN LUIS, ARGENTINA', 'WWW.GORPHOS.COM.AR', 'PEDIDOS@GORPHOS.COM.AR');
