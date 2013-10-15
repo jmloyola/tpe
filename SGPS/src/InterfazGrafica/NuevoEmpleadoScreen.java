@@ -429,7 +429,7 @@ public class NuevoEmpleadoScreen extends javax.swing.JFrame {
                                                                                     "            ?, ?, ?, ?, " +
                                                                                     "            ?, ?);";
                                                                         pst = conn.prepareStatement(sql);
-                                                                        pst.setString(1, nombreTextField.getText());
+                                                                        pst.setString(1, nombreTextField.getText().toUpperCase());
                                                                         pst.setInt(2, Integer.parseInt(dniFormattedTextField.getText()));
                                                                         pst.setLong(3, Long.parseLong(telefonoFormattedTextField.getText()));
                                                                         // Preparo fecha
@@ -438,7 +438,7 @@ public class NuevoEmpleadoScreen extends javax.swing.JFrame {
                                                                         pst.setInt(5, Integer.parseInt(numeroLegajoFormattedTextField.getText()));
                                                                         //pst.setFloat(6, Float.parseFloat(sueldoFormattedTextField.getText()));
                                                                         pst.setFloat(6, ((Number)sueldoFormattedTextField.getValue()).floatValue());
-                                                                        pst.setString(7, cuilTextField.getText());
+                                                                        pst.setString(7, cuilTextField.getText().toUpperCase());
                                                                         switch(estadoCivilComboBox.getSelectedIndex()){
                                                                             case 0:
                                                                                 pst.setString(8, "Soltero");
@@ -454,11 +454,11 @@ public class NuevoEmpleadoScreen extends javax.swing.JFrame {
                                                                                 break;
                                                                         }
                                                                         pst.setInt(9, Integer.parseInt(cantidadHijosFormattedTextField.getText()));
-                                                                        pst.setString(10, domicilioTextField.getText());
+                                                                        pst.setString(10, domicilioTextField.getText().toUpperCase());
                                                                         pst.setInt(11, Integer.parseInt(codigoPostalFormattedTextField.getText()));
-                                                                        pst.setString(12, paisResidenciaTextField.getText());
-                                                                        pst.setString(13, provinciaResidenciaTextField.getText());
-                                                                        pst.setString(14, ciudadResidenciaTextField.getText());
+                                                                        pst.setString(12, paisResidenciaTextField.getText().toUpperCase());
+                                                                        pst.setString(13, provinciaResidenciaTextField.getText().toUpperCase());
+                                                                        pst.setString(14, ciudadResidenciaTextField.getText().toUpperCase());
                                                                         switch(categoriaComboBox.getSelectedIndex()){
                                                                             case 0:
                                                                                 pst.setString(15, "Categoria A");

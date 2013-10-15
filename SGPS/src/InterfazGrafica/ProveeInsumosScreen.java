@@ -4,17 +4,65 @@
  */
 package InterfazGrafica;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Calendar;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Juan
  */
 public class ProveeInsumosScreen extends javax.swing.JFrame {
+    
+    Connection conn = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;
 
     /**
      * Creates new form ProveeInsumosScreen
      */
     public ProveeInsumosScreen() {
         initComponents();
+        try {
+            Class.forName("org.postgresql.Driver");
+            conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "root");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error en conexion", JOptionPane.ERROR_MESSAGE);
+        }
+        try{
+            String sql = "SELECT p_razonsocial FROM proveedores ORDER BY p_razonsocial";
+            pst = conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            
+            while (rs.next()){
+                String razonSocial = rs.getString("p_razonsocial");
+                razonSocialProveedorComboBox.addItem(razonSocial);
+            }
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al buscar valores de razon social", JOptionPane.ERROR_MESSAGE);
+            
+        }
+        
+        try{
+            String sql2 = "SELECT i_descripcion FROM insumos ORDER BY i_descripcion";
+            pst = conn.prepareStatement(sql2);
+            rs = pst.executeQuery();
+            
+            while (rs.next()){
+                String descripcionInsumo = rs.getString("i_descripcion");
+                descripcionInsumoComboBox.addItem(descripcionInsumo);
+            }
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al buscar valores de descripcion de insumo", JOptionPane.ERROR_MESSAGE);
+            
+        }
+        razonSocialProveedorComboBox.setSelectedIndex(-1);
+        descripcionInsumoComboBox.setSelectedIndex(-1);
     }
 
     /**
@@ -50,7 +98,7 @@ public class ProveeInsumosScreen extends javax.swing.JFrame {
         cantidadProvistaLabel.setText("Cantidad de Insumo Provista:");
 
         cantidadInsumoProvistaFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
-        cantidadInsumoProvistaFormattedTextField.setPreferredSize(new java.awt.Dimension(175, 20));
+        cantidadInsumoProvistaFormattedTextField.setPreferredSize(new java.awt.Dimension(275, 20));
 
         javax.swing.GroupLayout informacionProvisionPanelLayout = new javax.swing.GroupLayout(informacionProvisionPanel);
         informacionProvisionPanel.setLayout(informacionProvisionPanelLayout);
@@ -98,6 +146,11 @@ public class ProveeInsumosScreen extends javax.swing.JFrame {
         });
 
         aceptarButton.setText("Aceptar");
+        aceptarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aceptarButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -126,13 +179,70 @@ public class ProveeInsumosScreen extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(389, 216));
+        setSize(new java.awt.Dimension(489, 217));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarButtonActionPerformed
         this.dispose();
     }//GEN-LAST:event_cancelarButtonActionPerformed
+
+    private void aceptarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarButtonActionPerformed
+        PreparedStatement pst2 = null;
+        if (razonSocialProveedorComboBox.getSelectedIndex() != -1){
+            if (descripcionInsumoComboBox.getSelectedIndex() != -1){
+                if (!cantidadInsumoProvistaFormattedTextField.getText().equals("")){
+                    try{
+                        String sql = "SELECT SM_I_Codigo FROM StocksMensualesInsumos WHERE I_Descripcion_CaracterizadoEn = ? AND SM_I_Fecha = ?";
+                        pst = conn.prepareStatement(sql);
+
+                        pst.setString(1, descripcionInsumoComboBox.getSelectedItem().toString());
+
+                        Calendar calendarioActual = Calendar.getInstance();
+                        calendarioActual.set(Calendar.DAY_OF_MONTH, 1);
+
+                        java.util.Date today = new java.util.Date(calendarioActual.getTimeInMillis());
+                        java.sql.Date fechaActual = new java.sql.Date(today.getTime());
+
+                        pst.setDate(2,fechaActual);
+
+                        rs = pst.executeQuery();
+                        
+                        if (rs.next()){
+                            String sql2 = "INSERT INTO proveeinsumos( p_razonsocial_proveeinsumos, sm_i_codigo_proveeinsumos, cantidadprovista) VALUES (?, ?, ?);";
+                            pst2 = conn.prepareStatement(sql2);
+
+                            pst2.setString(1, razonSocialProveedorComboBox.getSelectedItem().toString());
+                            pst2.setInt(2, rs.getInt("SM_I_Codigo"));
+                            pst2.setFloat(3, ((Number)cantidadInsumoProvistaFormattedTextField.getValue()).floatValue());
+
+                            pst2.execute();
+                            
+                            JOptionPane.showMessageDialog(this, "Nueva provision de insumo ingresada satisfactoriamente", "Nueva provision", JOptionPane.INFORMATION_MESSAGE);
+                            
+                            this.dispose();
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(this, "NO TIENE QUE OCURRIR", "NO TIENE QUE OCURRIR", JOptionPane.ERROR_MESSAGE);
+                        }
+
+                    }catch(Exception e){
+                        JOptionPane.showMessageDialog(this, e.getMessage(), "Error al ingresar nueva provision", JOptionPane.ERROR_MESSAGE);
+
+                    }
+                }
+                else{
+                    JOptionPane.showMessageDialog(this, "La cantidad provista no puede ser vacia", "Error al ingresar provision de insumo", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Se debe seleccionar un insumo", "Error al ingresar provision de insumo", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Se debe seleccionar un proveedor", "Error al ingresar provision de insumo", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_aceptarButtonActionPerformed
 
     /**
      * @param args the command line arguments

@@ -428,11 +428,11 @@ public class ActualizarInformacionEmpleadoScreen extends javax.swing.JFrame {
                                             }
 
                                             pst.setInt(4, Integer.parseInt(cantidadHijosFormattedTextField.getText()));
-                                            pst.setString(5, domicilioTextField.getText());
+                                            pst.setString(5, domicilioTextField.getText().toUpperCase());
                                             pst.setInt(6, Integer.parseInt(codigoPostalFormattedTextField.getText()));
-                                            pst.setString(7, paisResidenciaTextField.getText());
-                                            pst.setString(8, provinciaResidenciaTextField.getText());
-                                            pst.setString(9, ciudadResidenciaTextField.getText());
+                                            pst.setString(7, paisResidenciaTextField.getText().toUpperCase());
+                                            pst.setString(8, provinciaResidenciaTextField.getText().toUpperCase());
+                                            pst.setString(9, ciudadResidenciaTextField.getText().toUpperCase());
                                             
                                             switch (categoriaComboBox.getSelectedIndex()){
                                                 case 0:

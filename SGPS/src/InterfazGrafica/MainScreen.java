@@ -42,6 +42,8 @@ public class MainScreen extends javax.swing.JFrame {
         updateEtapasTable();
         updateEmpleadosTable();
         updateInsumosTable();
+        updateInsumosProduccionTable();
+        updateInsumosEmbalajeTable();
         updateProductosTerminadosTable();
         updateLotesTable();
     }
@@ -367,7 +369,7 @@ public void inicializacionStocksMensualesDescarte(){
                               + "e_categoria AS \"Categoria\","
                               + "e_estado AS \"Estado\" "
                         + "FROM empleados "
-                        + "WHERE E_Estado <> 'Despedido'";
+                        + "WHERE E_Estado <> 'Despedido' ORDER BY e_nombre";
             pst = conn.prepareStatement(sql);
             rs = pst.executeQuery();
             empleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
@@ -377,6 +379,7 @@ public void inicializacionStocksMensualesDescarte(){
         }
     }
     
+    /// HACE REFERENCIA A LAS MATERIAS PRIMAS
     public void updateInsumosTable(){
         try{
             String sql = "SELECT I_Descripcion_CaracterizadoEn AS \"Descripcion\","
@@ -386,8 +389,8 @@ public void inicializacionStocksMensualesDescarte(){
                              + " SM_I_CantidadCalculada AS \"Cantidad Calculada\","
                              + " SM_I_CantidadReal AS \"Cantidad Real\","
                              + " SM_I_Diferencia AS \"Diferencia\" "
-                        + "FROM StocksMensualesInsumos "
-                        + "WHERE SM_I_Fecha = ?";
+                        + "FROM StocksMensualesInsumos, Insumos "
+                        + "WHERE I_Descripcion = I_Descripcion_CaracterizadoEn AND I_Tipo = 'Materia Prima' AND SM_I_Fecha = ? ORDER BY I_Descripcion_CaracterizadoEn";
             pst = conn.prepareStatement(sql);
             
             Calendar calendarioActual = Calendar.getInstance();
@@ -402,9 +405,70 @@ public void inicializacionStocksMensualesDescarte(){
             insumosTable.setModel(DbUtils.resultSetToTableModel(rs));
             insumosTable.setEnabled(false);
         }catch(Exception e){
-            JOptionPane.showMessageDialog(this, e, "Error al actualizar tabla de insumos", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, e, "Error al actualizar tabla de materias primas", JOptionPane.ERROR_MESSAGE);
         }
     }
+    
+    
+    public void updateInsumosEmbalajeTable(){
+        try{
+            String sql = "SELECT I_Descripcion_CaracterizadoEn AS \"Descripcion\","
+                             + " SM_I_Inicio AS \"Inicio\","
+                             + " SM_I_Ingreso AS \"Ingreso\","
+                             + " SM_I_Egreso AS \"Egreso\","
+                             + " SM_I_CantidadCalculada AS \"Cantidad Calculada\","
+                             + " SM_I_CantidadReal AS \"Cantidad Real\","
+                             + " SM_I_Diferencia AS \"Diferencia\" "
+                        + "FROM StocksMensualesInsumos, Insumos "
+                        + "WHERE I_Descripcion = I_Descripcion_CaracterizadoEn AND I_Tipo = 'Insumo Embalaje' AND SM_I_Fecha = ? ORDER BY I_Descripcion_CaracterizadoEn";
+            pst = conn.prepareStatement(sql);
+            
+            Calendar calendarioActual = Calendar.getInstance();
+            calendarioActual.set(Calendar.DAY_OF_MONTH, 1);
+                                    
+            java.util.Date today = new java.util.Date(calendarioActual.getTimeInMillis());
+            java.sql.Date fechaActual = new java.sql.Date(today.getTime());
+            
+            pst.setDate(1,fechaActual);
+            
+            rs = pst.executeQuery();
+            insumosEmbalajeTable.setModel(DbUtils.resultSetToTableModel(rs));
+            insumosEmbalajeTable.setEnabled(false);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e, "Error al actualizar tabla de insumos de embalaje", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+   
+    public void updateInsumosProduccionTable(){
+        try{
+            String sql = "SELECT I_Descripcion_CaracterizadoEn AS \"Descripcion\","
+                             + " SM_I_Inicio AS \"Inicio\","
+                             + " SM_I_Ingreso AS \"Ingreso\","
+                             + " SM_I_Egreso AS \"Egreso\","
+                             + " SM_I_CantidadCalculada AS \"Cantidad Calculada\","
+                             + " SM_I_CantidadReal AS \"Cantidad Real\","
+                             + " SM_I_Diferencia AS \"Diferencia\" "
+                        + "FROM StocksMensualesInsumos, Insumos "
+                        + "WHERE I_Descripcion = I_Descripcion_CaracterizadoEn AND I_Tipo = 'Insumo Produccion' AND SM_I_Fecha = ? ORDER BY I_Descripcion_CaracterizadoEn";
+            pst = conn.prepareStatement(sql);
+            
+            Calendar calendarioActual = Calendar.getInstance();
+            calendarioActual.set(Calendar.DAY_OF_MONTH, 1);
+                                    
+            java.util.Date today = new java.util.Date(calendarioActual.getTimeInMillis());
+            java.sql.Date fechaActual = new java.sql.Date(today.getTime());
+            
+            pst.setDate(1,fechaActual);
+            
+            rs = pst.executeQuery();
+            insumosProduccionTable.setModel(DbUtils.resultSetToTableModel(rs));
+            insumosProduccionTable.setEnabled(false);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e, "Error al actualizar tabla de insumos de produccion", JOptionPane.ERROR_MESSAGE);
+        }
+    }    
+    
         
      
     public void updateProductosTerminadosTable(){
@@ -417,7 +481,7 @@ public void inicializacionStocksMensualesDescarte(){
                              + " SM_PT_CantidadReal AS \"Cantidad Real\","
                              + " SM_PT_Diferencia AS \"Diferencia\" "
                         + "FROM StocksMensualesProductosTerminados "
-                        + "WHERE SM_PT_Fecha = ?";
+                        + "WHERE SM_PT_Fecha = ? ORDER BY PT_Codificacion_CaracterizadoEn_PT";
             pst = conn.prepareStatement(sql);
             
             Calendar calendarioActual = Calendar.getInstance();
@@ -477,6 +541,16 @@ public void inicializacionStocksMensualesDescarte(){
         tablaSolapaInsumosScrollPane = new javax.swing.JScrollPane();
         insumosTable = new javax.swing.JTable();
         imprimirInsumosButton = new javax.swing.JButton();
+        solapaInsumoEmbalajePanel = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        insumosEmbalajeTable = new javax.swing.JTable();
+        imprimirInsumosEmbalajeButton = new javax.swing.JButton();
+        actualizarInsumosEmbalajeButton = new javax.swing.JButton();
+        solapaInsumosProduccionPanel = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        insumosProduccionTable = new javax.swing.JTable();
+        imprimirInsumosProduccionButton = new javax.swing.JButton();
+        actualizarInsumosProduccionButton = new javax.swing.JButton();
         solapaProductosTerminadosPane = new javax.swing.JPanel();
         actualizarTablaSolapaProductosTerminadosButton = new javax.swing.JButton();
         tablaSolapaProductosTerminadosScrollPane = new javax.swing.JScrollPane();
@@ -601,7 +675,7 @@ public void inicializacionStocksMensualesDescarte(){
             solapaLotesPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, solapaLotesPaneLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tablaSolapaLotesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)
+                .addComponent(tablaSolapaLotesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(solapaLotesPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(actualizarTablaSolapaLotesButton)
@@ -671,7 +745,7 @@ public void inicializacionStocksMensualesDescarte(){
             solapaInsumosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, solapaInsumosPaneLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tablaSolapaInsumosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)
+                .addComponent(tablaSolapaInsumosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(solapaInsumosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(actualizarTablaSolapaInsumosButton)
@@ -679,7 +753,117 @@ public void inicializacionStocksMensualesDescarte(){
                 .addContainerGap())
         );
 
-        solapasTabbedPane.addTab("Insumos", solapaInsumosPane);
+        solapasTabbedPane.addTab("Materias Primas", solapaInsumosPane);
+
+        insumosEmbalajeTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(insumosEmbalajeTable);
+
+        imprimirInsumosEmbalajeButton.setText("Imprimir");
+        imprimirInsumosEmbalajeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imprimirInsumosEmbalajeButtonActionPerformed(evt);
+            }
+        });
+
+        actualizarInsumosEmbalajeButton.setText("Actualizar");
+        actualizarInsumosEmbalajeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarInsumosEmbalajeButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout solapaInsumoEmbalajePanelLayout = new javax.swing.GroupLayout(solapaInsumoEmbalajePanel);
+        solapaInsumoEmbalajePanel.setLayout(solapaInsumoEmbalajePanelLayout);
+        solapaInsumoEmbalajePanelLayout.setHorizontalGroup(
+            solapaInsumoEmbalajePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(solapaInsumoEmbalajePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(solapaInsumoEmbalajePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1082, Short.MAX_VALUE)
+                    .addGroup(solapaInsumoEmbalajePanelLayout.createSequentialGroup()
+                        .addComponent(imprimirInsumosEmbalajeButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(actualizarInsumosEmbalajeButton)))
+                .addContainerGap())
+        );
+        solapaInsumoEmbalajePanelLayout.setVerticalGroup(
+            solapaInsumoEmbalajePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(solapaInsumoEmbalajePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(solapaInsumoEmbalajePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(imprimirInsumosEmbalajeButton)
+                    .addComponent(actualizarInsumosEmbalajeButton))
+                .addContainerGap())
+        );
+
+        solapasTabbedPane.addTab("Insumos Embalaje", solapaInsumoEmbalajePanel);
+
+        insumosProduccionTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(insumosProduccionTable);
+
+        imprimirInsumosProduccionButton.setText("Imprimir");
+        imprimirInsumosProduccionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imprimirInsumosProduccionButtonActionPerformed(evt);
+            }
+        });
+
+        actualizarInsumosProduccionButton.setText("Actualizar");
+        actualizarInsumosProduccionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarInsumosProduccionButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout solapaInsumosProduccionPanelLayout = new javax.swing.GroupLayout(solapaInsumosProduccionPanel);
+        solapaInsumosProduccionPanel.setLayout(solapaInsumosProduccionPanelLayout);
+        solapaInsumosProduccionPanelLayout.setHorizontalGroup(
+            solapaInsumosProduccionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(solapaInsumosProduccionPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(solapaInsumosProduccionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1082, Short.MAX_VALUE)
+                    .addGroup(solapaInsumosProduccionPanelLayout.createSequentialGroup()
+                        .addComponent(imprimirInsumosProduccionButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(actualizarInsumosProduccionButton)))
+                .addContainerGap())
+        );
+        solapaInsumosProduccionPanelLayout.setVerticalGroup(
+            solapaInsumosProduccionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(solapaInsumosProduccionPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(solapaInsumosProduccionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(imprimirInsumosProduccionButton)
+                    .addComponent(actualizarInsumosProduccionButton))
+                .addContainerGap())
+        );
+
+        solapasTabbedPane.addTab("Insumos Produccion", solapaInsumosProduccionPanel);
 
         actualizarTablaSolapaProductosTerminadosButton.setText("Actualizar");
         actualizarTablaSolapaProductosTerminadosButton.addActionListener(new java.awt.event.ActionListener() {
@@ -741,7 +925,7 @@ public void inicializacionStocksMensualesDescarte(){
             solapaProductosTerminadosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, solapaProductosTerminadosPaneLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tablaSolapaProductosTerminadosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)
+                .addComponent(tablaSolapaProductosTerminadosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(solapaProductosTerminadosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(actualizarTablaSolapaProductosTerminadosButton)
@@ -811,7 +995,7 @@ public void inicializacionStocksMensualesDescarte(){
             solapaEmpleadosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, solapaEmpleadosPaneLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tablaSolapaEmpleadosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)
+                .addComponent(tablaSolapaEmpleadosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(solapaEmpleadosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(actualizarTablaSolapaEmpleadosButton)
@@ -881,8 +1065,8 @@ public void inicializacionStocksMensualesDescarte(){
             solapaEtapasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(solapaEtapasPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(solapaEtapasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(actualizarEtapasButton)
                     .addComponent(imprimirEtapasButton))
@@ -1255,12 +1439,12 @@ public void inicializacionStocksMensualesDescarte(){
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(solapasTabbedPane)
+                .addComponent(solapasTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(usuarioActualLabel))
         );
 
-        setSize(new java.awt.Dimension(1143, 639));
+        setSize(new java.awt.Dimension(1143, 689));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1492,6 +1676,32 @@ public void inicializacionStocksMensualesDescarte(){
         ingresoCantidadDescarteObtenidaScreen.setVisible(true);
     }//GEN-LAST:event_ingresoCantidadDescarteMenuItemActionPerformed
 
+    private void imprimirInsumosEmbalajeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirInsumosEmbalajeButtonActionPerformed
+        try{
+            //empleadosTable.print(JTable.PrintMode.NORMAL); // No queda muy bien que digamos
+            insumosEmbalajeTable.print(JTable.PrintMode.FIT_WIDTH);
+        }catch(java.awt.print.PrinterException e){
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al imprimir", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_imprimirInsumosEmbalajeButtonActionPerformed
+
+    private void imprimirInsumosProduccionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirInsumosProduccionButtonActionPerformed
+        try{
+            //empleadosTable.print(JTable.PrintMode.NORMAL); // No queda muy bien que digamos
+            insumosProduccionTable.print(JTable.PrintMode.FIT_WIDTH);
+        }catch(java.awt.print.PrinterException e){
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al imprimir", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_imprimirInsumosProduccionButtonActionPerformed
+
+    private void actualizarInsumosEmbalajeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarInsumosEmbalajeButtonActionPerformed
+        updateInsumosEmbalajeTable();
+    }//GEN-LAST:event_actualizarInsumosEmbalajeButtonActionPerformed
+
+    private void actualizarInsumosProduccionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarInsumosProduccionButtonActionPerformed
+        updateInsumosProduccionTable();
+    }//GEN-LAST:event_actualizarInsumosProduccionButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1533,6 +1743,8 @@ public void inicializacionStocksMensualesDescarte(){
     private javax.swing.JMenuItem actualizarInformacionInsumoMenuItem;
     private javax.swing.JMenuItem actualizarInformacionLoteMenuItem;
     private javax.swing.JMenuItem actualizarInformacionProveedorMenuItem;
+    private javax.swing.JButton actualizarInsumosEmbalajeButton;
+    private javax.swing.JButton actualizarInsumosProduccionButton;
     private javax.swing.JButton actualizarTablaSolapaEmpleadosButton;
     private javax.swing.JButton actualizarTablaSolapaInsumosButton;
     private javax.swing.JButton actualizarTablaSolapaLotesButton;
@@ -1567,12 +1779,18 @@ public void inicializacionStocksMensualesDescarte(){
     private javax.swing.JButton imprimirEmpleadosButton;
     private javax.swing.JButton imprimirEtapasButton;
     private javax.swing.JButton imprimirInsumosButton;
+    private javax.swing.JButton imprimirInsumosEmbalajeButton;
+    private javax.swing.JButton imprimirInsumosProduccionButton;
     private javax.swing.JButton imprimirLotesButton;
     private javax.swing.JButton imprimirProductosTerminadosButton;
     private javax.swing.JMenuItem ingresoCantidadDescarteMenuItem;
+    private javax.swing.JTable insumosEmbalajeTable;
     private javax.swing.JMenu insumosMenu;
+    private javax.swing.JTable insumosProduccionTable;
     private javax.swing.JTable insumosTable;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JMenu lotesMenu;
     private javax.swing.JTable lotesTable;
     private javax.swing.JMenuBar mainScreenMenuBar;
@@ -1599,7 +1817,9 @@ public void inicializacionStocksMensualesDescarte(){
     private javax.swing.JPopupMenu.Separator separadoreEntreExportarYEsquemas;
     private javax.swing.JPanel solapaEmpleadosPane;
     private javax.swing.JPanel solapaEtapasPanel;
+    private javax.swing.JPanel solapaInsumoEmbalajePanel;
     private javax.swing.JPanel solapaInsumosPane;
+    private javax.swing.JPanel solapaInsumosProduccionPanel;
     private javax.swing.JPanel solapaLotesPane;
     private javax.swing.JPanel solapaProductosTerminadosPane;
     private javax.swing.JTabbedPane solapasTabbedPane;

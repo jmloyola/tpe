@@ -239,7 +239,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                                     + "FROM empleados WHERE E_Nombre LIKE ?";
                             pst = conn.prepareStatement(sql);
 
-                            pst.setString(1,"%"+valorParametroTextField.getText()+"%");
+                            pst.setString(1,"%"+valorParametroTextField.getText().toUpperCase()+"%");
 
                             rs = pst.executeQuery();
                             resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
@@ -433,7 +433,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                                     + "FROM empleados WHERE e_cuil = ?";
                             pst = conn.prepareStatement(sql);
 
-                            pst.setString(1,valorParametroTextField.getText());
+                            pst.setString(1,valorParametroTextField.getText().toUpperCase());
 
                             rs = pst.executeQuery();
                             resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
@@ -526,7 +526,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                                     + "FROM empleados WHERE e_domicilio = ?";
                             pst = conn.prepareStatement(sql);
 
-                            pst.setString(1,valorParametroTextField.getText());
+                            pst.setString(1,valorParametroTextField.getText().toUpperCase());
 
                             rs = pst.executeQuery();
                             resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
@@ -588,7 +588,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                                     + "FROM empleados WHERE e_paisresidencia = ?";
                             pst = conn.prepareStatement(sql);
 
-                            pst.setString(1,valorParametroTextField.getText());
+                            pst.setString(1,valorParametroTextField.getText().toUpperCase());
 
                             rs = pst.executeQuery();
                             resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
@@ -619,7 +619,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                                     + "FROM empleados WHERE e_provinciaresidencia = ?";
                             pst = conn.prepareStatement(sql);
 
-                            pst.setString(1,valorParametroTextField.getText());
+                            pst.setString(1,valorParametroTextField.getText().toUpperCase());
 
                             rs = pst.executeQuery();
                             resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
@@ -650,7 +650,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                                     + "FROM empleados WHERE e_ciudadresidencia = ?";
                             pst = conn.prepareStatement(sql);
 
-                            pst.setString(1,valorParametroTextField.getText());
+                            pst.setString(1,valorParametroTextField.getText().toUpperCase());
 
                             rs = pst.executeQuery();
                             resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
