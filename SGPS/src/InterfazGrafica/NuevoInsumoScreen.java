@@ -60,7 +60,7 @@ public class NuevoInsumoScreen extends javax.swing.JFrame {
 
         descripcionTextField.setPreferredSize(new java.awt.Dimension(175, 20));
 
-        unidadComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kilogramo", "Cada Uno", "Metros Cubicos", "Litros" }));
+        unidadComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kilogramo", "Cada Uno", "Metros Cubicos", "Litros", "Metros" }));
         unidadComboBox.setSelectedIndex(-1);
 
         limitePedidoFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
