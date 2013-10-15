@@ -1,0 +1,34 @@
+PRESENTACION
+
+
+************************
+PRESENTACION DEL SISTEMA
+************************
+
+MOSTRAR VISION GENERAL DEL SISTEMA
+	Mostrar todas las operaciones que se pueden realizar
+	Mostrar la validacion de campos
+	Mostrar que ocurre cuando se ingresa algo incorrecto o no deseado
+	Mencionar tareas que se realizan al inicializar el sistema
+	
+NUEVO EMPLEADO
+	Mostrar mensajes de error al no ingresar atributos obligatorios
+	Mostrar mensajes de error al ingresar valores no correspondientes
+	Mostrar efecto que tiene el proceso
+	
+DAR DE BAJA EMPLEADO
+	Mostrar busqueda de empleado en caso de que no recuerde su numero de legajo. Mostrar como cargar dicho valor
+	Mostrar efecto que tiene el proceso
+	
+ACTUALIZAR INFORMACION EMPLEADO
+	Mostrar efecto que tiene el proceso
+	
+BUSCAR EMPLEADOS
+	Mostrar el hecho de que se puede buscar empleados por distintos parametros
+	Mostrar que dicha busqueda puede ser impresa
+	
+NUEVA PROVISION DE INSUMOS POR PROVEEDOR
+	Mostrar efecto que tiene la insercion en el esquema Provee. (TRIGGER)
+	
+	
+	
