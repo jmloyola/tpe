@@ -143,7 +143,7 @@ public class LoginScreen extends javax.swing.JFrame {
             rs = pst.executeQuery();
     
             if (rs.next()){
-                JOptionPane.showMessageDialog(this, "Entro exitosamente");
+                JOptionPane.showMessageDialog(this, "Bienvenido");
                 SGPS.identificadorUsuarioActual = rs.getString("us_identificador");
                 conn.close();
                 this.dispose();

@@ -4,17 +4,59 @@
  */
 package InterfazGrafica;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Calendar;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Juan
  */
 public class ActualizarInformacionLoteScreen extends javax.swing.JFrame {
+    
+    
+    Connection conn = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;    
+    ResultSet rs2 = null;
+    PreparedStatement pst2 = null;  
 
     /**
      * Creates new form ActualizarInformacionLoteScreen
      */
     public ActualizarInformacionLoteScreen() {
         initComponents();
+        try {
+            Class.forName("org.postgresql.Driver");
+            conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "root");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error en conexion", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        try{
+            String sql = "SELECT L_Identificador FROM Lotes WHERE L_Estado = 0 ORDER BY L_Identificador";
+            pst = conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            
+            while (rs.next()){
+                String identificador = rs.getString("L_Identificador");
+                identificadoresLotesComboBox.addItem(identificador);
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al buscar valores de Identificador de Lotes", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        identificadoresLotesComboBox.setSelectedIndex(-1);
+        
+        estadoComboBox.setEnabled(false);
+        
+        motivoDeficienciaTextField.setEnabled(false);
+        fechaIngresoDepositoDateChooser.setEnabled(false);
+        fechaVencimientoDateChooser.setEnabled(false);
+        cantidadDescarteUtilizadoFormattedTextField.setEnabled(false);
     }
 
     /**
@@ -29,7 +71,6 @@ public class ActualizarInformacionLoteScreen extends javax.swing.JFrame {
         identificadorYFechaCreacionPanel = new javax.swing.JPanel();
         identificadorLabel = new javax.swing.JLabel();
         identificadoresLotesComboBox = new javax.swing.JComboBox();
-        buscarLoteButton = new javax.swing.JButton();
         estadoLabel = new javax.swing.JLabel();
         estadoComboBox = new javax.swing.JComboBox();
         cancelarButton = new javax.swing.JButton();
@@ -56,8 +97,11 @@ public class ActualizarInformacionLoteScreen extends javax.swing.JFrame {
         identificadorLabel.setText("Identificador:");
 
         identificadoresLotesComboBox.setPreferredSize(new java.awt.Dimension(175, 20));
-
-        buscarLoteButton.setText("Buscar");
+        identificadoresLotesComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                identificadoresLotesComboBoxItemStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout identificadorYFechaCreacionPanelLayout = new javax.swing.GroupLayout(identificadorYFechaCreacionPanel);
         identificadorYFechaCreacionPanel.setLayout(identificadorYFechaCreacionPanelLayout);
@@ -68,19 +112,16 @@ public class ActualizarInformacionLoteScreen extends javax.swing.JFrame {
                 .addComponent(identificadorLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(identificadoresLotesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(buscarLoteButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         identificadorYFechaCreacionPanelLayout.setVerticalGroup(
             identificadorYFechaCreacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(identificadorYFechaCreacionPanelLayout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addGroup(identificadorYFechaCreacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(identificadorLabel)
-                    .addComponent(identificadoresLotesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buscarLoteButton))
-                .addGap(1, 1, 1))
+                    .addComponent(identificadoresLotesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3))
         );
 
         estadoLabel.setText("Estado:");
@@ -88,6 +129,11 @@ public class ActualizarInformacionLoteScreen extends javax.swing.JFrame {
         estadoComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Procesando", "Defectuoso", "Terminado" }));
         estadoComboBox.setSelectedIndex(-1);
         estadoComboBox.setPreferredSize(new java.awt.Dimension(150, 20));
+        estadoComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                estadoComboBoxItemStateChanged(evt);
+            }
+        });
 
         cancelarButton.setText("Cancelar");
         cancelarButton.addActionListener(new java.awt.event.ActionListener() {
@@ -97,6 +143,11 @@ public class ActualizarInformacionLoteScreen extends javax.swing.JFrame {
         });
 
         aceptarButton.setText("Aceptar");
+        aceptarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aceptarButtonActionPerformed(evt);
+            }
+        });
 
         motivoDeficienciaTextField.setPreferredSize(new java.awt.Dimension(252, 20));
 
@@ -143,13 +194,10 @@ public class ActualizarInformacionLoteScreen extends javax.swing.JFrame {
                     .addComponent(fechaVencimientoLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(estadoTerminadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fechaIngresoDepositoDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fechaVencimientoDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(fechaIngresoDepositoDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(fechaVencimientoDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
-
-        estadoTerminadoPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {fechaIngresoDepositoDateChooser, fechaVencimientoDateChooser});
-
         estadoTerminadoPanelLayout.setVerticalGroup(
             estadoTerminadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(estadoTerminadoPanelLayout.createSequentialGroup()
@@ -165,7 +213,7 @@ public class ActualizarInformacionLoteScreen extends javax.swing.JFrame {
         );
 
         cantidadDescarteUtilizadoFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
-        cantidadDescarteUtilizadoFormattedTextField.setPreferredSize(new java.awt.Dimension(120, 20));
+        cantidadDescarteUtilizadoFormattedTextField.setPreferredSize(new java.awt.Dimension(190, 20));
 
         cantidadDescarteUtilizadoLabel.setText("Cantidad de Descarte Utilizado:");
 
@@ -177,7 +225,7 @@ public class ActualizarInformacionLoteScreen extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(cantidadDescarteUtilizadoLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cantidadDescarteUtilizadoFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cantidadDescarteUtilizadoFormattedTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         estadoProcesandoPanelLayout.setVerticalGroup(
@@ -198,55 +246,186 @@ public class ActualizarInformacionLoteScreen extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(identificadorYFechaCreacionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(estadoLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(estadoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(aceptarButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cancelarButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(estadoLabel)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(estadoProcesandoPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(aceptarButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(estadoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(estadoDefectuosoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(estadoProcesandoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(estadoTerminadoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                                .addComponent(cancelarButton)
+                                .addContainerGap())
+                            .addComponent(estadoDefectuosoPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(estadoTerminadoPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(identificadorYFechaCreacionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(estadoLabel)
-                    .addComponent(estadoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(estadoDefectuosoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(estadoTerminadoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(estadoProcesandoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cancelarButton)
-                    .addComponent(aceptarButton))
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(estadoLabel)
+                            .addComponent(estadoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(estadoProcesandoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(estadoDefectuosoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(estadoTerminadoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 65, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(aceptarButton)
+                            .addComponent(cancelarButton))
+                        .addContainerGap())))
         );
 
-        setSize(new java.awt.Dimension(412, 363));
+        setSize(new java.awt.Dimension(392, 417));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarButtonActionPerformed
         this.dispose();
     }//GEN-LAST:event_cancelarButtonActionPerformed
+
+    private void estadoComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_estadoComboBoxItemStateChanged
+        identificadoresLotesComboBox.setEnabled(false);
+        switch (estadoComboBox.getSelectedIndex()){
+            case 0:
+                cantidadDescarteUtilizadoFormattedTextField.setEnabled(true);
+                motivoDeficienciaTextField.setEnabled(false);
+                fechaIngresoDepositoDateChooser.setEnabled(false);
+                fechaVencimientoDateChooser.setEnabled(false);
+                break;
+            case 1:
+                motivoDeficienciaTextField.setEnabled(true);
+                cantidadDescarteUtilizadoFormattedTextField.setEnabled(false);
+                fechaIngresoDepositoDateChooser.setEnabled(false);
+                fechaVencimientoDateChooser.setEnabled(false);                
+                break;
+            case 2:
+                fechaIngresoDepositoDateChooser.setEnabled(true);
+                fechaVencimientoDateChooser.setEnabled(true);
+                cantidadDescarteUtilizadoFormattedTextField.setEnabled(false);
+                motivoDeficienciaTextField.setEnabled(false);                
+                break;
+        }
+    }//GEN-LAST:event_estadoComboBoxItemStateChanged
+
+    private void identificadoresLotesComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_identificadoresLotesComboBoxItemStateChanged
+        estadoComboBox.setEnabled(true);
+    }//GEN-LAST:event_identificadoresLotesComboBoxItemStateChanged
+
+    private void aceptarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarButtonActionPerformed
+        switch (estadoComboBox.getSelectedIndex()){
+            case 0:
+                if (!cantidadDescarteUtilizadoFormattedTextField.getText().equals("")){
+                    try{
+                        String sql2 = "SELECT SM_D_Codigo FROM StocksMensualesDescarte WHERE SM_D_Fecha = ?";
+                        pst2 = conn.prepareStatement(sql2);
+
+                        Calendar calendarioActual = Calendar.getInstance();
+                        calendarioActual.set(Calendar.DAY_OF_MONTH, 1);
+
+                        java.util.Date today = new java.util.Date(calendarioActual.getTimeInMillis());
+                        java.sql.Date fechaActual = new java.sql.Date(today.getTime());
+
+                        pst2.setDate(1,fechaActual);
+
+                        rs2 = pst2.executeQuery();
+                        
+                        if (rs2.next()){
+                            String sql = "UPDATE Lotes SET L_CantidadDescarteUtilizado=?, SM_D_Codigo_UtilizadoEn=? WHERE L_Identificador=? AND L_Estado = 0;";
+                            pst = conn.prepareStatement(sql);
+
+                            pst.setFloat(1, ((Number)cantidadDescarteUtilizadoFormattedTextField.getValue()).floatValue());
+                            pst.setInt(2, rs2.getInt("SM_D_Codigo"));
+                            pst.setString(3, identificadoresLotesComboBox.getSelectedItem().toString());
+                            
+                            pst.execute();
+                            
+                            JOptionPane.showMessageDialog(this, "Actualización de información de lote realizada correctamente", "Actualización de información de Lote", JOptionPane.INFORMATION_MESSAGE);
+                            this.dispose();
+                        }
+                        
+                    }catch (Exception e){
+                        JOptionPane.showMessageDialog(this, e.getMessage(), "Error al actualizar la informacion del lote", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+                else{
+                    JOptionPane.showMessageDialog(this, "La cantidad de descarte no puede ser vacía", "Error al actualizar informaicon del lote.", JOptionPane.ERROR_MESSAGE);
+                }
+                break;
+            case 1:
+                if (!motivoDeficienciaTextField.getText().equals("")){
+                    try{
+                        
+                        String sql = "UPDATE Lotes SET L_MotivoDeficiencia=?, L_Estado=1 WHERE L_Identificador=? AND L_Estado = 0;";
+                        pst = conn.prepareStatement(sql);
+
+                        pst.setString(1, motivoDeficienciaTextField.getText());
+                        pst.setString(2, identificadoresLotesComboBox.getSelectedItem().toString());
+
+                        pst.execute();
+
+                        JOptionPane.showMessageDialog(this, "Actualización de información de lote realizada correctamente", "Actualización de información de Lote", JOptionPane.INFORMATION_MESSAGE);
+                        this.dispose();
+                        
+                        
+                    }catch (Exception e){
+                        JOptionPane.showMessageDialog(this, e.getMessage(), "Error al actualizar la informacion del lote", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+                else{
+                    JOptionPane.showMessageDialog(this, "El motivo de deficiencia no puede ser vacío", "Error al actualizar informaicon del lote.", JOptionPane.ERROR_MESSAGE);
+                }
+                break;
+            case 2:
+                if (fechaIngresoDepositoDateChooser.getDate() != null){
+                    if (fechaVencimientoDateChooser.getDate() != null){
+                        try{
+
+                            String sql = "UPDATE Lotes SET L_FechaIngresoDeposito=?,L_FechaVencimiento=?, L_Estado=2 WHERE L_Identificador=? AND L_Estado = 0;";
+                            pst = conn.prepareStatement(sql);
+                            
+                            // Preparo fecha
+                            java.sql.Date fechaIngresoDepositoSql = new java.sql.Date(fechaIngresoDepositoDateChooser.getDate().getTime());
+                            pst.setDate(1, fechaIngresoDepositoSql);                            
+                            
+                            java.sql.Date fechaVencimientoSql = new java.sql.Date(fechaVencimientoDateChooser.getDate().getTime());
+                            pst.setDate(2, fechaVencimientoSql);                                                        
+                            
+                            pst.setString(3, identificadoresLotesComboBox.getSelectedItem().toString());
+
+                            pst.execute();
+
+                            JOptionPane.showMessageDialog(this, "Actualización de información de lote realizada correctamente", "Actualización de información de Lote", JOptionPane.INFORMATION_MESSAGE);
+                            this.dispose();
+
+
+                        }catch (Exception e){
+                            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al actualizar la informacion del lote", JOptionPane.ERROR_MESSAGE);
+                        }
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(this, "La fecha de vencimiento no puede ser vacía", "Error al actualizar informaicon del lote.", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+                else{
+                    JOptionPane.showMessageDialog(this, "La fecha de ingreso a deposito no puede ser vacía", "Error al actualizar informaicon del lote.", JOptionPane.ERROR_MESSAGE);
+                }        
+                break;
+        }
+    }//GEN-LAST:event_aceptarButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -284,7 +463,6 @@ public class ActualizarInformacionLoteScreen extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aceptarButton;
-    private javax.swing.JButton buscarLoteButton;
     private javax.swing.JButton cancelarButton;
     private javax.swing.JFormattedTextField cantidadDescarteUtilizadoFormattedTextField;
     private javax.swing.JLabel cantidadDescarteUtilizadoLabel;

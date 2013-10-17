@@ -4,17 +4,35 @@
  */
 package InterfazGrafica;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Juan
  */
 public class NuevoLoteScreen extends javax.swing.JFrame {
+    
+    
+    Connection conn = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;    
 
     /**
      * Creates new form NuevoLoteScreen
      */
     public NuevoLoteScreen() {
         initComponents();
+        try {
+            Class.forName("org.postgresql.Driver");
+            conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "root");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error en conexion", JOptionPane.ERROR_MESSAGE);
+        }        
     }
 
     /**
@@ -116,6 +134,11 @@ public class NuevoLoteScreen extends javax.swing.JFrame {
         });
 
         aceptarButton.setText("Aceptar");
+        aceptarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aceptarButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -151,6 +174,42 @@ public class NuevoLoteScreen extends javax.swing.JFrame {
     private void cancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarButtonActionPerformed
         this.dispose();
     }//GEN-LAST:event_cancelarButtonActionPerformed
+
+    private void aceptarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarButtonActionPerformed
+        if (!identificadorTextField.getText().equals("")){
+            if (fechaCreacionDateChooser.getDate() != null){
+                try{
+                    String sql = "INSERT INTO lotes( l_identificador, l_fechacreacion, l_estado) VALUES (?, ?, ?);";
+                    pst = conn.prepareStatement(sql);
+                    pst.setString(1, identificadorTextField.getText().toUpperCase());
+                    
+                    // Preparo fecha
+                    java.sql.Date fechaCreacionSql = new java.sql.Date(fechaCreacionDateChooser.getDate().getTime());
+                    pst.setDate(2, fechaCreacionSql);
+                    
+                    pst.setInt(3, 0);//Indica que el lote se esta procesando
+                    
+                    pst.execute();
+                    
+                    JOptionPane.showMessageDialog(this, "El nuevo lote fue ingresado exitosamente", "Alta de lote exitosa", JOptionPane.INFORMATION_MESSAGE);
+                    
+                    this.dispose();
+                    
+                }catch(SQLException e){
+                    // TODO
+                    // Luego se deberia cambiar y colocar un mensaje personalizado dependiendo del codigo del error.
+                    JOptionPane.showMessageDialog(this, e, "Error al dar de alta nuevo empleado", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "La fecha de creación del lote no puede ser vacía.", "Error en alta de lote", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "El identificador de lote no puede ser vacío.", "Error en alta de lote", JOptionPane.ERROR_MESSAGE);
+        }
+           
+    }//GEN-LAST:event_aceptarButtonActionPerformed
 
     /**
      * @param args the command line arguments

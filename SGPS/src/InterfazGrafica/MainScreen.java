@@ -1310,6 +1310,11 @@ public void inicializacionStocksMensualesDescarte(){
         lotesMenu.add(buscarLotesMenuItem);
 
         InsumosUtilizadosMenuItem.setText("Ver Insumos Utilizados por un Lote");
+        InsumosUtilizadosMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InsumosUtilizadosMenuItemActionPerformed(evt);
+            }
+        });
         lotesMenu.add(InsumosUtilizadosMenuItem);
 
         archivoMenu.add(lotesMenu);
@@ -1705,6 +1710,11 @@ public void inicializacionStocksMensualesDescarte(){
     private void actualizarInsumosProduccionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarInsumosProduccionButtonActionPerformed
         updateInsumosProduccionTable();
     }//GEN-LAST:event_actualizarInsumosProduccionButtonActionPerformed
+
+    private void InsumosUtilizadosMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsumosUtilizadosMenuItemActionPerformed
+        InsumosUtilizadosScreen insumosUtilizadosScreen = new InsumosUtilizadosScreen();
+        insumosUtilizadosScreen.setVisible(true);
+    }//GEN-LAST:event_InsumosUtilizadosMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
