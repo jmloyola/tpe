@@ -40,13 +40,13 @@ public class ActualizarInformacionProveedorScreen extends javax.swing.JFrame {
         aceptarButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("Actualizar Informacion Proveedor");
+        setTitle("Actualizar Información Proveedor");
         setAlwaysOnTop(true);
         setResizable(false);
 
-        razonSocialPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese razon social del proveedor:"));
+        razonSocialPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese razón social del proveedor:"));
 
-        razonSocialLabel.setText("Razon Social:");
+        razonSocialLabel.setText("Razón Social:");
 
         buscarProveedorButton.setText("Buscar");
 
@@ -116,7 +116,8 @@ public class ActualizarInformacionProveedorScreen extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(aceptarButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cancelarButton))))
+                        .addComponent(cancelarButton)
+                        .addContainerGap())))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {direccionEmailTextField, domicilioTextField, sitioWebTextField});

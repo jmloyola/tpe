@@ -49,9 +49,9 @@ public class NuevoProveedorScreen extends javax.swing.JFrame {
         setAlwaysOnTop(true);
         setResizable(false);
 
-        informacionProveedorPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese la informacion del nuevo proveedor:"));
+        informacionProveedorPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese la información del nuevo proveedor:"));
 
-        razonSocialLabel.setText("Razon Social:");
+        razonSocialLabel.setText("Razón Social:");
 
         cuitLabel.setText("CUIT:");
 
@@ -59,7 +59,7 @@ public class NuevoProveedorScreen extends javax.swing.JFrame {
 
         sitioWebLabel.setText("Sitio Web:");
 
-        direccionEmailLabel.setText("Direccion de E-mail:");
+        direccionEmailLabel.setText("Dirección de E-mail:");
 
         razonSocialTextField.setPreferredSize(new java.awt.Dimension(175, 20));
 

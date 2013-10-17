@@ -116,17 +116,17 @@ public class NuevoEmpleadoScreen extends javax.swing.JFrame {
             }
         });
 
-        valoresAIngresarEmpleadoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ingrese la informacion del nuevo empleado:", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        valoresAIngresarEmpleadoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ingrese la información del nuevo empleado:", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
         nombreEmpleadoLabel.setText("Nombre y Apellido: ");
 
         dniEmpleadoLabel.setText("DNI:");
 
-        telefonoEmpleadoLabel.setText("Telefono:");
+        telefonoEmpleadoLabel.setText("Teléfono:");
 
         fechaIngresoEmpleadoLabel.setText("Fecha Ingreso:");
 
-        numeroLegajoEmpleadoLabel.setText("Numero de Legajo:");
+        numeroLegajoEmpleadoLabel.setText("Número de Legajo:");
 
         sueldoLabel.setText("Sueldo:");
 
@@ -138,15 +138,15 @@ public class NuevoEmpleadoScreen extends javax.swing.JFrame {
 
         domicilioLabel.setText("Domicilio:");
 
-        codigoPostalLabel.setText("Codigo Postal:");
+        codigoPostalLabel.setText("Código Postal:");
 
-        paisResidenciaLabel.setText("Pais de Residencia:");
+        paisResidenciaLabel.setText("País de Residencia:");
 
         provinciaResidenciaLabel.setText("Provincia de Residencia:");
 
         ciudadResidenciaLabel.setText("Ciudad de Residencia:");
 
-        categoriaLabel.setText("Categoria:");
+        categoriaLabel.setText("Categoría:");
 
         nombreTextField.setToolTipText("");
         nombreTextField.setPreferredSize(new java.awt.Dimension(200, 20));
@@ -154,7 +154,7 @@ public class NuevoEmpleadoScreen extends javax.swing.JFrame {
         estadoCivilComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Soltero/a", "Casado/a", "Divorciado/a", "Viudo/a" }));
         estadoCivilComboBox.setSelectedIndex(-1);
 
-        categoriaComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Categoria A", "Categoria B", "Categoria A1", "Categoria A2", "Operario Laboratorio Categoria A", "Operario Laboratorio Categoria A1", "Encargado" }));
+        categoriaComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Categoría A", "Categoría B", "Categoría A1", "Categoría A2", "Operario Laboratorio Categoría A", "Operario Laboratorio Categoría A1", "Encargado" }));
         categoriaComboBox.setSelectedIndex(-1);
 
         dniFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));

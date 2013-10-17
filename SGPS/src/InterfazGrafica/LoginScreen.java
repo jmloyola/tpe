@@ -55,7 +55,7 @@ public class LoginScreen extends javax.swing.JFrame {
         setResizable(false);
 
         ingresarButton.setText("Ingresar");
-        ingresarButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ingresarButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         ingresarButton.setName(""); // NOI18N
         ingresarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,7 +68,7 @@ public class LoginScreen extends javax.swing.JFrame {
         usuarioTextField.setToolTipText("Ingrese su identificador de usuario aqui:");
         usuarioTextField.setPreferredSize(new java.awt.Dimension(100, 20));
 
-        passwordLabel.setText("Password:");
+        passwordLabel.setText("Contraseña:");
 
         passwordField.setToolTipText("Ingrese su password aqui:");
         passwordField.setPreferredSize(new java.awt.Dimension(60, 20));
@@ -123,7 +123,7 @@ public class LoginScreen extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(201, 135));
+        setSize(new java.awt.Dimension(211, 135));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

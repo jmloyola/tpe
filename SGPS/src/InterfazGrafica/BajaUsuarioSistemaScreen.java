@@ -37,7 +37,7 @@ public class BajaUsuarioSistemaScreen extends javax.swing.JFrame {
         setAlwaysOnTop(true);
         setResizable(false);
 
-        identificadorUsuarioSistemaPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese informacion del usuario del sistema a dar de baja:"));
+        identificadorUsuarioSistemaPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese información del usuario del sistema a dar de baja:"));
 
         identificadorLabel.setText("Identificador:");
 

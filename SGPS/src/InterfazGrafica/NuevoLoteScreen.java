@@ -42,11 +42,11 @@ public class NuevoLoteScreen extends javax.swing.JFrame {
         setAlwaysOnTop(true);
         setResizable(false);
 
-        informacionLotePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese la informacion del nuevo lote:"));
+        informacionLotePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese la información del nuevo lote:"));
 
         identificadorLabel.setText("Identificador:");
 
-        fechaCreacionLabel.setText("Fecha de Creacion:");
+        fechaCreacionLabel.setText("Fecha de Creación:");
 
         identificadorTextField.setPreferredSize(new java.awt.Dimension(100, 20));
 

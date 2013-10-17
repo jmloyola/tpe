@@ -33,7 +33,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="numeroLegajoPanel" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="177" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       <Component id="aceptarButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="cancelarButton" min="-2" max="-2" attributes="0"/>
@@ -63,7 +63,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Ingrese el numero de legajo del empleado a dar de baja:"/>
+            <TitledBorder title="Ingrese el n&#xfa;mero de legajo del empleado a dar de baja:"/>
           </Border>
         </Property>
       </Properties>
@@ -106,7 +106,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="numeroLegajoLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Numero de Legajo:"/>
+            <Property name="text" type="java.lang.String" value="N&#xfa;mero de Legajo:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="numeroLegajoFormattedTextField">

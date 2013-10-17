@@ -31,7 +31,7 @@
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace pref="229" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="aceptarButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="cancelarButton" min="-2" max="-2" attributes="0"/>
@@ -133,12 +133,12 @@
         </Component>
         <Component class="javax.swing.JLabel" name="descripcionEtapaLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Descripcion de Etapa:"/>
+            <Property name="text" type="java.lang.String" value="Descripci&#xf3;n de Etapa:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="numeroLegajoEmpleadoLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Numero de Legajo de Empleado:"/>
+            <Property name="text" type="java.lang.String" value="N&#xfa;mero de Legajo de Empleado:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="fechaLabel">

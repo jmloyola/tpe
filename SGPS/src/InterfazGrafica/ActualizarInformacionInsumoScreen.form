@@ -3,7 +3,7 @@
 <Form version="1.5" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="0"/>
-    <Property name="title" type="java.lang.String" value="Actualizar Informacion Insumo"/>
+    <Property name="title" type="java.lang.String" value="Actualizar Informaci&#xf3;n Insumo"/>
     <Property name="alwaysOnTop" type="boolean" value="true"/>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
@@ -75,7 +75,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Ingrese la descripcion del insumo:"/>
+            <TitledBorder title="Ingrese la descripci&#xf3;n del insumo:"/>
           </Border>
         </Property>
       </Properties>
@@ -111,7 +111,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="descripcionLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Descripcion:"/>
+            <Property name="text" type="java.lang.String" value="Descripci&#xf3;n:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="buscarInsumoButton">
@@ -133,7 +133,7 @@
     </Container>
     <Component class="javax.swing.JLabel" name="limitePedidoLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Limite Pedido:"/>
+        <Property name="text" type="java.lang.String" value="L&#xed;mite Pedido:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JFormattedTextField" name="limitePedidoFormattedTextField">

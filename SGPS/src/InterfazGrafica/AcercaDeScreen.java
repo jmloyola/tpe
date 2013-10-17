@@ -46,7 +46,7 @@ public class AcercaDeScreen extends javax.swing.JFrame {
         });
 
         nombreSistemaLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        nombreSistemaLabel.setText("Sistema de Gestion de Produccion y Stock");
+        nombreSistemaLabel.setText("Sistema de Gestión de Producción y Stock");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Desarrollado por:"));
 

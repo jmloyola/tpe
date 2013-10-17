@@ -48,13 +48,13 @@ public class NuevoInsumoScreen extends javax.swing.JFrame {
         setAlwaysOnTop(true);
         setResizable(false);
 
-        informacionInsumoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese la informacion del nuevo insumo:"));
+        informacionInsumoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese la información del nuevo insumo:"));
 
-        descripcionLabel.setText("Descripcion:");
+        descripcionLabel.setText("Descripción:");
 
         unidadLabel.setText("Unidad:");
 
-        limitePedidoLabel.setText("Limite Pedido:");
+        limitePedidoLabel.setText("Líimite Pedido:");
 
         tipoLabel.setText("Tipo:");
 

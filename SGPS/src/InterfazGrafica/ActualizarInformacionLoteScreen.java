@@ -47,7 +47,7 @@ public class ActualizarInformacionLoteScreen extends javax.swing.JFrame {
         cantidadDescarteUtilizadoLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("Actualizar Informacion Lote");
+        setTitle("Actualizar Información Lote");
         setAlwaysOnTop(true);
         setResizable(false);
 
@@ -123,7 +123,7 @@ public class ActualizarInformacionLoteScreen extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        fechaIngresoDepositoLabel.setText("Fecha de Ingreso Deposito:");
+        fechaIngresoDepositoLabel.setText("Fecha de Ingreso Depósito:");
 
         fechaVencimientoLabel.setText("Fecha de Vencimiento:");
 

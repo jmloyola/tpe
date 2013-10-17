@@ -77,7 +77,7 @@ public class ActualizarInformacionEmpleadoScreen extends javax.swing.JFrame {
         codigoPostalFormattedTextField = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("Actualizar Informacion Empleado");
+        setTitle("Actualizar Información Empleado");
         setAlwaysOnTop(true);
         setResizable(false);
 
@@ -95,9 +95,9 @@ public class ActualizarInformacionEmpleadoScreen extends javax.swing.JFrame {
             }
         });
 
-        numeroLegajoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Seleccione numero de legajo del empleado:"));
+        numeroLegajoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Seleccione número de legajo del empleado:"));
 
-        numeroLegajoLabel.setText("Numero de Legajo:");
+        numeroLegajoLabel.setText("Número de Legajo:");
 
         buscarEmpleadoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/InterfazGrafica/Icons/search_plus.png"))); // NOI18N
         buscarEmpleadoButton.setToolTipText("En caso que no recuerde el numero de legajo del empleado haga click aqui para buscar el empleado que le interesa");
@@ -160,9 +160,9 @@ public class ActualizarInformacionEmpleadoScreen extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        telefonoLabel.setText("Telefono:");
+        telefonoLabel.setText("Teléfono:");
 
-        categoriaLabel.setText("Categoria:");
+        categoriaLabel.setText("Categoría:");
 
         sueldoLabel.setText("Sueldo:");
 
@@ -172,13 +172,13 @@ public class ActualizarInformacionEmpleadoScreen extends javax.swing.JFrame {
 
         domicilioLabel.setText("Domicilio:");
 
-        paisResidenciaLabel.setText("Pais de Residencia:");
+        paisResidenciaLabel.setText("País de Residencia:");
 
         provinciaResidenciaLabel.setText("Provincia de Residencia:");
 
         ciudadResidenciaLabel.setText("Ciudad de Residencia:");
 
-        categoriaComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Categoria A", "Categoria B", "Categoria A1", "Categoria A2", "Operario Laboratorio Categoria A", "Operario Laboratorio Categoria A1", "Encargado" }));
+        categoriaComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Categoría A", "Categoría B", "Categoría A1", "Categoría A2", "Operario Laboratorio Categoría A", "Operario Laboratorio Categoría A1", "Encargado" }));
         categoriaComboBox.setSelectedIndex(-1);
 
         estadoCivilComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Soltero/a", "Casado/a", "Divorciado/a", "Viudo/a" }));

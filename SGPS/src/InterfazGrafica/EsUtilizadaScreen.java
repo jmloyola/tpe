@@ -41,11 +41,11 @@ public class EsUtilizadaScreen extends javax.swing.JFrame {
         setAlwaysOnTop(true);
         setResizable(false);
 
-        informacionEsUtilizadaPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese la informacion del lote, insumo y cantidad utilizada correspondiente:"));
+        informacionEsUtilizadaPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese la información del lote, insumo y cantidad utilizada correspondiente:"));
 
         identificadorLoteLabel.setText("Identificador de Lote:");
 
-        descripcionInsumoLabel.setText("Descripcion de Insumo:");
+        descripcionInsumoLabel.setText("Descripción de Insumo:");
 
         cantidadInsumoUtilizadaLabel.setText("Cantidad de Insumo Utilizada:");
 

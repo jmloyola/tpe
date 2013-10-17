@@ -63,7 +63,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Ingrese la informacion del nuevo proveedor:"/>
+            <TitledBorder title="Ingrese la informaci&#xf3;n del nuevo proveedor:"/>
           </Border>
         </Property>
       </Properties>
@@ -149,7 +149,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="razonSocialLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Razon Social:"/>
+            <Property name="text" type="java.lang.String" value="Raz&#xf3;n Social:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="cuitLabel">
@@ -169,7 +169,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="direccionEmailLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Direccion de E-mail:"/>
+            <Property name="text" type="java.lang.String" value="Direcci&#xf3;n de E-mail:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="razonSocialTextField">

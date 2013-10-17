@@ -63,7 +63,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Ingrese la descripcion de la etapa a dar de baja:"/>
+            <TitledBorder title="Ingrese la descripci&#xf3;n de la etapa a dar de baja:"/>
           </Border>
         </Property>
       </Properties>
@@ -96,7 +96,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="descripcionLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Descripcion:"/>
+            <Property name="text" type="java.lang.String" value="Descripci&#xf3;n:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="descripcionEtapaComboBox">

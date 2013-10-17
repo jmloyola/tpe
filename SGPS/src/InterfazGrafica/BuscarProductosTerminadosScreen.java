@@ -45,9 +45,9 @@ public class BuscarProductosTerminadosScreen extends javax.swing.JFrame {
         setAlwaysOnTop(true);
         setResizable(false);
 
-        parametroABuscarPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese el parametro y valor por el que buscar:"));
+        parametroABuscarPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese el parámetro y valor por el que buscar:"));
 
-        parametroBusquedaLabel.setText("Parametro de Busqueda:");
+        parametroBusquedaLabel.setText("Parámetro de Búsqueda:");
 
         valorLabel.setText("Valor:");
 

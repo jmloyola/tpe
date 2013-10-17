@@ -36,13 +36,13 @@ public class ActualizarInformacionInsumoScreen extends javax.swing.JFrame {
         aceptarButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("Actualizar Informacion Insumo");
+        setTitle("Actualizar Información Insumo");
         setAlwaysOnTop(true);
         setResizable(false);
 
-        descripcionPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese la descripcion del insumo:"));
+        descripcionPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese la descripción del insumo:"));
 
-        descripcionLabel.setText("Descripcion:");
+        descripcionLabel.setText("Descripción:");
 
         buscarInsumoButton.setText("Buscar");
 
@@ -72,7 +72,7 @@ public class ActualizarInformacionInsumoScreen extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        limitePedidoLabel.setText("Limite Pedido:");
+        limitePedidoLabel.setText("Límite Pedido:");
 
         limitePedidoFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         limitePedidoFormattedTextField.setPreferredSize(new java.awt.Dimension(100, 20));

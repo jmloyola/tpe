@@ -65,7 +65,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Ingrese el parametro y el valor por el que buscar:"/>
+            <TitledBorder title="Ingrese el par&#xe1;metro y el valor por el que buscar:"/>
           </Border>
         </Property>
       </Properties>
@@ -116,7 +116,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="parametroLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Parametro:"/>
+            <Property name="text" type="java.lang.String" value="Par&#xe1;metro de B&#xfa;squeda:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="valorLabel">

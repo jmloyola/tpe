@@ -3,7 +3,7 @@
 <Form version="1.5" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="0"/>
-    <Property name="title" type="java.lang.String" value="Actualizar Informacion Lote"/>
+    <Property name="title" type="java.lang.String" value="Actualizar Informaci&#xf3;n Lote"/>
     <Property name="alwaysOnTop" type="boolean" value="true"/>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
@@ -264,7 +264,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="fechaIngresoDepositoLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Fecha de Ingreso Deposito:"/>
+            <Property name="text" type="java.lang.String" value="Fecha de Ingreso Dep&#xf3;sito:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="fechaVencimientoLabel">

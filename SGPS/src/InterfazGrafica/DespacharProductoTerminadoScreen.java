@@ -39,9 +39,9 @@ public class DespacharProductoTerminadoScreen extends javax.swing.JFrame {
         setAlwaysOnTop(true);
         setResizable(false);
 
-        informacionProductoTerminadoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese la informacion del producto terminado a despachar:"));
+        informacionProductoTerminadoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese la información del producto terminado a despachar:"));
 
-        codificacionLabel.setText("Codificacion:");
+        codificacionLabel.setText("Codificación:");
 
         codificacionComboBox.setPreferredSize(new java.awt.Dimension(100, 20));
 

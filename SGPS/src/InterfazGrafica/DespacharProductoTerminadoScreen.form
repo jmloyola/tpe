@@ -63,7 +63,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Ingrese la informacion del producto terminado a despachar:"/>
+            <TitledBorder title="Ingrese la informaci&#xf3;n del producto terminado a despachar:"/>
           </Border>
         </Property>
       </Properties>
@@ -107,7 +107,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="codificacionLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Codificacion:"/>
+            <Property name="text" type="java.lang.String" value="Codificaci&#xf3;n:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="codificacionComboBox">

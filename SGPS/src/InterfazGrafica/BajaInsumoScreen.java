@@ -37,9 +37,9 @@ public class BajaInsumoScreen extends javax.swing.JFrame {
         setAlwaysOnTop(true);
         setResizable(false);
 
-        descripcionPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese la descripcion del insumo a dar de baja:"));
+        descripcionPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese la descripción del insumo a dar de baja:"));
 
-        descripcionLabel.setText("Descripcion:");
+        descripcionLabel.setText("Descripción:");
 
         descripcionInsumoComboBox.setPreferredSize(new java.awt.Dimension(175, 20));
 

@@ -604,6 +604,7 @@ public void inicializacionStocksMensualesDescarte(){
         nuevoLoteMenuItem = new javax.swing.JMenuItem();
         actualizarInformacionLoteMenuItem = new javax.swing.JMenuItem();
         buscarLotesMenuItem = new javax.swing.JMenuItem();
+        InsumosUtilizadosMenuItem = new javax.swing.JMenuItem();
         stocksMensualesInsumosMenu = new javax.swing.JMenu();
         buscarStocksMensualesInsumosMenuItem = new javax.swing.JMenuItem();
         stocksMensualesProductosTerminadosMenu = new javax.swing.JMenu();
@@ -863,7 +864,7 @@ public void inicializacionStocksMensualesDescarte(){
                 .addContainerGap())
         );
 
-        solapasTabbedPane.addTab("Insumos Produccion", solapaInsumosProduccionPanel);
+        solapasTabbedPane.addTab("Insumos Producción", solapaInsumosProduccionPanel);
 
         actualizarTablaSolapaProductosTerminadosButton.setText("Actualizar");
         actualizarTablaSolapaProductosTerminadosButton.addActionListener(new java.awt.event.ActionListener() {
@@ -1092,7 +1093,7 @@ public void inicializacionStocksMensualesDescarte(){
         });
         empleadosMenu.add(nuevoEmpleadoMenuItem);
 
-        actualizarInformacionEmpleadoMenuItem.setText("Actualizar Informacion Empleado");
+        actualizarInformacionEmpleadoMenuItem.setText("Actualizar Información Empleado");
         actualizarInformacionEmpleadoMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actualizarInformacionEmpleadoMenuItemActionPerformed(evt);
@@ -1160,7 +1161,7 @@ public void inicializacionStocksMensualesDescarte(){
         });
         proveedoresMenu.add(nuevoProveedorMenuItem);
 
-        actualizarInformacionProveedorMenuItem.setText("Actualizar Informacion Proveedor");
+        actualizarInformacionProveedorMenuItem.setText("Actualizar Información Proveedor");
         actualizarInformacionProveedorMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actualizarInformacionProveedorMenuItemActionPerformed(evt);
@@ -1188,7 +1189,7 @@ public void inicializacionStocksMensualesDescarte(){
         });
         insumosMenu.add(nuevoInsumoMenuItem);
 
-        actualizarInformacionInsumoMenuItem.setText("Actualizar Informacion Insumo");
+        actualizarInformacionInsumoMenuItem.setText("Actualizar Información Insumo");
         actualizarInformacionInsumoMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actualizarInformacionInsumoMenuItemActionPerformed(evt);
@@ -1292,7 +1293,7 @@ public void inicializacionStocksMensualesDescarte(){
         });
         lotesMenu.add(nuevoLoteMenuItem);
 
-        actualizarInformacionLoteMenuItem.setText("Actualizar Informacion Lote");
+        actualizarInformacionLoteMenuItem.setText("Actualizar Información Lote");
         actualizarInformacionLoteMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actualizarInformacionLoteMenuItemActionPerformed(evt);
@@ -1307,6 +1308,9 @@ public void inicializacionStocksMensualesDescarte(){
             }
         });
         lotesMenu.add(buscarLotesMenuItem);
+
+        InsumosUtilizadosMenuItem.setText("Ver Insumos Utilizados por un Lote");
+        lotesMenu.add(InsumosUtilizadosMenuItem);
 
         archivoMenu.add(lotesMenu);
 
@@ -1346,7 +1350,7 @@ public void inicializacionStocksMensualesDescarte(){
         archivoMenu.add(analisisMenu);
         archivoMenu.add(separadorEntreEsquemasYCerrarSesion);
 
-        cerrarSesionMenuItem.setText("Cerrar Sesion");
+        cerrarSesionMenuItem.setText("Cerrar Sesión");
         cerrarSesionMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cerrarSesionMenuItemActionPerformed(evt);
@@ -1439,7 +1443,7 @@ public void inicializacionStocksMensualesDescarte(){
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(solapasTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)
+                .addComponent(solapasTabbedPane)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(usuarioActualLabel))
         );
@@ -1737,6 +1741,7 @@ public void inicializacionStocksMensualesDescarte(){
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem InsumosUtilizadosMenuItem;
     private javax.swing.JMenuItem acercaDeMenuItem;
     private javax.swing.JButton actualizarEtapasButton;
     private javax.swing.JMenuItem actualizarInformacionEmpleadoMenuItem;

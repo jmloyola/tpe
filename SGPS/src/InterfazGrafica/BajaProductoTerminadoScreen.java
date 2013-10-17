@@ -37,9 +37,9 @@ public class BajaProductoTerminadoScreen extends javax.swing.JFrame {
         setAlwaysOnTop(true);
         setResizable(false);
 
-        codificacionPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese la codificacion del producto terminado a dar de baja:"));
+        codificacionPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese la codificación del producto terminado a dar de baja:"));
 
-        codificacionLabel.setText("Codificacion:");
+        codificacionLabel.setText("Codificación:");
 
         codificacionProductoTerminadoComboBox.setPreferredSize(new java.awt.Dimension(200, 20));
 

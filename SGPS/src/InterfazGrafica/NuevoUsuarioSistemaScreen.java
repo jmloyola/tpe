@@ -42,7 +42,7 @@ public class NuevoUsuarioSistemaScreen extends javax.swing.JFrame {
         setAlwaysOnTop(true);
         setResizable(false);
 
-        informacionNuevoUsuarioSistemaPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese la informacion del nuevo usuario del sistema:"));
+        informacionNuevoUsuarioSistemaPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese la información del nuevo usuario del sistema:"));
 
         usuarioLabel.setText("Usuario:");
 

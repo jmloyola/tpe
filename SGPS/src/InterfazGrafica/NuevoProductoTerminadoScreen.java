@@ -54,13 +54,13 @@ public class NuevoProductoTerminadoScreen extends javax.swing.JFrame {
         setAlwaysOnTop(true);
         setResizable(false);
 
-        informacionProductoTerminadoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese la informacion del nuevo producto terminado:"));
+        informacionProductoTerminadoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese la información del nuevo producto terminado:"));
 
-        codificacionLabel.setText("Codificacion:");
+        codificacionLabel.setText("Codificación:");
 
         tipoLabel.setText("Tipo:");
 
-        descripcionLabel.setText("Descripcion:");
+        descripcionLabel.setText("Descripción:");
 
         destinoLabel.setText("Destino:");
 
@@ -91,7 +91,7 @@ public class NuevoProductoTerminadoScreen extends javax.swing.JFrame {
         referenciaCampoObligatorioLabel.setForeground(new java.awt.Color(255, 0, 0));
         referenciaCampoObligatorioLabel.setText("* Campo Obligatorio");
 
-        presentacionLabel.setText("Presentacion:");
+        presentacionLabel.setText("Presentación:");
 
         presentacionCampoObligatorioLabel.setForeground(new java.awt.Color(255, 0, 0));
         presentacionCampoObligatorioLabel.setText("*");

@@ -44,9 +44,9 @@ public class BuscarInsumosScreen extends javax.swing.JFrame {
         setTitle("Buscar Insumos");
         setAlwaysOnTop(true);
 
-        parametroABuscarPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese el parametro y valor por el que buscar:"));
+        parametroABuscarPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese el parámetro y valor por el que buscar:"));
 
-        parametroBusquedaLabel.setText("Parametro de Busqueda:");
+        parametroBusquedaLabel.setText("Parámetro de Búsqueda:");
 
         parametroBusquedaComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Descripcion", "Unidad", "Limite Pedido", "Tipo" }));
         parametroBusquedaComboBox.setSelectedIndex(-1);

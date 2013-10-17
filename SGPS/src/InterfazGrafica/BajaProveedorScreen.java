@@ -37,9 +37,9 @@ public class BajaProveedorScreen extends javax.swing.JFrame {
         setAlwaysOnTop(true);
         setResizable(false);
 
-        razonSocialPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese razon social del proveedor a dar de baja:"));
+        razonSocialPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese razón social del proveedor a dar de baja:"));
 
-        razonSocialLabel.setText("Razon Social:");
+        razonSocialLabel.setText("Razón Social:");
 
         razonSocialProveedorComboBox.setPreferredSize(new java.awt.Dimension(150, 20));
 

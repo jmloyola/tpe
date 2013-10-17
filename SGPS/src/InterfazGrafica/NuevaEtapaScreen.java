@@ -39,9 +39,9 @@ public class NuevaEtapaScreen extends javax.swing.JFrame {
         setAlwaysOnTop(true);
         setResizable(false);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese la informacion de la nueva etapa:"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese la información de la nueva etapa:"));
 
-        descripcionLabel.setText("Descripcion:");
+        descripcionLabel.setText("Descripción:");
 
         descripcionTextField.setPreferredSize(new java.awt.Dimension(175, 20));
 

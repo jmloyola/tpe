@@ -37,9 +37,9 @@ public class BajaEtapaScreen extends javax.swing.JFrame {
         setAlwaysOnTop(true);
         setResizable(false);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese la descripcion de la etapa a dar de baja:"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese la descripción de la etapa a dar de baja:"));
 
-        descripcionLabel.setText("Descripcion:");
+        descripcionLabel.setText("Descripción:");
 
         descripcionEtapaComboBox.setPreferredSize(new java.awt.Dimension(175, 20));
 

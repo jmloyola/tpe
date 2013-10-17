@@ -89,11 +89,11 @@ public class ProveeInsumosScreen extends javax.swing.JFrame {
         setAlwaysOnTop(true);
         setResizable(false);
 
-        informacionProvisionPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese la informacion de la nueva provision de insumo:"));
+        informacionProvisionPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese la información de la nueva provisión de insumo:"));
 
-        razonSocialProveedorLabel.setText("Razon Social del Proveedor:");
+        razonSocialProveedorLabel.setText("Razón Social del Proveedor:");
 
-        descripcionInsumoLabel.setText("Descripcion del Insumo:");
+        descripcionInsumoLabel.setText("Descripción del Insumo:");
 
         cantidadProvistaLabel.setText("Cantidad de Insumo Provista:");
 

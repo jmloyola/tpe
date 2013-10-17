@@ -51,9 +51,9 @@ public class AsignarLotesEtapasEmpleadosScreen extends javax.swing.JFrame {
 
         identificadorLoteLabel.setText("Identificador de Lote:");
 
-        descripcionEtapaLabel.setText("Descripcion de Etapa:");
+        descripcionEtapaLabel.setText("Descripción de Etapa:");
 
-        numeroLegajoEmpleadoLabel.setText("Numero de Legajo de Empleado:");
+        numeroLegajoEmpleadoLabel.setText("Número de Legajo de Empleado:");
 
         fechaLabel.setText("Fecha:");
 
@@ -149,7 +149,7 @@ public class AsignarLotesEtapasEmpleadosScreen extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(229, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(aceptarButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cancelarButton))

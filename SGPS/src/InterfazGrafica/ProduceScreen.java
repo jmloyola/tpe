@@ -41,9 +41,9 @@ public class ProduceScreen extends javax.swing.JFrame {
         setAlwaysOnTop(true);
         setResizable(false);
 
-        informacionProducePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese la informacion del lote, producto terminado y cantidad producida correspondiente:"));
+        informacionProducePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese la información del lote, producto terminado y cantidad producida correspondiente:"));
 
-        codificacionProductoTerminadoLabel.setText("Codificacion de Producto Terminado:");
+        codificacionProductoTerminadoLabel.setText("Codificación de Producto Terminado:");
 
         identificadorLoteLabel.setText("Identificador de Lote:");
 

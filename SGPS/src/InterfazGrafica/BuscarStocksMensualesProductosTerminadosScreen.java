@@ -45,9 +45,9 @@ public class BuscarStocksMensualesProductosTerminadosScreen extends javax.swing.
         setAlwaysOnTop(true);
         setResizable(false);
 
-        parametroABuscarPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese el parametro y el valor por el que buscar:"));
+        parametroABuscarPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese el parámetro y el valor por el que buscar:"));
 
-        parametroLabel.setText("Parametro:");
+        parametroLabel.setText("Parámetro de Búsqueda:");
 
         valorLabel.setText("Valor:");
 

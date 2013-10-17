@@ -63,7 +63,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Ingrese la informacion del nuevo lote:"/>
+            <TitledBorder title="Ingrese la informaci&#xf3;n del nuevo lote:"/>
           </Border>
         </Property>
       </Properties>
@@ -133,7 +133,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="fechaCreacionLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Fecha de Creacion:"/>
+            <Property name="text" type="java.lang.String" value="Fecha de Creaci&#xf3;n:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="identificadorTextField">

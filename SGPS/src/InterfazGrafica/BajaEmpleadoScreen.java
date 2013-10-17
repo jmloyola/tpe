@@ -55,9 +55,9 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
         setAlwaysOnTop(true);
         setResizable(false);
 
-        numeroLegajoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese el numero de legajo del empleado a dar de baja:"));
+        numeroLegajoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese el número de legajo del empleado a dar de baja:"));
 
-        numeroLegajoLabel.setText("Numero de Legajo:");
+        numeroLegajoLabel.setText("Número de Legajo:");
 
         numeroLegajoFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         numeroLegajoFormattedTextField.setPreferredSize(new java.awt.Dimension(150, 20));
@@ -130,7 +130,7 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(numeroLegajoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 177, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(aceptarButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cancelarButton)))

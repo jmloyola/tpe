@@ -63,7 +63,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Ingrese informacion del usuario del sistema a dar de baja:"/>
+            <TitledBorder title="Ingrese informaci&#xf3;n del usuario del sistema a dar de baja:"/>
           </Border>
         </Property>
       </Properties>
