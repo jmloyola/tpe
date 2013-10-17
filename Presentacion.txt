@@ -1,5 +1,15 @@
 PRESENTACION
 
+************************
+INTRODUCCION
+************************
+Explicar realidad.
+Motivacion del sistema
+Pasos para la construccion del sistema
+Mostrar y explicar brevemente modelo conceptual
+Mostrar y explicar brevemente modelo relacional
+Mostrar transacciones
+Presentar el sistema
 
 ************************
 PRESENTACION DEL SISTEMA
@@ -29,6 +39,22 @@ BUSCAR EMPLEADOS
 	
 NUEVA PROVISION DE INSUMOS POR PROVEEDOR
 	Mostrar efecto que tiene la insercion en el esquema Provee. (TRIGGER)
+	
+NUEVO LOTE
+	Motrar mensajes de error al no ingresar atributos obligatorios
+	Mostrar efecto del proceso
+	
+ACTUALIZAR INFORMACION DEL LOTE
+	Mostrar efecto del proceso
+	
+INGRESAR CANTIDAD DE INSUMO UTILIZADO POR LOTE
+	Mostrar efecto del proceso (TRIGGER)
+	
+VER INSUMOS UTILIZADOS
+	Mostrar los insumos utilizados para un lote particular
+	Valores a ingresar:
+		Identificador: ID20130915
+		Fecha Creacion: 2013/09/15
 	
 	
 	
