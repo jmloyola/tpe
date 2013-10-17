@@ -4,20 +4,39 @@
  */
 package InterfazGrafica;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
  * @author Juan Martin
  */
 public class InsumosUtilizadosScreen extends javax.swing.JFrame {
+    
+   
+    Connection conn = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null; 
+    ResultSet rs2 = null;
+    PreparedStatement pst2 = null; 
 
     /**
      * Creates new form InsumosUtilizadosScreen
      */
     public InsumosUtilizadosScreen() {
         initComponents();
+        try {
+            Class.forName("org.postgresql.Driver");
+            conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "root");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error en conexion", JOptionPane.ERROR_MESSAGE);
+        }
+                
     }
 
     /**
@@ -35,6 +54,7 @@ public class InsumosUtilizadosScreen extends javax.swing.JFrame {
         identificadorTextField = new javax.swing.JTextField();
         fechaCreacionLabel = new javax.swing.JLabel();
         fechaCreacionDateChooser = new com.toedter.calendar.JDateChooser();
+        cargarButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         insumosLoteTable = new javax.swing.JTable();
         salirButton = new javax.swing.JButton();
@@ -55,6 +75,13 @@ public class InsumosUtilizadosScreen extends javax.swing.JFrame {
 
         fechaCreacionLabel.setText("Fecha de Creación:");
 
+        cargarButton.setText("Cargar");
+        cargarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cargarButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout identificadorFechaCreacionPanelLayout = new javax.swing.GroupLayout(identificadorFechaCreacionPanel);
         identificadorFechaCreacionPanel.setLayout(identificadorFechaCreacionPanelLayout);
         identificadorFechaCreacionPanelLayout.setHorizontalGroup(
@@ -68,6 +95,8 @@ public class InsumosUtilizadosScreen extends javax.swing.JFrame {
                 .addGroup(identificadorFechaCreacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(fechaCreacionDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(identificadorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cargarButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -77,14 +106,18 @@ public class InsumosUtilizadosScreen extends javax.swing.JFrame {
             identificadorFechaCreacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(identificadorFechaCreacionPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(identificadorFechaCreacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(identificadorLabel)
-                    .addComponent(identificadorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(identificadorFechaCreacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(fechaCreacionLabel)
-                    .addComponent(fechaCreacionDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(identificadorFechaCreacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(identificadorFechaCreacionPanelLayout.createSequentialGroup()
+                        .addGroup(identificadorFechaCreacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(identificadorLabel)
+                            .addComponent(identificadorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(identificadorFechaCreacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(fechaCreacionLabel)
+                            .addComponent(fechaCreacionDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(cargarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         insumosLoteTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -143,7 +176,8 @@ public class InsumosUtilizadosScreen extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        setBounds(0, 0, 671, 619);
+        setSize(new java.awt.Dimension(671, 619));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void salirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirButtonActionPerformed
@@ -157,6 +191,56 @@ public class InsumosUtilizadosScreen extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, e.getMessage(), "Error al imprimir", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_imprimirButtonActionPerformed
+
+    private void cargarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarButtonActionPerformed
+        identificadorTextField.setEnabled(false);
+        fechaCreacionDateChooser.setEnabled(false);
+        cargarButton.setEnabled(false);
+        if (!identificadorTextField.getText().equals("")){
+            if (fechaCreacionDateChooser.getDate() != null){
+                try{
+                    String sql = "SELECT L_Codigo FROM lotes WHERE L_Identificador=? AND L_FechaCreacion=?";
+                    
+                    pst = conn.prepareStatement(sql);
+                    
+                    pst.setString(1, identificadorTextField.getText());
+                    
+                    // Preparo fecha
+                    java.sql.Date fechaCreacionSql = new java.sql.Date(fechaCreacionDateChooser.getDate().getTime());
+                    pst.setDate(2, fechaCreacionSql);                      
+                    
+                    rs = pst.executeQuery();
+                    
+                    if (rs.next()){
+                    
+                        String sql2 = "SELECT I_Descripcion_CaracterizadoEn AS \"Insumo\","
+                                         + " CantidadUtilizada AS \"Cantidad Utilizada\" "
+                                    + "FROM EsUtilizada, StocksMensualesInsumos "
+                                    + "WHERE L_Codigo_EsUtilizada = ? AND SM_I_Codigo_EsUtilizada=SM_I_Codigo";
+                        pst2 = conn.prepareStatement(sql2);
+
+
+                        pst2.setInt(1, rs.getInt("L_Codigo"));
+
+                        rs2 = pst2.executeQuery();
+                        insumosLoteTable.setModel(DbUtils.resultSetToTableModel(rs2));
+                        insumosLoteTable.setEnabled(false);
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(this, "No ingreso información valida.", "Error al mostrar insumos utilizados por lote", JOptionPane.ERROR_MESSAGE);
+                    }
+                }catch(Exception e){
+                    JOptionPane.showMessageDialog(this, e, "Error al actualizar tabla de insumos", JOptionPane.ERROR_MESSAGE);
+                }                
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "La fecha de creación del lote no puede ser vacía.", "Error al cargar lote", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "El identificador no puede ser vacío.", "Error al cargar lote", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_cargarButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -193,6 +277,7 @@ public class InsumosUtilizadosScreen extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cargarButton;
     private com.toedter.calendar.JDateChooser fechaCreacionDateChooser;
     private javax.swing.JLabel fechaCreacionLabel;
     private javax.swing.JPanel identificadorFechaCreacionPanel;

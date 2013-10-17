@@ -4,17 +4,70 @@
  */
 package InterfazGrafica;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Calendar;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Juan
  */
 public class EsUtilizadaScreen extends javax.swing.JFrame {
+    
+    
+    Connection conn = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;    
+    ResultSet rs2 = null;
+    PreparedStatement pst2 = null;    
+    PreparedStatement pst3 = null; 
 
     /**
      * Creates new form EsUtilizadaScreen
      */
     public EsUtilizadaScreen() {
         initComponents();
+        try {
+            Class.forName("org.postgresql.Driver");
+            conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "root");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error en conexion", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        try{
+            String sql = "SELECT L_Identificador FROM Lotes WHERE L_Estado = 0 ORDER BY L_Identificador";
+            pst = conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            
+            while (rs.next()){
+                String identificador = rs.getString("L_Identificador");
+                identificadorLoteComboBox.addItem(identificador);
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al buscar valores de Identificador de Lotes", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        try{
+            String sql2 = "SELECT i_descripcion FROM insumos ORDER BY i_descripcion";
+            pst = conn.prepareStatement(sql2);
+            rs = pst.executeQuery();
+            
+            while (rs.next()){
+                String descripcionInsumo = rs.getString("i_descripcion");
+                descripcionInsumoComboBox.addItem(descripcionInsumo);
+            }
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al buscar valores de descripcion de insumo", JOptionPane.ERROR_MESSAGE);
+            
+        }
+        
+        identificadorLoteComboBox.setSelectedIndex(-1);
+        descripcionInsumoComboBox.setSelectedIndex(-1);
+        
     }
 
     /**
@@ -98,6 +151,11 @@ public class EsUtilizadaScreen extends javax.swing.JFrame {
         });
 
         aceptarButton.setText("Aceptar");
+        aceptarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aceptarButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -133,6 +191,76 @@ public class EsUtilizadaScreen extends javax.swing.JFrame {
     private void cancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarButtonActionPerformed
         this.dispose();
     }//GEN-LAST:event_cancelarButtonActionPerformed
+
+    private void aceptarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarButtonActionPerformed
+        if (identificadorLoteComboBox.getSelectedIndex() != -1){
+            if (descripcionInsumoComboBox.getSelectedIndex() != -1){
+                if (!cantidadInsumoUtilizadaFormattedTextField.getText().equals("")){
+                    try{
+                        String sql = "SELECT SM_I_Codigo FROM StocksMensualesInsumos WHERE I_Descripcion_CaracterizadoEn = ? AND SM_I_Fecha = ?";
+                        pst = conn.prepareStatement(sql);
+
+                        pst.setString(1, descripcionInsumoComboBox.getSelectedItem().toString());
+
+                        Calendar calendarioActual = Calendar.getInstance();
+                        calendarioActual.set(Calendar.DAY_OF_MONTH, 1);
+
+                        java.util.Date today = new java.util.Date(calendarioActual.getTimeInMillis());
+                        java.sql.Date fechaActual = new java.sql.Date(today.getTime());
+
+                        pst.setDate(2,fechaActual);
+
+                        rs = pst.executeQuery();
+                        
+                        if (rs.next()){
+                            String sql2 = "SELECT L_Codigo FROM lotes WHERE L_Identificador=? AND L_Estado=0";
+                            
+                            pst2 = conn.prepareStatement(sql2);
+                            
+                            pst2.setString(1, identificadorLoteComboBox.getSelectedItem().toString());
+                            
+                            rs2 = pst2.executeQuery();
+                            
+                            if (rs2.next()){
+                            
+                                String sql3 = "INSERT INTO esutilizada( l_codigo_esutilizada, sm_i_codigo_esutilizada, cantidadutilizada) VALUES (?, ?, ?);";
+                                pst3 = conn.prepareStatement(sql3);
+
+                                pst3.setInt(1, rs2.getInt("L_Codigo"));
+                                pst3.setInt(2, rs.getInt("SM_I_Codigo"));
+                                pst3.setFloat(3, ((Number)cantidadInsumoUtilizadaFormattedTextField.getValue()).floatValue());
+
+                                pst3.execute();
+
+                                JOptionPane.showMessageDialog(this, "Nueva cantidad de insumo utilizada ingresada satisfactoriamente", "Nuevo uso de insumo por parte de lote", JOptionPane.INFORMATION_MESSAGE);
+
+                                this.dispose();
+                            }
+                            else{
+                                JOptionPane.showMessageDialog(this, "NO TIENE QUE OCURRIR", "NO TIENE QUE OCURRIR", JOptionPane.ERROR_MESSAGE);
+                            }
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(this, "NO TIENE QUE OCURRIR", "NO TIENE QUE OCURRIR", JOptionPane.ERROR_MESSAGE);
+                        }
+
+                    }catch(Exception e){
+                        JOptionPane.showMessageDialog(this, e.getMessage(), "Error al ingresar nueva provision", JOptionPane.ERROR_MESSAGE);
+
+                    }                    
+                }
+                else{
+                    JOptionPane.showMessageDialog(this, "La cantidad de insumo utilizada no puede ser vacía.", "Error al cargar cantidad de insumo utilizada por lote", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Debe seleccionar un insumo.", "Error al cargar cantidad de insumo utilizada por lote", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un lote.", "Error al cargar cantidad de insumo utilizada por lote", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_aceptarButtonActionPerformed
 
     /**
      * @param args the command line arguments
