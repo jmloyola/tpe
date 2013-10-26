@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
 
 /**
@@ -48,7 +49,6 @@ public class NuevoLoteScreen extends javax.swing.JFrame {
         identificadorLabel = new javax.swing.JLabel();
         fechaCreacionLabel = new javax.swing.JLabel();
         identificadorTextField = new javax.swing.JTextField();
-        identificadorCampoObligatorio = new javax.swing.JLabel();
         fechaCreacionCampoObligatorio = new javax.swing.JLabel();
         referenciaCampoObligatorio = new javax.swing.JLabel();
         fechaCreacionDateChooser = new com.toedter.calendar.JDateChooser();
@@ -66,10 +66,8 @@ public class NuevoLoteScreen extends javax.swing.JFrame {
 
         fechaCreacionLabel.setText("Fecha de Creación:");
 
+        identificadorTextField.setEnabled(false);
         identificadorTextField.setPreferredSize(new java.awt.Dimension(100, 20));
-
-        identificadorCampoObligatorio.setForeground(new java.awt.Color(255, 0, 0));
-        identificadorCampoObligatorio.setText("*");
 
         fechaCreacionCampoObligatorio.setForeground(new java.awt.Color(255, 0, 0));
         fechaCreacionCampoObligatorio.setText("*");
@@ -78,30 +76,33 @@ public class NuevoLoteScreen extends javax.swing.JFrame {
         referenciaCampoObligatorio.setText("* Campo Obligatorio");
 
         fechaCreacionDateChooser.setDateFormatString("dd/MM/yyyy");
+        fechaCreacionDateChooser.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                fechaCreacionDateChooserPropertyChange(evt);
+            }
+        });
 
         javax.swing.GroupLayout informacionLotePanelLayout = new javax.swing.GroupLayout(informacionLotePanel);
         informacionLotePanel.setLayout(informacionLotePanelLayout);
         informacionLotePanelLayout.setHorizontalGroup(
             informacionLotePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(informacionLotePanelLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(informacionLotePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(informacionLotePanelLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(informacionLotePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(identificadorLabel)
-                            .addComponent(fechaCreacionLabel))
+                            .addComponent(fechaCreacionLabel)
+                            .addComponent(identificadorLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(informacionLotePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fechaCreacionDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(identificadorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(informacionLotePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(identificadorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(informacionLotePanelLayout.createSequentialGroup()
-                                .addGap(4, 4, 4)
-                                .addComponent(fechaCreacionCampoObligatorio))
-                            .addGroup(informacionLotePanelLayout.createSequentialGroup()
+                                .addComponent(fechaCreacionDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(identificadorCampoObligatorio))))
-                    .addComponent(referenciaCampoObligatorio))
+                                .addComponent(fechaCreacionCampoObligatorio))))
+                    .addGroup(informacionLotePanelLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(referenciaCampoObligatorio)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -111,16 +112,14 @@ public class NuevoLoteScreen extends javax.swing.JFrame {
             informacionLotePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(informacionLotePanelLayout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(informacionLotePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fechaCreacionCampoObligatorio)
+                    .addComponent(fechaCreacionLabel)
+                    .addComponent(fechaCreacionDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(informacionLotePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(identificadorLabel)
-                    .addComponent(identificadorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(identificadorCampoObligatorio))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(informacionLotePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(informacionLotePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(fechaCreacionLabel)
-                        .addComponent(fechaCreacionCampoObligatorio))
-                    .addComponent(fechaCreacionDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(identificadorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(referenciaCampoObligatorio)
                 .addContainerGap())
@@ -147,12 +146,12 @@ public class NuevoLoteScreen extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(informacionLotePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(aceptarButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cancelarButton)))
+                        .addComponent(cancelarButton))
+                    .addComponent(informacionLotePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -160,14 +159,14 @@ public class NuevoLoteScreen extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(informacionLotePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelarButton)
                     .addComponent(aceptarButton))
                 .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(275, 203));
+        setSize(new java.awt.Dimension(275, 201));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -198,7 +197,7 @@ public class NuevoLoteScreen extends javax.swing.JFrame {
                 }catch(SQLException e){
                     // TODO
                     // Luego se deberia cambiar y colocar un mensaje personalizado dependiendo del codigo del error.
-                    JOptionPane.showMessageDialog(this, e, "Error al dar de alta nuevo empleado", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, e, "Error al dar de alta nuevo lote", JOptionPane.ERROR_MESSAGE);
                 }
             }
             else{
@@ -210,6 +209,62 @@ public class NuevoLoteScreen extends javax.swing.JFrame {
         }
            
     }//GEN-LAST:event_aceptarButtonActionPerformed
+
+    private void fechaCreacionDateChooserPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_fechaCreacionDateChooserPropertyChange
+        if (fechaCreacionDateChooser.getDate()!= null){
+            try{
+                String sql = "SELECT COUNT (L_Identificador) FROM lotes WHERE L_FechaCreacion=?";
+                pst = conn.prepareStatement(sql);
+
+                // Preparo fecha
+                java.sql.Date fechaCreacionSql = new java.sql.Date(fechaCreacionDateChooser.getDate().getTime());
+                pst.setDate(1, fechaCreacionSql);
+
+                rs = pst.executeQuery();
+                
+                if (rs.next()){
+                    Calendar calendario = Calendar.getInstance();
+                    calendario.setTime(fechaCreacionSql);
+                    
+                    Integer numDia = calendario.get(Calendar.DAY_OF_MONTH);
+                    String dia;
+                    if ((0 < numDia) && (numDia) <= 9){
+                        dia = "0" + numDia.toString();
+                    }
+                    else{
+                        dia = numDia.toString();
+                    }
+                                        
+                    Integer numMes = calendario.get(Calendar.MONTH);
+                    numMes++; // Por que en calendario los meses se representan empezando en 0
+                    numMes = numMes + rs.getInt(1) * 20;
+                    String mes;
+                    if ((0 < numMes) && (numMes) <= 9){
+                        mes = "0" + numMes.toString();
+                    }
+                    else{
+                        mes = numMes.toString();
+                    }
+                    
+                    Integer numAnio = calendario.get(Calendar.YEAR);
+                    String anio = numAnio.toString().substring(3, 4);
+                    
+                    String identificadorLote = "L-" + dia + mes + "-" + anio; 
+                    
+                    identificadorTextField.setText(identificadorLote);
+                                        
+                }
+
+            }catch(SQLException e){
+                // TODO
+                // Luego se deberia cambiar y colocar un mensaje personalizado dependiendo del codigo del error.
+                JOptionPane.showMessageDialog(this, e, "Error al crear identificador para lote.", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        else{
+            identificadorTextField.setText("");
+        }
+    }//GEN-LAST:event_fechaCreacionDateChooserPropertyChange
 
     /**
      * @param args the command line arguments
@@ -251,7 +306,6 @@ public class NuevoLoteScreen extends javax.swing.JFrame {
     private javax.swing.JLabel fechaCreacionCampoObligatorio;
     private com.toedter.calendar.JDateChooser fechaCreacionDateChooser;
     private javax.swing.JLabel fechaCreacionLabel;
-    private javax.swing.JLabel identificadorCampoObligatorio;
     private javax.swing.JLabel identificadorLabel;
     private javax.swing.JTextField identificadorTextField;
     private javax.swing.JPanel informacionLotePanel;
