@@ -31,7 +31,7 @@ public class MainScreen extends javax.swing.JFrame {
             Class.forName("org.postgresql.Driver");
             conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "root");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e, "Error en conexion", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, e, "Error en conexión", JOptionPane.ERROR_MESSAGE);
         }
         usuarioActualLabel.setText("Usuario: " + SGPS.identificadorUsuarioActual);
         
@@ -354,7 +354,7 @@ public void inicializacionStocksMensualesDescarte(){
         try{
             String sql = "SELECT e_nombre AS \"Nombre\","
                               + "e_dni AS \"DNI\","
-                              + "e_telefono AS \"Telefono\","
+                              + "e_telefono AS \"Teléfono\","
                               + "e_fechaingreso AS \"Fecha Ingreso\","
                               + "e_numerolegajo AS \"Num Legajo\","
                               + "e_sueldo AS \"Sueldo\","
@@ -363,7 +363,7 @@ public void inicializacionStocksMensualesDescarte(){
                               + "e_cantidadhijos AS \"Cant Hijos\","
                               + "e_domicilio AS \"Domicilio\","
                               + "e_codigopostal AS \"Cod Postal\","
-                              + "e_paisresidencia AS \"Pais Residencia\","
+                              + "e_paisresidencia AS \"País Residencia\","
                               + "e_provinciaresidencia AS \"Provincia Residencia\","
                               + "e_ciudadresidencia AS \"Ciudad Residencia\","
                               + "e_categoria AS \"Categoria\","
@@ -382,7 +382,7 @@ public void inicializacionStocksMensualesDescarte(){
     /// HACE REFERENCIA A LAS MATERIAS PRIMAS
     public void updateInsumosTable(){
         try{
-            String sql = "SELECT I_Descripcion_CaracterizadoEn AS \"Descripcion\","
+            String sql = "SELECT I_Descripcion_CaracterizadoEn AS \"Descripción\","
                              + " SM_I_Inicio AS \"Inicio\","
                              + " SM_I_Ingreso AS \"Ingreso\","
                              + " SM_I_Egreso AS \"Egreso\","
@@ -412,7 +412,7 @@ public void inicializacionStocksMensualesDescarte(){
     
     public void updateInsumosEmbalajeTable(){
         try{
-            String sql = "SELECT I_Descripcion_CaracterizadoEn AS \"Descripcion\","
+            String sql = "SELECT I_Descripcion_CaracterizadoEn AS \"Descripción\","
                              + " SM_I_Inicio AS \"Inicio\","
                              + " SM_I_Ingreso AS \"Ingreso\","
                              + " SM_I_Egreso AS \"Egreso\","
@@ -442,7 +442,7 @@ public void inicializacionStocksMensualesDescarte(){
    
     public void updateInsumosProduccionTable(){
         try{
-            String sql = "SELECT I_Descripcion_CaracterizadoEn AS \"Descripcion\","
+            String sql = "SELECT I_Descripcion_CaracterizadoEn AS \"Descripción\","
                              + " SM_I_Inicio AS \"Inicio\","
                              + " SM_I_Ingreso AS \"Ingreso\","
                              + " SM_I_Egreso AS \"Egreso\","
@@ -465,7 +465,7 @@ public void inicializacionStocksMensualesDescarte(){
             insumosProduccionTable.setModel(DbUtils.resultSetToTableModel(rs));
             insumosProduccionTable.setEnabled(false);
         }catch(Exception e){
-            JOptionPane.showMessageDialog(this, e, "Error al actualizar tabla de insumos de produccion", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, e, "Error al actualizar tabla de insumos de producción", JOptionPane.ERROR_MESSAGE);
         }
     }    
     
@@ -473,7 +473,7 @@ public void inicializacionStocksMensualesDescarte(){
      
     public void updateProductosTerminadosTable(){
         try{
-            String sql = "SELECT PT_Codificacion_CaracterizadoEn_PT AS \"Codificacion\","
+            String sql = "SELECT PT_Codificacion_CaracterizadoEn_PT AS \"Codificación\","
                              + " SM_PT_Inicio AS \"Inicio\","
                              + " SM_PT_Ingreso AS \"Ingreso\","
                              + " SM_PT_Egreso AS \"Egreso\","
@@ -496,14 +496,14 @@ public void inicializacionStocksMensualesDescarte(){
             productosTerminadosTable.setModel(DbUtils.resultSetToTableModel(rs));
             productosTerminadosTable.setEnabled(false);
         }catch(Exception e){
-            JOptionPane.showMessageDialog(this, e, "Error al actualizar tabla de insumos", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, e, "Error al actualizar tabla de productos terminados", JOptionPane.ERROR_MESSAGE);
         }
     }
         
     public void updateLotesTable(){
         try{
             String sql = "SELECT L_Identificador AS \"Identificador\","
-                             + " L_FechaCreacion AS \"Fecha Creacion\","
+                             + " L_FechaCreacion AS \"Fecha Creación\","
                              + " L_CantidadDescarteUtilizado AS \"Cantidad Descarte Utilizada\" "
                         + "FROM Lotes "
                         + "WHERE L_Estado = ?";
@@ -516,7 +516,7 @@ public void inicializacionStocksMensualesDescarte(){
             lotesTable.setModel(DbUtils.resultSetToTableModel(rs));
             lotesTable.setEnabled(false);
         }catch(Exception e){
-            JOptionPane.showMessageDialog(this, e, "Error al actualizar tabla de insumos", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, e, "Error al actualizar tabla de lotes", JOptionPane.ERROR_MESSAGE);
         }
     }        
 

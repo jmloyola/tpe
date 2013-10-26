@@ -62,7 +62,7 @@ public class IngresoCantidadDescarteObtenidaScreen extends javax.swing.JFrame {
                 .addComponent(cantidadDescarteLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cantidadDescarteObtenidaFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         cantidadDescartePanelLayout.setVerticalGroup(
             cantidadDescartePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,7 +101,7 @@ public class IngresoCantidadDescarteObtenidaScreen extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(362, 155));
+        setSize(new java.awt.Dimension(386, 155));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

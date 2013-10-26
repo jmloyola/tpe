@@ -177,7 +177,7 @@ public class AsignarLotesEtapasEmpleadosScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelarButtonActionPerformed
 
     private void buscarEmpleadoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarEmpleadoButtonActionPerformed
-        JOptionPane.showMessageDialog(this, "Realice la busqueda de empleado, seleccione en la tabla el empleado que desea haciendo click en la fila y presiones el boton salir.", "Recuerde", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Realice la búsqueda de empleado, seleccione en la tabla el empleado que desea haciendo click en la fila y presiones el botón salir.", "Recuerde", JOptionPane.INFORMATION_MESSAGE);
         BuscarEmpleadosScreen buscarEmpleadosScreen = new BuscarEmpleadosScreen();
         buscarEmpleadosScreen.setVisible(true);
         

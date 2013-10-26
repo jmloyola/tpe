@@ -34,7 +34,7 @@ public class ActualizarInformacionEmpleadoScreen extends javax.swing.JFrame {
             Class.forName("org.postgresql.Driver");
             conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "root");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e, "Error en conexion", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, e, "Error en conexión", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -192,7 +192,7 @@ public class ActualizarInformacionEmpleadoScreen extends javax.swing.JFrame {
 
         cantidadHijosFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
 
-        codigoPostalLabel.setText("Codigo Postal");
+        codigoPostalLabel.setText("Código Postal");
 
         codigoPostalFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
 
@@ -301,7 +301,7 @@ public class ActualizarInformacionEmpleadoScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelarButtonActionPerformed
 
     private void buscarEmpleadoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarEmpleadoButtonActionPerformed
-        JOptionPane.showMessageDialog(this, "Realice la busqueda de empleado, seleccione en la tabla el empleado que desea haciendo click en la fila y presiones el boton salir.", "Recuerde", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Realice la búsqueda de empleado, seleccione en la tabla el empleado que desea haciendo click en la fila y presiones el botón salir.", "Recuerde", JOptionPane.INFORMATION_MESSAGE);
         BuscarEmpleadosScreen buscarEmpleadosScreen = new BuscarEmpleadosScreen();
         buscarEmpleadosScreen.setVisible(true);
         
@@ -461,42 +461,42 @@ public class ActualizarInformacionEmpleadoScreen extends javax.swing.JFrame {
                                             pst.setInt(11, Integer.parseInt(numeroLegajoFormattedTextField.getText()));
 
                                             pst.execute();
-                                            JOptionPane.showMessageDialog(this, "Actualizacion de informacion de empleado realizada exitosamente.", "Operacion exitosa", JOptionPane.INFORMATION_MESSAGE);
+                                            JOptionPane.showMessageDialog(this, "Actualización de información de empleado realizada exitosamente.", "Operación exitosa", JOptionPane.INFORMATION_MESSAGE);
                                             this.dispose();
                                         }catch(Exception e){
-                                            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al actualizar la informacion del empleado", JOptionPane.ERROR_MESSAGE);
+                                            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al actualizar la información del empleado", JOptionPane.ERROR_MESSAGE);
                                         }
                                     }
                                     else{
-                                        JOptionPane.showMessageDialog(this, "El codigo postal del empleado no puede ser vacio.", "Error al actualizar informacion del emepleado", JOptionPane.ERROR_MESSAGE);
+                                        JOptionPane.showMessageDialog(this, "El código postal del empleado no puede ser vacío.", "Error al actualizar información del empleado", JOptionPane.ERROR_MESSAGE);
                                     }
                                 }
                                 else{
-                                    JOptionPane.showMessageDialog(this, "La ciudad de residencia del empleado no puede ser vacia.", "Error al actualizar informacion del emepleado", JOptionPane.ERROR_MESSAGE);
+                                    JOptionPane.showMessageDialog(this, "La ciudad de residencia del empleado no puede ser vacía.", "Error al actualizar información del empleado", JOptionPane.ERROR_MESSAGE);
                                 }
                             }
                             else{
-                                JOptionPane.showMessageDialog(this, "La provincia de residencia del empleado no puede ser vacia.", "Error al actualizar informacion del emepleado", JOptionPane.ERROR_MESSAGE);
+                                JOptionPane.showMessageDialog(this, "La provincia de residencia del empleado no puede ser vacía.", "Error al actualizar información del empleado", JOptionPane.ERROR_MESSAGE);
                             }
                         }
                         else{
-                            JOptionPane.showMessageDialog(this, "El pais de residencia del empleado no puede ser vacio.", "Error al actualizar informacion del emepleado", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(this, "El país de residencia del empleado no puede ser vacío.", "Error al actualizar información del empleado", JOptionPane.ERROR_MESSAGE);
                         }
                     }
                     else{
-                        JOptionPane.showMessageDialog(this, "El domicilio del empleado no puede ser vacio.", "Error al actualizar informacion del emepleado", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(this, "El domicilio del empleado no puede ser vacío.", "Error al actualizar información del empleado", JOptionPane.ERROR_MESSAGE);
                     }
                 }
                 else{
-                    JOptionPane.showMessageDialog(this, "La cantidad de hijos del empleado no puede ser vacia.", "Error al actualizar informacion del emepleado", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "La cantidad de hijos del empleado no puede ser vacía.", "Error al actualizar información del empleado", JOptionPane.ERROR_MESSAGE);
                 }
             }
             else{
-                JOptionPane.showMessageDialog(this, "El sueldo del empleado no puede ser vacio.", "Error al actualizar informacion del emepleado", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "El sueldo del empleado no puede ser vacío.", "Error al actualizar información del empleado", JOptionPane.ERROR_MESSAGE);
             }
         }
         else{
-            JOptionPane.showMessageDialog(this, "El numero de telefono del empleado no puede ser vacio.", "Error al actualizar informacion del emepleado", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "El numero de telefono del empleado no puede ser vacío.", "Error al actualizar información del empleado", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_aceptarButtonActionPerformed
 

@@ -34,7 +34,7 @@ public class EsUtilizadaScreen extends javax.swing.JFrame {
             Class.forName("org.postgresql.Driver");
             conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "root");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e, "Error en conexion", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, e, "Error en conexión", JOptionPane.ERROR_MESSAGE);
         }
         
         try{
@@ -61,7 +61,7 @@ public class EsUtilizadaScreen extends javax.swing.JFrame {
             }
             
         }catch(Exception e){
-            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al buscar valores de descripcion de insumo", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al buscar valores de descripción de insumo", JOptionPane.ERROR_MESSAGE);
             
         }
         
@@ -245,7 +245,7 @@ public class EsUtilizadaScreen extends javax.swing.JFrame {
                         }
 
                     }catch(Exception e){
-                        JOptionPane.showMessageDialog(this, e.getMessage(), "Error al ingresar nueva provision", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(this, e.getMessage(), "Error al ingresar nueva provisión", JOptionPane.ERROR_MESSAGE);
 
                     }                    
                 }

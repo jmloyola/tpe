@@ -29,7 +29,7 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
             Class.forName("org.postgresql.Driver");
             conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "root");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e, "Error en conexion", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, e, "Error en conexión", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -168,7 +168,7 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
 
                 pst.execute();
                 
-                JOptionPane.showMessageDialog(this, "Empleado dado de baja con exito", "Baja de empleado exitosa", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Empleado dado de baja con éxito", "Baja de empleado exitosa", JOptionPane.INFORMATION_MESSAGE);
                 
                 this.dispose();
 
@@ -177,12 +177,12 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
             }
         }
         else{
-            JOptionPane.showMessageDialog(this, "El numero de legajo no puede ser vacio", "Error al dar de baja empleado", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "El número de legajo no puede ser vacío", "Error al dar de baja empleado", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_aceptarButtonActionPerformed
 
     private void buscarEmpleadoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarEmpleadoButtonActionPerformed
-        JOptionPane.showMessageDialog(this, "Realice la busqueda de empleado, seleccione en la tabla el empleado que desea haciendo click en la fila y presiones el boton salir.", "Recuerde", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Realice la búsqueda de empleado, seleccione en la tabla el empleado que desea haciendo click en la fila y presiones el botón salir.", "Recuerde", JOptionPane.INFORMATION_MESSAGE);
         BuscarEmpleadosScreen buscarEmpleadosScreen = new BuscarEmpleadosScreen();
         buscarEmpleadosScreen.setVisible(true);
         

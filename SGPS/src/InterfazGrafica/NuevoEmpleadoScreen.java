@@ -32,7 +32,7 @@ public class NuevoEmpleadoScreen extends javax.swing.JFrame {
             Class.forName("org.postgresql.Driver");
             conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "root");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e, "Error en conexion", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, e, "Error en conexión", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -494,63 +494,63 @@ public class NuevoEmpleadoScreen extends javax.swing.JFrame {
                                                                     }
                                                                 }
                                                                 else{
-                                                                    JOptionPane.showMessageDialog(this, "La categoria del empleado no puede ser vacia.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
+                                                                    JOptionPane.showMessageDialog(this, "La categoría del empleado no puede ser vacía.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
                                                                 }
                                                             }
                                                             else{
-                                                                JOptionPane.showMessageDialog(this, "La ciudad de residencia del empleado no puede ser vacia.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
+                                                                JOptionPane.showMessageDialog(this, "La ciudad de residencia del empleado no puede ser vacía.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
                                                             }
                                                         }
                                                         else{
-                                                            JOptionPane.showMessageDialog(this, "La provincia de residencia del empleado no puede ser vacia.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
+                                                            JOptionPane.showMessageDialog(this, "La provincia de residencia del empleado no puede ser vacía.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
                                                         }
                                                     }
                                                     else{
-                                                        JOptionPane.showMessageDialog(this, "El pais de residencia del empleado no puede ser vacio.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
+                                                        JOptionPane.showMessageDialog(this, "El país de residencia del empleado no puede ser vacío.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
                                                     }
                                                 }
                                                 else{
-                                                    JOptionPane.showMessageDialog(this, "El codigo postal del empleado no puede ser vacio.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
+                                                    JOptionPane.showMessageDialog(this, "El código postal del empleado no puede ser vacío.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
                                                 }
                                             }
                                             else{
-                                                JOptionPane.showMessageDialog(this, "El domicilio del empleado no puede ser vacio.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
+                                                JOptionPane.showMessageDialog(this, "El domicilio del empleado no puede ser vacío.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
                                             }
                                         }
                                         else{
-                                            JOptionPane.showMessageDialog(this, "La cantidad de hijos del empleado no puede ser vacia.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
+                                            JOptionPane.showMessageDialog(this, "La cantidad de hijos del empleado no puede ser vacía.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
                                         }
                                     }
                                     else{
-                                        JOptionPane.showMessageDialog(this, "El estado civil del empleado no puede ser vacio.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
+                                        JOptionPane.showMessageDialog(this, "El estado civil del empleado no puede ser vacío.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
                                     }
                                 }
                                 else{
-                                    JOptionPane.showMessageDialog(this, "El CUIL del empleado no puede ser vacio.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
+                                    JOptionPane.showMessageDialog(this, "El CUIL del empleado no puede ser vacío.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
                                 }
                             }
                             else{
-                                JOptionPane.showMessageDialog(this, "El sueldo del empleado no puede ser vacio.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
+                                JOptionPane.showMessageDialog(this, "El sueldo del empleado no puede ser vacío.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
                             }
                         }
                         else{
-                            JOptionPane.showMessageDialog(this, "El numero de legajo del empleado no puede ser vacio.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(this, "El número de legajo del empleado no puede ser vacío.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
                         }
                     }
                     else{
-                        JOptionPane.showMessageDialog(this, "Fecha de ingreso del empleado invalida.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(this, "Fecha de ingreso del empleado inválida.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
                     }
                 }
                 else{
-                    JOptionPane.showMessageDialog(this, "El telefono del empleado no puede ser vacio.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "El teléfono del empleado no puede ser vacío.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
                 }
             }
             else{
-                JOptionPane.showMessageDialog(this, "El DNI del empleado no puede ser vacio.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "El DNI del empleado no puede ser vacío.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
             }
         }
         else{
-            JOptionPane.showMessageDialog(this, "El nombre del empleado no puede ser vacio.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "El nombre del empleado no puede ser vacío.", "Error en alta de empleado", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_aceptarNuevoEmpleadoButtonActionPerformed
 

@@ -366,7 +366,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="codigoPostalLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Codigo Postal"/>
+        <Property name="text" type="java.lang.String" value="C&#xf3;digo Postal"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JFormattedTextField" name="codigoPostalFormattedTextField">

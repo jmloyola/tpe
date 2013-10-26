@@ -6,6 +6,7 @@ INTRODUCCION
 Explicar realidad.
 Motivacion del sistema
 Pasos para la construccion del sistema
+	Recopilacion de informacion (OBSERVACION, RECOPILACION DOCUMENTAL, ENTREVISTAS)
 Mostrar y explicar brevemente modelo conceptual
 Mostrar y explicar brevemente modelo relacional
 Mostrar transacciones

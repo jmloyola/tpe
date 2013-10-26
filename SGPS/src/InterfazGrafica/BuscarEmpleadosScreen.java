@@ -37,7 +37,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
             Class.forName("org.postgresql.Driver");
             conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "root");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e, "Error en conexion", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, e, "Error en conexión", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -222,7 +222,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                         try{
                             String sql = "SELECT e_nombre AS \"Nombre\","
                                                 + "e_dni AS \"DNI\","
-                                                + "e_telefono AS \"Telefono\","
+                                                + "e_telefono AS \"Teléfono\","
                                                 + "e_fechaingreso AS \"Fecha Ingreso\","
                                                 + "e_numerolegajo AS \"Num Legajo\","
                                                 + "e_sueldo AS \"Sueldo\","
@@ -231,10 +231,10 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                                                 + "e_cantidadhijos AS \"Cant Hijos\","
                                                 + "e_domicilio AS \"Domicilio\","
                                                 + "e_codigopostal AS \"Cod Postal\","
-                                                + "e_paisresidencia AS \"Pais Residencia\","
+                                                + "e_paisresidencia AS \"País Residencia\","
                                                 + "e_provinciaresidencia AS \"Provincia Residencia\","
                                                 + "e_ciudadresidencia AS \"Ciudad Residencia\","
-                                                + "e_categoria AS \"Categoria\","
+                                                + "e_categoria AS \"Categoría\","
                                                 + "e_estado AS \"Estado\" "
                                     + "FROM empleados WHERE E_Nombre LIKE ?";
                             pst = conn.prepareStatement(sql);
@@ -245,7 +245,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                             resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
                             busquedaExitosa = true;
                         }catch(Exception e){
-                            JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(this, e, "Error al realizar la búsqueda del empleado", JOptionPane.ERROR_MESSAGE);
                             busquedaExitosa = false;
                         }
                         break;
@@ -253,7 +253,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                         try{
                             String sql = "SELECT e_nombre AS \"Nombre\","
                                                 + "e_dni AS \"DNI\","
-                                                + "e_telefono AS \"Telefono\","
+                                                + "e_telefono AS \"Teléfono\","
                                                 + "e_fechaingreso AS \"Fecha Ingreso\","
                                                 + "e_numerolegajo AS \"Num Legajo\","
                                                 + "e_sueldo AS \"Sueldo\","
@@ -262,7 +262,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                                                 + "e_cantidadhijos AS \"Cant Hijos\","
                                                 + "e_domicilio AS \"Domicilio\","
                                                 + "e_codigopostal AS \"Cod Postal\","
-                                                + "e_paisresidencia AS \"Pais Residencia\","
+                                                + "e_paisresidencia AS \"País Residencia\","
                                                 + "e_provinciaresidencia AS \"Provincia Residencia\","
                                                 + "e_ciudadresidencia AS \"Ciudad Residencia\","
                                                 + "e_categoria AS \"Categoria\","
@@ -276,7 +276,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                             resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
                             busquedaExitosa = true;
                         }catch(Exception e){
-                            JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(this, e, "Error al realizar la búsqueda del empleado", JOptionPane.ERROR_MESSAGE);
                             busquedaExitosa = false;
                         }
                         break;                        
@@ -284,7 +284,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                         try{
                             String sql = "SELECT e_nombre AS \"Nombre\","
                                                 + "e_dni AS \"DNI\","
-                                                + "e_telefono AS \"Telefono\","
+                                                + "e_telefono AS \"Teléfono\","
                                                 + "e_fechaingreso AS \"Fecha Ingreso\","
                                                 + "e_numerolegajo AS \"Num Legajo\","
                                                 + "e_sueldo AS \"Sueldo\","
@@ -293,7 +293,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                                                 + "e_cantidadhijos AS \"Cant Hijos\","
                                                 + "e_domicilio AS \"Domicilio\","
                                                 + "e_codigopostal AS \"Cod Postal\","
-                                                + "e_paisresidencia AS \"Pais Residencia\","
+                                                + "e_paisresidencia AS \"País Residencia\","
                                                 + "e_provinciaresidencia AS \"Provincia Residencia\","
                                                 + "e_ciudadresidencia AS \"Ciudad Residencia\","
                                                 + "e_categoria AS \"Categoria\","
@@ -307,7 +307,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                             resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
                             busquedaExitosa = true;
                         }catch(Exception e){
-                            JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(this, e, "Error al realizar la búsqueda del empleado", JOptionPane.ERROR_MESSAGE);
                             busquedaExitosa = false;
                         }
                         break;                        
@@ -315,7 +315,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                         try{
                             String sql = "SELECT e_nombre AS \"Nombre\","
                                                 + "e_dni AS \"DNI\","
-                                                + "e_telefono AS \"Telefono\","
+                                                + "e_telefono AS \"Teléfono\","
                                                 + "e_fechaingreso AS \"Fecha Ingreso\","
                                                 + "e_numerolegajo AS \"Num Legajo\","
                                                 + "e_sueldo AS \"Sueldo\","
@@ -324,7 +324,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                                                 + "e_cantidadhijos AS \"Cant Hijos\","
                                                 + "e_domicilio AS \"Domicilio\","
                                                 + "e_codigopostal AS \"Cod Postal\","
-                                                + "e_paisresidencia AS \"Pais Residencia\","
+                                                + "e_paisresidencia AS \"País Residencia\","
                                                 + "e_provinciaresidencia AS \"Provincia Residencia\","
                                                 + "e_ciudadresidencia AS \"Ciudad Residencia\","
                                                 + "e_categoria AS \"Categoria\","
@@ -346,7 +346,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                             resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
                             busquedaExitosa = true;
                         }catch(Exception e){
-                            JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(this, e, "Error al realizar la búsqueda del empleado", JOptionPane.ERROR_MESSAGE);
                             busquedaExitosa = false;
                         }
                         break;                        
@@ -354,7 +354,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                         try{
                             String sql = "SELECT e_nombre AS \"Nombre\","
                                                 + "e_dni AS \"DNI\","
-                                                + "e_telefono AS \"Telefono\","
+                                                + "e_telefono AS \"Teléfono\","
                                                 + "e_fechaingreso AS \"Fecha Ingreso\","
                                                 + "e_numerolegajo AS \"Num Legajo\","
                                                 + "e_sueldo AS \"Sueldo\","
@@ -363,7 +363,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                                                 + "e_cantidadhijos AS \"Cant Hijos\","
                                                 + "e_domicilio AS \"Domicilio\","
                                                 + "e_codigopostal AS \"Cod Postal\","
-                                                + "e_paisresidencia AS \"Pais Residencia\","
+                                                + "e_paisresidencia AS \"País Residencia\","
                                                 + "e_provinciaresidencia AS \"Provincia Residencia\","
                                                 + "e_ciudadresidencia AS \"Ciudad Residencia\","
                                                 + "e_categoria AS \"Categoria\","
@@ -377,7 +377,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                             resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
                             busquedaExitosa = true;
                         }catch(Exception e){
-                            JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(this, e, "Error al realizar la búsqueda del empleado", JOptionPane.ERROR_MESSAGE);
                             busquedaExitosa = false;
                         }
                         break;                        
@@ -385,7 +385,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                         try{
                             String sql = "SELECT e_nombre AS \"Nombre\","
                                                 + "e_dni AS \"DNI\","
-                                                + "e_telefono AS \"Telefono\","
+                                                + "e_telefono AS \"Teléfono\","
                                                 + "e_fechaingreso AS \"Fecha Ingreso\","
                                                 + "e_numerolegajo AS \"Num Legajo\","
                                                 + "e_sueldo AS \"Sueldo\","
@@ -394,7 +394,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                                                 + "e_cantidadhijos AS \"Cant Hijos\","
                                                 + "e_domicilio AS \"Domicilio\","
                                                 + "e_codigopostal AS \"Cod Postal\","
-                                                + "e_paisresidencia AS \"Pais Residencia\","
+                                                + "e_paisresidencia AS \"País Residencia\","
                                                 + "e_provinciaresidencia AS \"Provincia Residencia\","
                                                 + "e_ciudadresidencia AS \"Ciudad Residencia\","
                                                 + "e_categoria AS \"Categoria\","
@@ -408,7 +408,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                             resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
                             busquedaExitosa = true;
                         }catch(Exception e){
-                            JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(this, e, "Error al realizar la búsqueda del empleado", JOptionPane.ERROR_MESSAGE);
                             busquedaExitosa = false;
                         }
                         break;                        
@@ -416,7 +416,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                         try{
                             String sql = "SELECT e_nombre AS \"Nombre\","
                                                 + "e_dni AS \"DNI\","
-                                                + "e_telefono AS \"Telefono\","
+                                                + "e_telefono AS \"Teléfono\","
                                                 + "e_fechaingreso AS \"Fecha Ingreso\","
                                                 + "e_numerolegajo AS \"Num Legajo\","
                                                 + "e_sueldo AS \"Sueldo\","
@@ -425,7 +425,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                                                 + "e_cantidadhijos AS \"Cant Hijos\","
                                                 + "e_domicilio AS \"Domicilio\","
                                                 + "e_codigopostal AS \"Cod Postal\","
-                                                + "e_paisresidencia AS \"Pais Residencia\","
+                                                + "e_paisresidencia AS \"País Residencia\","
                                                 + "e_provinciaresidencia AS \"Provincia Residencia\","
                                                 + "e_ciudadresidencia AS \"Ciudad Residencia\","
                                                 + "e_categoria AS \"Categoria\","
@@ -439,7 +439,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                             resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
                             busquedaExitosa = true;
                         }catch(Exception e){
-                            JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(this, e, "Error al realizar la búsqueda del empleado", JOptionPane.ERROR_MESSAGE);
                             busquedaExitosa = false;
                         }
                         break;                        
@@ -447,7 +447,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                         try{
                             String sql = "SELECT e_nombre AS \"Nombre\","
                                                 + "e_dni AS \"DNI\","
-                                                + "e_telefono AS \"Telefono\","
+                                                + "e_telefono AS \"Teléfono\","
                                                 + "e_fechaingreso AS \"Fecha Ingreso\","
                                                 + "e_numerolegajo AS \"Num Legajo\","
                                                 + "e_sueldo AS \"Sueldo\","
@@ -456,7 +456,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                                                 + "e_cantidadhijos AS \"Cant Hijos\","
                                                 + "e_domicilio AS \"Domicilio\","
                                                 + "e_codigopostal AS \"Cod Postal\","
-                                                + "e_paisresidencia AS \"Pais Residencia\","
+                                                + "e_paisresidencia AS \"País Residencia\","
                                                 + "e_provinciaresidencia AS \"Provincia Residencia\","
                                                 + "e_ciudadresidencia AS \"Ciudad Residencia\","
                                                 + "e_categoria AS \"Categoria\","
@@ -470,7 +470,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                             resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
                             busquedaExitosa = true;
                         }catch(Exception e){
-                            JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(this, e, "Error al realizar la búsqueda del empleado", JOptionPane.ERROR_MESSAGE);
                             busquedaExitosa = false;
                         }
                         break;                        
@@ -478,7 +478,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                         try{
                             String sql = "SELECT e_nombre AS \"Nombre\","
                                                 + "e_dni AS \"DNI\","
-                                                + "e_telefono AS \"Telefono\","
+                                                + "e_telefono AS \"Teléfono\","
                                                 + "e_fechaingreso AS \"Fecha Ingreso\","
                                                 + "e_numerolegajo AS \"Num Legajo\","
                                                 + "e_sueldo AS \"Sueldo\","
@@ -487,7 +487,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                                                 + "e_cantidadhijos AS \"Cant Hijos\","
                                                 + "e_domicilio AS \"Domicilio\","
                                                 + "e_codigopostal AS \"Cod Postal\","
-                                                + "e_paisresidencia AS \"Pais Residencia\","
+                                                + "e_paisresidencia AS \"País Residencia\","
                                                 + "e_provinciaresidencia AS \"Provincia Residencia\","
                                                 + "e_ciudadresidencia AS \"Ciudad Residencia\","
                                                 + "e_categoria AS \"Categoria\","
@@ -501,7 +501,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                             resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
                             busquedaExitosa = true;
                         }catch(Exception e){
-                            JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(this, e, "Error al realizar la búsqueda del empleado", JOptionPane.ERROR_MESSAGE);
                             busquedaExitosa = false;
                         }
                         break;                          
@@ -509,7 +509,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                         try{
                             String sql = "SELECT e_nombre AS \"Nombre\","
                                                 + "e_dni AS \"DNI\","
-                                                + "e_telefono AS \"Telefono\","
+                                                + "e_telefono AS \"Teléfono\","
                                                 + "e_fechaingreso AS \"Fecha Ingreso\","
                                                 + "e_numerolegajo AS \"Num Legajo\","
                                                 + "e_sueldo AS \"Sueldo\","
@@ -518,7 +518,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                                                 + "e_cantidadhijos AS \"Cant Hijos\","
                                                 + "e_domicilio AS \"Domicilio\","
                                                 + "e_codigopostal AS \"Cod Postal\","
-                                                + "e_paisresidencia AS \"Pais Residencia\","
+                                                + "e_paisresidencia AS \"País Residencia\","
                                                 + "e_provinciaresidencia AS \"Provincia Residencia\","
                                                 + "e_ciudadresidencia AS \"Ciudad Residencia\","
                                                 + "e_categoria AS \"Categoria\","
@@ -532,7 +532,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                             resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
                             busquedaExitosa = true;
                         }catch(Exception e){
-                            JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(this, e, "Error al realizar la búsqueda del empleado", JOptionPane.ERROR_MESSAGE);
                             busquedaExitosa = false;
                         }
                         break;                         
@@ -540,7 +540,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                         try{
                             String sql = "SELECT e_nombre AS \"Nombre\","
                                                 + "e_dni AS \"DNI\","
-                                                + "e_telefono AS \"Telefono\","
+                                                + "e_telefono AS \"Teléfono\","
                                                 + "e_fechaingreso AS \"Fecha Ingreso\","
                                                 + "e_numerolegajo AS \"Num Legajo\","
                                                 + "e_sueldo AS \"Sueldo\","
@@ -549,7 +549,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                                                 + "e_cantidadhijos AS \"Cant Hijos\","
                                                 + "e_domicilio AS \"Domicilio\","
                                                 + "e_codigopostal AS \"Cod Postal\","
-                                                + "e_paisresidencia AS \"Pais Residencia\","
+                                                + "e_paisresidencia AS \"País Residencia\","
                                                 + "e_provinciaresidencia AS \"Provincia Residencia\","
                                                 + "e_ciudadresidencia AS \"Ciudad Residencia\","
                                                 + "e_categoria AS \"Categoria\","
@@ -563,7 +563,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                             resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
                             busquedaExitosa = true;
                         }catch(Exception e){
-                            JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(this, e, "Error al realizar la búsqueda del empleado", JOptionPane.ERROR_MESSAGE);
                             busquedaExitosa = false;
                         }
                         break;                        
@@ -571,7 +571,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                         try{
                             String sql = "SELECT e_nombre AS \"Nombre\","
                                                 + "e_dni AS \"DNI\","
-                                                + "e_telefono AS \"Telefono\","
+                                                + "e_telefono AS \"Teléfono\","
                                                 + "e_fechaingreso AS \"Fecha Ingreso\","
                                                 + "e_numerolegajo AS \"Num Legajo\","
                                                 + "e_sueldo AS \"Sueldo\","
@@ -580,7 +580,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                                                 + "e_cantidadhijos AS \"Cant Hijos\","
                                                 + "e_domicilio AS \"Domicilio\","
                                                 + "e_codigopostal AS \"Cod Postal\","
-                                                + "e_paisresidencia AS \"Pais Residencia\","
+                                                + "e_paisresidencia AS \"País Residencia\","
                                                 + "e_provinciaresidencia AS \"Provincia Residencia\","
                                                 + "e_ciudadresidencia AS \"Ciudad Residencia\","
                                                 + "e_categoria AS \"Categoria\","
@@ -594,7 +594,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                             resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
                             busquedaExitosa = true;
                         }catch(Exception e){
-                            JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(this, e, "Error al realizar la búsqueda del empleado", JOptionPane.ERROR_MESSAGE);
                             busquedaExitosa = false;
                         }
                         break;                        
@@ -602,7 +602,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                         try{
                             String sql = "SELECT e_nombre AS \"Nombre\","
                                                 + "e_dni AS \"DNI\","
-                                                + "e_telefono AS \"Telefono\","
+                                                + "e_telefono AS \"Teléfono\","
                                                 + "e_fechaingreso AS \"Fecha Ingreso\","
                                                 + "e_numerolegajo AS \"Num Legajo\","
                                                 + "e_sueldo AS \"Sueldo\","
@@ -611,7 +611,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                                                 + "e_cantidadhijos AS \"Cant Hijos\","
                                                 + "e_domicilio AS \"Domicilio\","
                                                 + "e_codigopostal AS \"Cod Postal\","
-                                                + "e_paisresidencia AS \"Pais Residencia\","
+                                                + "e_paisresidencia AS \"País Residencia\","
                                                 + "e_provinciaresidencia AS \"Provincia Residencia\","
                                                 + "e_ciudadresidencia AS \"Ciudad Residencia\","
                                                 + "e_categoria AS \"Categoria\","
@@ -625,7 +625,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                             resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
                             busquedaExitosa = true;
                         }catch(Exception e){
-                            JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(this, e, "Error al realizar la búsqueda del empleado", JOptionPane.ERROR_MESSAGE);
                             busquedaExitosa = false;
                         }
                         break;                        
@@ -633,7 +633,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                         try{
                             String sql = "SELECT e_nombre AS \"Nombre\","
                                                 + "e_dni AS \"DNI\","
-                                                + "e_telefono AS \"Telefono\","
+                                                + "e_telefono AS \"Teléfono\","
                                                 + "e_fechaingreso AS \"Fecha Ingreso\","
                                                 + "e_numerolegajo AS \"Num Legajo\","
                                                 + "e_sueldo AS \"Sueldo\","
@@ -642,7 +642,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                                                 + "e_cantidadhijos AS \"Cant Hijos\","
                                                 + "e_domicilio AS \"Domicilio\","
                                                 + "e_codigopostal AS \"Cod Postal\","
-                                                + "e_paisresidencia AS \"Pais Residencia\","
+                                                + "e_paisresidencia AS \"País Residencia\","
                                                 + "e_provinciaresidencia AS \"Provincia Residencia\","
                                                 + "e_ciudadresidencia AS \"Ciudad Residencia\","
                                                 + "e_categoria AS \"Categoria\","
@@ -656,7 +656,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                             resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
                             busquedaExitosa = true;
                         }catch(Exception e){
-                            JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(this, e, "Error al realizar la búsqueda del empleado", JOptionPane.ERROR_MESSAGE);
                             busquedaExitosa = false;
                         }
                         break;                        
@@ -664,7 +664,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                         try{
                             String sql = "SELECT e_nombre AS \"Nombre\","
                                                 + "e_dni AS \"DNI\","
-                                                + "e_telefono AS \"Telefono\","
+                                                + "e_telefono AS \"Teléfono\","
                                                 + "e_fechaingreso AS \"Fecha Ingreso\","
                                                 + "e_numerolegajo AS \"Num Legajo\","
                                                 + "e_sueldo AS \"Sueldo\","
@@ -673,7 +673,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                                                 + "e_cantidadhijos AS \"Cant Hijos\","
                                                 + "e_domicilio AS \"Domicilio\","
                                                 + "e_codigopostal AS \"Cod Postal\","
-                                                + "e_paisresidencia AS \"Pais Residencia\","
+                                                + "e_paisresidencia AS \"País Residencia\","
                                                 + "e_provinciaresidencia AS \"Provincia Residencia\","
                                                 + "e_ciudadresidencia AS \"Ciudad Residencia\","
                                                 + "e_categoria AS \"Categoria\","
@@ -687,7 +687,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                             resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
                             busquedaExitosa = true;
                         }catch(Exception e){
-                            JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(this, e, "Error al realizar la búsqueda del empleado", JOptionPane.ERROR_MESSAGE);
                             busquedaExitosa = false;
                         }
                         break;                        
@@ -695,7 +695,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                         try{
                             String sql = "SELECT e_nombre AS \"Nombre\","
                                                 + "e_dni AS \"DNI\","
-                                                + "e_telefono AS \"Telefono\","
+                                                + "e_telefono AS \"Teléfono\","
                                                 + "e_fechaingreso AS \"Fecha Ingreso\","
                                                 + "e_numerolegajo AS \"Num Legajo\","
                                                 + "e_sueldo AS \"Sueldo\","
@@ -704,7 +704,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                                                 + "e_cantidadhijos AS \"Cant Hijos\","
                                                 + "e_domicilio AS \"Domicilio\","
                                                 + "e_codigopostal AS \"Cod Postal\","
-                                                + "e_paisresidencia AS \"Pais Residencia\","
+                                                + "e_paisresidencia AS \"País Residencia\","
                                                 + "e_provinciaresidencia AS \"Provincia Residencia\","
                                                 + "e_ciudadresidencia AS \"Ciudad Residencia\","
                                                 + "e_categoria AS \"Categoria\","
@@ -718,19 +718,19 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
                             resultadoBusquedaEmpleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
                             busquedaExitosa = true;
                         }catch(Exception e){
-                            JOptionPane.showMessageDialog(this, e, "Error al realizar la busqueda del empleado", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(this, e, "Error al realizar la búsqueda del empleado", JOptionPane.ERROR_MESSAGE);
                             busquedaExitosa = false;
                         }
                         break;                        
                 }
             }
             else{
-                JOptionPane.showMessageDialog(this, "El valor del parametor de busqueda no puede ser vacio.", "Error al buscar empleado", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "El valor del parámetro de búsqueda no puede ser vacio.", "Error al buscar empleado", JOptionPane.ERROR_MESSAGE);
                 busquedaExitosa = false;
             }
         }
         else{
-            JOptionPane.showMessageDialog(this, "El parametro de busqueda no puede ser vacio.", "Error al buscar empleado", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "El parámetro de búsqueda no puede ser vacio.", "Error al buscar empleado", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_buscarEmpleadosButtonActionPerformed
 
@@ -743,7 +743,7 @@ public class BuscarEmpleadosScreen extends javax.swing.JFrame {
 
                 SGPS.numeroLegajoEmpleado = numeroLegajo;
             }catch(Exception e){
-                JOptionPane.showMessageDialog(this, e.getMessage(), "Error al cargar numero de legajo.", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, e.getMessage(), "Error al cargar número de legajo.", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_resultadoBusquedaEmpleadosTableMouseClicked

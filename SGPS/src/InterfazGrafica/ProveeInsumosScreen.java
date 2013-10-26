@@ -30,7 +30,7 @@ public class ProveeInsumosScreen extends javax.swing.JFrame {
             Class.forName("org.postgresql.Driver");
             conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "root");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e, "Error en conexion", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, e, "Error en conexión", JOptionPane.ERROR_MESSAGE);
         }
         try{
             String sql = "SELECT p_razonsocial FROM proveedores ORDER BY p_razonsocial";
@@ -43,7 +43,7 @@ public class ProveeInsumosScreen extends javax.swing.JFrame {
             }
             
         }catch(Exception e){
-            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al buscar valores de razon social", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al buscar valores de razón social", JOptionPane.ERROR_MESSAGE);
             
         }
         
@@ -58,7 +58,7 @@ public class ProveeInsumosScreen extends javax.swing.JFrame {
             }
             
         }catch(Exception e){
-            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al buscar valores de descripcion de insumo", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al buscar valores de descripción de insumo", JOptionPane.ERROR_MESSAGE);
             
         }
         razonSocialProveedorComboBox.setSelectedIndex(-1);
@@ -218,7 +218,7 @@ public class ProveeInsumosScreen extends javax.swing.JFrame {
 
                             pst2.execute();
                             
-                            JOptionPane.showMessageDialog(this, "Nueva provision de insumo ingresada satisfactoriamente", "Nueva provision", JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(this, "Nueva provisión de insumo ingresada satisfactoriamente", "Nueva provisión", JOptionPane.INFORMATION_MESSAGE);
                             
                             this.dispose();
                         }
@@ -227,20 +227,20 @@ public class ProveeInsumosScreen extends javax.swing.JFrame {
                         }
 
                     }catch(Exception e){
-                        JOptionPane.showMessageDialog(this, e.getMessage(), "Error al ingresar nueva provision", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(this, e.getMessage(), "Error al ingresar nueva provisión", JOptionPane.ERROR_MESSAGE);
 
                     }
                 }
                 else{
-                    JOptionPane.showMessageDialog(this, "La cantidad provista no puede ser vacia", "Error al ingresar provision de insumo", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "La cantidad provista no puede ser vacía", "Error al ingresar provisión de insumo", JOptionPane.ERROR_MESSAGE);
                 }
             }
             else{
-                JOptionPane.showMessageDialog(this, "Se debe seleccionar un insumo", "Error al ingresar provision de insumo", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Se debe seleccionar un insumo", "Error al ingresar provisión de insumo", JOptionPane.ERROR_MESSAGE);
             }
         }
         else{
-            JOptionPane.showMessageDialog(this, "Se debe seleccionar un proveedor", "Error al ingresar provision de insumo", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Se debe seleccionar un proveedor", "Error al ingresar provisión de insumo", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_aceptarButtonActionPerformed
 

@@ -67,7 +67,7 @@ public class ProduceScreen extends javax.swing.JFrame {
                     .addComponent(identificadorLoteComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(codificacionProductoTerminadoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cantidadProductoTerminadoProducidaFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
 
         informacionProducePanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cantidadProductoTerminadoProducidaFormattedTextField, codificacionProductoTerminadoComboBox, identificadorLoteComboBox});
@@ -126,7 +126,7 @@ public class ProduceScreen extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(502, 216));
+        setSize(new java.awt.Dimension(548, 216));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

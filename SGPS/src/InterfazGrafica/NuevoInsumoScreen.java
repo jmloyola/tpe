@@ -54,7 +54,7 @@ public class NuevoInsumoScreen extends javax.swing.JFrame {
 
         unidadLabel.setText("Unidad:");
 
-        limitePedidoLabel.setText("Líimite Pedido:");
+        limitePedidoLabel.setText("Límite Pedido:");
 
         tipoLabel.setText("Tipo:");
 

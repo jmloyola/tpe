@@ -46,7 +46,7 @@ public class NuevoUsuarioSistemaScreen extends javax.swing.JFrame {
 
         usuarioLabel.setText("Usuario:");
 
-        passwordLabel.setText("Password:");
+        passwordLabel.setText("Contraseña:");
 
         usuarioTextField.setPreferredSize(new java.awt.Dimension(125, 20));
 
@@ -81,7 +81,7 @@ public class NuevoUsuarioSistemaScreen extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(passwordCampoObligatorioLabel))))
                     .addComponent(referenciaCampoObligatorioLabel))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         informacionNuevoUsuarioSistemaPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {passwordTextField, usuarioTextField});
@@ -139,7 +139,7 @@ public class NuevoUsuarioSistemaScreen extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(285, 195));
+        setSize(new java.awt.Dimension(317, 195));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

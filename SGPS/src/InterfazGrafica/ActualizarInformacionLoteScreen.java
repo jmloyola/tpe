@@ -33,7 +33,7 @@ public class ActualizarInformacionLoteScreen extends javax.swing.JFrame {
             Class.forName("org.postgresql.Driver");
             conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "root");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e, "Error en conexion", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, e, "Error en conexión", JOptionPane.ERROR_MESSAGE);
         }
         
         try{
@@ -358,11 +358,11 @@ public class ActualizarInformacionLoteScreen extends javax.swing.JFrame {
                         }
                         
                     }catch (Exception e){
-                        JOptionPane.showMessageDialog(this, e.getMessage(), "Error al actualizar la informacion del lote", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(this, e.getMessage(), "Error al actualizar la información del lote", JOptionPane.ERROR_MESSAGE);
                     }
                 }
                 else{
-                    JOptionPane.showMessageDialog(this, "La cantidad de descarte no puede ser vacía", "Error al actualizar informaicon del lote.", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "La cantidad de descarte no puede ser vacía.", "Error al actualizar información del lote", JOptionPane.ERROR_MESSAGE);
                 }
                 break;
             case 1:
@@ -382,11 +382,11 @@ public class ActualizarInformacionLoteScreen extends javax.swing.JFrame {
                         
                         
                     }catch (Exception e){
-                        JOptionPane.showMessageDialog(this, e.getMessage(), "Error al actualizar la informacion del lote", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(this, e.getMessage(), "Error al actualizar la información del lote", JOptionPane.ERROR_MESSAGE);
                     }
                 }
                 else{
-                    JOptionPane.showMessageDialog(this, "El motivo de deficiencia no puede ser vacío", "Error al actualizar informaicon del lote.", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "El motivo de deficiencia no puede ser vacío", "Error al actualizar información del lote.", JOptionPane.ERROR_MESSAGE);
                 }
                 break;
             case 2:
@@ -413,15 +413,15 @@ public class ActualizarInformacionLoteScreen extends javax.swing.JFrame {
 
 
                         }catch (Exception e){
-                            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al actualizar la informacion del lote", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al actualizar la información del lote", JOptionPane.ERROR_MESSAGE);
                         }
                     }
                     else{
-                        JOptionPane.showMessageDialog(this, "La fecha de vencimiento no puede ser vacía", "Error al actualizar informaicon del lote.", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(this, "La fecha de vencimiento no puede ser vacía", "Error al actualizar información del lote.", JOptionPane.ERROR_MESSAGE);
                     }
                 }
                 else{
-                    JOptionPane.showMessageDialog(this, "La fecha de ingreso a deposito no puede ser vacía", "Error al actualizar informaicon del lote.", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "La fecha de ingreso a depósito no puede ser vacía", "Error al actualizar información del lote.", JOptionPane.ERROR_MESSAGE);
                 }        
                 break;
         }
