@@ -8,9 +8,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import net.proteanit.sql.DbUtils;
+import sgps.SGPS;
 
 /**
  *
@@ -55,6 +58,8 @@ public class InsumosUtilizadosScreen extends javax.swing.JFrame {
         fechaCreacionLabel = new javax.swing.JLabel();
         fechaCreacionDateChooser = new com.toedter.calendar.JDateChooser();
         cargarButton = new javax.swing.JButton();
+        buscarLoteButton = new javax.swing.JButton();
+        cargarIdentificadorYFechaCreacionButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         insumosLoteTable = new javax.swing.JTable();
         salirButton = new javax.swing.JButton();
@@ -82,6 +87,22 @@ public class InsumosUtilizadosScreen extends javax.swing.JFrame {
             }
         });
 
+        buscarLoteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/InterfazGrafica/Icons/search_plus.png"))); // NOI18N
+        buscarLoteButton.setPreferredSize(new java.awt.Dimension(25, 25));
+        buscarLoteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarLoteButtonActionPerformed(evt);
+            }
+        });
+
+        cargarIdentificadorYFechaCreacionButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/InterfazGrafica/Icons/add_package.png"))); // NOI18N
+        cargarIdentificadorYFechaCreacionButton.setPreferredSize(new java.awt.Dimension(25, 25));
+        cargarIdentificadorYFechaCreacionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cargarIdentificadorYFechaCreacionButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout identificadorFechaCreacionPanelLayout = new javax.swing.GroupLayout(identificadorFechaCreacionPanel);
         identificadorFechaCreacionPanel.setLayout(identificadorFechaCreacionPanelLayout);
         identificadorFechaCreacionPanelLayout.setHorizontalGroup(
@@ -89,13 +110,19 @@ public class InsumosUtilizadosScreen extends javax.swing.JFrame {
             .addGroup(identificadorFechaCreacionPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(identificadorFechaCreacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(identificadorLabel)
-                    .addComponent(fechaCreacionLabel))
+                    .addGroup(identificadorFechaCreacionPanelLayout.createSequentialGroup()
+                        .addComponent(fechaCreacionLabel)
+                        .addGap(15, 15, 15)
+                        .addComponent(fechaCreacionDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, identificadorFechaCreacionPanelLayout.createSequentialGroup()
+                        .addComponent(identificadorLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(identificadorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(buscarLoteButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(identificadorFechaCreacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fechaCreacionDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(identificadorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cargarIdentificadorYFechaCreacionButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cargarButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -105,19 +132,27 @@ public class InsumosUtilizadosScreen extends javax.swing.JFrame {
         identificadorFechaCreacionPanelLayout.setVerticalGroup(
             identificadorFechaCreacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(identificadorFechaCreacionPanelLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(identificadorFechaCreacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(identificadorFechaCreacionPanelLayout.createSequentialGroup()
-                        .addGroup(identificadorFechaCreacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(identificadorLabel)
-                            .addComponent(identificadorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(identificadorFechaCreacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(fechaCreacionLabel)
-                            .addComponent(fechaCreacionDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(cargarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addContainerGap()
+                        .addGroup(identificadorFechaCreacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(identificadorFechaCreacionPanelLayout.createSequentialGroup()
+                                .addGroup(identificadorFechaCreacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(fechaCreacionLabel)
+                                    .addComponent(fechaCreacionDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(identificadorFechaCreacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(identificadorLabel)
+                                    .addComponent(identificadorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(cargarButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(identificadorFechaCreacionPanelLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(identificadorFechaCreacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(buscarLoteButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(identificadorFechaCreacionPanelLayout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addComponent(cargarIdentificadorYFechaCreacionButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         insumosLoteTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -182,8 +217,8 @@ public class InsumosUtilizadosScreen extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(identificadorFechaCreacionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(salirButton)
@@ -257,6 +292,30 @@ public class InsumosUtilizadosScreen extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cargarButtonActionPerformed
 
+    private void buscarLoteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarLoteButtonActionPerformed
+        JOptionPane.showMessageDialog(this, "Realice la búsqueda del lote, seleccione en la tabla el lote que desea haciendo click en la fila y presiones el botón salir.", "Recuerde", JOptionPane.INFORMATION_MESSAGE);
+        BuscarLotesScreen buscarLotesScreen = new BuscarLotesScreen();
+        buscarLotesScreen.setVisible(true);
+    }//GEN-LAST:event_buscarLoteButtonActionPerformed
+
+    private void cargarIdentificadorYFechaCreacionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarIdentificadorYFechaCreacionButtonActionPerformed
+        if (!SGPS.identificadorLote.equals("")){
+            int anio = Integer.parseInt(SGPS.fechaCreacionLote.substring(0, 4));
+            int mes = Integer.parseInt(SGPS.fechaCreacionLote.substring(5, 7)) - 1; //Para que sea el mes correcto
+            int dia = Integer.parseInt(SGPS.fechaCreacionLote.substring(8, 10));
+            Calendar fechaIngresada = new GregorianCalendar(anio, mes, dia);
+
+            java.util.Date fecha = new java.util.Date(fechaIngresada.getTimeInMillis());
+            java.sql.Date fechaActual = new java.sql.Date(fecha.getTime()); 
+            
+            //fechaCreacionDateChooser.setDate(fecha);
+            fechaCreacionDateChooser.setDate(fechaActual);
+            identificadorTextField.setText(SGPS.identificadorLote);
+            SGPS.identificadorLote = "";
+            SGPS.fechaCreacionLote = "";
+        }
+    }//GEN-LAST:event_cargarIdentificadorYFechaCreacionButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -292,7 +351,9 @@ public class InsumosUtilizadosScreen extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buscarLoteButton;
     private javax.swing.JButton cargarButton;
+    private javax.swing.JButton cargarIdentificadorYFechaCreacionButton;
     private com.toedter.calendar.JDateChooser fechaCreacionDateChooser;
     private javax.swing.JLabel fechaCreacionLabel;
     private javax.swing.JPanel identificadorFechaCreacionPanel;

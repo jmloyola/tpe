@@ -186,7 +186,7 @@ public class NuevoLoteScreen extends javax.swing.JFrame {
                     java.sql.Date fechaCreacionSql = new java.sql.Date(fechaCreacionDateChooser.getDate().getTime());
                     pst.setDate(2, fechaCreacionSql);
                     
-                    pst.setInt(3, 0);//Indica que el lote se esta procesando
+                    pst.setString(3, "Procesando");
                     
                     pst.execute();
                     

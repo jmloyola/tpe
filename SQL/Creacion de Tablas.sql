@@ -91,7 +91,7 @@ CREATE TABLE Lotes(
 	L_Identificador	VARCHAR (20)	NOT NULL,
 	L_FechaCreacion	DATE	NOT NULL,
 	L_FechaIngresoDeposito	DATE,
-	L_Estado	INT	NOT NULL,
+	L_Estado	VARCHAR (15)	NOT NULL,
 	L_MotivoDeficiencia	VARCHAR (50),
 	L_FechaVencimiento	DATE,
 	L_CantidadDescarteUtilizado	REAL DEFAULT 0.0,

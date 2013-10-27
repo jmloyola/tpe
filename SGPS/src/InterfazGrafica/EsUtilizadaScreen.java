@@ -38,7 +38,7 @@ public class EsUtilizadaScreen extends javax.swing.JFrame {
         }
         
         try{
-            String sql = "SELECT L_Identificador FROM Lotes WHERE L_Estado = 0 ORDER BY L_Identificador";
+            String sql = "SELECT L_Identificador FROM Lotes WHERE L_Estado = 'Procesando' ORDER BY L_Identificador";
             pst = conn.prepareStatement(sql);
             rs = pst.executeQuery();
             
@@ -213,7 +213,7 @@ public class EsUtilizadaScreen extends javax.swing.JFrame {
                         rs = pst.executeQuery();
                         
                         if (rs.next()){
-                            String sql2 = "SELECT L_Codigo FROM lotes WHERE L_Identificador=? AND L_Estado=0";
+                            String sql2 = "SELECT L_Codigo FROM lotes WHERE L_Identificador=? AND L_Estado='Procesando'";
                             
                             pst2 = conn.prepareStatement(sql2);
                             

@@ -4,20 +4,40 @@
  */
 package InterfazGrafica;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import net.proteanit.sql.DbUtils;
+import sgps.SGPS;
 
 /**
  *
  * @author Juan
  */
 public class BuscarLotesScreen extends javax.swing.JFrame {
+    
+    Connection conn = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;  
+    
+    boolean busquedaExitosa = false;
 
     /**
      * Creates new form BuscarLotesScreen
      */
     public BuscarLotesScreen() {
         initComponents();
+        try {
+            Class.forName("org.postgresql.Driver");
+            conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "root");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error en conexión", JOptionPane.ERROR_MESSAGE);
+        }        
     }
 
     /**
@@ -51,13 +71,18 @@ public class BuscarLotesScreen extends javax.swing.JFrame {
 
         valorLabel.setText("Valor");
 
-        parametroComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Identificador", "Fecha de Creacion", "Fecha de Ingreso a Deposito", "Estado", "Motivo Deficiencia", "Fecha Vencimiento", "Cantidad Descarte Utilizado", "Fecha del Descarte Utilizado" }));
+        parametroComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Identificador", "Fecha de Creacion", "Fecha de Ingreso a Deposito", "Estado", "Fecha Vencimiento", "Fecha del Descarte Utilizado" }));
         parametroComboBox.setSelectedIndex(-1);
 
         valorTextField.setPreferredSize(new java.awt.Dimension(250, 20));
 
         buscarLotesButton.setText("Buscar");
         buscarLotesButton.setPreferredSize(new java.awt.Dimension(65, 61));
+        buscarLotesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarLotesButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout parametroABuscarPanelLayout = new javax.swing.GroupLayout(parametroABuscarPanel);
         parametroABuscarPanel.setLayout(parametroABuscarPanelLayout);
@@ -122,6 +147,11 @@ public class BuscarLotesScreen extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        lotesTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lotesTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(lotesTable);
 
         salirButton.setText("Salir");
@@ -182,6 +212,201 @@ public class BuscarLotesScreen extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, e.getMessage(), "Error al imprimir", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_imprimirButtonActionPerformed
+
+    private void buscarLotesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarLotesButtonActionPerformed
+        if (parametroComboBox.getSelectedIndex() >= 0){
+            if (!valorTextField.getText().equals("")){
+                switch(parametroComboBox.getSelectedIndex()){
+                    case 0:
+                        try{
+                            String sql = "SELECT L_Identificador AS \"Identificador\","
+                                                + "L_FechaCreacion AS \"Fecha Creación\","
+                                                + "L_FechaIngresoDeposito AS \"Fecha Ingreso Depósito\","
+                                                + "L_Estado AS \"Estado\","
+                                                + "L_MotivoDeficiencia AS \"Motivo Deficiencia\","
+                                                + "L_FechaVencimiento AS \"Fecha Vencimiento\","
+                                                + "L_CantidadDescarteUtilizado AS \"Cant Descarte Utilizado\" "
+                                    + "FROM lotes WHERE L_Identificador LIKE ?";
+                            pst = conn.prepareStatement(sql);
+
+                            pst.setString(1,"%"+valorTextField.getText().toUpperCase()+"%");
+
+                            rs = pst.executeQuery();
+                            lotesTable.setModel(DbUtils.resultSetToTableModel(rs));
+                            busquedaExitosa = true;
+                        }catch(Exception e){
+                            JOptionPane.showMessageDialog(this, e, "Error al realizar la búsqueda de lotes", JOptionPane.ERROR_MESSAGE);
+                            busquedaExitosa = false;
+                        }
+                        break;
+                    case 1:
+                        try{
+                            String sql = "SELECT L_Identificador AS \"Identificador\","
+                                                + "L_FechaCreacion AS \"Fecha Creación\","
+                                                + "L_FechaIngresoDeposito AS \"Fecha Ingreso Depósito\","
+                                                + "L_Estado AS \"Estado\","
+                                                + "L_MotivoDeficiencia AS \"Motivo Deficiencia\","
+                                                + "L_FechaVencimiento AS \"Fecha Vencimiento\","
+                                                + "L_CantidadDescarteUtilizado AS \"Cant Descarte Utilizado\" "
+                                    + "FROM lotes WHERE L_FechaCreacion = ?";
+                            pst = conn.prepareStatement(sql);
+
+                            int anio = Integer.parseInt(valorTextField.getText().substring(0, 4));
+                            int mes = Integer.parseInt(valorTextField.getText().substring(5, 7)) - 1; // DEBO RESTAR UNO PORQUE EN JAVA LOS MESES EMPIEZAN EN 0 !!!!!!! o.0
+                            int dia = Integer.parseInt(valorTextField.getText().substring(8, 10));
+                            Calendar fechaIngresada = new GregorianCalendar(anio, mes, dia);
+                            
+                            java.util.Date fecha = new java.util.Date(fechaIngresada.getTimeInMillis());
+                            java.sql.Date fechaActual = new java.sql.Date(fecha.getTime());                            
+
+                            pst.setDate(1,fechaActual);
+
+                            rs = pst.executeQuery();
+                            lotesTable.setModel(DbUtils.resultSetToTableModel(rs));
+                            busquedaExitosa = true;
+                        }catch(Exception e){
+                            JOptionPane.showMessageDialog(this, e, "Error al realizar la búsqueda de lotes", JOptionPane.ERROR_MESSAGE);
+                            busquedaExitosa = false;
+                        }
+                        break;                        
+                    case 2:
+                        try{
+                            String sql = "SELECT L_Identificador AS \"Identificador\","
+                                                + "L_FechaCreacion AS \"Fecha Creación\","
+                                                + "L_FechaIngresoDeposito AS \"Fecha Ingreso Depósito\","
+                                                + "L_Estado AS \"Estado\","
+                                                + "L_MotivoDeficiencia AS \"Motivo Deficiencia\","
+                                                + "L_FechaVencimiento AS \"Fecha Vencimiento\","
+                                                + "L_CantidadDescarteUtilizado AS \"Cant Descarte Utilizado\" "
+                                    + "FROM lotes WHERE L_FechaIngresoDeposito = ?";
+                            pst = conn.prepareStatement(sql);
+
+                            int anio = Integer.parseInt(valorTextField.getText().substring(0, 4));
+                            int mes = Integer.parseInt(valorTextField.getText().substring(5, 7)) - 1; // DEBO RESTAR UNO PORQUE EN JAVA LOS MESES EMPIEZAN EN 0 !!!!!!! o.0
+                            int dia = Integer.parseInt(valorTextField.getText().substring(8, 10));
+                            Calendar fechaIngresada = new GregorianCalendar(anio, mes, dia);
+                            
+                            java.util.Date fecha = new java.util.Date(fechaIngresada.getTimeInMillis());
+                            java.sql.Date fechaActual = new java.sql.Date(fecha.getTime());                            
+
+                            pst.setDate(1,fechaActual);
+
+                            rs = pst.executeQuery();
+                            lotesTable.setModel(DbUtils.resultSetToTableModel(rs));
+                            busquedaExitosa = true;
+                        }catch(Exception e){
+                            JOptionPane.showMessageDialog(this, e, "Error al realizar la búsqueda de lotes", JOptionPane.ERROR_MESSAGE);
+                            busquedaExitosa = false;
+                        }
+                        break;                        
+                    case 3:
+                        try{
+                            String sql = "SELECT L_Identificador AS \"Identificador\","
+                                                + "L_FechaCreacion AS \"Fecha Creación\","
+                                                + "L_FechaIngresoDeposito AS \"Fecha Ingreso Depósito\","
+                                                + "L_Estado AS \"Estado\","
+                                                + "L_MotivoDeficiencia AS \"Motivo Deficiencia\","
+                                                + "L_FechaVencimiento AS \"Fecha Vencimiento\","
+                                                + "L_CantidadDescarteUtilizado AS \"Cant Descarte Utilizado\" "
+                                    + "FROM lotes WHERE L_Estado = ?";
+                            pst = conn.prepareStatement(sql);
+                            
+                            pst.setString(1,valorTextField.getText());                        
+
+                            rs = pst.executeQuery();
+                            lotesTable.setModel(DbUtils.resultSetToTableModel(rs));
+                            busquedaExitosa = true;
+                        }catch(Exception e){
+                            JOptionPane.showMessageDialog(this, e, "Error al realizar la búsqueda de lotes", JOptionPane.ERROR_MESSAGE);
+                            busquedaExitosa = false;
+                        }
+                        break;                        
+                    case 4:
+                        try{
+                            String sql = "SELECT L_Identificador AS \"Identificador\","
+                                                + "L_FechaCreacion AS \"Fecha Creación\","
+                                                + "L_FechaIngresoDeposito AS \"Fecha Ingreso Depósito\","
+                                                + "L_Estado AS \"Estado\","
+                                                + "L_MotivoDeficiencia AS \"Motivo Deficiencia\","
+                                                + "L_FechaVencimiento AS \"Fecha Vencimiento\","
+                                                + "L_CantidadDescarteUtilizado AS \"Cant Descarte Utilizado\" "
+                                    + "FROM lotes WHERE L_FechaVencimiento = ?";
+                            pst = conn.prepareStatement(sql);
+
+                            int anio = Integer.parseInt(valorTextField.getText().substring(0, 4));
+                            int mes = Integer.parseInt(valorTextField.getText().substring(5, 7)) - 1; // DEBO RESTAR UNO PORQUE EN JAVA LOS MESES EMPIEZAN EN 0 !!!!!!! o.0
+                            int dia = Integer.parseInt(valorTextField.getText().substring(8, 10));
+                            Calendar fechaIngresada = new GregorianCalendar(anio, mes, dia);
+                            
+                            java.util.Date fecha = new java.util.Date(fechaIngresada.getTimeInMillis());
+                            java.sql.Date fechaActual = new java.sql.Date(fecha.getTime());                            
+
+                            pst.setDate(1,fechaActual);
+
+                            rs = pst.executeQuery();
+                            lotesTable.setModel(DbUtils.resultSetToTableModel(rs));
+                            busquedaExitosa = true;
+                        }catch(Exception e){
+                            JOptionPane.showMessageDialog(this, e, "Error al realizar la búsqueda de lotes", JOptionPane.ERROR_MESSAGE);
+                            busquedaExitosa = false;
+                        }
+                        break;                        
+                    case 5:
+                        try{
+                            String sql = "SELECT L_Identificador AS \"Identificador\","
+                                                + "L_FechaCreacion AS \"Fecha Creación\","
+                                                + "L_FechaIngresoDeposito AS \"Fecha Ingreso Depósito\","
+                                                + "L_Estado AS \"Estado\","
+                                                + "L_MotivoDeficiencia AS \"Motivo Deficiencia\","
+                                                + "L_FechaVencimiento AS \"Fecha Vencimiento\","
+                                                + "L_CantidadDescarteUtilizado AS \"Cant Descarte Utilizado\" "
+                                    + "FROM lotes, StocksMensualesDescarte WHERE SM_D_Codigo = SM_D_Codigo_UtilizadoEn AND SM_D_Fecha = ?";
+                            pst = conn.prepareStatement(sql);
+
+                            int anio = Integer.parseInt(valorTextField.getText().substring(0, 4));
+                            int mes = Integer.parseInt(valorTextField.getText().substring(5, 7)) - 1; // DEBO RESTAR UNO PORQUE EN JAVA LOS MESES EMPIEZAN EN 0 !!!!!!! o.0
+                            int dia = Integer.parseInt(valorTextField.getText().substring(8, 10));
+                            Calendar fechaIngresada = new GregorianCalendar(anio, mes, dia);
+                            
+                            java.util.Date fecha = new java.util.Date(fechaIngresada.getTimeInMillis());
+                            java.sql.Date fechaActual = new java.sql.Date(fecha.getTime());                            
+
+                            pst.setDate(1,fechaActual);
+
+                            rs = pst.executeQuery();
+                            lotesTable.setModel(DbUtils.resultSetToTableModel(rs));
+                            busquedaExitosa = true;
+                        }catch(Exception e){
+                            JOptionPane.showMessageDialog(this, e, "Error al realizar la búsqueda de lotes", JOptionPane.ERROR_MESSAGE);
+                            busquedaExitosa = false;
+                        }
+                        break;                                                                  
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "El valor del parámetro de búsqueda no puede ser vacio.", "Error al buscar empleado", JOptionPane.ERROR_MESSAGE);
+                busquedaExitosa = false;
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "El parámetro de búsqueda no puede ser vacio.", "Error al buscar empleado", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_buscarLotesButtonActionPerformed
+
+    private void lotesTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lotesTableMouseClicked
+        if (busquedaExitosa){
+            try{
+                int row = lotesTable.getSelectedRow();
+                String identificador = lotesTable.getModel().getValueAt(row, 0).toString();
+                String fechaCreacion = lotesTable.getModel().getValueAt(row, 1).toString();
+
+                SGPS.identificadorLote = identificador;
+                SGPS.fechaCreacionLote = fechaCreacion;
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(this, e.getMessage(), "Error al cargar el identificador y fecha de creación del lote.", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_lotesTableMouseClicked
 
     /**
      * @param args the command line arguments

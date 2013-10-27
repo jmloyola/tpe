@@ -522,8 +522,7 @@ public void inicializacionStocksMensualesDescarte(){
                         + "WHERE L_Estado = ?";
             pst = conn.prepareStatement(sql);
             
-            
-            pst.setInt(1, 0); //Lotes en procesamiento
+            pst.setString(1, "Procesando");
             
             rs = pst.executeQuery();
             lotesTable.setModel(DbUtils.resultSetToTableModel(rs));
@@ -986,11 +985,6 @@ public void inicializacionStocksMensualesDescarte(){
         });
 
         actualizarTablaSolapaEmpleadosButton.setText("Actualizar");
-        actualizarTablaSolapaEmpleadosButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actualizarTablaSolapaEmpleadosButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout solapaEmpleadosPaneLayout = new javax.swing.GroupLayout(solapaEmpleadosPane);
         solapaEmpleadosPane.setLayout(solapaEmpleadosPaneLayout);
@@ -1056,11 +1050,6 @@ public void inicializacionStocksMensualesDescarte(){
         });
 
         actualizarTablaSolapaEtapasButton.setText("Actualizar");
-        actualizarTablaSolapaEtapasButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actualizarTablaSolapaEtapasButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout solapaEtapasPanelLayout = new javax.swing.GroupLayout(solapaEtapasPanel);
         solapaEtapasPanel.setLayout(solapaEtapasPanelLayout);
@@ -1734,14 +1723,6 @@ public void inicializacionStocksMensualesDescarte(){
     private void actualizarTablaSolapaProductosTerminadosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarTablaSolapaProductosTerminadosButtonActionPerformed
         updateProductosTerminadosTable();
     }//GEN-LAST:event_actualizarTablaSolapaProductosTerminadosButtonActionPerformed
-
-    private void actualizarTablaSolapaEmpleadosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarTablaSolapaEmpleadosButtonActionPerformed
-        updateEmpleadosTable();
-    }//GEN-LAST:event_actualizarTablaSolapaEmpleadosButtonActionPerformed
-
-    private void actualizarTablaSolapaEtapasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarTablaSolapaEtapasButtonActionPerformed
-        updateEtapasTable();
-    }//GEN-LAST:event_actualizarTablaSolapaEtapasButtonActionPerformed
 
     /**
      * @param args the command line arguments

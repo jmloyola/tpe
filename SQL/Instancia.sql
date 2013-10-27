@@ -13,14 +13,14 @@ INSERT INTO UsuariosDelSistema VALUES (    'lab',          'lab',     1,       1
 
 
 /*  Ingreso los lotes en procesamiento */
-INSERT INTO Lotes (L_Identificador, L_FechaCreacion, L_Estado) VALUES ('ID20130920', '2013-09-20', 0);
-INSERT INTO Lotes (L_Identificador, L_FechaCreacion, L_Estado) VALUES ('ID20130915', '2013-09-15', 0);
+INSERT INTO Lotes (L_Identificador, L_FechaCreacion, L_Estado) VALUES ('L-2009-3', '2013-09-20', 'Procesando');
+INSERT INTO Lotes (L_Identificador, L_FechaCreacion, L_Estado) VALUES ('L-1509-3', '2013-09-15', 'Procesando');
 
 /*  Ingreso los lotes terminados */
-INSERT INTO Lotes (L_Identificador, L_FechaCreacion, L_FechaIngresoDeposito, L_Estado, L_FechaVencimiento) VALUES ('ID20130810', '2013-08-10', '2013-08-15', 1, '2014-08-15');
+INSERT INTO Lotes (L_Identificador, L_FechaCreacion, L_FechaIngresoDeposito, L_Estado, L_FechaVencimiento) VALUES ('L-1008-3', '2013-08-10', '2013-08-15', 'Terminado', '2014-08-15');
 
 /*  Ingreso los lotes defectuosos */
-INSERT INTO Lotes (L_Identificador, L_FechaCreacion, L_FechaIngresoDeposito, L_Estado, L_MotivoDeficiencia, L_FechaVencimiento) VALUES ('ID20130811', '2013-08-10', '2013-08-15', 2, 'Materia prima en mal estado', '2014-08-15');
+INSERT INTO Lotes (L_Identificador, L_FechaCreacion, L_FechaIngresoDeposito, L_Estado, L_MotivoDeficiencia, L_FechaVencimiento) VALUES ('L-1108-3', '2013-08-10', '2013-08-15', 'Defectuoso', 'Materia prima en mal estado', '2014-08-15');
 
 
 /*  Ingreso las etapas */

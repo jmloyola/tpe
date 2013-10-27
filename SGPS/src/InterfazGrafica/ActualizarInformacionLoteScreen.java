@@ -37,7 +37,7 @@ public class ActualizarInformacionLoteScreen extends javax.swing.JFrame {
         }
         
         try{
-            String sql = "SELECT L_Identificador FROM Lotes WHERE L_Estado = 0 ORDER BY L_Identificador";
+            String sql = "SELECT L_Identificador FROM Lotes WHERE L_Estado = 'Procesando' ORDER BY L_Identificador";
             pst = conn.prepareStatement(sql);
             rs = pst.executeQuery();
             
@@ -326,105 +326,116 @@ public class ActualizarInformacionLoteScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_identificadoresLotesComboBoxItemStateChanged
 
     private void aceptarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarButtonActionPerformed
-        switch (estadoComboBox.getSelectedIndex()){
-            case 0:
-                if (!cantidadDescarteUtilizadoFormattedTextField.getText().equals("")){
-                    try{
-                        String sql2 = "SELECT SM_D_Codigo FROM StocksMensualesDescarte WHERE SM_D_Fecha = ?";
-                        pst2 = conn.prepareStatement(sql2);
+        if (identificadoresLotesComboBox.getSelectedIndex() != -1){
+            if (estadoComboBox.getSelectedIndex() != -1){
+                    switch (estadoComboBox.getSelectedIndex()){
+                        case 0:
+                            if (!cantidadDescarteUtilizadoFormattedTextField.getText().equals("")){
+                                try{
+                                    String sql2 = "SELECT SM_D_Codigo FROM StocksMensualesDescarte WHERE SM_D_Fecha = ?";
+                                    pst2 = conn.prepareStatement(sql2);
 
-                        Calendar calendarioActual = Calendar.getInstance();
-                        calendarioActual.set(Calendar.DAY_OF_MONTH, 1);
+                                    Calendar calendarioActual = Calendar.getInstance();
+                                    calendarioActual.set(Calendar.DAY_OF_MONTH, 1);
 
-                        java.util.Date today = new java.util.Date(calendarioActual.getTimeInMillis());
-                        java.sql.Date fechaActual = new java.sql.Date(today.getTime());
+                                    java.util.Date today = new java.util.Date(calendarioActual.getTimeInMillis());
+                                    java.sql.Date fechaActual = new java.sql.Date(today.getTime());
 
-                        pst2.setDate(1,fechaActual);
+                                    pst2.setDate(1,fechaActual);
 
-                        rs2 = pst2.executeQuery();
-                        
-                        if (rs2.next()){
-                            String sql = "UPDATE Lotes SET L_CantidadDescarteUtilizado=?, SM_D_Codigo_UtilizadoEn=? WHERE L_Identificador=? AND L_Estado = 0;";
-                            pst = conn.prepareStatement(sql);
+                                    rs2 = pst2.executeQuery();
 
-                            pst.setFloat(1, ((Number)cantidadDescarteUtilizadoFormattedTextField.getValue()).floatValue());
-                            pst.setInt(2, rs2.getInt("SM_D_Codigo"));
-                            pst.setString(3, identificadoresLotesComboBox.getSelectedItem().toString());
-                            
-                            pst.execute();
-                            
-                            JOptionPane.showMessageDialog(this, "Actualización de información de lote realizada correctamente", "Actualización de información de Lote", JOptionPane.INFORMATION_MESSAGE);
-                            this.dispose();
-                        }
-                        
-                    }catch (Exception e){
-                        JOptionPane.showMessageDialog(this, e.getMessage(), "Error al actualizar la información del lote", JOptionPane.ERROR_MESSAGE);
+                                    if (rs2.next()){
+                                        String sql = "UPDATE Lotes SET L_CantidadDescarteUtilizado=?, SM_D_Codigo_UtilizadoEn=? WHERE L_Identificador=? AND L_Estado = 'Procesando';";
+                                        pst = conn.prepareStatement(sql);
+
+                                        pst.setFloat(1, ((Number)cantidadDescarteUtilizadoFormattedTextField.getValue()).floatValue());
+                                        pst.setInt(2, rs2.getInt("SM_D_Codigo"));
+                                        pst.setString(3, identificadoresLotesComboBox.getSelectedItem().toString());
+
+                                        pst.execute();
+
+                                        JOptionPane.showMessageDialog(this, "Actualización de información de lote realizada correctamente", "Actualización de información de Lote", JOptionPane.INFORMATION_MESSAGE);
+                                        this.dispose();
+                                    }
+
+                                }catch (Exception e){
+                                    JOptionPane.showMessageDialog(this, e.getMessage(), "Error al actualizar la información del lote", JOptionPane.ERROR_MESSAGE);
+                                }
+                            }
+                            else{
+                                JOptionPane.showMessageDialog(this, "La cantidad de descarte no puede ser vacía.", "Error al actualizar información del lote", JOptionPane.ERROR_MESSAGE);
+                            }
+                            break;
+                        case 1:
+                            if (!motivoDeficienciaTextField.getText().equals("")){
+                                try{
+
+                                    String sql = "UPDATE Lotes SET L_MotivoDeficiencia=?, L_Estado='Terminado' WHERE L_Identificador=? AND L_Estado = 'Procesando';";
+                                    pst = conn.prepareStatement(sql);
+
+                                    pst.setString(1, motivoDeficienciaTextField.getText());
+                                    pst.setString(2, identificadoresLotesComboBox.getSelectedItem().toString());
+
+                                    pst.execute();
+
+                                    JOptionPane.showMessageDialog(this, "Actualización de información de lote realizada correctamente", "Actualización de información de Lote", JOptionPane.INFORMATION_MESSAGE);
+                                    this.dispose();
+
+
+                                }catch (Exception e){
+                                    JOptionPane.showMessageDialog(this, e.getMessage(), "Error al actualizar la información del lote", JOptionPane.ERROR_MESSAGE);
+                                }
+                            }
+                            else{
+                                JOptionPane.showMessageDialog(this, "El motivo de deficiencia no puede ser vacío", "Error al actualizar información del lote.", JOptionPane.ERROR_MESSAGE);
+                            }
+                            break;
+                        case 2:
+                            if (fechaIngresoDepositoDateChooser.getDate() != null){
+                                if (fechaVencimientoDateChooser.getDate() != null){
+                                    try{
+
+                                        String sql = "UPDATE Lotes SET L_FechaIngresoDeposito=?,L_FechaVencimiento=?, L_Estado='Defectuoso' WHERE L_Identificador=? AND L_Estado = 'Procesando';";
+                                        pst = conn.prepareStatement(sql);
+
+                                        // Preparo fecha
+                                        java.sql.Date fechaIngresoDepositoSql = new java.sql.Date(fechaIngresoDepositoDateChooser.getDate().getTime());
+                                        pst.setDate(1, fechaIngresoDepositoSql);                            
+
+                                        java.sql.Date fechaVencimientoSql = new java.sql.Date(fechaVencimientoDateChooser.getDate().getTime());
+                                        pst.setDate(2, fechaVencimientoSql);                                                        
+
+                                        pst.setString(3, identificadoresLotesComboBox.getSelectedItem().toString());
+
+                                        pst.execute();
+
+                                        JOptionPane.showMessageDialog(this, "Actualización de información de lote realizada correctamente", "Actualización de información de Lote", JOptionPane.INFORMATION_MESSAGE);
+                                        this.dispose();
+
+
+                                    }catch (Exception e){
+                                        JOptionPane.showMessageDialog(this, e.getMessage(), "Error al actualizar la información del lote", JOptionPane.ERROR_MESSAGE);
+                                    }
+                                }
+                                else{
+                                    JOptionPane.showMessageDialog(this, "La fecha de vencimiento no puede ser vacía", "Error al actualizar información del lote.", JOptionPane.ERROR_MESSAGE);
+                                }
+                            }
+                            else{
+                                JOptionPane.showMessageDialog(this, "La fecha de ingreso a depósito no puede ser vacía", "Error al actualizar información del lote.", JOptionPane.ERROR_MESSAGE);
+                            }        
+                            break;
                     }
-                }
-                else{
-                    JOptionPane.showMessageDialog(this, "La cantidad de descarte no puede ser vacía.", "Error al actualizar información del lote", JOptionPane.ERROR_MESSAGE);
-                }
-                break;
-            case 1:
-                if (!motivoDeficienciaTextField.getText().equals("")){
-                    try{
-                        
-                        String sql = "UPDATE Lotes SET L_MotivoDeficiencia=?, L_Estado=1 WHERE L_Identificador=? AND L_Estado = 0;";
-                        pst = conn.prepareStatement(sql);
-
-                        pst.setString(1, motivoDeficienciaTextField.getText());
-                        pst.setString(2, identificadoresLotesComboBox.getSelectedItem().toString());
-
-                        pst.execute();
-
-                        JOptionPane.showMessageDialog(this, "Actualización de información de lote realizada correctamente", "Actualización de información de Lote", JOptionPane.INFORMATION_MESSAGE);
-                        this.dispose();
-                        
-                        
-                    }catch (Exception e){
-                        JOptionPane.showMessageDialog(this, e.getMessage(), "Error al actualizar la información del lote", JOptionPane.ERROR_MESSAGE);
-                    }
-                }
-                else{
-                    JOptionPane.showMessageDialog(this, "El motivo de deficiencia no puede ser vacío", "Error al actualizar información del lote.", JOptionPane.ERROR_MESSAGE);
-                }
-                break;
-            case 2:
-                if (fechaIngresoDepositoDateChooser.getDate() != null){
-                    if (fechaVencimientoDateChooser.getDate() != null){
-                        try{
-
-                            String sql = "UPDATE Lotes SET L_FechaIngresoDeposito=?,L_FechaVencimiento=?, L_Estado=2 WHERE L_Identificador=? AND L_Estado = 0;";
-                            pst = conn.prepareStatement(sql);
-                            
-                            // Preparo fecha
-                            java.sql.Date fechaIngresoDepositoSql = new java.sql.Date(fechaIngresoDepositoDateChooser.getDate().getTime());
-                            pst.setDate(1, fechaIngresoDepositoSql);                            
-                            
-                            java.sql.Date fechaVencimientoSql = new java.sql.Date(fechaVencimientoDateChooser.getDate().getTime());
-                            pst.setDate(2, fechaVencimientoSql);                                                        
-                            
-                            pst.setString(3, identificadoresLotesComboBox.getSelectedItem().toString());
-
-                            pst.execute();
-
-                            JOptionPane.showMessageDialog(this, "Actualización de información de lote realizada correctamente", "Actualización de información de Lote", JOptionPane.INFORMATION_MESSAGE);
-                            this.dispose();
-
-
-                        }catch (Exception e){
-                            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al actualizar la información del lote", JOptionPane.ERROR_MESSAGE);
-                        }
-                    }
-                    else{
-                        JOptionPane.showMessageDialog(this, "La fecha de vencimiento no puede ser vacía", "Error al actualizar información del lote.", JOptionPane.ERROR_MESSAGE);
-                    }
-                }
-                else{
-                    JOptionPane.showMessageDialog(this, "La fecha de ingreso a depósito no puede ser vacía", "Error al actualizar información del lote.", JOptionPane.ERROR_MESSAGE);
-                }        
-                break;
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Debe seleccionar el estado en el que se encuentra el lote actualmente.", "Error al actualizar la información del lote", JOptionPane.ERROR_MESSAGE);
+            }
         }
+        else{
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un lote que se encuentre procesando.", "Error al actualizar la información del lote", JOptionPane.ERROR_MESSAGE);
+        }
+
     }//GEN-LAST:event_aceptarButtonActionPerformed
 
     /**
