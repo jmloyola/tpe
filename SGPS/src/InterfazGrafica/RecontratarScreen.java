@@ -13,9 +13,10 @@ import sgps.SGPS;
 
 /**
  *
- * @author Juan
+ * @author Juan Martin
  */
-public class BajaEmpleadoScreen extends javax.swing.JFrame {
+public class RecontratarScreen extends javax.swing.JFrame {
+    
     
     Connection conn = null;
     PreparedStatement pst = null;
@@ -23,16 +24,16 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
     ResultSet rs = null;
 
     /**
-     * Creates new form BajaEmpleadoScreen
+     * Creates new form recontratarScreen
      */
-    public BajaEmpleadoScreen() {
+    public RecontratarScreen() {
         initComponents();
         try {
             Class.forName("org.postgresql.Driver");
             conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "root");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Error en conexión", JOptionPane.ERROR_MESSAGE);
-        }
+        }        
     }
 
     /**
@@ -53,11 +54,9 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
         aceptarButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("Baja de Empleado");
-        setAlwaysOnTop(true);
-        setResizable(false);
+        setTitle("Recontratar Empleado");
 
-        numeroLegajoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese el número de legajo del empleado a dar de baja:"));
+        numeroLegajoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese el número de legajo del empleado a recontratar:"));
 
         numeroLegajoLabel.setText("Número de Legajo:");
 
@@ -143,16 +142,34 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(numeroLegajoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelarButton)
                     .addComponent(aceptarButton))
                 .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(365, 157));
+        setSize(new java.awt.Dimension(365, 155));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void buscarEmpleadoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarEmpleadoButtonActionPerformed
+        JOptionPane.showMessageDialog(this, "Realice la búsqueda de empleado, seleccione en la tabla el empleado que desea haciendo click en la fila y presiones el botón salir.", "Recuerde", JOptionPane.INFORMATION_MESSAGE);
+        BuscarEmpleadosScreen buscarEmpleadosScreen = new BuscarEmpleadosScreen();
+        buscarEmpleadosScreen.setVisible(true);
+
+        /*if (SGPS.numeroLegajoEmpleado != -1){
+            numeroLegajoFormattedTextField.setValue(SGPS.numeroLegajoEmpleado);
+            SGPS.numeroLegajoEmpleado = -1;
+        }*/
+    }//GEN-LAST:event_buscarEmpleadoButtonActionPerformed
+
+    private void cargarNumeroLegajoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarNumeroLegajoButtonActionPerformed
+        if (SGPS.numeroLegajoEmpleado != -1){
+            numeroLegajoFormattedTextField.setValue(SGPS.numeroLegajoEmpleado);
+            SGPS.numeroLegajoEmpleado = -1;
+        }
+    }//GEN-LAST:event_cargarNumeroLegajoButtonActionPerformed
 
     private void cancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarButtonActionPerformed
         this.dispose();
@@ -162,9 +179,9 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
         if (!numeroLegajoFormattedTextField.getText().equals("")){        
 
             try{
-                String sql = "UPDATE empleados SET e_estado = 'Despedido' WHERE E_NumeroLegajo = ?";
+                String sql = "UPDATE empleados SET e_estado = 'Activo' WHERE E_NumeroLegajo = ?";
                 
-                String sql2 = "SELECT E_Nombre FROM empleados WHERE E_NumeroLegajo = ? AND E_Estado <> 'Despedido'";
+                String sql2 = "SELECT E_Nombre FROM empleados WHERE E_NumeroLegajo = ? AND E_Estado = 'Despedido'";
                 
                 pst2 = conn.prepareStatement(sql2);
                 
@@ -180,40 +197,23 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
 
                     pst.execute();
 
-                    JOptionPane.showMessageDialog(this, "Empleado dado de baja con éxito", "Baja de empleado exitosa", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Empleado recontratado con éxito", "Recontratación de empleado exitosa", JOptionPane.INFORMATION_MESSAGE);
 
                     this.dispose();
                 }
                 else{
-                    JOptionPane.showMessageDialog(this, "El número de legajo ingresado no se corresponde con el de ningún empleado activo, de licencia o sancionado.", "Error al dar de baja empleado", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "El número de legajo ingresado no se corresponde con el de ningún empleado despedido.", "Error al recontratar empleado", JOptionPane.ERROR_MESSAGE);
                 }
 
             }catch(Exception e){
-                JOptionPane.showMessageDialog(this, e.getMessage(), "Error al dar de baja empleado", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, e.getMessage(), "Error al recontratar empleado", JOptionPane.ERROR_MESSAGE);
             }
         }
         else{
-            JOptionPane.showMessageDialog(this, "El número de legajo no puede ser vacío", "Error al dar de baja empleado", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "El número de legajo no puede ser vacío", "Error al recontratar empleado", JOptionPane.ERROR_MESSAGE);
         }
+
     }//GEN-LAST:event_aceptarButtonActionPerformed
-
-    private void buscarEmpleadoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarEmpleadoButtonActionPerformed
-        JOptionPane.showMessageDialog(this, "Realice la búsqueda de empleado, seleccione en la tabla el empleado que desea haciendo click en la fila y presiones el botón salir.", "Recuerde", JOptionPane.INFORMATION_MESSAGE);
-        BuscarEmpleadosScreen buscarEmpleadosScreen = new BuscarEmpleadosScreen();
-        buscarEmpleadosScreen.setVisible(true);
-        
-        /*if (SGPS.numeroLegajoEmpleado != -1){
-            numeroLegajoFormattedTextField.setValue(SGPS.numeroLegajoEmpleado);
-            SGPS.numeroLegajoEmpleado = -1;
-        }*/
-    }//GEN-LAST:event_buscarEmpleadoButtonActionPerformed
-
-    private void cargarNumeroLegajoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarNumeroLegajoButtonActionPerformed
-        if (SGPS.numeroLegajoEmpleado != -1){
-            numeroLegajoFormattedTextField.setValue(SGPS.numeroLegajoEmpleado);
-            SGPS.numeroLegajoEmpleado = -1;
-        }        
-    }//GEN-LAST:event_cargarNumeroLegajoButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -232,20 +232,20 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(BajaEmpleadoScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RecontratarScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(BajaEmpleadoScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RecontratarScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(BajaEmpleadoScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RecontratarScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(BajaEmpleadoScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RecontratarScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BajaEmpleadoScreen().setVisible(true);
+                new RecontratarScreen().setVisible(true);
             }
         });
     }

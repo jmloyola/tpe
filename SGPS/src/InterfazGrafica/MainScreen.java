@@ -352,6 +352,7 @@ public void inicializacionStocksMensualesDescarte(){
     
     public void updateEmpleadosTable(){
         try{
+            /*
             String sql = "SELECT e_nombre AS \"Nombre\","
                               + "e_dni AS \"DNI\","
                               + "e_telefono AS \"Teléfono\","
@@ -369,7 +370,19 @@ public void inicializacionStocksMensualesDescarte(){
                               + "e_categoria AS \"Categoria\","
                               + "e_estado AS \"Estado\" "
                         + "FROM empleados "
+                        + "WHERE E_Estado <> 'Despedido' ORDER BY e_nombre";*/
+            
+            String sql = "SELECT e_nombre AS \"Nombre\","
+                              + "e_dni AS \"DNI\","
+                              + "e_telefono AS \"Teléfono\","
+                              + "e_fechaingreso AS \"Fecha Ingreso\","
+                              + "e_numerolegajo AS \"Num Legajo\","
+                              + "e_cuil AS \"CUIL\","
+                              + "e_categoria AS \"Categoria\","
+                              + "e_estado AS \"Estado\" "
+                        + "FROM empleados "
                         + "WHERE E_Estado <> 'Despedido' ORDER BY e_nombre";
+            
             pst = conn.prepareStatement(sql);
             rs = pst.executeQuery();
             empleadosTable.setModel(DbUtils.resultSetToTableModel(rs));
@@ -532,12 +545,10 @@ public void inicializacionStocksMensualesDescarte(){
         usuarioActualLabel = new javax.swing.JLabel();
         solapasTabbedPane = new javax.swing.JTabbedPane();
         solapaLotesPane = new javax.swing.JPanel();
-        actualizarTablaSolapaLotesButton = new javax.swing.JButton();
         tablaSolapaLotesScrollPane = new javax.swing.JScrollPane();
         lotesTable = new javax.swing.JTable();
         imprimirLotesButton = new javax.swing.JButton();
         solapaInsumosPane = new javax.swing.JPanel();
-        actualizarTablaSolapaInsumosButton = new javax.swing.JButton();
         tablaSolapaInsumosScrollPane = new javax.swing.JScrollPane();
         insumosTable = new javax.swing.JTable();
         imprimirInsumosButton = new javax.swing.JButton();
@@ -545,26 +556,21 @@ public void inicializacionStocksMensualesDescarte(){
         jScrollPane2 = new javax.swing.JScrollPane();
         insumosEmbalajeTable = new javax.swing.JTable();
         imprimirInsumosEmbalajeButton = new javax.swing.JButton();
-        actualizarInsumosEmbalajeButton = new javax.swing.JButton();
         solapaInsumosProduccionPanel = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         insumosProduccionTable = new javax.swing.JTable();
         imprimirInsumosProduccionButton = new javax.swing.JButton();
-        actualizarInsumosProduccionButton = new javax.swing.JButton();
         solapaProductosTerminadosPane = new javax.swing.JPanel();
-        actualizarTablaSolapaProductosTerminadosButton = new javax.swing.JButton();
         tablaSolapaProductosTerminadosScrollPane = new javax.swing.JScrollPane();
         productosTerminadosTable = new javax.swing.JTable();
         imprimirProductosTerminadosButton = new javax.swing.JButton();
         solapaEmpleadosPane = new javax.swing.JPanel();
-        actualizarTablaSolapaEmpleadosButton = new javax.swing.JButton();
         tablaSolapaEmpleadosScrollPane = new javax.swing.JScrollPane();
         empleadosTable = new javax.swing.JTable();
         imprimirEmpleadosButton = new javax.swing.JButton();
         solapaEtapasPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         etapasTable = new javax.swing.JTable();
-        actualizarEtapasButton = new javax.swing.JButton();
         imprimirEtapasButton = new javax.swing.JButton();
         mainScreenMenuBar = new javax.swing.JMenuBar();
         archivoMenu = new javax.swing.JMenu();
@@ -575,6 +581,7 @@ public void inicializacionStocksMensualesDescarte(){
         actualizarInformacionEmpleadoMenuItem = new javax.swing.JMenuItem();
         buscarEmpleadosMenuItem = new javax.swing.JMenuItem();
         darBajaEmpleadoMenuItem = new javax.swing.JMenuItem();
+        recontratarMenuItem = new javax.swing.JMenuItem();
         nuevoAccidenteMenuItem = new javax.swing.JMenuItem();
         nuevaSancionMenuItem = new javax.swing.JMenuItem();
         nuevoPremioMenuItem = new javax.swing.JMenuItem();
@@ -631,13 +638,6 @@ public void inicializacionStocksMensualesDescarte(){
 
         usuarioActualLabel.setText("Usuario: ");
 
-        actualizarTablaSolapaLotesButton.setText("Actualizar");
-        actualizarTablaSolapaLotesButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actualizarTablaSolapaLotesButtonActionPerformed(evt);
-            }
-        });
-
         lotesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -668,8 +668,7 @@ public void inicializacionStocksMensualesDescarte(){
                     .addComponent(tablaSolapaLotesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1082, Short.MAX_VALUE)
                     .addGroup(solapaLotesPaneLayout.createSequentialGroup()
                         .addComponent(imprimirLotesButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(actualizarTablaSolapaLotesButton)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         solapaLotesPaneLayout.setVerticalGroup(
@@ -678,20 +677,11 @@ public void inicializacionStocksMensualesDescarte(){
                 .addContainerGap()
                 .addComponent(tablaSolapaLotesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(solapaLotesPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(actualizarTablaSolapaLotesButton)
-                    .addComponent(imprimirLotesButton))
+                .addComponent(imprimirLotesButton)
                 .addContainerGap())
         );
 
         solapasTabbedPane.addTab("Lotes", solapaLotesPane);
-
-        actualizarTablaSolapaInsumosButton.setText("Actualizar");
-        actualizarTablaSolapaInsumosButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actualizarTablaSolapaInsumosButtonActionPerformed(evt);
-            }
-        });
 
         insumosTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -738,8 +728,7 @@ public void inicializacionStocksMensualesDescarte(){
                     .addComponent(tablaSolapaInsumosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1082, Short.MAX_VALUE)
                     .addGroup(solapaInsumosPaneLayout.createSequentialGroup()
                         .addComponent(imprimirInsumosButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(actualizarTablaSolapaInsumosButton)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         solapaInsumosPaneLayout.setVerticalGroup(
@@ -748,9 +737,7 @@ public void inicializacionStocksMensualesDescarte(){
                 .addContainerGap()
                 .addComponent(tablaSolapaInsumosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(solapaInsumosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(actualizarTablaSolapaInsumosButton)
-                    .addComponent(imprimirInsumosButton))
+                .addComponent(imprimirInsumosButton)
                 .addContainerGap())
         );
 
@@ -776,13 +763,6 @@ public void inicializacionStocksMensualesDescarte(){
             }
         });
 
-        actualizarInsumosEmbalajeButton.setText("Actualizar");
-        actualizarInsumosEmbalajeButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actualizarInsumosEmbalajeButtonActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout solapaInsumoEmbalajePanelLayout = new javax.swing.GroupLayout(solapaInsumoEmbalajePanel);
         solapaInsumoEmbalajePanel.setLayout(solapaInsumoEmbalajePanelLayout);
         solapaInsumoEmbalajePanelLayout.setHorizontalGroup(
@@ -793,8 +773,7 @@ public void inicializacionStocksMensualesDescarte(){
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1082, Short.MAX_VALUE)
                     .addGroup(solapaInsumoEmbalajePanelLayout.createSequentialGroup()
                         .addComponent(imprimirInsumosEmbalajeButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(actualizarInsumosEmbalajeButton)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         solapaInsumoEmbalajePanelLayout.setVerticalGroup(
@@ -803,9 +782,7 @@ public void inicializacionStocksMensualesDescarte(){
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(solapaInsumoEmbalajePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(imprimirInsumosEmbalajeButton)
-                    .addComponent(actualizarInsumosEmbalajeButton))
+                .addComponent(imprimirInsumosEmbalajeButton)
                 .addContainerGap())
         );
 
@@ -831,13 +808,6 @@ public void inicializacionStocksMensualesDescarte(){
             }
         });
 
-        actualizarInsumosProduccionButton.setText("Actualizar");
-        actualizarInsumosProduccionButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actualizarInsumosProduccionButtonActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout solapaInsumosProduccionPanelLayout = new javax.swing.GroupLayout(solapaInsumosProduccionPanel);
         solapaInsumosProduccionPanel.setLayout(solapaInsumosProduccionPanelLayout);
         solapaInsumosProduccionPanelLayout.setHorizontalGroup(
@@ -848,8 +818,7 @@ public void inicializacionStocksMensualesDescarte(){
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1082, Short.MAX_VALUE)
                     .addGroup(solapaInsumosProduccionPanelLayout.createSequentialGroup()
                         .addComponent(imprimirInsumosProduccionButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(actualizarInsumosProduccionButton)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         solapaInsumosProduccionPanelLayout.setVerticalGroup(
@@ -858,20 +827,11 @@ public void inicializacionStocksMensualesDescarte(){
                 .addContainerGap()
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(solapaInsumosProduccionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(imprimirInsumosProduccionButton)
-                    .addComponent(actualizarInsumosProduccionButton))
+                .addComponent(imprimirInsumosProduccionButton)
                 .addContainerGap())
         );
 
         solapasTabbedPane.addTab("Insumos Producción", solapaInsumosProduccionPanel);
-
-        actualizarTablaSolapaProductosTerminadosButton.setText("Actualizar");
-        actualizarTablaSolapaProductosTerminadosButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actualizarTablaSolapaProductosTerminadosButtonActionPerformed(evt);
-            }
-        });
 
         productosTerminadosTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -918,8 +878,7 @@ public void inicializacionStocksMensualesDescarte(){
                     .addComponent(tablaSolapaProductosTerminadosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1082, Short.MAX_VALUE)
                     .addGroup(solapaProductosTerminadosPaneLayout.createSequentialGroup()
                         .addComponent(imprimirProductosTerminadosButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(actualizarTablaSolapaProductosTerminadosButton)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         solapaProductosTerminadosPaneLayout.setVerticalGroup(
@@ -928,37 +887,28 @@ public void inicializacionStocksMensualesDescarte(){
                 .addContainerGap()
                 .addComponent(tablaSolapaProductosTerminadosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(solapaProductosTerminadosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(actualizarTablaSolapaProductosTerminadosButton)
-                    .addComponent(imprimirProductosTerminadosButton))
+                .addComponent(imprimirProductosTerminadosButton)
                 .addContainerGap())
         );
 
         solapasTabbedPane.addTab("Procutos Terminados", solapaProductosTerminadosPane);
 
-        actualizarTablaSolapaEmpleadosButton.setText("Actualizar");
-        actualizarTablaSolapaEmpleadosButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actualizarTablaSolapaEmpleadosButtonActionPerformed(evt);
-            }
-        });
-
         empleadosTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Nombre", "DNI", "Telefono", "Fecha de Ingreso", "Numero de Legajo", "Sueldo", "CUIL", "Estado Civil", "Cantidad de Hijos", "Domicilio", "Codigo Postal", "Pais de Residencia", "Provincia de Residencia", "Ciudad de Residencia", "Categoria", "Estado"
+                "Nombre", "DNI", "Telefono", "Fecha de Ingreso", "Numero de Legajo", "CUIL", "Categoria", "Estado"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Float.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -988,8 +938,7 @@ public void inicializacionStocksMensualesDescarte(){
                     .addComponent(tablaSolapaEmpleadosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1082, Short.MAX_VALUE)
                     .addGroup(solapaEmpleadosPaneLayout.createSequentialGroup()
                         .addComponent(imprimirEmpleadosButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(actualizarTablaSolapaEmpleadosButton)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         solapaEmpleadosPaneLayout.setVerticalGroup(
@@ -998,9 +947,7 @@ public void inicializacionStocksMensualesDescarte(){
                 .addContainerGap()
                 .addComponent(tablaSolapaEmpleadosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(solapaEmpleadosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(actualizarTablaSolapaEmpleadosButton)
-                    .addComponent(imprimirEmpleadosButton))
+                .addComponent(imprimirEmpleadosButton)
                 .addContainerGap())
         );
 
@@ -1034,13 +981,6 @@ public void inicializacionStocksMensualesDescarte(){
         });
         jScrollPane1.setViewportView(etapasTable);
 
-        actualizarEtapasButton.setText("Actualizar");
-        actualizarEtapasButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actualizarEtapasButtonActionPerformed(evt);
-            }
-        });
-
         imprimirEtapasButton.setText("Imprimir");
         imprimirEtapasButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1058,8 +998,7 @@ public void inicializacionStocksMensualesDescarte(){
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1082, Short.MAX_VALUE)
                     .addGroup(solapaEtapasPanelLayout.createSequentialGroup()
                         .addComponent(imprimirEtapasButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(actualizarEtapasButton)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         solapaEtapasPanelLayout.setVerticalGroup(
@@ -1068,9 +1007,7 @@ public void inicializacionStocksMensualesDescarte(){
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(solapaEtapasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(actualizarEtapasButton)
-                    .addComponent(imprimirEtapasButton))
+                .addComponent(imprimirEtapasButton)
                 .addContainerGap())
         );
 
@@ -1116,6 +1053,14 @@ public void inicializacionStocksMensualesDescarte(){
             }
         });
         empleadosMenu.add(darBajaEmpleadoMenuItem);
+
+        recontratarMenuItem.setText("Recontratar Empleado");
+        recontratarMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                recontratarMenuItemActionPerformed(evt);
+            }
+        });
+        empleadosMenu.add(recontratarMenuItem);
 
         nuevoAccidenteMenuItem.setText("Nuevo Accidente");
         nuevoAccidenteMenuItem.setEnabled(false);
@@ -1470,26 +1415,6 @@ public void inicializacionStocksMensualesDescarte(){
         acercaDeScreen.setVisible(true);
     }//GEN-LAST:event_acercaDeMenuItemActionPerformed
 
-    private void actualizarEtapasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarEtapasButtonActionPerformed
-        updateEtapasTable();
-    }//GEN-LAST:event_actualizarEtapasButtonActionPerformed
-
-    private void actualizarTablaSolapaEmpleadosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarTablaSolapaEmpleadosButtonActionPerformed
-        updateEmpleadosTable();
-    }//GEN-LAST:event_actualizarTablaSolapaEmpleadosButtonActionPerformed
-
-    private void actualizarTablaSolapaInsumosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarTablaSolapaInsumosButtonActionPerformed
-        updateInsumosTable();
-    }//GEN-LAST:event_actualizarTablaSolapaInsumosButtonActionPerformed
-
-    private void actualizarTablaSolapaProductosTerminadosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarTablaSolapaProductosTerminadosButtonActionPerformed
-        updateProductosTerminadosTable();
-    }//GEN-LAST:event_actualizarTablaSolapaProductosTerminadosButtonActionPerformed
-
-    private void actualizarTablaSolapaLotesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarTablaSolapaLotesButtonActionPerformed
-        updateLotesTable();
-    }//GEN-LAST:event_actualizarTablaSolapaLotesButtonActionPerformed
-
     private void nuevoEmpleadoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoEmpleadoMenuItemActionPerformed
         NuevoEmpleadoScreen nuevoEmpleadoScreen = new NuevoEmpleadoScreen();
         nuevoEmpleadoScreen.setVisible(true);
@@ -1703,18 +1628,15 @@ public void inicializacionStocksMensualesDescarte(){
         }
     }//GEN-LAST:event_imprimirInsumosProduccionButtonActionPerformed
 
-    private void actualizarInsumosEmbalajeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarInsumosEmbalajeButtonActionPerformed
-        updateInsumosEmbalajeTable();
-    }//GEN-LAST:event_actualizarInsumosEmbalajeButtonActionPerformed
-
-    private void actualizarInsumosProduccionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarInsumosProduccionButtonActionPerformed
-        updateInsumosProduccionTable();
-    }//GEN-LAST:event_actualizarInsumosProduccionButtonActionPerformed
-
     private void InsumosUtilizadosMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsumosUtilizadosMenuItemActionPerformed
         InsumosUtilizadosScreen insumosUtilizadosScreen = new InsumosUtilizadosScreen();
         insumosUtilizadosScreen.setVisible(true);
     }//GEN-LAST:event_InsumosUtilizadosMenuItemActionPerformed
+
+    private void recontratarMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recontratarMenuItemActionPerformed
+        RecontratarScreen recontratarScreen = new RecontratarScreen();
+        recontratarScreen.setVisible(true);
+    }//GEN-LAST:event_recontratarMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1753,17 +1675,10 @@ public void inicializacionStocksMensualesDescarte(){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem InsumosUtilizadosMenuItem;
     private javax.swing.JMenuItem acercaDeMenuItem;
-    private javax.swing.JButton actualizarEtapasButton;
     private javax.swing.JMenuItem actualizarInformacionEmpleadoMenuItem;
     private javax.swing.JMenuItem actualizarInformacionInsumoMenuItem;
     private javax.swing.JMenuItem actualizarInformacionLoteMenuItem;
     private javax.swing.JMenuItem actualizarInformacionProveedorMenuItem;
-    private javax.swing.JButton actualizarInsumosEmbalajeButton;
-    private javax.swing.JButton actualizarInsumosProduccionButton;
-    private javax.swing.JButton actualizarTablaSolapaEmpleadosButton;
-    private javax.swing.JButton actualizarTablaSolapaInsumosButton;
-    private javax.swing.JButton actualizarTablaSolapaLotesButton;
-    private javax.swing.JButton actualizarTablaSolapaProductosTerminadosButton;
     private javax.swing.JMenu analisisMenu;
     private javax.swing.JMenu archivoMenu;
     private javax.swing.JMenu ayudaMenu;
@@ -1827,6 +1742,7 @@ public void inicializacionStocksMensualesDescarte(){
     private javax.swing.JTable productosTerminadosTable;
     private javax.swing.JMenuItem proveeInsumosMenuItem;
     private javax.swing.JMenu proveedoresMenu;
+    private javax.swing.JMenuItem recontratarMenuItem;
     private javax.swing.JMenuItem seEncuentraMenuItem;
     private javax.swing.JPopupMenu.Separator separadorEntreEsquemasYCerrarSesion;
     private javax.swing.JPopupMenu.Separator separadoreEntreExportarYEsquemas;

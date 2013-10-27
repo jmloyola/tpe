@@ -318,7 +318,7 @@ public class ActualizarInformacionEmpleadoScreen extends javax.swing.JFrame {
         if (!numeroLegajoFormattedTextField.getText().equals("")){
             
             try{
-                String sql = "SELECT e_telefono, e_sueldo, e_estadocivil, e_cantidadhijos, e_domicilio, e_codigopostal, e_paisresidencia, e_provinciaresidencia, e_ciudadresidencia, e_categoria FROM empleados WHERE e_numerolegajo=?";
+                String sql = "SELECT e_telefono, e_sueldo, e_estadocivil, e_cantidadhijos, e_domicilio, e_codigopostal, e_paisresidencia, e_provinciaresidencia, e_ciudadresidencia, e_categoria FROM empleados WHERE e_numerolegajo=? AND E_Estado <> 'Despedido'";
                 pst = conn.prepareStatement(sql);
 
 
@@ -374,7 +374,7 @@ public class ActualizarInformacionEmpleadoScreen extends javax.swing.JFrame {
                     codigoPostalFormattedTextField.setValue(rs.getInt("e_codigopostal"));
                 }
                 else{
-                    JOptionPane.showMessageDialog(this, "El numero de legajo ingresado no se corresponde con el de ningun empleado.", "Error al cargar informacion del empleado", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "El numero de legajo ingresado no se corresponde con el de ningún empleado activo, de licencia o sancionado.", "Error al cargar informacion del empleado", JOptionPane.ERROR_MESSAGE);
                 }
                 
                 
