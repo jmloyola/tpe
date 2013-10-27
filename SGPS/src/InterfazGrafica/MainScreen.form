@@ -510,7 +510,8 @@
                           <Component id="tablaSolapaLotesScrollPane" pref="1082" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="imprimirLotesButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="actualizarTablaSolapaLotesButton" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -523,7 +524,10 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="tablaSolapaLotesScrollPane" pref="509" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="imprimirLotesButton" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="imprimirLotesButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="actualizarTablaSolapaLotesButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -559,6 +563,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="imprimirLotesButtonActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JButton" name="actualizarTablaSolapaLotesButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Actualizar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="actualizarTablaSolapaLotesButtonActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="solapaInsumosPane">
@@ -579,7 +591,8 @@
                           <Component id="tablaSolapaInsumosScrollPane" pref="1082" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="imprimirInsumosButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="actualizarTablaSolapaMateriasPrimasButton" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -592,7 +605,10 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="tablaSolapaInsumosScrollPane" pref="509" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="imprimirInsumosButton" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="imprimirInsumosButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="actualizarTablaSolapaMateriasPrimasButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -631,6 +647,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="imprimirInsumosButtonActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JButton" name="actualizarTablaSolapaMateriasPrimasButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Actualizar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="actualizarTablaSolapaMateriasPrimasButtonActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="solapaInsumoEmbalajePanel">
@@ -651,7 +675,8 @@
                           <Component id="jScrollPane2" alignment="0" pref="1082" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="imprimirInsumosEmbalajeButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="actualizarTablaSolapaInsumosEmbalajeButton" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -664,7 +689,10 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane2" pref="509" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="imprimirInsumosEmbalajeButton" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="imprimirInsumosEmbalajeButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="actualizarTablaSolapaInsumosEmbalajeButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -700,6 +728,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="imprimirInsumosEmbalajeButtonActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JButton" name="actualizarTablaSolapaInsumosEmbalajeButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Actualizar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="actualizarTablaSolapaInsumosEmbalajeButtonActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="solapaInsumosProduccionPanel">
@@ -720,7 +756,8 @@
                           <Component id="jScrollPane3" alignment="0" pref="1082" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="imprimirInsumosProduccionButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="actualizarTablaSolapaInsumosProduccionButton" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -733,7 +770,10 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane3" pref="509" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="imprimirInsumosProduccionButton" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="imprimirInsumosProduccionButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="actualizarTablaSolapaInsumosProduccionButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -769,6 +809,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="imprimirInsumosProduccionButtonActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JButton" name="actualizarTablaSolapaInsumosProduccionButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Actualizar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="actualizarTablaSolapaInsumosProduccionButtonActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="solapaProductosTerminadosPane">
@@ -789,7 +837,8 @@
                           <Component id="tablaSolapaProductosTerminadosScrollPane" pref="1082" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="imprimirProductosTerminadosButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="actualizarTablaSolapaProductosTerminadosButton" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -802,7 +851,10 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="tablaSolapaProductosTerminadosScrollPane" pref="509" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="imprimirProductosTerminadosButton" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="imprimirProductosTerminadosButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="actualizarTablaSolapaProductosTerminadosButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -841,6 +893,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="imprimirProductosTerminadosButtonActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JButton" name="actualizarTablaSolapaProductosTerminadosButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Actualizar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="actualizarTablaSolapaProductosTerminadosButtonActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="solapaEmpleadosPane">
@@ -861,7 +921,8 @@
                           <Component id="tablaSolapaEmpleadosScrollPane" alignment="0" pref="1082" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="imprimirEmpleadosButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="actualizarTablaSolapaEmpleadosButton" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -874,7 +935,10 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="tablaSolapaEmpleadosScrollPane" pref="509" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="imprimirEmpleadosButton" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="imprimirEmpleadosButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="actualizarTablaSolapaEmpleadosButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -914,6 +978,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="imprimirEmpleadosButtonActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JButton" name="actualizarTablaSolapaEmpleadosButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Actualizar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="actualizarTablaSolapaEmpleadosButtonActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="solapaEtapasPanel">
@@ -934,7 +1006,8 @@
                           <Component id="jScrollPane1" pref="1082" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="imprimirEtapasButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="actualizarTablaSolapaEtapasButton" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -947,7 +1020,10 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane1" pref="509" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="imprimirEtapasButton" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="imprimirEtapasButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="actualizarTablaSolapaEtapasButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -990,6 +1066,14 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="imprimirEtapasButtonActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="actualizarTablaSolapaEtapasButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Actualizar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="actualizarTablaSolapaEtapasButtonActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

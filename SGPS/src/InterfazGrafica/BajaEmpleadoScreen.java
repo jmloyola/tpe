@@ -181,7 +181,7 @@ public class BajaEmpleadoScreen extends javax.swing.JFrame {
                     pst.execute();
 
                     JOptionPane.showMessageDialog(this, "Empleado dado de baja con éxito", "Baja de empleado exitosa", JOptionPane.INFORMATION_MESSAGE);
-
+                    
                     this.dispose();
                 }
                 else{
