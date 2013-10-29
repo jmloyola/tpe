@@ -13,6 +13,6 @@
     $$
     LANGUAGE plpgsql;
 
-CREATE TRIGGER nueva_insumo_utilizado_trigger
+CREATE TRIGGER nuevo_insumo_utilizado_trigger
 	AFTER INSERT ON EsUtilizada
 	FOR EACH ROW EXECUTE PROCEDURE actualizar_egreso_smi();
