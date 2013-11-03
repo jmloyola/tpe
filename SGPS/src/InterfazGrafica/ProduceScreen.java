@@ -4,17 +4,68 @@
  */
 package InterfazGrafica;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Calendar;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Juan
  */
 public class ProduceScreen extends javax.swing.JFrame {
+    
+    Connection conn = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;     
+    ResultSet rs2 = null;
+    PreparedStatement pst2 = null;    
+    PreparedStatement pst3 = null;     
 
     /**
      * Creates new form ProduceScreen
      */
     public ProduceScreen() {
         initComponents();
+        try {
+            Class.forName("org.postgresql.Driver");
+            conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "root");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error en conexión", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        try{
+            String sql = "SELECT L_Identificador FROM Lotes WHERE L_Estado = 'Procesando' ORDER BY L_Identificador";
+            pst = conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            
+            while (rs.next()){
+                String identificador = rs.getString("L_Identificador");
+                identificadorLoteComboBox.addItem(identificador);
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al buscar valores de Identificador de Lotes", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        try{
+            String sql2 = "SELECT PT_Codificacion FROM ProductosTerminados WHERE PT_Activo = 'true' ORDER BY PT_Codificacion";
+            pst = conn.prepareStatement(sql2);
+            rs = pst.executeQuery();
+            
+            while (rs.next()){
+                String codificacionProductoTerminado = rs.getString("PT_Codificacion");
+                codificacionProductoTerminadoComboBox.addItem(codificacionProductoTerminado);
+            }
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al buscar valores de productos terminados", JOptionPane.ERROR_MESSAGE);
+            
+        }
+        
+        identificadorLoteComboBox.setSelectedIndex(-1);
+        codificacionProductoTerminadoComboBox.setSelectedIndex(-1);
     }
 
     /**
@@ -98,6 +149,11 @@ public class ProduceScreen extends javax.swing.JFrame {
         });
 
         aceptarButton.setText("Aceptar");
+        aceptarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aceptarButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -133,6 +189,78 @@ public class ProduceScreen extends javax.swing.JFrame {
     private void cancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarButtonActionPerformed
         this.dispose();
     }//GEN-LAST:event_cancelarButtonActionPerformed
+
+    private void aceptarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarButtonActionPerformed
+        if (identificadorLoteComboBox.getSelectedIndex() != -1){
+            if (codificacionProductoTerminadoComboBox.getSelectedIndex() != -1){
+                if (!cantidadProductoTerminadoProducidaFormattedTextField.getText().equals("")){
+                    try{
+                        String sql = "SELECT SM_PT_Codigo, SM_PT_CantidadReal FROM StocksMensualesProductosTerminados WHERE PT_Codificacion_CaracterizadoEn_PT = ? AND SM_PT_Fecha = ?";
+                        pst = conn.prepareStatement(sql);
+
+                        pst.setString(1, codificacionProductoTerminadoComboBox.getSelectedItem().toString());
+
+                        Calendar calendarioActual = Calendar.getInstance();
+                        calendarioActual.set(Calendar.DAY_OF_MONTH, 1);
+
+                        java.util.Date today = new java.util.Date(calendarioActual.getTimeInMillis());
+                        java.sql.Date fechaActual = new java.sql.Date(today.getTime());
+
+                        pst.setDate(2,fechaActual);
+
+                        rs = pst.executeQuery();
+                        
+                        if (rs.next()){
+                            
+                            String sql2 = "SELECT L_Codigo FROM lotes WHERE L_Identificador=? AND L_Estado='Procesando'";
+
+                            pst2 = conn.prepareStatement(sql2);
+
+                            pst2.setString(1, identificadorLoteComboBox.getSelectedItem().toString());
+
+                            rs2 = pst2.executeQuery();
+
+                            if (rs2.next()){
+
+                                String sql3 = "INSERT INTO produce( l_codigo_produce, sm_pt_codigo_produce, cantidadproducida) VALUES (?, ?, ?);";
+                                pst3 = conn.prepareStatement(sql3);
+
+                                pst3.setInt(1, rs2.getInt("L_Codigo"));
+                                pst3.setInt(2, rs.getInt("SM_PT_Codigo"));
+                                pst3.setFloat(3, ((Number)cantidadProductoTerminadoProducidaFormattedTextField.getValue()).floatValue());
+
+                                pst3.execute();
+
+                                JOptionPane.showMessageDialog(this, "Nueva producción de producto terminado ingresada satisfactoriamente.", "Nueva producción de producto terminado por parte de lote", JOptionPane.INFORMATION_MESSAGE);
+
+                                this.dispose();
+                            }
+                            else{
+                                JOptionPane.showMessageDialog(this, "NO TIENE QUE OCURRIR", "NO TIENE QUE OCURRIR", JOptionPane.ERROR_MESSAGE);
+                            }
+                            
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(this, "NO TIENE QUE OCURRIR", "NO TIENE QUE OCURRIR", JOptionPane.ERROR_MESSAGE);
+                        }
+
+                    }catch(Exception e){
+                        JOptionPane.showMessageDialog(this, e.getMessage(), "Error al cargar cantidad de producto terminado producidapor lote", JOptionPane.ERROR_MESSAGE);
+
+                    }                    
+                }
+                else{
+                    JOptionPane.showMessageDialog(this, "La cantidad de producto terminado producida no puede ser vacía.", "Error al cargar cantidad de producto terminado producidapor lote", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Debe seleccionar un producto terminado.", "Error al cargar cantidad de producto terminado producidapor lote", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un lote.", "Error al cargar cantidad de insumo utilizada por lote", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_aceptarButtonActionPerformed
 
     /**
      * @param args the command line arguments
