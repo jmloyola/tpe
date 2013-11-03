@@ -213,31 +213,38 @@ public class EsUtilizadaScreen extends javax.swing.JFrame {
                         rs = pst.executeQuery();
                         
                         if (rs.next()){
-                            String sql2 = "SELECT L_Codigo FROM lotes WHERE L_Identificador=? AND L_Estado='Procesando'";
                             
-                            pst2 = conn.prepareStatement(sql2);
-                            
-                            pst2.setString(1, identificadorLoteComboBox.getSelectedItem().toString());
-                            
-                            rs2 = pst2.executeQuery();
-                            
-                            if (rs2.next()){
-                            
-                                String sql3 = "INSERT INTO esutilizada( l_codigo_esutilizada, sm_i_codigo_esutilizada, cantidadutilizada) VALUES (?, ?, ?);";
-                                pst3 = conn.prepareStatement(sql3);
+                            if ( rs.getFloat("SM_I_CantidadReal") >= ((Number)cantidadInsumoUtilizadaFormattedTextField.getValue()).floatValue() ){
+                                
+                                String sql2 = "SELECT L_Codigo FROM lotes WHERE L_Identificador=? AND L_Estado='Procesando'";
 
-                                pst3.setInt(1, rs2.getInt("L_Codigo"));
-                                pst3.setInt(2, rs.getInt("SM_I_Codigo"));
-                                pst3.setFloat(3, ((Number)cantidadInsumoUtilizadaFormattedTextField.getValue()).floatValue());
+                                pst2 = conn.prepareStatement(sql2);
 
-                                pst3.execute();
+                                pst2.setString(1, identificadorLoteComboBox.getSelectedItem().toString());
 
-                                JOptionPane.showMessageDialog(this, "Nueva cantidad de insumo utilizada ingresada satisfactoriamente", "Nuevo uso de insumo por parte de lote", JOptionPane.INFORMATION_MESSAGE);
+                                rs2 = pst2.executeQuery();
 
-                                this.dispose();
+                                if (rs2.next()){
+
+                                    String sql3 = "INSERT INTO esutilizada( l_codigo_esutilizada, sm_i_codigo_esutilizada, cantidadutilizada) VALUES (?, ?, ?);";
+                                    pst3 = conn.prepareStatement(sql3);
+
+                                    pst3.setInt(1, rs2.getInt("L_Codigo"));
+                                    pst3.setInt(2, rs.getInt("SM_I_Codigo"));
+                                    pst3.setFloat(3, ((Number)cantidadInsumoUtilizadaFormattedTextField.getValue()).floatValue());
+
+                                    pst3.execute();
+
+                                    JOptionPane.showMessageDialog(this, "Nueva cantidad de insumo utilizada ingresada satisfactoriamente", "Nuevo uso de insumo por parte de lote", JOptionPane.INFORMATION_MESSAGE);
+
+                                    this.dispose();
+                                }
+                                else{
+                                    JOptionPane.showMessageDialog(this, "NO TIENE QUE OCURRIR", "NO TIENE QUE OCURRIR", JOptionPane.ERROR_MESSAGE);
+                                }
                             }
                             else{
-                                JOptionPane.showMessageDialog(this, "NO TIENE QUE OCURRIR", "NO TIENE QUE OCURRIR", JOptionPane.ERROR_MESSAGE);
+                                JOptionPane.showMessageDialog(this, "No hay sufiente stock de dicho insumo.", "Error al cargar cantidad de insumo utilizada por lote", JOptionPane.ERROR_MESSAGE);
                             }
                         }
                         else{
@@ -245,7 +252,7 @@ public class EsUtilizadaScreen extends javax.swing.JFrame {
                         }
 
                     }catch(Exception e){
-                        JOptionPane.showMessageDialog(this, e.getMessage(), "Error al ingresar nueva provisión", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(this, e.getMessage(), "Error al cargar cantidad de insumo utilizada por lote", JOptionPane.ERROR_MESSAGE);
 
                     }                    
                 }

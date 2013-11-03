@@ -28,48 +28,6 @@ INSERT INTO Lotes (L_Identificador, L_FechaCreacion, L_Estado) VALUES ('L-0411-3
 /* Ingreso los stock mensuales de descarte */
 INSERT INTO stocksmensualesdescarte(sm_d_fecha, sm_d_inicio, sm_d_ingreso, sm_d_egreso, sm_d_cantidad) VALUES ('2013-10-01', 100, 0, 0, 100);
 
-/* Ingreso los stocks mensuales de insumos*/
-INSERT INTO stocksmensualesinsumos(sm_i_fecha, sm_i_inicio, sm_i_ingreso, sm_i_egreso, sm_i_cantidadcalculada, sm_i_cantidadreal, sm_i_diferencia, i_descripcion_caracterizadoen) VALUES ('2013-10-01', 0, 0, 0, 0, 0, 0, 'AMONIACO');
-INSERT INTO stocksmensualesinsumos(sm_i_fecha, sm_i_inicio, sm_i_ingreso, sm_i_egreso, sm_i_cantidadcalculada, sm_i_cantidadreal, sm_i_diferencia, i_descripcion_caracterizadoen) VALUES ('2013-10-01', 0, 0, 0, 0, 0, 0, 'FORSFURO ROJO');
-INSERT INTO stocksmensualesinsumos(sm_i_fecha, sm_i_inicio, sm_i_ingreso, sm_i_egreso, sm_i_cantidadcalculada, sm_i_cantidadreal, sm_i_diferencia, i_descripcion_caracterizadoen) VALUES ('2013-10-01', 0, 0, 0, 0, 0, 0, 'CAJA C1');
-INSERT INTO stocksmensualesinsumos(sm_i_fecha, sm_i_inicio, sm_i_ingreso, sm_i_egreso, sm_i_cantidadcalculada, sm_i_cantidadreal, sm_i_diferencia, i_descripcion_caracterizadoen) VALUES ('2013-10-01', 0, 0, 0, 0, 0, 0, 'OXIDO CUPROSO');
-INSERT INTO stocksmensualesinsumos(sm_i_fecha, sm_i_inicio, sm_i_ingreso, sm_i_egreso, sm_i_cantidadcalculada, sm_i_cantidadreal, sm_i_diferencia, i_descripcion_caracterizadoen) VALUES ('2013-10-01', 0, 0, 0, 0, 0, 0, 'ETIQUETAS C1');
-
-/* Ingreso los stocks mensuales de productos terminados */
-INSERT INTO stocksmensualesproductosterminados(sm_pt_fecha, sm_pt_inicio, sm_pt_ingreso, sm_pt_egreso, sm_pt_cantidadcalculada, sm_pt_cantidadreal, sm_pt_diferencia, pt_codificacion_caracterizadoen_pt) VALUES ('2013-10-01', 0, 0, 0, 0, 0, 0, 'R15');
-INSERT INTO stocksmensualesproductosterminados(sm_pt_fecha, sm_pt_inicio, sm_pt_ingreso, sm_pt_egreso, sm_pt_cantidadcalculada, sm_pt_cantidadreal, sm_pt_diferencia, pt_codificacion_caracterizadoen_pt) VALUES ('2013-10-01', 0, 0, 0, 0, 0, 0, 'G4');
-
-/* Ingreso nuplas en la relacion ProveeInsumos */
-INSERT INTO proveeinsumos(p_razonsocial_proveeinsumos, sm_i_codigo_proveeinsumos, cantidadprovista) VALUES ('NEOTOXIN', 1, 100);
-INSERT INTO proveeinsumos(p_razonsocial_proveeinsumos, sm_i_codigo_proveeinsumos, cantidadprovista) VALUES ('NEOTOXIN', 2, 150);
-INSERT INTO proveeinsumos(p_razonsocial_proveeinsumos, sm_i_codigo_proveeinsumos, cantidadprovista) VALUES ('GORPHOS', 4, 300);
-INSERT INTO proveeinsumos(p_razonsocial_proveeinsumos, sm_i_codigo_proveeinsumos, cantidadprovista) VALUES ('NEOTOXIN', 7, 350);
-INSERT INTO proveeinsumos(p_razonsocial_proveeinsumos, sm_i_codigo_proveeinsumos, cantidadprovista) VALUES ('GORPHOS', 9, 100);
-INSERT INTO proveeinsumos(p_razonsocial_proveeinsumos, sm_i_codigo_proveeinsumos, cantidadprovista) VALUES ('NEOTOXIN', 12, 400);
-INSERT INTO proveeinsumos(p_razonsocial_proveeinsumos, sm_i_codigo_proveeinsumos, cantidadprovista) VALUES ('GORPHOS', 19, 1750);
-INSERT INTO proveeinsumos(p_razonsocial_proveeinsumos, sm_i_codigo_proveeinsumos, cantidadprovista) VALUES ('GORPHOS', 20, 300);
-
-
-/* Ingreso nuplas en la relacion EsUtilizada */
-INSERT INTO esutilizada(l_codigo_esutilizada, sm_i_codigo_esutilizada, cantidadutilizada) VALUES (1, 2, 50);
-INSERT INTO esutilizada(l_codigo_esutilizada, sm_i_codigo_esutilizada, cantidadutilizada) VALUES (1, 9, 55);
-INSERT INTO esutilizada(l_codigo_esutilizada, sm_i_codigo_esutilizada, cantidadutilizada) VALUES (1, 1, 10);
-INSERT INTO esutilizada(l_codigo_esutilizada, sm_i_codigo_esutilizada, cantidadutilizada) VALUES (1, 7, 100);
-INSERT INTO esutilizada(l_codigo_esutilizada, sm_i_codigo_esutilizada, cantidadutilizada) VALUES (2, 2, 50);
-INSERT INTO esutilizada(l_codigo_esutilizada, sm_i_codigo_esutilizada, cantidadutilizada) VALUES (2, 1, 20);
-INSERT INTO esutilizada(l_codigo_esutilizada, sm_i_codigo_esutilizada, cantidadutilizada) VALUES (3, 12, 220);
-INSERT INTO esutilizada(l_codigo_esutilizada, sm_i_codigo_esutilizada, cantidadutilizada) VALUES (3, 19, 110);
-INSERT INTO esutilizada(l_codigo_esutilizada, sm_i_codigo_esutilizada, cantidadutilizada) VALUES (4, 20, 120);
-INSERT INTO esutilizada(l_codigo_esutilizada, sm_i_codigo_esutilizada, cantidadutilizada) VALUES (4, 4, 240);
-INSERT INTO esutilizada(l_codigo_esutilizada, sm_i_codigo_esutilizada, cantidadutilizada) VALUES (5, 7, 100);
-
-/* Ingreso nuplas en la relacion Produce */
-INSERT INTO produce(l_codigo_produce, sm_pt_codigo_produce, cantidadproducida) VALUES (1, 1, 100);
-INSERT INTO produce(l_codigo_produce, sm_pt_codigo_produce, cantidadproducida) VALUES (1, 2, 50);
-INSERT INTO produce(l_codigo_produce, sm_pt_codigo_produce, cantidadproducida) VALUES (2, 3, 250);
-INSERT INTO produce(l_codigo_produce, sm_pt_codigo_produce, cantidadproducida) VALUES (3, 4, 150);
-INSERT INTO produce(l_codigo_produce, sm_pt_codigo_produce, cantidadproducida) VALUES (4, 1, 175);
-
 
 /*  Ingreso las etapas */
 INSERT INTO Etapas VALUES ('QUEMADO');
@@ -467,14 +425,6 @@ INSERT INTO insumos(
             i_descripcion, i_unidad, i_limitepedido, i_tipo)
     VALUES ('SILO BOLSA', 'Metros', 10, 'Insumo Produccion');		
 
-
-/* Stock Mensual Insumo */
-/*
-INSERT INTO stocksmensualesinsumos(
-            sm_i_fecha, sm_i_inicio, sm_i_ingreso, sm_i_egreso, 
-            sm_i_cantidadcalculada, sm_i_cantidadreal, sm_i_diferencia, i_descripcion_caracterizadoen)
-    VALUES ('2013-10-01', 0, 10, 0, 
-            10, 10, 0, 'Aluminio');*/
 			
 /* Productos Terminados */
 INSERT INTO productosterminados(
@@ -561,17 +511,6 @@ INSERT INTO productosterminados(
     VALUES ('G100', 'Granulado', 'SOBRES DE 68 GRAMOS', 'BANDAS DE 100 SOBRES SIMPLES', 'NEOTOXIN', 
             6.8);
 			
-/* Stock Mensual Producto Terminado */
-/*
-INSERT INTO stocksmensualesproductosterminados(
-            sm_pt_fecha, sm_pt_inicio, sm_pt_ingreso, sm_pt_egreso, 
-            sm_pt_cantidadcalculada, sm_pt_cantidadreal, sm_pt_diferencia, 
-            pt_codificacion_caracterizadoen_pt)
-    VALUES ('2013-10-01', 0, 0, 0, 
-            0, 0, 0, 
-            'G10');
-			*/
-			
 /* Proveedores */
 INSERT INTO proveedores(
             p_razonsocial, p_cuit, p_domicilio, p_sitioweb, p_direccionemail)
@@ -580,3 +519,44 @@ INSERT INTO proveedores(
 INSERT INTO proveedores(
             p_razonsocial, p_cuit, p_domicilio, p_sitioweb, p_direccionemail)
     VALUES ('GORPHOS', '20-20212223', 'LA PAZ 220, MERLO,SAN LUIS, ARGENTINA', 'WWW.GORPHOS.COM.AR', 'PEDIDOS@GORPHOS.COM.AR');
+
+/* Ingreso los stocks mensuales de insumos*/
+INSERT INTO stocksmensualesinsumos(sm_i_fecha, sm_i_inicio, sm_i_ingreso, sm_i_egreso, sm_i_cantidadcalculada, sm_i_cantidadreal, sm_i_diferencia, i_descripcion_caracterizadoen) VALUES ('2013-10-01', 0, 0, 0, 0, 0, 0, 'AMONIACO');
+INSERT INTO stocksmensualesinsumos(sm_i_fecha, sm_i_inicio, sm_i_ingreso, sm_i_egreso, sm_i_cantidadcalculada, sm_i_cantidadreal, sm_i_diferencia, i_descripcion_caracterizadoen) VALUES ('2013-10-01', 0, 0, 0, 0, 0, 0, 'FORSFURO ROJO');
+INSERT INTO stocksmensualesinsumos(sm_i_fecha, sm_i_inicio, sm_i_ingreso, sm_i_egreso, sm_i_cantidadcalculada, sm_i_cantidadreal, sm_i_diferencia, i_descripcion_caracterizadoen) VALUES ('2013-10-01', 0, 0, 0, 0, 0, 0, 'CAJA C1');
+INSERT INTO stocksmensualesinsumos(sm_i_fecha, sm_i_inicio, sm_i_ingreso, sm_i_egreso, sm_i_cantidadcalculada, sm_i_cantidadreal, sm_i_diferencia, i_descripcion_caracterizadoen) VALUES ('2013-10-01', 0, 0, 0, 0, 0, 0, 'OXIDO CUPROSO');
+INSERT INTO stocksmensualesinsumos(sm_i_fecha, sm_i_inicio, sm_i_ingreso, sm_i_egreso, sm_i_cantidadcalculada, sm_i_cantidadreal, sm_i_diferencia, i_descripcion_caracterizadoen) VALUES ('2013-10-01', 0, 0, 0, 0, 0, 0, 'ETIQUETAS C1');
+
+/* Ingreso los stocks mensuales de productos terminados */
+INSERT INTO stocksmensualesproductosterminados(sm_pt_fecha, sm_pt_inicio, sm_pt_ingreso, sm_pt_egreso, sm_pt_cantidadcalculada, sm_pt_cantidadreal, sm_pt_diferencia, pt_codificacion_caracterizadoen_pt) VALUES ('2013-10-01', 0, 0, 0, 0, 0, 0, 'R15');
+INSERT INTO stocksmensualesproductosterminados(sm_pt_fecha, sm_pt_inicio, sm_pt_ingreso, sm_pt_egreso, sm_pt_cantidadcalculada, sm_pt_cantidadreal, sm_pt_diferencia, pt_codificacion_caracterizadoen_pt) VALUES ('2013-10-01', 0, 0, 0, 0, 0, 0, 'G4');
+
+/* Ingreso nuplas en la relacion ProveeInsumos */
+INSERT INTO proveeinsumos(p_razonsocial_proveeinsumos, sm_i_codigo_proveeinsumos, cantidadprovista) VALUES ('NEOTOXIN', 1, 100);
+INSERT INTO proveeinsumos(p_razonsocial_proveeinsumos, sm_i_codigo_proveeinsumos, cantidadprovista) VALUES ('NEOTOXIN', 2, 150);
+INSERT INTO proveeinsumos(p_razonsocial_proveeinsumos, sm_i_codigo_proveeinsumos, cantidadprovista) VALUES ('GORPHOS', 3, 300);
+INSERT INTO proveeinsumos(p_razonsocial_proveeinsumos, sm_i_codigo_proveeinsumos, cantidadprovista) VALUES ('NEOTOXIN', 4, 350);
+INSERT INTO proveeinsumos(p_razonsocial_proveeinsumos, sm_i_codigo_proveeinsumos, cantidadprovista) VALUES ('GORPHOS', 5, 100);
+
+
+/* Ingreso nuplas en la relacion EsUtilizada */
+INSERT INTO esutilizada(l_codigo_esutilizada, sm_i_codigo_esutilizada, cantidadutilizada) VALUES (1, 1, 50);
+INSERT INTO esutilizada(l_codigo_esutilizada, sm_i_codigo_esutilizada, cantidadutilizada) VALUES (1, 2, 55);
+INSERT INTO esutilizada(l_codigo_esutilizada, sm_i_codigo_esutilizada, cantidadutilizada) VALUES (1, 3, 10);
+INSERT INTO esutilizada(l_codigo_esutilizada, sm_i_codigo_esutilizada, cantidadutilizada) VALUES (1, 4, 100);
+INSERT INTO esutilizada(l_codigo_esutilizada, sm_i_codigo_esutilizada, cantidadutilizada) VALUES (2, 3, 50);
+INSERT INTO esutilizada(l_codigo_esutilizada, sm_i_codigo_esutilizada, cantidadutilizada) VALUES (2, 4, 20);
+INSERT INTO esutilizada(l_codigo_esutilizada, sm_i_codigo_esutilizada, cantidadutilizada) VALUES (3, 2, 30);
+INSERT INTO esutilizada(l_codigo_esutilizada, sm_i_codigo_esutilizada, cantidadutilizada) VALUES (3, 3, 110);
+INSERT INTO esutilizada(l_codigo_esutilizada, sm_i_codigo_esutilizada, cantidadutilizada) VALUES (4, 4, 120);
+INSERT INTO esutilizada(l_codigo_esutilizada, sm_i_codigo_esutilizada, cantidadutilizada) VALUES (4, 1, 25);
+INSERT INTO esutilizada(l_codigo_esutilizada, sm_i_codigo_esutilizada, cantidadutilizada) VALUES (5, 5, 100);
+
+/* Ingreso nuplas en la relacion Produce */
+INSERT INTO produce(l_codigo_produce, sm_pt_codigo_produce, cantidadproducida) VALUES (1, 1, 100);
+INSERT INTO produce(l_codigo_produce, sm_pt_codigo_produce, cantidadproducida) VALUES (1, 2, 50);
+INSERT INTO produce(l_codigo_produce, sm_pt_codigo_produce, cantidadproducida) VALUES (2, 1, 250);
+INSERT INTO produce(l_codigo_produce, sm_pt_codigo_produce, cantidadproducida) VALUES (3, 2, 150);
+INSERT INTO produce(l_codigo_produce, sm_pt_codigo_produce, cantidadproducida) VALUES (4, 2, 175);
+
+

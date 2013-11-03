@@ -1489,6 +1489,7 @@ public void inicializacionStocksMensualesDescarte(){
     private void actualizarInformacionEmpleadoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarInformacionEmpleadoMenuItemActionPerformed
         ActualizarInformacionEmpleadoScreen actualizarInformacionEmpleadoScreen = new ActualizarInformacionEmpleadoScreen();
         actualizarInformacionEmpleadoScreen.setVisible(true);
+        
     }//GEN-LAST:event_actualizarInformacionEmpleadoMenuItemActionPerformed
 
     private void buscarEmpleadosMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarEmpleadosMenuItemActionPerformed
