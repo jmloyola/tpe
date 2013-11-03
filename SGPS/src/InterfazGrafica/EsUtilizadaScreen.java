@@ -51,7 +51,7 @@ public class EsUtilizadaScreen extends javax.swing.JFrame {
         }
         
         try{
-            String sql2 = "SELECT i_descripcion FROM insumos ORDER BY i_descripcion";
+            String sql2 = "SELECT i_descripcion FROM insumos WHERE I_Activo = 'true' ORDER BY i_descripcion";
             pst = conn.prepareStatement(sql2);
             rs = pst.executeQuery();
             
@@ -197,7 +197,7 @@ public class EsUtilizadaScreen extends javax.swing.JFrame {
             if (descripcionInsumoComboBox.getSelectedIndex() != -1){
                 if (!cantidadInsumoUtilizadaFormattedTextField.getText().equals("")){
                     try{
-                        String sql = "SELECT SM_I_Codigo FROM StocksMensualesInsumos WHERE I_Descripcion_CaracterizadoEn = ? AND SM_I_Fecha = ?";
+                        String sql = "SELECT SM_I_Codigo, SM_I_CantidadReal FROM StocksMensualesInsumos WHERE I_Descripcion_CaracterizadoEn = ? AND SM_I_Fecha = ?";
                         pst = conn.prepareStatement(sql);
 
                         pst.setString(1, descripcionInsumoComboBox.getSelectedItem().toString());

@@ -148,7 +148,8 @@ CREATE TABLE Proveedores(
 	P_CUIT	VARCHAR (20)	NOT NULL,
 	P_Domicilio	VARCHAR (60)	NOT NULL,
 	P_SitioWeb	VARCHAR (60),
-	P_DireccionEmail	VARCHAR (40)
+	P_DireccionEmail	VARCHAR (40),
+	P_Activo	BOOLEAN	NOT NULL	DEFAULT 'true'
 );
 
 CREATE TABLE TelefonosProveedor(

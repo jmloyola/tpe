@@ -33,7 +33,7 @@ public class ProveeInsumosScreen extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e, "Error en conexión", JOptionPane.ERROR_MESSAGE);
         }
         try{
-            String sql = "SELECT p_razonsocial FROM proveedores ORDER BY p_razonsocial";
+            String sql = "SELECT p_razonsocial FROM proveedores WHERE P_Activo = 'true' ORDER BY p_razonsocial";
             pst = conn.prepareStatement(sql);
             rs = pst.executeQuery();
             
@@ -48,7 +48,7 @@ public class ProveeInsumosScreen extends javax.swing.JFrame {
         }
         
         try{
-            String sql2 = "SELECT i_descripcion FROM insumos ORDER BY i_descripcion";
+            String sql2 = "SELECT i_descripcion FROM insumos WHERE I_Activo = 'true' ORDER BY i_descripcion";
             pst = conn.prepareStatement(sql2);
             rs = pst.executeQuery();
             

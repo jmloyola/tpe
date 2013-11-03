@@ -4,17 +4,52 @@
  */
 package InterfazGrafica;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Calendar;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Juan
  */
 public class DespacharProductoTerminadoScreen extends javax.swing.JFrame {
+    
+    Connection conn = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;    
+    ResultSet rs2 = null;
+    PreparedStatement pst2 = null; 
 
     /**
      * Creates new form DespacharProductoTerminadoScreen
      */
     public DespacharProductoTerminadoScreen() {
         initComponents();
+        try {
+            Class.forName("org.postgresql.Driver");
+            conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "root");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error en conexión", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        try{
+            String sql = "SELECT PT_Codificacion FROM ProductosTerminados WHERE PT_Activo = 'true' ORDER BY PT_Codificacion";
+            pst = conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            
+            while (rs.next()){
+                String codificacion = rs.getString("PT_Codificacion");
+                codificacionComboBox.addItem(codificacion);
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al buscar valores de codificaciones de productos terminados", JOptionPane.ERROR_MESSAGE);
+        }
+
+        codificacionComboBox.setSelectedIndex(-1);        
+        
     }
 
     /**
@@ -41,7 +76,7 @@ public class DespacharProductoTerminadoScreen extends javax.swing.JFrame {
 
         informacionProductoTerminadoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese la información del producto terminado a despachar:"));
 
-        codificacionLabel.setText("Codificación:");
+        codificacionLabel.setText("Codificación Producto Terminado:");
 
         codificacionComboBox.setPreferredSize(new java.awt.Dimension(100, 20));
 
@@ -62,7 +97,7 @@ public class DespacharProductoTerminadoScreen extends javax.swing.JFrame {
                 .addGroup(informacionProductoTerminadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cantidadDespachadaFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(codificacionComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         informacionProductoTerminadoPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cantidadDespachadaFormattedTextField, codificacionComboBox});
@@ -89,6 +124,11 @@ public class DespacharProductoTerminadoScreen extends javax.swing.JFrame {
         });
 
         aceptarButton.setText("Aceptar");
+        aceptarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aceptarButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -124,6 +164,52 @@ public class DespacharProductoTerminadoScreen extends javax.swing.JFrame {
     private void cancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarButtonActionPerformed
         this.dispose();
     }//GEN-LAST:event_cancelarButtonActionPerformed
+
+    private void aceptarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarButtonActionPerformed
+        if (codificacionComboBox.getSelectedIndex() != -1){
+            if (!cantidadDespachadaFormattedTextField.getText().equals("")){
+                try{
+                    String sql = "SELECT SM_PT_Codigo, SM_PT_CantidadReal, SM_PT_Egreso, SM_PT_CantidadCalculada, SM_PT_CantidadReal FROM StocksMensualesProductosTerminados WHERE PT_Codificacion_CaracterizadoEn_PT = ? AND SM_PT_Fecha = ?";
+                    pst = conn.prepareStatement(sql);
+
+                    pst.setString(1, codificacionComboBox.getSelectedItem().toString());
+
+                    Calendar calendarioActual = Calendar.getInstance();
+                    calendarioActual.set(Calendar.DAY_OF_MONTH, 1);
+
+                    java.util.Date today = new java.util.Date(calendarioActual.getTimeInMillis());
+                    java.sql.Date fechaActual = new java.sql.Date(today.getTime());
+
+                    pst.setDate(2,fechaActual);
+
+                    rs = pst.executeQuery();
+
+                    if (rs.next()){
+
+                        if ( rs.getFloat("SM_PT_CantidadReal") >= ((Number)cantidadDespachadaFormattedTextField.getValue()).floatValue() ){
+                            ///TODO
+                            
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(this, "No hay sufiente stock de dicho producto terminado.", "Error al despachar el producto terminado", JOptionPane.ERROR_MESSAGE);
+                        }
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(this, "NO TIENE QUE OCURRIR", "NO TIENE QUE OCURRIR", JOptionPane.ERROR_MESSAGE);
+                    }
+                }catch(Exception e){
+                        JOptionPane.showMessageDialog(this, e.getMessage(), "Error al despachar el producto terminado", JOptionPane.ERROR_MESSAGE);
+
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "La cantidad despachada no puede ser vacía.", "Error al despachar el producto terminado", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un producto terminado que despachar.", "Error al despachar el producto terminado", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_aceptarButtonActionPerformed
 
     /**
      * @param args the command line arguments

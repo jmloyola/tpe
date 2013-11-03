@@ -82,7 +82,7 @@
                       <Component id="cantidadDespachadaFormattedTextField" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="codificacionComboBox" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="92" max="32767" attributes="0"/>
+                  <EmptySpace pref="41" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -107,7 +107,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="codificacionLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Codificaci&#xf3;n:"/>
+            <Property name="text" type="java.lang.String" value="Codificaci&#xf3;n Producto Terminado:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="codificacionComboBox">
@@ -146,6 +146,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Aceptar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="aceptarButtonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
