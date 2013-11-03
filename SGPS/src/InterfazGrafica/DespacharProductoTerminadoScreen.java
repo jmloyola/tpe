@@ -19,8 +19,7 @@ public class DespacharProductoTerminadoScreen extends javax.swing.JFrame {
     
     Connection conn = null;
     ResultSet rs = null;
-    PreparedStatement pst = null;    
-    ResultSet rs2 = null;
+    PreparedStatement pst = null;  
     PreparedStatement pst2 = null; 
 
     /**
@@ -169,7 +168,7 @@ public class DespacharProductoTerminadoScreen extends javax.swing.JFrame {
         if (codificacionComboBox.getSelectedIndex() != -1){
             if (!cantidadDespachadaFormattedTextField.getText().equals("")){
                 try{
-                    String sql = "SELECT SM_PT_Codigo, SM_PT_CantidadReal, SM_PT_Egreso, SM_PT_CantidadCalculada, SM_PT_CantidadReal FROM StocksMensualesProductosTerminados WHERE PT_Codificacion_CaracterizadoEn_PT = ? AND SM_PT_Fecha = ?";
+                    String sql = "SELECT SM_PT_Codigo, SM_PT_Egreso, SM_PT_CantidadCalculada, SM_PT_CantidadReal FROM StocksMensualesProductosTerminados WHERE PT_Codificacion_CaracterizadoEn_PT = ? AND SM_PT_Fecha = ?";
                     pst = conn.prepareStatement(sql);
 
                     pst.setString(1, codificacionComboBox.getSelectedItem().toString());
@@ -187,7 +186,22 @@ public class DespacharProductoTerminadoScreen extends javax.swing.JFrame {
                     if (rs.next()){
 
                         if ( rs.getFloat("SM_PT_CantidadReal") >= ((Number)cantidadDespachadaFormattedTextField.getValue()).floatValue() ){
-                            ///TODO
+                            String sql2 = "UPDATE stocksmensualesproductosterminados SET sm_pt_egreso=?, sm_pt_cantidadcalculada=?, sm_pt_cantidadreal=? WHERE PT_Codificacion_CaracterizadoEn_PT = ? AND SM_PT_Fecha = ?;";
+                            pst2 = conn.prepareStatement(sql2);
+                            
+                            pst2.setFloat(1, (rs.getFloat("SM_PT_Egreso") + ((Number)cantidadDespachadaFormattedTextField.getValue()).floatValue()) );
+                            pst2.setFloat(2, (rs.getFloat("SM_PT_CantidadCalculada") - ((Number)cantidadDespachadaFormattedTextField.getValue()).floatValue()));
+                            pst2.setFloat(3, (rs.getFloat("SM_PT_CantidadReal") - ((Number)cantidadDespachadaFormattedTextField.getValue()).floatValue()));
+                            
+                            pst2.setString(4, codificacionComboBox.getSelectedItem().toString());
+
+                            pst2.setDate(5,fechaActual);      
+                            
+                            pst2.execute();
+                            
+                            JOptionPane.showMessageDialog(this, "El despacho del producto terminado fue realizado exitosamente.", "Despacho de producto terminado", JOptionPane.INFORMATION_MESSAGE);
+                            
+                            this.dispose();
                             
                         }
                         else{
