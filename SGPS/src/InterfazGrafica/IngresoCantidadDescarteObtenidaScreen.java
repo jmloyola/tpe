@@ -4,17 +4,35 @@
  */
 package InterfazGrafica;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Calendar;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Juan Martin
  */
 public class IngresoCantidadDescarteObtenidaScreen extends javax.swing.JFrame {
 
+    Connection conn = null;
+    PreparedStatement pst = null;  
+    ResultSet rs = null;
+    PreparedStatement pst2 = null;  
+    
     /**
      * Creates new form IngresoCantidadDescarteObtenidaScreen
      */
     public IngresoCantidadDescarteObtenidaScreen() {
         initComponents();
+        try {
+            Class.forName("org.postgresql.Driver");
+            conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "root");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error en conexión", JOptionPane.ERROR_MESSAGE);
+        }        
     }
 
     /**
@@ -45,6 +63,11 @@ public class IngresoCantidadDescarteObtenidaScreen extends javax.swing.JFrame {
         });
 
         aceptarButton.setText("Aceptar");
+        aceptarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aceptarButtonActionPerformed(evt);
+            }
+        });
 
         cantidadDescartePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese la cantidad de descarte obtenida:"));
 
@@ -108,6 +131,50 @@ public class IngresoCantidadDescarteObtenidaScreen extends javax.swing.JFrame {
     private void cancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarButtonActionPerformed
         this.dispose();
     }//GEN-LAST:event_cancelarButtonActionPerformed
+
+    private void aceptarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarButtonActionPerformed
+        if (!cantidadDescarteObtenidaFormattedTextField.getText().equals("")){
+            try{
+                String sql = "SELECT SM_D_Ingreso, SM_D_Cantidad FROM StocksMensualesDescarte WHERE SM_D_Fecha=?";
+                pst = conn.prepareStatement(sql);
+                
+                Calendar calendarioActual = Calendar.getInstance();
+                calendarioActual.set(Calendar.DAY_OF_MONTH, 1);
+
+                java.util.Date today = new java.util.Date(calendarioActual.getTimeInMillis());
+                java.sql.Date fechaActual = new java.sql.Date(today.getTime());
+                
+                pst.setDate(1, fechaActual);
+                
+                rs = pst.executeQuery();
+                
+                if (rs.next()){
+                    String sql2 = "UPDATE stocksmensualesdescarte SET sm_d_ingreso=?, sm_d_cantidad=? WHERE SM_D_Fecha=?;";
+
+                    pst2 = conn.prepareStatement(sql2);
+
+                    pst2.setFloat(1,rs.getFloat("SM_D_Ingreso") + ((Number)cantidadDescarteObtenidaFormattedTextField.getValue()).floatValue());
+                    pst2.setFloat(2,rs.getFloat("SM_D_Cantidad") + ((Number)cantidadDescarteObtenidaFormattedTextField.getValue()).floatValue());
+                    pst2.setDate(3,fechaActual);
+
+                    pst2.execute();
+                    
+                    JOptionPane.showMessageDialog(this, "Nueva cantidad de descarte ingresada exitosamente", "Ingreso nueva cantidad descarte", JOptionPane.INFORMATION_MESSAGE);
+                    this.dispose();
+                }
+                else{
+                    JOptionPane.showMessageDialog(this, "NO TIENE QUE OCURRIR", "NO TIENE QUE OCURRIR", JOptionPane.ERROR_MESSAGE);
+                }
+                
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(this, e.getMessage(), "Error al cargar cantidad de descarte obtenida", JOptionPane.ERROR_MESSAGE);
+
+            }                    
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "La cantidad de descarte obtenida no puede ser vacía.", "Error al cargar cantidad de descarte obtenida", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_aceptarButtonActionPerformed
 
     /**
      * @param args the command line arguments

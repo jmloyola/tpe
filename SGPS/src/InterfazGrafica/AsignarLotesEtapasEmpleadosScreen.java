@@ -4,6 +4,11 @@
  */
 package InterfazGrafica;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
 import sgps.SGPS;
 
@@ -13,12 +18,54 @@ import sgps.SGPS;
  */
 public class AsignarLotesEtapasEmpleadosScreen extends javax.swing.JFrame {
 
+    
+    Connection conn = null;
+    ResultSet rs = null;
+    ResultSet rs2 = null;
+    PreparedStatement pst = null;     
+    PreparedStatement pst2 = null;
+    PreparedStatement pst3 = null;
 
     /**
      * Creates new form AsignarLotesEtapasEmpleadosScreen
      */
     public AsignarLotesEtapasEmpleadosScreen() {
         initComponents();
+        try {
+            Class.forName("org.postgresql.Driver");
+            conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "root");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error en conexión", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        try{
+            String sql = "SELECT L_Identificador FROM Lotes WHERE L_Estado = 'Procesando' ORDER BY L_Identificador";
+            pst = conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            
+            while (rs.next()){
+                String identificador = rs.getString("L_Identificador");
+                identificadorLoteComboBox.addItem(identificador);
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al buscar valores de identificador de lotes", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        try{
+            String sql = "SELECT Etapa_Descripcion FROM Etapas WHERE Etapa_Activo = 'true' ORDER BY Etapa_Descripcion";
+            pst = conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            
+            while (rs.next()){
+                String descriptorEtapa = rs.getString("Etapa_Descripcion");
+                descripcionEtapaComboBox.addItem(descriptorEtapa);
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al buscar valores de etapas", JOptionPane.ERROR_MESSAGE);
+        }
+                
+        identificadorLoteComboBox.setSelectedIndex(-1);
+        descripcionEtapaComboBox.setSelectedIndex(-1);
     }
 
     /**
@@ -141,6 +188,11 @@ public class AsignarLotesEtapasEmpleadosScreen extends javax.swing.JFrame {
         });
 
         aceptarButton.setText("Aceptar");
+        aceptarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aceptarButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -193,6 +245,72 @@ public class AsignarLotesEtapasEmpleadosScreen extends javax.swing.JFrame {
             SGPS.numeroLegajoEmpleado = -1;
         }         
     }//GEN-LAST:event_cargarNumeroLegajoButtonActionPerformed
+
+    private void aceptarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarButtonActionPerformed
+        if (identificadorLoteComboBox.getSelectedIndex() != -1){
+            if (descripcionEtapaComboBox.getSelectedIndex() != -1){
+                if (!numeroLegajoFormattedTextField.getText().equals("")){
+                    if (fechaDateChooser.getDate() != null){
+                        try{
+                            String sql = "SELECT E_Nombre FROM empleados WHERE e_numerolegajo=? AND E_Estado <> 'Despedido'";
+                            pst = conn.prepareStatement(sql);
+
+                            pst.setInt(1, Integer.parseInt(numeroLegajoFormattedTextField.getText()));
+
+                            rs = pst.executeQuery();
+
+                            if (rs.next()){
+                                String sql2 = "SELECT L_Codigo FROM Lotes WHERE L_Identificador = ? AND L_Estado = 'Procesando'";
+                                pst2 = conn.prepareStatement(sql2);
+                                
+                                pst2.setString(1, identificadorLoteComboBox.getSelectedItem().toString());
+                                
+                                rs2 = pst2.executeQuery();
+                                
+                                if (rs2.next()){
+                                    String sql3 = "INSERT INTO seencuentra( l_codigo_seencuentra, etapa_descripcion_seencuentra, e_numerolegajo_seencuentra,  fecha) VALUES (?, ?, ?,  ?);";
+                                    pst3 = conn.prepareStatement(sql3);
+
+                                    pst3.setInt(1, rs2.getInt("L_Codigo"));
+                                    pst3.setString(2, descripcionEtapaComboBox.getSelectedItem().toString());
+                                    pst3.setInt(3, Integer.parseInt(numeroLegajoFormattedTextField.getText()));
+                                    java.sql.Date fechaSql = new java.sql.Date(fechaDateChooser.getDate().getTime());
+                                    pst3.setDate(4, fechaSql);
+                                    
+                                    pst3.execute();
+                                    JOptionPane.showMessageDialog(this, "La asignación de Etapa-Empleado-Lote fue realizada exitosamente.", "Asignación Etapa-Empleado-Lote", JOptionPane.INFORMATION_MESSAGE);
+                                    this.dispose();
+                                }
+                                else{
+                                    JOptionPane.showMessageDialog(this, "NO DEBE OCURRIR", "NO DEBE OCURRIR", JOptionPane.ERROR_MESSAGE);
+                                }
+                            }
+                            else{
+                                JOptionPane.showMessageDialog(this, "El numero de legajo ingresado no se corresponde con el de ningún empleado activo, de licencia o sancionado.", "Error al asignar Etapa-Empleado-Lote", JOptionPane.ERROR_MESSAGE);
+                            }
+
+
+                        }catch(Exception e){
+                            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al asignar Etapa-Empleado-Lote", JOptionPane.ERROR_MESSAGE);
+
+                        }                         
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(this, "La fecha no puede ser vacía.", "Error al asignar Etapa-Empleado-Lote", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+                else{
+                    JOptionPane.showMessageDialog(this, "El número de legajo del empleado no puede ser vacío.", "Error al asignar Etapa-Empleado-Lote", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Debe seleccionar una etapa.", "Error al asignar Etapa-Empleado-Lote", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un lote.", "Error al asignar Etapa-Empleado-Lote", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_aceptarButtonActionPerformed
 
     /**
      * @param args the command line arguments

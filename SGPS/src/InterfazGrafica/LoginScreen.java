@@ -133,7 +133,7 @@ public class LoginScreen extends javax.swing.JFrame {
 
     private void ingresarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarButtonActionPerformed
         
-        String sql = "SELECT * FROM usuariosdelsistema WHERE us_identificador = ? AND us_password = ?";
+        String sql = "SELECT * FROM usuariosdelsistema WHERE us_identificador = ? AND us_password = ? AND US_Activo = 'true'";
         
         try{
             pst = conn.prepareStatement(sql);
