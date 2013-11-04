@@ -52,11 +52,16 @@ public class ActualizarInformacionLoteScreen extends javax.swing.JFrame {
         identificadoresLotesComboBox.setSelectedIndex(-1);
         
         estadoComboBox.setEnabled(false);
+        estadoLabel.setEnabled(false);
         
         motivoDeficienciaTextField.setEnabled(false);
+        motivoDeficienciaLabel.setEnabled(false);
         fechaIngresoDepositoDateChooser.setEnabled(false);
+        fechaIngresoDepositoLabel.setEnabled(false);
         fechaVencimientoDateChooser.setEnabled(false);
+        fechaVencimientoLabel.setEnabled(false);
         cantidadDescarteUtilizadoFormattedTextField.setEnabled(false);
+        cantidadDescarteUtilizadoLabel.setEnabled(false);
     }
 
     /**
@@ -305,24 +310,37 @@ public class ActualizarInformacionLoteScreen extends javax.swing.JFrame {
                 motivoDeficienciaTextField.setEnabled(false);
                 fechaIngresoDepositoDateChooser.setEnabled(false);
                 fechaVencimientoDateChooser.setEnabled(false);
+                motivoDeficienciaLabel.setEnabled(false);
+                fechaIngresoDepositoLabel.setEnabled(false);
+                fechaVencimientoLabel.setEnabled(false);
+                cantidadDescarteUtilizadoLabel.setEnabled(true);
                 break;
             case 1:
                 motivoDeficienciaTextField.setEnabled(true);
                 cantidadDescarteUtilizadoFormattedTextField.setEnabled(false);
                 fechaIngresoDepositoDateChooser.setEnabled(false);
-                fechaVencimientoDateChooser.setEnabled(false);                
+                fechaVencimientoDateChooser.setEnabled(false);
+                motivoDeficienciaLabel.setEnabled(true);
+                fechaIngresoDepositoLabel.setEnabled(false);
+                fechaVencimientoLabel.setEnabled(false);
+                cantidadDescarteUtilizadoLabel.setEnabled(false);                
                 break;
             case 2:
                 fechaIngresoDepositoDateChooser.setEnabled(true);
                 fechaVencimientoDateChooser.setEnabled(true);
                 cantidadDescarteUtilizadoFormattedTextField.setEnabled(false);
-                motivoDeficienciaTextField.setEnabled(false);                
+                motivoDeficienciaTextField.setEnabled(false);   
+                motivoDeficienciaLabel.setEnabled(false);
+                fechaIngresoDepositoLabel.setEnabled(true);
+                fechaVencimientoLabel.setEnabled(true);
+                cantidadDescarteUtilizadoLabel.setEnabled(false);                
                 break;
         }
     }//GEN-LAST:event_estadoComboBoxItemStateChanged
 
     private void identificadoresLotesComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_identificadoresLotesComboBoxItemStateChanged
         estadoComboBox.setEnabled(true);
+        estadoLabel.setEnabled(true);
     }//GEN-LAST:event_identificadoresLotesComboBoxItemStateChanged
 
     private void aceptarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarButtonActionPerformed
@@ -371,7 +389,7 @@ public class ActualizarInformacionLoteScreen extends javax.swing.JFrame {
                             if (!motivoDeficienciaTextField.getText().equals("")){
                                 try{
 
-                                    String sql = "UPDATE Lotes SET L_MotivoDeficiencia=?, L_Estado='Terminado' WHERE L_Identificador=? AND L_Estado = 'Procesando';";
+                                    String sql = "UPDATE Lotes SET L_MotivoDeficiencia=?, L_Estado='Defectuoso' WHERE L_Identificador=? AND L_Estado = 'Procesando';";
                                     pst = conn.prepareStatement(sql);
 
                                     pst.setString(1, motivoDeficienciaTextField.getText());
@@ -396,7 +414,7 @@ public class ActualizarInformacionLoteScreen extends javax.swing.JFrame {
                                 if (fechaVencimientoDateChooser.getDate() != null){
                                     try{
 
-                                        String sql = "UPDATE Lotes SET L_FechaIngresoDeposito=?,L_FechaVencimiento=?, L_Estado='Defectuoso' WHERE L_Identificador=? AND L_Estado = 'Procesando';";
+                                        String sql = "UPDATE Lotes SET L_FechaIngresoDeposito=?,L_FechaVencimiento=?, L_Estado='Terminado' WHERE L_Identificador=? AND L_Estado = 'Procesando';";
                                         pst = conn.prepareStatement(sql);
 
                                         // Preparo fecha

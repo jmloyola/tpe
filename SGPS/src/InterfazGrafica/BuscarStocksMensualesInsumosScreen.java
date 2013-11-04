@@ -4,20 +4,37 @@
  */
 package InterfazGrafica;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
  * @author Juan
  */
 public class BuscarStocksMensualesInsumosScreen extends javax.swing.JFrame {
+    
+    Connection conn = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;   
 
     /**
      * Creates new form BuscarStocksMensualesInsumosScreen
      */
     public BuscarStocksMensualesInsumosScreen() {
         initComponents();
+        try {
+            Class.forName("org.postgresql.Driver");
+            conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "root");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error en conexión", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     /**
@@ -51,13 +68,18 @@ public class BuscarStocksMensualesInsumosScreen extends javax.swing.JFrame {
 
         valorLabel.setText("Valor:");
 
-        parametroComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Descripcion", "Fecha", "Inicio", "Ingreso", "Egreso", "Cantidad Calculada", "Cantidad Real", "Diferencia" }));
+        parametroComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Descripcion", "Fecha" }));
         parametroComboBox.setSelectedIndex(-1);
 
         valorTextField.setPreferredSize(new java.awt.Dimension(150, 20));
 
         buscarStocksMensualesInsumosButton.setText("Buscar");
         buscarStocksMensualesInsumosButton.setPreferredSize(new java.awt.Dimension(65, 60));
+        buscarStocksMensualesInsumosButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarStocksMensualesInsumosButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout parametroABuscarPanelLayout = new javax.swing.GroupLayout(parametroABuscarPanel);
         parametroABuscarPanel.setLayout(parametroABuscarPanelLayout);
@@ -150,7 +172,7 @@ public class BuscarStocksMensualesInsumosScreen extends javax.swing.JFrame {
                         .addComponent(imprimirButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(salirButton))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 712, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1080, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -167,7 +189,7 @@ public class BuscarStocksMensualesInsumosScreen extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(748, 607));
+        setSize(new java.awt.Dimension(1116, 607));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -182,6 +204,71 @@ public class BuscarStocksMensualesInsumosScreen extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, e.getMessage(), "Error al imprimir", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_imprimirButtonActionPerformed
+
+    private void buscarStocksMensualesInsumosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarStocksMensualesInsumosButtonActionPerformed
+        if (parametroComboBox.getSelectedIndex() >= 0){
+            if (!valorTextField.getText().equals("")){
+                switch(parametroComboBox.getSelectedIndex()){
+                    case 0:
+                        try{
+                            String sql = "SELECT I_Descripcion_CaracterizadoEn AS \"Descripción Insumo\","
+                                                + "SM_I_Fecha AS \"Fecha\","
+                                                + "SM_I_Inicio AS \"Inicio\","
+                                                + "SM_I_Ingreso AS \"Ingreso\","
+                                                + "SM_I_Egreso AS \"Egreso\","
+                                                + "SM_I_CantidadCalculada AS \"Cant Calculada\","
+                                                + "SM_I_CantidadReal AS \"Cant Real\","
+                                                + "SM_I_Diferencia AS \"Diferencia\" "
+                                    + "FROM StocksMensualesInsumos WHERE I_Descripcion_CaracterizadoEn = ? ORDER BY SM_I_Fecha";
+                            pst = conn.prepareStatement(sql);
+
+                            pst.setString(1,valorTextField.getText().toUpperCase());
+
+                            rs = pst.executeQuery();
+                            stocksMensualesInsumosTable.setModel(DbUtils.resultSetToTableModel(rs));
+                        }catch(Exception e){
+                            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al realizar la búsqueda de stocks mensuales de insumos", JOptionPane.ERROR_MESSAGE);
+                        }
+                        break;
+                    case 1:
+                        try{
+                            String sql = "SELECT I_Descripcion_CaracterizadoEn AS \"Descripción Insumo\","
+                                                + "SM_I_Fecha AS \"Fecha\","
+                                                + "SM_I_Inicio AS \"Inicio\","
+                                                + "SM_I_Ingreso AS \"Ingreso\","
+                                                + "SM_I_Egreso AS \"Egreso\","
+                                                + "SM_I_CantidadCalculada AS \"Cant Calculada\","
+                                                + "SM_I_CantidadReal AS \"Cant Real\","
+                                                + "SM_I_Diferencia AS \"Diferencia\" "
+                                    + "FROM StocksMensualesInsumos WHERE SM_I_Fecha = ? ORDER BY I_Descripcion_CaracterizadoEn";
+                            pst = conn.prepareStatement(sql);
+
+                            int anio = Integer.parseInt(valorTextField.getText().substring(0, 4));
+                            int mes = Integer.parseInt(valorTextField.getText().substring(5, 7)) - 1; // DEBO RESTAR UNO PORQUE EN JAVA LOS MESES EMPIEZAN EN 0 !!!!!!! o.0
+                            int dia = Integer.parseInt(valorTextField.getText().substring(8, 10));
+                            Calendar fechaIngresada = new GregorianCalendar(anio, mes, dia);
+                            
+                            java.util.Date fecha = new java.util.Date(fechaIngresada.getTimeInMillis());
+                            java.sql.Date fechaActual = new java.sql.Date(fecha.getTime());                            
+
+                            pst.setDate(1,fechaActual);
+
+                            rs = pst.executeQuery();
+                            stocksMensualesInsumosTable.setModel(DbUtils.resultSetToTableModel(rs));
+                        }catch(Exception e){
+                            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al realizar la búsqueda de stocks mensuales de insumos", JOptionPane.ERROR_MESSAGE);
+                        }
+                        break;                                                                                          
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "El valor del parámetro de búsqueda no puede ser vacio.", "Error al buscar stocks mensuales de insumo", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "El parámetro de búsqueda no puede ser vacio.", "Error al buscar stocks mensuales de insumo", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_buscarStocksMensualesInsumosButtonActionPerformed
 
     /**
      * @param args the command line arguments

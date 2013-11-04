@@ -985,6 +985,11 @@ public void inicializacionStocksMensualesDescarte(){
         });
 
         actualizarTablaSolapaEmpleadosButton.setText("Actualizar");
+        actualizarTablaSolapaEmpleadosButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarTablaSolapaEmpleadosButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout solapaEmpleadosPaneLayout = new javax.swing.GroupLayout(solapaEmpleadosPane);
         solapaEmpleadosPane.setLayout(solapaEmpleadosPaneLayout);
@@ -1050,6 +1055,11 @@ public void inicializacionStocksMensualesDescarte(){
         });
 
         actualizarTablaSolapaEtapasButton.setText("Actualizar");
+        actualizarTablaSolapaEtapasButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarTablaSolapaEtapasButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout solapaEtapasPanelLayout = new javax.swing.GroupLayout(solapaEtapasPanel);
         solapaEtapasPanel.setLayout(solapaEtapasPanelLayout);
@@ -1145,6 +1155,7 @@ public void inicializacionStocksMensualesDescarte(){
         usuariosSistemaMenu.setText("Usuarios del Sistema");
 
         nuevoUsuarioSistemaMenuItem.setText("Nuevo Usuario del Sistema");
+        nuevoUsuarioSistemaMenuItem.setEnabled(false);
         nuevoUsuarioSistemaMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nuevoUsuarioSistemaMenuItemActionPerformed(evt);
@@ -1153,6 +1164,7 @@ public void inicializacionStocksMensualesDescarte(){
         usuariosSistemaMenu.add(nuevoUsuarioSistemaMenuItem);
 
         darBajaUsuarioSistemaMenuItem.setText("Dar de Baja Usuario del Sistema");
+        darBajaUsuarioSistemaMenuItem.setEnabled(false);
         darBajaUsuarioSistemaMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 darBajaUsuarioSistemaMenuItemActionPerformed(evt);
@@ -1165,6 +1177,7 @@ public void inicializacionStocksMensualesDescarte(){
         proveedoresMenu.setText("Proveedores");
 
         nuevoProveedorMenuItem.setText("Nuevo Proveedor");
+        nuevoProveedorMenuItem.setEnabled(false);
         nuevoProveedorMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nuevoProveedorMenuItemActionPerformed(evt);
@@ -1173,6 +1186,7 @@ public void inicializacionStocksMensualesDescarte(){
         proveedoresMenu.add(nuevoProveedorMenuItem);
 
         actualizarInformacionProveedorMenuItem.setText("Actualizar Información Proveedor");
+        actualizarInformacionProveedorMenuItem.setEnabled(false);
         actualizarInformacionProveedorMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actualizarInformacionProveedorMenuItemActionPerformed(evt);
@@ -1181,6 +1195,7 @@ public void inicializacionStocksMensualesDescarte(){
         proveedoresMenu.add(actualizarInformacionProveedorMenuItem);
 
         darBajaProveedorMenuItem.setText("Dar de Baja Proveedor");
+        darBajaProveedorMenuItem.setEnabled(false);
         darBajaProveedorMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 darBajaProveedorMenuItemActionPerformed(evt);
@@ -1193,6 +1208,7 @@ public void inicializacionStocksMensualesDescarte(){
         insumosMenu.setText("Insumos");
 
         nuevoInsumoMenuItem.setText("Nuevo Insumo");
+        nuevoInsumoMenuItem.setEnabled(false);
         nuevoInsumoMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nuevoInsumoMenuItemActionPerformed(evt);
@@ -1201,6 +1217,7 @@ public void inicializacionStocksMensualesDescarte(){
         insumosMenu.add(nuevoInsumoMenuItem);
 
         actualizarInformacionInsumoMenuItem.setText("Actualizar Información Insumo");
+        actualizarInformacionInsumoMenuItem.setEnabled(false);
         actualizarInformacionInsumoMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actualizarInformacionInsumoMenuItemActionPerformed(evt);
@@ -1209,6 +1226,7 @@ public void inicializacionStocksMensualesDescarte(){
         insumosMenu.add(actualizarInformacionInsumoMenuItem);
 
         buscarInsumosMenuItem.setText("Buscar Insumos");
+        buscarInsumosMenuItem.setEnabled(false);
         buscarInsumosMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buscarInsumosMenuItemActionPerformed(evt);
@@ -1217,6 +1235,7 @@ public void inicializacionStocksMensualesDescarte(){
         insumosMenu.add(buscarInsumosMenuItem);
 
         darBajaInsumoMenuItem.setText("Dar de Baja Insumo");
+        darBajaInsumoMenuItem.setEnabled(false);
         darBajaInsumoMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 darBajaInsumoMenuItemActionPerformed(evt);
@@ -1229,6 +1248,7 @@ public void inicializacionStocksMensualesDescarte(){
         productosTerminadosMenu.setText("Productos Terminados");
 
         nuevoProductoTerminadoMenuItem.setText("Nuevo Producto Terminado");
+        nuevoProductoTerminadoMenuItem.setEnabled(false);
         nuevoProductoTerminadoMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nuevoProductoTerminadoMenuItemActionPerformed(evt);
@@ -1237,6 +1257,7 @@ public void inicializacionStocksMensualesDescarte(){
         productosTerminadosMenu.add(nuevoProductoTerminadoMenuItem);
 
         buscarProductosTerminadosMenuItem.setText("Buscar Productos Terminados");
+        buscarProductosTerminadosMenuItem.setEnabled(false);
         buscarProductosTerminadosMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buscarProductosTerminadosMenuItemActionPerformed(evt);
@@ -1245,6 +1266,7 @@ public void inicializacionStocksMensualesDescarte(){
         productosTerminadosMenu.add(buscarProductosTerminadosMenuItem);
 
         darBajaProductoTerminadoMenuItem.setText("Dar de Baja Producto Terminado");
+        darBajaProductoTerminadoMenuItem.setEnabled(false);
         darBajaProductoTerminadoMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 darBajaProductoTerminadoMenuItemActionPerformed(evt);
@@ -1253,6 +1275,7 @@ public void inicializacionStocksMensualesDescarte(){
         productosTerminadosMenu.add(darBajaProductoTerminadoMenuItem);
 
         despacharProductoTerminadoMenuItem.setText("Despachar Producto Terminado");
+        despacharProductoTerminadoMenuItem.setEnabled(false);
         despacharProductoTerminadoMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 despacharProductoTerminadoMenuItemActionPerformed(evt);
@@ -1265,6 +1288,7 @@ public void inicializacionStocksMensualesDescarte(){
         descartesMenu.setText("Descartes");
 
         buscarDescartesMensualesMenuItem.setText("Buscar Descartes Mensuales");
+        buscarDescartesMensualesMenuItem.setEnabled(false);
         buscarDescartesMensualesMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buscarDescartesMensualesMenuItemActionPerformed(evt);
@@ -1277,6 +1301,7 @@ public void inicializacionStocksMensualesDescarte(){
         etapasMenu.setText("Etapas");
 
         nuevaEtapaMenuItem.setText("Nueva Etapa");
+        nuevaEtapaMenuItem.setEnabled(false);
         nuevaEtapaMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nuevaEtapaMenuItemActionPerformed(evt);
@@ -1285,6 +1310,7 @@ public void inicializacionStocksMensualesDescarte(){
         etapasMenu.add(nuevaEtapaMenuItem);
 
         darBajaEtapaMenuItem.setText("Dar de Baja Etapa");
+        darBajaEtapaMenuItem.setEnabled(false);
         darBajaEtapaMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 darBajaEtapaMenuItemActionPerformed(evt);
@@ -1724,6 +1750,14 @@ public void inicializacionStocksMensualesDescarte(){
     private void actualizarTablaSolapaProductosTerminadosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarTablaSolapaProductosTerminadosButtonActionPerformed
         updateProductosTerminadosTable();
     }//GEN-LAST:event_actualizarTablaSolapaProductosTerminadosButtonActionPerformed
+
+    private void actualizarTablaSolapaEmpleadosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarTablaSolapaEmpleadosButtonActionPerformed
+        updateEmpleadosTable();
+    }//GEN-LAST:event_actualizarTablaSolapaEmpleadosButtonActionPerformed
+
+    private void actualizarTablaSolapaEtapasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarTablaSolapaEtapasButtonActionPerformed
+        updateEtapasTable();
+    }//GEN-LAST:event_actualizarTablaSolapaEtapasButtonActionPerformed
 
     /**
      * @param args the command line arguments

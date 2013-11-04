@@ -4,20 +4,37 @@
  */
 package InterfazGrafica;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
  * @author Juan
  */
 public class BuscarStocksMensualesProductosTerminadosScreen extends javax.swing.JFrame {
+    
+    Connection conn = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;    
 
     /**
      * Creates new form BuscarStocksMensualesProductosTerminadosScreen
      */
     public BuscarStocksMensualesProductosTerminadosScreen() {
         initComponents();
+        try {
+            Class.forName("org.postgresql.Driver");
+            conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "root");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error en conexión", JOptionPane.ERROR_MESSAGE);
+        }        
     }
 
     /**
@@ -32,8 +49,8 @@ public class BuscarStocksMensualesProductosTerminadosScreen extends javax.swing.
         parametroABuscarPanel = new javax.swing.JPanel();
         parametroLabel = new javax.swing.JLabel();
         valorLabel = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
-        jTextField1 = new javax.swing.JTextField();
+        parametroComboBox = new javax.swing.JComboBox();
+        valorTextField = new javax.swing.JTextField();
         buscarStocksMensualesProductosTerminadosButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         stocksMensualesProductosTerminadosTable = new javax.swing.JTable();
@@ -51,13 +68,18 @@ public class BuscarStocksMensualesProductosTerminadosScreen extends javax.swing.
 
         valorLabel.setText("Valor:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Codificacion", "Fecha", "Inicio", "Ingreso", "Egreso", "Cantidad Calculada", "Cantidad Real", "Diferencia" }));
-        jComboBox1.setSelectedIndex(-1);
+        parametroComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Codificacion", "Fecha" }));
+        parametroComboBox.setSelectedIndex(-1);
 
-        jTextField1.setPreferredSize(new java.awt.Dimension(150, 20));
+        valorTextField.setPreferredSize(new java.awt.Dimension(150, 20));
 
         buscarStocksMensualesProductosTerminadosButton.setText("Buscar");
         buscarStocksMensualesProductosTerminadosButton.setPreferredSize(new java.awt.Dimension(65, 60));
+        buscarStocksMensualesProductosTerminadosButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarStocksMensualesProductosTerminadosButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout parametroABuscarPanelLayout = new javax.swing.GroupLayout(parametroABuscarPanel);
         parametroABuscarPanel.setLayout(parametroABuscarPanelLayout);
@@ -70,14 +92,14 @@ public class BuscarStocksMensualesProductosTerminadosScreen extends javax.swing.
                     .addComponent(valorLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(parametroABuscarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(valorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(parametroComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buscarStocksMensualesProductosTerminadosButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        parametroABuscarPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jComboBox1, jTextField1});
+        parametroABuscarPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {parametroComboBox, valorTextField});
 
         parametroABuscarPanelLayout.setVerticalGroup(
             parametroABuscarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -87,11 +109,11 @@ public class BuscarStocksMensualesProductosTerminadosScreen extends javax.swing.
                     .addGroup(parametroABuscarPanelLayout.createSequentialGroup()
                         .addGroup(parametroABuscarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(parametroLabel)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(parametroComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(parametroABuscarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(valorLabel)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(valorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(buscarStocksMensualesProductosTerminadosButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -150,7 +172,7 @@ public class BuscarStocksMensualesProductosTerminadosScreen extends javax.swing.
                         .addComponent(imprimirButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(salirButton))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 711, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 980, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -167,7 +189,7 @@ public class BuscarStocksMensualesProductosTerminadosScreen extends javax.swing.
                 .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(747, 636));
+        setSize(new java.awt.Dimension(1016, 636));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -182,6 +204,73 @@ public class BuscarStocksMensualesProductosTerminadosScreen extends javax.swing.
             JOptionPane.showMessageDialog(this, e.getMessage(), "Error al imprimir", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_imprimirButtonActionPerformed
+
+    private void buscarStocksMensualesProductosTerminadosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarStocksMensualesProductosTerminadosButtonActionPerformed
+        if (parametroComboBox.getSelectedIndex() >= 0){
+            if (!valorTextField.getText().equals("")){
+                switch(parametroComboBox.getSelectedIndex()){
+                    case 0:
+                        try{
+                            String sql = "SELECT PT_Codificacion_CaracterizadoEn_PT AS \"Codificación\","
+                                                + "SM_PT_Fecha AS \"Fecha\","
+                                                + "SM_PT_Inicio AS \"Inicio\","
+                                                + "SM_PT_Ingreso AS \"Ingreso\","
+                                                + "SM_PT_Egreso AS \"Egreso\","
+                                                + "SM_PT_CantidadCalculada AS \"Cant Calculada\","
+                                                + "SM_PT_CantidadReal AS \"Cant Real\","
+                                                + "SM_PT_Diferencia AS \"Diferencia\" "
+                                    + "FROM StocksMensualesProductosTerminados WHERE PT_Codificacion_CaracterizadoEn_PT = ? ORDER BY SM_PT_Fecha";
+                            pst = conn.prepareStatement(sql);
+
+                            pst.setString(1,valorTextField.getText().toUpperCase());
+
+                            rs = pst.executeQuery();
+                            stocksMensualesProductosTerminadosTable.setModel(DbUtils.resultSetToTableModel(rs));
+                            stocksMensualesProductosTerminadosTable.setEnabled(false);
+                        }catch(Exception e){
+                            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al realizar la búsqueda de stocks mensuales de productos terminados", JOptionPane.ERROR_MESSAGE);
+                        }
+                        break;
+                    case 1:
+                        try{
+                            String sql = "SELECT PT_Codificacion_CaracterizadoEn_PT AS \"Codificación\","
+                                                + "SM_PT_Fecha AS \"Fecha\","
+                                                + "SM_PT_Inicio AS \"Inicio\","
+                                                + "SM_PT_Ingreso AS \"Ingreso\","
+                                                + "SM_PT_Egreso AS \"Egreso\","
+                                                + "SM_PT_CantidadCalculada AS \"Cant Calculada\","
+                                                + "SM_PT_CantidadReal AS \"Cant Real\","
+                                                + "SM_PT_Diferencia AS \"Diferencia\" "
+                                    + "FROM StocksMensualesProductosTerminados WHERE SM_PT_Fecha = ? ORDER BY PT_Codificacion_CaracterizadoEn_PT";
+                            pst = conn.prepareStatement(sql);
+
+                            int anio = Integer.parseInt(valorTextField.getText().substring(0, 4));
+                            int mes = Integer.parseInt(valorTextField.getText().substring(5, 7)) - 1; // DEBO RESTAR UNO PORQUE EN JAVA LOS MESES EMPIEZAN EN 0 !!!!!!! o.0
+                            int dia = Integer.parseInt(valorTextField.getText().substring(8, 10));
+                            Calendar fechaIngresada = new GregorianCalendar(anio, mes, dia);
+                            
+                            java.util.Date fecha = new java.util.Date(fechaIngresada.getTimeInMillis());
+                            java.sql.Date fechaActual = new java.sql.Date(fecha.getTime());                            
+
+                            pst.setDate(1,fechaActual);
+
+                            rs = pst.executeQuery();
+                            stocksMensualesProductosTerminadosTable.setModel(DbUtils.resultSetToTableModel(rs));
+                            stocksMensualesProductosTerminadosTable.setEnabled(false);
+                        }catch(Exception e){
+                            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al realizar la búsqueda de stocks mensuales de productos terminados", JOptionPane.ERROR_MESSAGE);
+                        }
+                        break;                                                                                          
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "El valor del parámetro de búsqueda no puede ser vacio.", "Error al buscar stocks mensuales de insumo", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "El parámetro de búsqueda no puede ser vacio.", "Error al buscar stocks mensuales de insumo", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_buscarStocksMensualesProductosTerminadosButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -220,13 +309,13 @@ public class BuscarStocksMensualesProductosTerminadosScreen extends javax.swing.
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buscarStocksMensualesProductosTerminadosButton;
     private javax.swing.JButton imprimirButton;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel parametroABuscarPanel;
+    private javax.swing.JComboBox parametroComboBox;
     private javax.swing.JLabel parametroLabel;
     private javax.swing.JButton salirButton;
     private javax.swing.JTable stocksMensualesProductosTerminadosTable;
     private javax.swing.JLabel valorLabel;
+    private javax.swing.JTextField valorTextField;
     // End of variables declaration//GEN-END:variables
 }

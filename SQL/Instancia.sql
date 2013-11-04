@@ -15,7 +15,7 @@ INSERT INTO UsuariosDelSistema VALUES (    'lab',          'lab',     1,       1
 INSERT INTO Lotes (L_Identificador, L_FechaCreacion, L_FechaIngresoDeposito, L_Estado, L_FechaVencimiento) VALUES ('L-1010-3', '2013-10-10', '2013-10-15', 'Terminado', '2016-10-15');
 INSERT INTO Lotes (L_Identificador, L_FechaCreacion, L_FechaIngresoDeposito, L_Estado, L_FechaVencimiento) VALUES ('L-1030-3', '2013-10-10', '2013-10-15', 'Terminado', '2016-10-15');
 INSERT INTO Lotes (L_Identificador, L_FechaCreacion, L_FechaIngresoDeposito, L_Estado, L_FechaVencimiento) VALUES ('L-1050-3', '2013-10-10', '2013-10-15', 'Terminado', '2016-10-15');
-INSERT INTO Lotes (L_Identificador, L_FechaCreacion, L_FechaIngresoDeposito, L_Estado, L_FechaVencimiento) VALUES ('L-2610-3', '2013-10-24', '2013-10-26', 'Terminado', '2016-10-26');
+INSERT INTO Lotes (L_Identificador, L_FechaCreacion, L_FechaIngresoDeposito, L_Estado, L_FechaVencimiento) VALUES ('L-2410-3', '2013-10-24', '2013-10-26', 'Terminado', '2016-10-26');
 
 /*  Ingreso los lotes defectuosos */
 INSERT INTO Lotes (L_Identificador, L_FechaCreacion, L_Estado, L_MotivoDeficiencia) VALUES ('L-0110-3', '2013-10-01', 'Defectuoso', 'Materia prima en mal estado');

@@ -90,6 +90,7 @@
                 <MenuItem class="javax.swing.JMenuItem" name="nuevoUsuarioSistemaMenuItem">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Nuevo Usuario del Sistema"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nuevoUsuarioSistemaMenuItemActionPerformed"/>
@@ -98,6 +99,7 @@
                 <MenuItem class="javax.swing.JMenuItem" name="darBajaUsuarioSistemaMenuItem">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Dar de Baja Usuario del Sistema"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="darBajaUsuarioSistemaMenuItemActionPerformed"/>
@@ -113,6 +115,7 @@
                 <MenuItem class="javax.swing.JMenuItem" name="nuevoProveedorMenuItem">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Nuevo Proveedor"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nuevoProveedorMenuItemActionPerformed"/>
@@ -121,6 +124,7 @@
                 <MenuItem class="javax.swing.JMenuItem" name="actualizarInformacionProveedorMenuItem">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Actualizar Informaci&#xf3;n Proveedor"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="actualizarInformacionProveedorMenuItemActionPerformed"/>
@@ -129,6 +133,7 @@
                 <MenuItem class="javax.swing.JMenuItem" name="darBajaProveedorMenuItem">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Dar de Baja Proveedor"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="darBajaProveedorMenuItemActionPerformed"/>
@@ -144,6 +149,7 @@
                 <MenuItem class="javax.swing.JMenuItem" name="nuevoInsumoMenuItem">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Nuevo Insumo"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nuevoInsumoMenuItemActionPerformed"/>
@@ -152,6 +158,7 @@
                 <MenuItem class="javax.swing.JMenuItem" name="actualizarInformacionInsumoMenuItem">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Actualizar Informaci&#xf3;n Insumo"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="actualizarInformacionInsumoMenuItemActionPerformed"/>
@@ -160,6 +167,7 @@
                 <MenuItem class="javax.swing.JMenuItem" name="buscarInsumosMenuItem">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Buscar Insumos"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buscarInsumosMenuItemActionPerformed"/>
@@ -168,6 +176,7 @@
                 <MenuItem class="javax.swing.JMenuItem" name="darBajaInsumoMenuItem">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Dar de Baja Insumo"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="darBajaInsumoMenuItemActionPerformed"/>
@@ -183,6 +192,7 @@
                 <MenuItem class="javax.swing.JMenuItem" name="nuevoProductoTerminadoMenuItem">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Nuevo Producto Terminado"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nuevoProductoTerminadoMenuItemActionPerformed"/>
@@ -191,6 +201,7 @@
                 <MenuItem class="javax.swing.JMenuItem" name="buscarProductosTerminadosMenuItem">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Buscar Productos Terminados"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buscarProductosTerminadosMenuItemActionPerformed"/>
@@ -199,6 +210,7 @@
                 <MenuItem class="javax.swing.JMenuItem" name="darBajaProductoTerminadoMenuItem">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Dar de Baja Producto Terminado"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="darBajaProductoTerminadoMenuItemActionPerformed"/>
@@ -207,6 +219,7 @@
                 <MenuItem class="javax.swing.JMenuItem" name="despacharProductoTerminadoMenuItem">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Despachar Producto Terminado"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="despacharProductoTerminadoMenuItemActionPerformed"/>
@@ -222,6 +235,7 @@
                 <MenuItem class="javax.swing.JMenuItem" name="buscarDescartesMensualesMenuItem">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Buscar Descartes Mensuales"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buscarDescartesMensualesMenuItemActionPerformed"/>
@@ -237,6 +251,7 @@
                 <MenuItem class="javax.swing.JMenuItem" name="nuevaEtapaMenuItem">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Nueva Etapa"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nuevaEtapaMenuItemActionPerformed"/>
@@ -245,6 +260,7 @@
                 <MenuItem class="javax.swing.JMenuItem" name="darBajaEtapaMenuItem">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Dar de Baja Etapa"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="darBajaEtapaMenuItemActionPerformed"/>
@@ -982,6 +998,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Actualizar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="actualizarTablaSolapaEmpleadosButtonActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -1069,6 +1088,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Actualizar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="actualizarTablaSolapaEtapasButtonActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
